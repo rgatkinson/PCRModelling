@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     66354,       1633]
-NotebookOptionsPosition[     61597,       1506]
-NotebookOutlinePosition[     64598,       1573]
-CellTagsIndexPosition[     64555,       1570]
+NotebookDataLength[     68664,       1678]
+NotebookOptionsPosition[     63908,       1551]
+NotebookOutlinePosition[     66908,       1618]
+CellTagsIndexPosition[     66865,       1615]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -117,12 +117,14 @@ Cell[BoxData[
    RowBox[{"e", "\[Rule]", "f"}]}], "}"}]], "Output",
  CellChangeTimes->{3.6573075642640114`*^9, 3.6573083582425137`*^9, 
   3.657319899112561*^9, 3.6574667214609485`*^9, 3.657907828520601*^9, 
-  3.6579085417620497`*^9, 3.6580743984360304`*^9, 3.6580795250292363`*^9}],
+  3.6579085417620497`*^9, 3.6580743984360304`*^9, 3.6580795250292363`*^9, 
+  3.658172700359601*^9}],
 
 Cell[BoxData["3"], "Output",
  CellChangeTimes->{3.6573075642640114`*^9, 3.6573083582425137`*^9, 
   3.657319899112561*^9, 3.6574667214609485`*^9, 3.657907828520601*^9, 
-  3.6579085417620497`*^9, 3.6580743984360304`*^9, 3.658079525031234*^9}]
+  3.6579085417620497`*^9, 3.6580743984360304`*^9, 3.6580795250292363`*^9, 
+  3.658172700361105*^9}]
 }, Open  ]]
 }, Closed]],
 
@@ -512,7 +514,8 @@ Cell[BoxData[
    TableForm[BoxForm`e$]]]], "Output",
  CellChangeTimes->{3.657307575708145*^9, 3.657308358758316*^9, 
   3.6573198996767845`*^9, 3.657466722024935*^9, 3.657907829125966*^9, 
-  3.6579085419911203`*^9, 3.6580743992342577`*^9, 3.6580795256812983`*^9}]
+  3.6579085419911203`*^9, 3.6580743992342577`*^9, 3.6580795256812983`*^9, 
+  3.658172701912731*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -563,7 +566,8 @@ Cell[BoxData[
     SubscriptBox["\[Nu]", "W2"], "\[Rule]", "1"}]}], "}"}]], "Output",
  CellChangeTimes->{3.6573075757161455`*^9, 3.6573083587653356`*^9, 
   3.657319899688769*^9, 3.657466722033925*^9, 3.657907829132962*^9, 
-  3.6579085420011177`*^9, 3.658074399243271*^9, 3.6580795256912985`*^9}]
+  3.6579085420011177`*^9, 3.658074399243271*^9, 3.6580795256912985`*^9, 
+  3.6581727019197493`*^9}]
 }, Open  ]]
 }, Closed]],
 
@@ -592,7 +596,7 @@ Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"p", ",", "c", ",", "t", ",", "pt", ",", "pc"}], "}"}]], "Output",
  CellChangeTimes->{3.657908915270585*^9, 3.6580743992482567`*^9, 
-  3.6580795257002993`*^9}]
+  3.6580795257002993`*^9, 3.6581727019277706`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -708,7 +712,8 @@ Cell[BoxData[
   3.6573076436973457`*^9, 3.65730810999182*^9, 3.6573081406107283`*^9, {
    3.6573083614730763`*^9, 3.6573083792376523`*^9}, 3.6573198997047653`*^9, 
    3.657466730731909*^9, 3.657907836929858*^9, 3.65790854202112*^9, 
-   3.6579089168123655`*^9, 3.658074399254257*^9, 3.6580795257123065`*^9}],
+   3.6579089168123655`*^9, 3.658074399254257*^9, 3.6580795257123065`*^9, 
+   3.6581727019347897`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -718,7 +723,8 @@ Cell[BoxData[
   3.6573076436973457`*^9, 3.65730810999182*^9, 3.6573081406107283`*^9, {
    3.6573083614730763`*^9, 3.6573083792376523`*^9}, 3.6573198997047653`*^9, 
    3.657466730731909*^9, 3.657907836929858*^9, 3.65790854202112*^9, 
-   3.6579089168123655`*^9, 3.658074399254257*^9, 3.658079525714805*^9}]
+   3.6579089168123655`*^9, 3.658074399254257*^9, 3.6580795257123065`*^9, 
+   3.6581727019367948`*^9}]
 }, Open  ]]
 }, Closed]],
 
@@ -795,7 +801,8 @@ Cell[BoxData[
    3.6574670676510544`*^9, 3.657907842675188*^9, 3.6579083455041356`*^9, 
    3.65790854203413*^9, 3.657908774994845*^9, 3.6579089183302803`*^9, {
    3.6579118476917934`*^9, 3.657911873521324*^9}, 3.6579129492602253`*^9, 
-   3.658074407021301*^9, 3.6580795257263126`*^9, 3.6580795868725653`*^9}],
+   3.658074407021301*^9, 3.6580795257263126`*^9, 3.6580795868725653`*^9, 
+   3.658172701942811*^9}],
 
 Cell[BoxData[
  TagBox[
@@ -876,7 +883,8 @@ Cell[BoxData[
    3.6574670676510544`*^9, 3.657907842675188*^9, 3.6579083455041356`*^9, 
    3.65790854203413*^9, 3.657908774994845*^9, 3.6579089183302803`*^9, {
    3.6579118476917934`*^9, 3.657911873521324*^9}, 3.6579129492602253`*^9, 
-   3.658074407021301*^9, 3.6580795257263126`*^9, 3.6580795868795967`*^9}]
+   3.658074407021301*^9, 3.6580795257263126`*^9, 3.6580795868725653`*^9, 
+   3.658172701948827*^9}]
 }, Open  ]],
 
 Cell["Initially, nothing is bound", "Text",
@@ -921,7 +929,7 @@ Cell[BoxData[
     RowBox[{"pc", "[", "0", "]"}], "\[Equal]", "0"}]}], "}"}]], "Output",
  CellChangeTimes->{3.65791025368532*^9, 3.657911910193734*^9, 
   3.657912868394552*^9, 3.6579129703548255`*^9, 3.657913066627496*^9, 
-  3.658074451202031*^9, 3.6580795257403116`*^9}]
+  3.658074451202031*^9, 3.6580795257403116`*^9, 3.6581727019548435`*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -1065,7 +1073,8 @@ Cell[BoxData[
    3.6580748630960054`*^9, {3.6580757965635295`*^9, 3.6580758389406896`*^9}, 
    3.6580779462787457`*^9, 3.6580785307355223`*^9, 3.6580785921175537`*^9, {
    3.658078691472986*^9, 3.658078717777874*^9}, 3.658079302776335*^9, 
-   3.658079525750311*^9, 3.658080308818989*^9, 3.658080381906622*^9}],
+   3.658079525750311*^9, 3.658080308818989*^9, 3.658080381906622*^9, 
+   3.6581727019708867`*^9}],
 
 Cell[BoxData[
  TagBox[
@@ -1173,7 +1182,8 @@ Cell[BoxData[
    3.6580748630960054`*^9, {3.6580757965635295`*^9, 3.6580758389406896`*^9}, 
    3.6580779462787457`*^9, 3.6580785307355223`*^9, 3.6580785921175537`*^9, {
    3.658078691472986*^9, 3.658078717777874*^9}, 3.658079302776335*^9, 
-   3.658079525750311*^9, 3.658080308818989*^9, 3.658080381911622*^9}],
+   3.658079525750311*^9, 3.658080308818989*^9, 3.658080381906622*^9, 
+   3.6581727019738936`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -1196,91 +1206,106 @@ Cell[BoxData[
    3.6580748630960054`*^9, {3.6580757965635295`*^9, 3.6580758389406896`*^9}, 
    3.6580779462787457`*^9, 3.6580785307355223`*^9, 3.6580785921175537`*^9, {
    3.658078691472986*^9, 3.658078717777874*^9}, 3.658079302776335*^9, 
-   3.658079525750311*^9, 3.658080308818989*^9, 3.658080381913632*^9}]
+   3.658079525750311*^9, 3.658080308818989*^9, 3.658080381906622*^9, 
+   3.6581727019767385`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"parameters", " ", "=", "  ", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"\[Tau]max", " ", "=", " ", 
-   RowBox[{"1", " ", 
-    RowBox[{"10", "^", 
-     RowBox[{"(", 
-      RowBox[{"-", "6"}], ")"}]}]}]}], " ", ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"soln", " ", "=", " ", 
-   RowBox[{"ParametricNDSolve", "[", 
-    RowBox[{"eqns", ",", " ", "vars", ",", " ", 
-     RowBox[{"{", 
-      RowBox[{"\[Tau]", ",", " ", "0", ",", " ", "\[Tau]max"}], "}"}], ",", 
-     " ", 
-     RowBox[{"{", 
-      RowBox[{
-      "kon1", ",", " ", "kon2", ",", " ", "koff1", ",", " ", "koff2", ",", 
-       " ", "t0", ",", " ", "c0", ",", " ", "p0"}], "}"}], ",", " ", 
-     RowBox[{"MaxStepSize", "\[Rule]", 
-      RowBox[{"\[Tau]max", "/", "1000"}]}]}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+Cell[BoxData[
  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"Plot", "[", 
-    RowBox[{
-     RowBox[{"Evaluate", "[", 
-      RowBox[{
+   RowBox[{
+    RowBox[{"parameters", " ", "=", "  ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Tau]max", " ", "=", " ", 
+     RowBox[{"10", "^", "log\[Tau]max"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"soln", " ", "=", " ", 
+     RowBox[{"ParametricNDSolve", "[", 
+      RowBox[{"eqns", ",", " ", "vars", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"\[Tau]", ",", " ", "0", ",", " ", "\[Tau]max"}], "}"}], ",", 
+       " ", 
+       RowBox[{"{", 
+        RowBox[{
+        "kon1", ",", " ", "kon2", ",", " ", "koff1", ",", " ", "koff2", ",", 
+         " ", "t0", ",", " ", "c0", ",", " ", "p0"}], "}"}], ",", " ", 
+       RowBox[{"MaxStepSize", "\[Rule]", 
+        RowBox[{"\[Tau]max", "/", "1000"}]}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{"Evaluate", "[", 
        RowBox[{
-        RowBox[{"{", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"(", 
             RowBox[{
-             RowBox[{"pt", "[", 
-              RowBox[{
-               RowBox[{"10", "^", "logkon1"}], ",", " ", 
-               RowBox[{"10", "^", "logkon2"}], ",", " ", 
-               RowBox[{"10", "^", "logkoff1"}], ",", " ", 
-               RowBox[{"10", "^", "logkoff2"}], ",", " ", 
-               RowBox[{"10", "^", "logt0"}], ",", " ", 
-               RowBox[{"10", "^", "logc0"}], ",", " ", 
-               RowBox[{"10", "^", "logp0"}]}], "]"}], "[", "\[Tau]", "]"}], 
-            "/", " ", 
-            RowBox[{"(", 
-             RowBox[{"10", "^", "logt0"}], ")"}]}], ")"}], ",", " ", 
-          "\[IndentingNewLine]", 
-          RowBox[{"(", 
-           RowBox[{
+             RowBox[{
+              RowBox[{"pt", "[", 
+               RowBox[{
+                RowBox[{"10", "^", "logkon1"}], ",", " ", 
+                RowBox[{"10", "^", "logkon2"}], ",", " ", 
+                RowBox[{"10", "^", "logkoff1"}], ",", " ", 
+                RowBox[{"10", "^", "logkoff2"}], ",", " ", 
+                RowBox[{"10", "^", "logt0"}], ",", " ", 
+                RowBox[{"10", "^", "logc0"}], ",", " ", 
+                RowBox[{"10", "^", "logp0"}]}], "]"}], "[", "\[Tau]", "]"}], 
+             "/", " ", 
+             RowBox[{"(", 
+              RowBox[{"10", "^", "logt0"}], ")"}]}], ")"}], ",", " ", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(", 
             RowBox[{
-             RowBox[{"pc", "[", 
-              RowBox[{
-               RowBox[{"10", "^", "logkon1"}], ",", " ", 
-               RowBox[{"10", "^", "logkon2"}], ",", " ", 
-               RowBox[{"10", "^", "logkoff1"}], ",", " ", 
-               RowBox[{"10", "^", "logkoff2"}], ",", " ", 
-               RowBox[{"10", "^", "logt0"}], ",", " ", 
-               RowBox[{"10", "^", "logc0"}], ",", " ", 
-               RowBox[{"10", "^", "logp0"}]}], "]"}], "[", "\[Tau]", "]"}], 
-            "/", 
-            RowBox[{"(", 
-             RowBox[{"10", "^", "logc0"}], ")"}]}], ")"}]}], 
-         "\[IndentingNewLine]", "}"}], " ", "/.", " ", "parameters"}], " ", "/.",
-        " ", "soln"}], "]"}], ",", "\[IndentingNewLine]", 
-     RowBox[{"{", 
-      RowBox[{"\[Tau]", ",", "0", ",", "\[Tau]max"}], "}"}], ",", " ", 
-     "\[IndentingNewLine]", 
-     RowBox[{"PlotRange", "\[Rule]", 
+             RowBox[{
+              RowBox[{"pc", "[", 
+               RowBox[{
+                RowBox[{"10", "^", "logkon1"}], ",", " ", 
+                RowBox[{"10", "^", "logkon2"}], ",", " ", 
+                RowBox[{"10", "^", "logkoff1"}], ",", " ", 
+                RowBox[{"10", "^", "logkoff2"}], ",", " ", 
+                RowBox[{"10", "^", "logt0"}], ",", " ", 
+                RowBox[{"10", "^", "logc0"}], ",", " ", 
+                RowBox[{"10", "^", "logp0"}]}], "]"}], "[", "\[Tau]", "]"}], 
+             "/", 
+             RowBox[{"(", 
+              RowBox[{"10", "^", "logc0"}], ")"}]}], ")"}]}], 
+          "\[IndentingNewLine]", "}"}], " ", "/.", " ", "parameters"}], " ", "/.",
+         " ", "soln"}], "]"}], ",", "\[IndentingNewLine]", 
       RowBox[{"{", 
-       RowBox[{"0", ",", "1"}], "}"}]}], ",", " ", 
-     RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", "\[IndentingNewLine]", 
-     RowBox[{"AxesLabel", "\[Rule]", 
-      RowBox[{"{", 
-       RowBox[{"\"\<time\>\"", ",", " ", "\"\<fraction bound\>\""}], 
-       "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"\[Tau]", ",", "0", ",", "\[Tau]max"}], "}"}], ",", " ", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1"}], "}"}]}], ",", " ", 
+      RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", " ", 
+      RowBox[{"PlotLegends", "\[Rule]", " ", 
+       RowBox[{"{", 
+        RowBox[{"\"\<pt/t0\>\"", ",", " ", "\"\<pc/c0\>\""}], "}"}]}], ",", 
+      " ", 
+      RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AxesLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\"\<time\>\"", ",", " ", "\"\<fraction bound\>\""}], 
+        "}"}]}]}], "]"}]}], ",", "\[IndentingNewLine]", 
    RowBox[{"Grid", "[", 
     RowBox[{"{", "\[IndentingNewLine]", 
      RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Control", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"log\[Tau]max", ",", " ", 
+             RowBox[{"-", "6."}], ",", " ", "\"\<\[Tau]max\>\""}], "}"}], ",",
+            " ", 
+           RowBox[{"-", "10"}], ",", " ", "1"}], "}"}], "]"}], ",", " ", 
+        RowBox[{"Dynamic", "[", 
+         RowBox[{"10", "^", "log\[Tau]max"}], "]"}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"Control", "[", 
@@ -1361,28 +1386,28 @@ Cell[BoxData[{
         RowBox[{"Dynamic", "[", 
          RowBox[{"10", "^", "logkoff2"}], "]"}]}], "}"}]}], 
      "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]", "]"}]}], "Input",
+  "\[IndentingNewLine]", "]"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQA2IQPUPQnNna8bUjm8QpIRBto/5WEURfFtFWBdFeFeqa
+1:eJxTTMoPSmViYGCQBGIQPUPQnNna8bUjm8QpIRBto/5WEURfFtFWBdFeFeqa
 ILqCsdsQRHOt5LcC0UcYuKxBdLJEkiOI1utO8gbR58qCA0E0x0mVIBCtxfaq
 BURnc+a0gmiW2b1dINqkuKsbRBcaGkwA0RkPdGaB6FUNJ9aB6IWBc06AaH4t
 6bMg+l9j4XmwvTISN0H0rJspYHoBw0lOGyCdf0RJCkSzXTzvCqL7LMXSQXSL
 ysFsEJ26NzwXRDs9CCsC0VI8kSUg2ir3aw2I/pEl3ACijZ5XTAPRfG1eM0G0
 3zTh9SD6itB+MP0rcPYeEH2MPfsSiD6hFHUDRLvonX0Lont1ln8G0Zc0Un6A
-aABhMpZh
+6H/ND9UygfSXq5pGIFpjy287EH3k9zNXEL2j+H0UiD4Y5BkNogENJa8+
   "]],
 
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`logc0$$ = 
-    0.120000000000001, $CellContext`logkoff1$$ = 6, $CellContext`logkoff2$$ = 
-    4.22, $CellContext`logkon1$$ = 7.48, $CellContext`logkon2$$ = 
-    7.08, $CellContext`logp0$$ = 
-    0.019999999999999574`, $CellContext`logt0$$ = -1.5, Typeset`show$$ = True,
-     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
-    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
-    "\"untitled\"", Typeset`specs$$ = {{{
+   DynamicModuleBox[{$CellContext`logc0$$ = 0, $CellContext`logkoff1$$ = 
+    6, $CellContext`logkoff2$$ = 6, $CellContext`logkon1$$ = 
+    8.18, $CellContext`logkon2$$ = 7, $CellContext`logp0$$ = 
+    0, $CellContext`logt0$$ = 0, $CellContext`log\[Tau]max$$ = -6.26, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`log\[Tau]max$$], -6., "\[Tau]max"}, -10, 1}, {{
        Hold[$CellContext`logp0$$], 0, "p0"}, -10, 2}, {{
        Hold[$CellContext`logt0$$], 0, "t0"}, -10, 2}, {{
        Hold[$CellContext`logc0$$], 0, "c0"}, -10, 2}, {{
@@ -1393,85 +1418,103 @@ Cell[BoxData[
       Hold[
        Grid[{{
           Manipulate`Place[1], 
-          Dynamic[10^$CellContext`logp0$$]}, {
+          Dynamic[10^$CellContext`log\[Tau]max$$]}, {
           Manipulate`Place[2], 
-          Dynamic[10^$CellContext`logt0$$]}, {
+          Dynamic[10^$CellContext`logp0$$]}, {
           Manipulate`Place[3], 
-          Dynamic[10^$CellContext`logc0$$]}, {
+          Dynamic[10^$CellContext`logt0$$]}, {
           Manipulate`Place[4], 
-          Dynamic[10^$CellContext`logkon1$$]}, {
+          Dynamic[10^$CellContext`logc0$$]}, {
           Manipulate`Place[5], 
-          Dynamic[10^$CellContext`logkoff1$$]}, {
+          Dynamic[10^$CellContext`logkon1$$]}, {
           Manipulate`Place[6], 
-          Dynamic[10^$CellContext`logkon2$$]}, {
+          Dynamic[10^$CellContext`logkoff1$$]}, {
           Manipulate`Place[7], 
+          Dynamic[10^$CellContext`logkon2$$]}, {
+          Manipulate`Place[8], 
           Dynamic[10^$CellContext`logkoff2$$]}}]], 
       Manipulate`Dump`ThisIsNotAControl}}, Typeset`size$$ = {
-    547., {170., 173.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
-    Typeset`skipInitDone$$ = True, $CellContext`logp0$142135$$ = 
-    0, $CellContext`logt0$142136$$ = 0, $CellContext`logc0$142137$$ = 
-    0, $CellContext`logkon1$142138$$ = 0, $CellContext`logkoff1$142139$$ = 
-    0, $CellContext`logkon2$142140$$ = 0, $CellContext`logkoff2$142141$$ = 0}, 
+    621., {170., 173.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`log\[Tau]max$181107$$ = 
+    0, $CellContext`logp0$181108$$ = 0, $CellContext`logt0$181109$$ = 
+    0, $CellContext`logc0$181110$$ = 0, $CellContext`logkon1$181111$$ = 
+    0, $CellContext`logkoff1$181112$$ = 0, $CellContext`logkon2$181113$$ = 
+    0, $CellContext`logkoff2$181114$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      2, StandardForm, 
       "Variables" :> {$CellContext`logc0$$ = 0, $CellContext`logkoff1$$ = 
         6, $CellContext`logkoff2$$ = 6, $CellContext`logkon1$$ = 
         7, $CellContext`logkon2$$ = 7, $CellContext`logp0$$ = 
-        0, $CellContext`logt0$$ = 0}, "ControllerVariables" :> {
-        Hold[$CellContext`logp0$$, $CellContext`logp0$142135$$, 0], 
-        Hold[$CellContext`logt0$$, $CellContext`logt0$142136$$, 0], 
-        Hold[$CellContext`logc0$$, $CellContext`logc0$142137$$, 0], 
-        Hold[$CellContext`logkon1$$, $CellContext`logkon1$142138$$, 0], 
-        Hold[$CellContext`logkoff1$$, $CellContext`logkoff1$142139$$, 0], 
-        Hold[$CellContext`logkon2$$, $CellContext`logkon2$142140$$, 0], 
-        Hold[$CellContext`logkoff2$$, $CellContext`logkoff2$142141$$, 0]}, 
+        0, $CellContext`logt0$$ = 0, $CellContext`log\[Tau]max$$ = -6.}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`log\[Tau]max$$, $CellContext`log\[Tau]max$181107$$, 
+         0], 
+        Hold[$CellContext`logp0$$, $CellContext`logp0$181108$$, 0], 
+        Hold[$CellContext`logt0$$, $CellContext`logt0$181109$$, 0], 
+        Hold[$CellContext`logc0$$, $CellContext`logc0$181110$$, 0], 
+        Hold[$CellContext`logkon1$$, $CellContext`logkon1$181111$$, 0], 
+        Hold[$CellContext`logkoff1$$, $CellContext`logkoff1$181112$$, 0], 
+        Hold[$CellContext`logkon2$$, $CellContext`logkon2$181113$$, 0], 
+        Hold[$CellContext`logkoff2$$, $CellContext`logkoff2$181114$$, 0]}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
         Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, "Body" :> Plot[
-        Evaluate[
-         ReplaceAll[
-          
-          ReplaceAll[{$CellContext`pt[
-             10^$CellContext`logkon1$$, 10^$CellContext`logkon2$$, 
-              10^$CellContext`logkoff1$$, 10^$CellContext`logkoff2$$, 
-              10^$CellContext`logt0$$, 10^$CellContext`logc0$$, 
-              10^$CellContext`logp0$$][$CellContext`\[Tau]]/
-            10^$CellContext`logt0$$, $CellContext`pc[
-             10^$CellContext`logkon1$$, 10^$CellContext`logkon2$$, 
-              10^$CellContext`logkoff1$$, 10^$CellContext`logkoff2$$, 
-              10^$CellContext`logt0$$, 10^$CellContext`logc0$$, 
-              10^$CellContext`logp0$$][$CellContext`\[Tau]]/
-            10^$CellContext`logc0$$}, $CellContext`parameters], \
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`parameters = {}; $CellContext`\[Tau]max = 
+        10^$CellContext`log\[Tau]max$$; $CellContext`soln = 
+        ParametricNDSolve[$CellContext`eqns, $CellContext`vars, \
+{$CellContext`\[Tau], 
+           0, $CellContext`\[Tau]max}, {$CellContext`kon1, $CellContext`kon2, \
+$CellContext`koff1, $CellContext`koff2, $CellContext`t0, $CellContext`c0, \
+$CellContext`p0}, MaxStepSize -> $CellContext`\[Tau]max/1000]; Plot[
+         Evaluate[
+          ReplaceAll[
+           
+           ReplaceAll[{$CellContext`pt[
+              10^$CellContext`logkon1$$, 10^$CellContext`logkon2$$, 
+               10^$CellContext`logkoff1$$, 10^$CellContext`logkoff2$$, 
+               10^$CellContext`logt0$$, 10^$CellContext`logc0$$, 
+               10^$CellContext`logp0$$][$CellContext`\[Tau]]/
+             10^$CellContext`logt0$$, $CellContext`pc[
+              10^$CellContext`logkon1$$, 10^$CellContext`logkon2$$, 
+               10^$CellContext`logkoff1$$, 10^$CellContext`logkoff2$$, 
+               10^$CellContext`logt0$$, 10^$CellContext`logc0$$, 
+               10^$CellContext`logp0$$][$CellContext`\[Tau]]/
+             10^$CellContext`logc0$$}, $CellContext`parameters], \
 $CellContext`soln]], {$CellContext`\[Tau], 0, $CellContext`\[Tau]max}, 
-        PlotRange -> {0, 1}, ImageSize -> Large, 
-        AxesLabel -> {"time", "fraction bound"}], 
-      "Specifications" :> {{{$CellContext`logp0$$, 0, "p0"}, -10, 2, 
-         ControlPlacement -> 1}, {{$CellContext`logt0$$, 0, "t0"}, -10, 2, 
-         ControlPlacement -> 2}, {{$CellContext`logc0$$, 0, "c0"}, -10, 2, 
-         ControlPlacement -> 3}, {{$CellContext`logkon1$$, 7, "kon1"}, 0, 10, 
-         ControlPlacement -> 4}, {{$CellContext`logkoff1$$, 6, "koff1"}, 0, 
-         12, ControlPlacement -> 5}, {{$CellContext`logkon2$$, 7, "kon2"}, 0, 
-         10, ControlPlacement -> 6}, {{$CellContext`logkoff2$$, 6, "koff2"}, 
-         0, 12, ControlPlacement -> 7}, 
+         PlotRange -> {0, 1}, ImageSize -> Large, 
+         PlotLegends -> {"pt/t0", "pc/c0"}, GridLines -> Automatic, 
+         AxesLabel -> {"time", "fraction bound"}]), 
+      "Specifications" :> {{{$CellContext`log\[Tau]max$$, -6., 
+          "\[Tau]max"}, -10, 1, ControlPlacement -> 
+         1}, {{$CellContext`logp0$$, 0, "p0"}, -10, 2, ControlPlacement -> 
+         2}, {{$CellContext`logt0$$, 0, "t0"}, -10, 2, ControlPlacement -> 
+         3}, {{$CellContext`logc0$$, 0, "c0"}, -10, 2, ControlPlacement -> 
+         4}, {{$CellContext`logkon1$$, 7, "kon1"}, 0, 10, ControlPlacement -> 
+         5}, {{$CellContext`logkoff1$$, 6, "koff1"}, 0, 12, ControlPlacement -> 
+         6}, {{$CellContext`logkon2$$, 7, "kon2"}, 0, 10, ControlPlacement -> 
+         7}, {{$CellContext`logkoff2$$, 6, "koff2"}, 0, 12, ControlPlacement -> 
+         8}, 
         Grid[{{
            Manipulate`Place[1], 
-           Dynamic[10^$CellContext`logp0$$]}, {
+           Dynamic[10^$CellContext`log\[Tau]max$$]}, {
            Manipulate`Place[2], 
-           Dynamic[10^$CellContext`logt0$$]}, {
+           Dynamic[10^$CellContext`logp0$$]}, {
            Manipulate`Place[3], 
-           Dynamic[10^$CellContext`logc0$$]}, {
+           Dynamic[10^$CellContext`logt0$$]}, {
            Manipulate`Place[4], 
-           Dynamic[10^$CellContext`logkon1$$]}, {
+           Dynamic[10^$CellContext`logc0$$]}, {
            Manipulate`Place[5], 
-           Dynamic[10^$CellContext`logkoff1$$]}, {
+           Dynamic[10^$CellContext`logkon1$$]}, {
            Manipulate`Place[6], 
-           Dynamic[10^$CellContext`logkon2$$]}, {
+           Dynamic[10^$CellContext`logkoff1$$]}, {
            Manipulate`Place[7], 
+           Dynamic[10^$CellContext`logkon2$$]}, {
+           Manipulate`Place[8], 
            Dynamic[10^$CellContext`logkoff2$$]}}]}, "Options" :> {}, 
       "DefaultOptions" :> {}],
-     ImageSizeCache->{596., {295., 302.}},
+     ImageSizeCache->{670., {309., 316.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -1499,13 +1542,15 @@ $CellContext`soln]], {$CellContext`\[Tau], 0, $CellContext`\[Tau]max},
    3.658081810176769*^9, 3.6580818417341766`*^9, 3.6580818914917326`*^9, {
    3.6580819239934664`*^9, 3.6580819396767545`*^9}, 3.6580819906162148`*^9, 
    3.658082049415904*^9, {3.6580820802758713`*^9, 3.6580821587969127`*^9}, {
-   3.658082236891277*^9, 3.6580822434668045`*^9}}]
+   3.658082236891277*^9, 3.6580822434668045`*^9}, {3.6581727020023065`*^9, 
+   3.658172729811713*^9}, {3.6581727964946704`*^9, 3.6581728178257456`*^9}, {
+   3.6581729585610237`*^9, 3.65817297599543*^9}, 3.658173146766615*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{1304, 1548},
-WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+WindowMargins->{{Automatic, 207}, {Automatic, 0}},
 CellContext->Notebook,
 InputAliases->{"intt" -> RowBox[{"\[Integral]", 
      RowBox[{"\[SelectionPlaceholder]", 
@@ -1558,7 +1603,7 @@ InputAliases->{"intt" -> RowBox[{"\[Integral]",
        TagBox["\[Equilibrium]", DisplayForm], DisplayForm], "\[Placeholder]", 
       "\[Placeholder]"], " "}]},
 Magnification:>0.95 Inherited,
-FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (October 9, 2015)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -1577,61 +1622,61 @@ Cell[580, 22, 157, 2, 67, "Section"],
 Cell[CellGroupData[{
 Cell[762, 28, 166, 2, 46, "Subsection"],
 Cell[CellGroupData[{
-Cell[953, 34, 2953, 75, 162, "Input"],
-Cell[3909, 111, 387, 8, 70, "Output"],
-Cell[4299, 121, 240, 3, 70, "Output"]
+Cell[953, 34, 2953, 75, 153, "Input"],
+Cell[3909, 111, 412, 9, 70, "Output"],
+Cell[4324, 122, 267, 4, 70, "Output"]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[4588, 130, 97, 1, 38, "Subsection"],
-Cell[4688, 133, 254, 5, 28, "Text"],
-Cell[4945, 140, 1814, 42, 197, "Input"],
-Cell[6762, 184, 6080, 173, 394, "Input"],
-Cell[12845, 359, 2385, 63, 130, "Input"],
+Cell[4640, 132, 97, 1, 38, "Subsection"],
+Cell[4740, 135, 254, 5, 26, "Text"],
+Cell[4997, 142, 1814, 42, 187, "Input"],
+Cell[6814, 186, 6080, 173, 374, "Input"],
+Cell[12897, 361, 2385, 63, 123, "Input"],
 Cell[CellGroupData[{
-Cell[15255, 426, 699, 19, 37, "Input"],
-Cell[15957, 447, 2346, 67, 70, "Output"]
+Cell[15307, 428, 699, 19, 35, "Input"],
+Cell[16009, 449, 2371, 68, 70, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18340, 519, 528, 14, 37, "Input"],
-Cell[18871, 535, 1045, 30, 70, "Output"]
+Cell[18417, 522, 528, 14, 35, "Input"],
+Cell[18948, 538, 1072, 31, 70, "Output"]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[19965, 571, 161, 2, 38, "Subsection"],
+Cell[20069, 575, 161, 2, 38, "Subsection"],
 Cell[CellGroupData[{
-Cell[20151, 577, 608, 11, 30, "Input"],
-Cell[20762, 590, 198, 4, 29, "Output"]
+Cell[20255, 581, 608, 11, 28, "Input"],
+Cell[20866, 594, 222, 4, 70, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20997, 599, 6265, 99, 111, "Input"],
-Cell[27265, 700, 501, 10, 29, "Output"],
-Cell[27769, 712, 475, 8, 44, "Output"]
+Cell[21125, 603, 6265, 99, 105, "Input"],
+Cell[27393, 704, 529, 11, 70, "Output"],
+Cell[27925, 717, 505, 9, 70, "Output"]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[28293, 726, 97, 1, 38, "Subsection"],
-Cell[28393, 729, 184, 4, 29, "Text"],
+Cell[28479, 732, 97, 1, 38, "Subsection"],
+Cell[28579, 735, 184, 4, 29, "Text"],
 Cell[CellGroupData[{
-Cell[28602, 737, 1868, 45, 104, "Input"],
-Cell[30473, 784, 662, 13, 29, "Output"],
-Cell[31138, 799, 2927, 79, 86, "Output"]
+Cell[28788, 743, 1868, 45, 104, "Input"],
+Cell[30659, 790, 688, 14, 29, "Output"],
+Cell[31350, 806, 2953, 80, 86, "Output"]
 }, Open  ]],
-Cell[34080, 881, 111, 1, 29, "Text"],
+Cell[34318, 889, 111, 1, 29, "Text"],
 Cell[CellGroupData[{
-Cell[34216, 886, 987, 20, 30, "Input"],
-Cell[35206, 908, 596, 15, 29, "Output"]
+Cell[34454, 894, 987, 20, 30, "Input"],
+Cell[35444, 916, 620, 15, 29, "Output"]
 }, Open  ]],
-Cell[35817, 926, 461, 8, 48, "Text"],
+Cell[36079, 934, 461, 8, 48, "Text"],
 Cell[CellGroupData[{
-Cell[36303, 938, 2205, 38, 111, "Input"],
-Cell[38511, 978, 3766, 89, 49, "Output"],
-Cell[42280, 1069, 4217, 106, 161, "Output"],
-Cell[46500, 1177, 1454, 21, 29, "Output"]
+Cell[36565, 946, 2205, 38, 111, "Input"],
+Cell[38773, 986, 3794, 90, 49, "Output"],
+Cell[42570, 1078, 4245, 107, 161, "Output"],
+Cell[46818, 1187, 1482, 22, 29, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47991, 1203, 6600, 169, 451, "Input"],
-Cell[54594, 1374, 6963, 127, 646, "Output"]
+Cell[48337, 1214, 7354, 183, 471, "Input"],
+Cell[55694, 1399, 8174, 147, 641, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
