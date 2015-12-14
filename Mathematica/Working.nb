@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    210262,       4337]
-NotebookOptionsPosition[    205040,       4199]
-NotebookOutlinePosition[    208039,       4266]
-CellTagsIndexPosition[    207996,       4263]
+NotebookDataLength[    209749,       4326]
+NotebookOptionsPosition[    204527,       4188]
+NotebookOutlinePosition[    207526,       4255]
+CellTagsIndexPosition[    207483,       4252]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -818,10 +818,10 @@ Cell["Kinetic Annealing Model", "Subsubsection",
  CellChangeTimes->{{3.6344809110048513`*^9, 3.634480913554855*^9}, {
   3.6348623371103334`*^9, 3.634862338510413*^9}}],
 
-Cell["We have the fundamental annealing reactions from the paper.", "Text",
+Cell["We have the fundamental annealing reactions:", "Text",
  CellChangeTimes->{{3.6344885044340625`*^9, 3.6344885073140664`*^9}, {
-  3.634571544308897*^9, 3.6345715532689095`*^9}, {3.635099878577928*^9, 
-  3.6350998882344804`*^9}}],
+   3.634571544308897*^9, 3.6345715532689095`*^9}, {3.635099878577928*^9, 
+   3.6350998882344804`*^9}, 3.6591226917990522`*^9}],
 
 Cell[BoxData[{
  RowBox[{
@@ -1259,7 +1259,7 @@ Cell[BoxData[{
    3.659114629728462*^9}, {3.6591201432891045`*^9, 3.6591201452564383`*^9}, {
    3.659120182480298*^9, 3.6591201844394274`*^9}}]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1662,7 +1662,7 @@ Cell[BoxData[{
    3.6591144330266438`*^9}, {3.6591146202565813`*^9, 3.659114629738463*^9}, {
    3.6591201510623646`*^9, 3.659120153998198*^9}, {3.659120191990467*^9, 
    3.659120195262292*^9}}]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3524,36 +3524,23 @@ Cell[BoxData[
                    RowBox[{"{", 
                     RowBox[{"True", ",", " ", "False"}], "}"}], ",", " ", 
                    RowBox[{"Enabled", " ", "\[Rule]", " ", "True"}]}], "}"}], 
+                 "]"}], ",", "\[IndentingNewLine]", 
+                RowBox[{"Spacer", "[", "15", "]"}], ",", " ", 
+                "\"\<poly' active in anneal\>\"", ",", " ", 
+                RowBox[{"Spacer", "[", "5", "]"}], ",", " ", 
+                RowBox[{"Control", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    "useExtendDuringAnneal", ",", " ", "False", ",", " ", 
+                    "\"\<\>\""}], "}"}], ",", " ", 
+                   RowBox[{"{", 
+                    RowBox[{"True", ",", " ", "False"}], "}"}], ",", " ", 
+                   RowBox[{"Enabled", " ", "\[Rule]", " ", "True"}]}], "}"}], 
                  "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], ",", 
              "\[IndentingNewLine]", "SpanFromLeft"}], "\[IndentingNewLine]", 
             "}"}], ",", "\[IndentingNewLine]", 
-           RowBox[{"{", "\[IndentingNewLine]", 
-            RowBox[{
-            "\"\<<empty>\>\"", ",", " ", "\[IndentingNewLine]", 
-             "\"\<<empty>\>\"", ",", "\[IndentingNewLine]", 
-             RowBox[{"(*", 
-              RowBox[{"columnSpacer", ","}], "*)"}], " ", 
-             RowBox[{"Item", "[", 
-              RowBox[{"\"\<poly' active in anneal\>\"", ",", " ", 
-               RowBox[{"Alignment", "\[Rule]", "Right"}]}], "]"}], ",", " ", 
-             "SpanFromLeft", ",", "\[IndentingNewLine]", 
-             RowBox[{"Control", "[", 
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"{", 
-                 RowBox[{
-                 "useExtendDuringAnneal", ",", " ", "False", ",", " ", 
-                  "\"\<\>\""}], "}"}], ",", " ", 
-                RowBox[{"{", 
-                 RowBox[{"True", ",", " ", "False"}], "}"}], ",", " ", 
-                RowBox[{"Enabled", " ", "\[Rule]", " ", "True"}]}], "}"}], 
-              "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"{", "\[IndentingNewLine]", 
-            RowBox[{
-            "\"\<{empty}\>\"", ",", " ", "\[IndentingNewLine]", 
-             "\"\<{empty}\>\"", ",", "\[IndentingNewLine]", "SpanFromLeft"}], 
-            "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
            RowBox[{"{", 
             RowBox[{
              RowBox[{"manipulateLogVar", "[", 
@@ -4181,7 +4168,9 @@ Cell[BoxData[
    3.6591200841051025`*^9}, 3.659120159854952*^9, {3.6591202447095237`*^9, 
    3.659120265771693*^9}, {3.6591217563780746`*^9, 3.659121762876356*^9}, {
    3.659121795226757*^9, 3.6591218257620125`*^9}, {3.659122416599558*^9, 
-   3.6591224652305107`*^9}, {3.6591224990055494`*^9, 3.659122505642725*^9}}]
+   3.6591224652305107`*^9}, {3.6591224990055494`*^9, 3.659122505642725*^9}, {
+   3.659125290000867*^9, 3.6591253196748548`*^9}, {3.6591253938574247`*^9, 
+   3.6591253969189453`*^9}}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -4294,50 +4283,50 @@ Cell[31565, 749, 2635, 62, 282, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[34237, 816, 167, 2, 38, "Subsubsection"],
-Cell[34407, 820, 247, 3, 29, "Text"],
-Cell[34657, 825, 2204, 54, 235, "Input"],
-Cell[36864, 881, 196, 4, 29, "Text"],
-Cell[37063, 887, 574, 13, 51, "Input"],
-Cell[37640, 902, 309, 6, 29, "Text"],
-Cell[37952, 910, 16714, 349, 1071, "Input"]
-}, Open  ]]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[54715, 1265, 105, 1, 38, "Subsection"],
-Cell[CellGroupData[{
-Cell[54845, 1270, 196, 2, 38, "Subsubsection"],
-Cell[55044, 1274, 333, 6, 29, "Text"],
-Cell[55380, 1282, 366, 7, 29, "Text"],
-Cell[55749, 1291, 171, 3, 30, "Input"],
-Cell[55923, 1296, 10940, 212, 831, "Input"]
+Cell[34407, 820, 258, 3, 29, "Text"],
+Cell[34668, 825, 2204, 54, 235, "Input"],
+Cell[36875, 881, 196, 4, 29, "Text"],
+Cell[37074, 887, 574, 13, 51, "Input"],
+Cell[37651, 902, 309, 6, 29, "Text"],
+Cell[37963, 910, 16714, 349, 1071, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[66912, 1514, 108, 1, 46, "Subsection"],
-Cell[67023, 1517, 277, 5, 29, "Text"],
-Cell[67303, 1524, 6640, 139, 391, "Input"]
-}, Closed]],
+Cell[54726, 1265, 105, 1, 46, "Subsection"],
 Cell[CellGroupData[{
-Cell[73980, 1668, 242, 3, 38, "Subsection"],
-Cell[74225, 1673, 13318, 236, 1091, "Input"]
+Cell[54856, 1270, 196, 2, 38, "Subsubsection"],
+Cell[55055, 1274, 333, 6, 29, "Text"],
+Cell[55391, 1282, 366, 7, 29, "Text"],
+Cell[55760, 1291, 171, 3, 30, "Input"],
+Cell[55934, 1296, 10940, 212, 831, "Input"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[87580, 1914, 149, 2, 46, "Subsection"],
-Cell[CellGroupData[{
-Cell[87754, 1920, 103, 1, 38, "Subsubsection"],
-Cell[87860, 1923, 458, 12, 30, "Input"],
-Cell[88321, 1937, 46205, 952, 3531, "Input"]
+Cell[66923, 1514, 108, 1, 46, "Subsection"],
+Cell[67034, 1517, 277, 5, 29, "Text"],
+Cell[67314, 1524, 6640, 139, 391, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[134563, 2894, 100, 1, 38, "Subsubsection"],
-Cell[134666, 2897, 6375, 105, 291, "Input"],
-Cell[141044, 3004, 63648, 1179, 4051, "Input"]
+Cell[73991, 1668, 242, 3, 46, "Subsection"],
+Cell[74236, 1673, 13318, 236, 1091, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[87591, 1914, 149, 2, 46, "Subsection"],
+Cell[CellGroupData[{
+Cell[87765, 1920, 103, 1, 38, "Subsubsection"],
+Cell[87871, 1923, 458, 12, 30, "Input"],
+Cell[88332, 1937, 46205, 952, 3531, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[134574, 2894, 100, 1, 38, "Subsubsection"],
+Cell[134677, 2897, 6375, 105, 291, "Input"],
+Cell[141055, 3004, 63124, 1168, 3851, "Input"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[204753, 4190, 150, 2, 67, "Section"],
-Cell[204906, 4194, 118, 2, 30, "Input"]
+Cell[204240, 4179, 150, 2, 67, "Section"],
+Cell[204393, 4183, 118, 2, 30, "Input"]
 }, Open  ]]
 }
 ]
