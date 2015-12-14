@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    227339,       4696]
-NotebookOptionsPosition[    221784,       4549]
-NotebookOutlinePosition[    224783,       4616]
-CellTagsIndexPosition[    224740,       4613]
+NotebookDataLength[    226161,       4669]
+NotebookOptionsPosition[    220606,       4522]
+NotebookOutlinePosition[    223605,       4589]
+CellTagsIndexPosition[    223562,       4586]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1831,7 +1831,7 @@ Cell[BoxData[{
    3.6591144273068957`*^9}, {3.659120146126663*^9, 3.659120149965703*^9}, {
    3.6591201875914593`*^9, 3.6591201910790887`*^9}}]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3239,9 +3239,6 @@ Cell[BoxData[
          RowBox[{"{", 
           RowBox[{
            RowBox[{"n", "\[Rule]", " ", "35"}], ",", " ", 
-           RowBox[{
-           "extnStepName", " ", "\[Rule]", " ", "\"\<Michaelis-Menton\>\""}], 
-           ",", " ", 
            RowBox[{"useExtendDuringAnneal", "\[Rule]", " ", "False"}]}], 
           "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"modelConstants", " ", "=", " ", 
@@ -3260,13 +3257,7 @@ Cell[BoxData[
         " ", "targetConcentrations"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"annealStep", " ", "=", " ", "annealKinetic"}], ";", 
       "\[IndentingNewLine]", 
-      RowBox[{"extnStep", " ", "=", " ", 
-       RowBox[{"Switch", "[", 
-        RowBox[{
-         RowBox[{"extnStepName", " ", "//.", " ", "runOptions"}], ",", " ", 
-         "\"\<Gevertz\>\"", ",", " ", "extensionStepGevertz", ",", " ", 
-         "\"\<Michaelis-Menton\>\"", ",", " ", 
-         "extensionStepMichaelisMention"}], "]"}]}], ";", 
+      RowBox[{"extnStep", " ", "=", "extensionStepMichaelisMention"}], ";", 
       "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"runs", " ", "=", " ", 
        RowBox[{
@@ -3331,7 +3322,8 @@ Cell[BoxData[
    3.6353663705838523`*^9}, {3.6353745384049873`*^9, 
    3.6353745399049892`*^9}, {3.6353775199671783`*^9, 3.63537757055225*^9}, {
    3.6353784234134493`*^9, 3.6353784377654696`*^9}, 3.6353786019997*^9, {
-   3.659121736570822*^9, 3.6591217414755015`*^9}, 3.659121823223837*^9}],
+   3.659121736570822*^9, 3.6591217414755015`*^9}, 3.659121823223837*^9, {
+   3.6591224751510134`*^9, 3.6591224878370523`*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -3343,16 +3335,16 @@ Cell[BoxData[
       RowBox[{"annealExtensionName", " ", "=", " ", "\"\<separate\>\""}], ",",
        "annealTime", ",", "columnSpacer", ",", "concFormat", ",", "concUnits",
        ",", "customGraphExpr1", ",", "customGraphExpr2", ",", 
-      "customGraphExpr3", ",", "eng", ",", "extensionTime", ",", 
-      "extnStepName", ",", "initLinear", ",", "initLog", ",", "kdFormat", ",",
-       "kdUnits", ",", "kM", ",", "koff3Var", ",", "koff4Var", ",", " ", 
-      "koffFormat", ",", "koffUnits", ",", "kon3Var", ",", " ", "kon4Var", 
-      ",", " ", "konFormat", ",", "konUnits", ",", "kS", ",", "linearControl",
-       ",", "logControl", ",", "logEnzyme", ",", "logkcat", ",", "logkoffft", 
-      ",", "logkoffru", ",", "logkoffu", ",", " ", "logkoffd", ",", " ", 
-      "logkoffScale", ",", "logkonft", ",", "logkonru", ",", "logkonScale", 
-      ",", "logkonu", ",", " ", "logkond", ",", " ", "logP1", ",", "logP2", 
-      ",", "makeControlledSetterBar", ",", "makeCustomGraphInput", ",", 
+      "customGraphExpr3", ",", "eng", ",", "extensionTime", ",", "initLinear",
+       ",", "initLog", ",", "kdFormat", ",", "kdUnits", ",", "kM", ",", 
+      "koff3Var", ",", "koff4Var", ",", " ", "koffFormat", ",", "koffUnits", 
+      ",", "kon3Var", ",", " ", "kon4Var", ",", " ", "konFormat", ",", 
+      "konUnits", ",", "kS", ",", "linearControl", ",", "logControl", ",", 
+      "logEnzyme", ",", "logkcat", ",", "logkoffft", ",", "logkoffru", ",", 
+      "logkoffu", ",", " ", "logkoffd", ",", " ", "logkoffScale", ",", 
+      "logkonft", ",", "logkonru", ",", "logkonScale", ",", "logkonu", ",", 
+      " ", "logkond", ",", " ", "logP1", ",", "logP2", ",", 
+      "makeControlledSetterBar", ",", "makeCustomGraphInput", ",", 
       "manipulateLinearVar", ",", "manipulateLinearVar2", ",", 
       "manipulateLogVar", ",", "manipulateLogVar2", ",", "modelConstants", 
       ",", "n", ",", "noUnits", ",", "polymeraseAnnealEfficiencyVar", ",", 
@@ -3727,9 +3719,6 @@ Cell[BoxData[
             RowBox[{"Symbol", "[", "\"\<n\>\"", "]"}], " ", "\[Rule]", " ", 
             "n"}], ",", " ", "\[IndentingNewLine]", 
            RowBox[{
-            RowBox[{"Symbol", "[", "\"\<extnStepName\>\"", "]"}], " ", 
-            "\[Rule]", " ", "extnStepName"}], ",", "\[IndentingNewLine]", 
-           RowBox[{
             RowBox[{"Symbol", "[", "\"\<useExtendDuringAnneal\>\"", "]"}], 
             " ", "\[Rule]", " ", "useExtendDuringAnneal"}], ",", 
            "\[IndentingNewLine]", 
@@ -3880,23 +3869,13 @@ Cell[BoxData[
                   "\"\<\>\""}], "}"}], ",", " ", 
                 RowBox[{"{", 
                  RowBox[{"True", ",", " ", "False"}], "}"}], ",", " ", 
-                RowBox[{"Enabled", " ", "\[Rule]", " ", 
-                 RowBox[{
-                 "extnStepName", "\[Equal]", "\"\<Michaelis-Menton\>\""}]}]}],
-                "}"}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+                RowBox[{"Enabled", " ", "\[Rule]", " ", "True"}]}], "}"}], 
+              "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
            "\[IndentingNewLine]", 
            RowBox[{"{", "\[IndentingNewLine]", 
             RowBox[{
-            "\"\<ext'n algorithm\>\"", ",", " ", "\[IndentingNewLine]", 
-             RowBox[{"makeControlledSetterBar", "[", 
-              RowBox[{"extnStepName", ",", " ", 
-               RowBox[{"{", 
-                RowBox[{
-                "\"\<Michaelis-Menton\>\"", ",", " ", "\"\<Gevertz\>\""}], 
-                "}"}], ",", " ", 
-               RowBox[{
-               "annealExtensionName", "\[Equal]", "\"\<separate\>\""}]}], 
-              "]"}], ",", "\[IndentingNewLine]", "SpanFromLeft"}], 
+            "\"\<{empty}\>\"", ",", " ", "\[IndentingNewLine]", 
+             "\"\<{empty}\>\"", ",", "\[IndentingNewLine]", "SpanFromLeft"}], 
             "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
            RowBox[{"{", 
             RowBox[{
@@ -4030,10 +4009,8 @@ Cell[BoxData[
                    RowBox[{"10", "^", "logkoffScale"}], " ", "*", " ", 
                    RowBox[{"10", "^", "logkcat"}]}], "]"}], ",", " ", 
                  RowBox[{"BaseStyle", "\[Rule]", "Gray"}]}], "]"}], ",", " ", 
-               RowBox[{"Enabled", " ", "\[Rule]", " ", 
-                RowBox[{
-                "extnStepName", "\[Equal]", "\"\<Michaelis-Menton\>\""}]}]}], 
-              "]"}], ",", "\[IndentingNewLine]", "columnSpacer", ",", " ", 
+               RowBox[{"Enabled", " ", "\[Rule]", " ", "True"}]}], "]"}], ",",
+              "\[IndentingNewLine]", "columnSpacer", ",", " ", 
              RowBox[{"manipulateLogVar2", "[", 
               RowBox[{
               "\"\<kon/kcat\>\"", ",", " ", "logkonScale", ",", " ", 
@@ -4045,10 +4022,8 @@ Cell[BoxData[
                    RowBox[{"10", "^", "logkonScale"}], " ", "*", " ", 
                    RowBox[{"10", "^", "logkcat"}]}], "]"}], ",", " ", 
                  RowBox[{"BaseStyle", "\[Rule]", "Gray"}]}], "]"}], ",", "  ", 
-               RowBox[{"Enabled", " ", "\[Rule]", " ", 
-                RowBox[{
-                "extnStepName", "\[Equal]", "\"\<Michaelis-Menton\>\""}]}]}], 
-              "]"}], ",", "\[IndentingNewLine]", "columnSpacer", ",", " ", 
+               RowBox[{"Enabled", " ", "\[Rule]", " ", "True"}]}], "]"}], ",",
+              "\[IndentingNewLine]", "columnSpacer", ",", " ", 
              "\"\<Ks=koff/kon\>\"", ",", " ", 
              RowBox[{"Dynamic", "[", 
               RowBox[{"kdFormat", "[", 
@@ -4073,11 +4048,8 @@ Cell[BoxData[
                   "\"\<\>\""}], "}"}], ",", " ", 
                 RowBox[{"{", 
                  RowBox[{"True", ",", " ", "False"}], "}"}], ",", " ", 
-                RowBox[{"Enabled", " ", "\[Rule]", " ", 
-                 RowBox[{
-                 "extnStepName", "\[Equal]", "\"\<Michaelis-Menton\>\""}]}]}],
-                "}"}], "]"}], ",", " ", "\"\<\>\"", ",", 
-             "\[IndentingNewLine]", 
+                RowBox[{"Enabled", " ", "\[Rule]", " ", "True"}]}], "}"}], 
+              "]"}], ",", " ", "\"\<\>\"", ",", "\[IndentingNewLine]", 
              RowBox[{"(*", 
               RowBox[{"columnSpacer", ","}], "*)"}], " ", 
              RowBox[{"manipulateLogVar", "[", 
@@ -4531,9 +4503,10 @@ Cell[BoxData[
    3.6591196783350286`*^9, 3.659119691848968*^9}, {3.6591200678199153`*^9, 
    3.6591200841051025`*^9}, 3.659120159854952*^9, {3.6591202447095237`*^9, 
    3.659120265771693*^9}, {3.6591217563780746`*^9, 3.659121762876356*^9}, {
-   3.659121795226757*^9, 3.6591218257620125`*^9}}]
-}, Closed]]
-}, Closed]]
+   3.659121795226757*^9, 3.6591218257620125`*^9}, {3.659122416599558*^9, 
+   3.6591224652305107`*^9}, {3.6591224990055494`*^9, 3.659122505642725*^9}}]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4670,9 +4643,9 @@ Cell[70977, 1605, 366, 7, 29, "Text"],
 Cell[71346, 1614, 171, 3, 30, "Input"],
 Cell[71520, 1619, 10940, 212, 831, "Input"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[82509, 1837, 108, 1, 38, "Subsection"],
+Cell[82509, 1837, 108, 1, 46, "Subsection"],
 Cell[82620, 1840, 277, 5, 29, "Text"],
 Cell[82900, 1847, 6640, 139, 391, "Input"]
 }, Closed]],
@@ -4689,14 +4662,14 @@ Cell[103887, 2260, 46205, 952, 3531, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[150129, 3217, 100, 1, 38, "Subsubsection"],
-Cell[150232, 3220, 6712, 113, 291, "Input"],
-Cell[156947, 3335, 64489, 1198, 4131, "Input"]
-}, Closed]]
-}, Closed]]
+Cell[150232, 3220, 6375, 105, 291, "Input"],
+Cell[156610, 3327, 63648, 1179, 4051, "Input"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[221497, 4540, 150, 2, 67, "Section"],
-Cell[221650, 4544, 118, 2, 30, "Input"]
+Cell[220319, 4513, 150, 2, 67, "Section"],
+Cell[220472, 4517, 118, 2, 30, "Input"]
 }, Open  ]]
 }
 ]
