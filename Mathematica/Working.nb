@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    238445,       4947]
-NotebookOptionsPosition[    232676,       4794]
-NotebookOutlinePosition[    235676,       4861]
-CellTagsIndexPosition[    235633,       4858]
+NotebookDataLength[    238619,       4949]
+NotebookOptionsPosition[    232850,       4796]
+NotebookOutlinePosition[    235850,       4863]
+CellTagsIndexPosition[    235807,       4860]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -470,12 +470,11 @@ Cell[BoxData[{
      RowBox[{"(*", " ", 
       RowBox[{"equilibrium", " ", "disassociation", " ", "constants"}], " ", 
       "*)"}], "\[IndentingNewLine]", 
-     RowBox[{"kft", " ", "\[Rule]", " ", 
-      RowBox[{"koffft", " ", "/", " ", "konft"}]}], ",", " ", 
+     RowBox[{"fteq", " ", "\[Rule]", " ", 
+      RowBox[{"ftoff", " ", "/", " ", "fton"}]}], ",", " ", 
      "\[IndentingNewLine]", 
-     RowBox[{"kru", " ", "\[Rule]", 
-      RowBox[{"koffru", " ", "/", " ", "konru"}]}], ",", 
-     "\[IndentingNewLine]", 
+     RowBox[{"rueq", " ", "\[Rule]", 
+      RowBox[{"ruoff", " ", "/", " ", "ruon"}]}], ",", "\[IndentingNewLine]", 
      RowBox[{"ku", " ", "\[Rule]", " ", "1.5096*^-54"}], ",", " ", 
      RowBox[{"(*", " ", 
       RowBox[{
@@ -496,17 +495,17 @@ Cell[BoxData[{
      RowBox[{"(*", " ", 
       RowBox[{"on", " ", "and", " ", "off", " ", "reaction", " ", "rates"}], 
       " ", "*)"}], " ", "\[IndentingNewLine]", 
-     RowBox[{"konft", " ", "\[Rule]", " ", 
+     RowBox[{"fton", " ", "\[Rule]", " ", 
       RowBox[{"10", "^", "6"}]}], ",", "\[IndentingNewLine]", 
-     RowBox[{"konru", " ", "\[Rule]", " ", 
+     RowBox[{"ruon", " ", "\[Rule]", " ", 
       RowBox[{"10", "^", "6"}]}], ",", "\[IndentingNewLine]", 
      RowBox[{"konu", " ", "\[Rule]", " ", 
       RowBox[{"10", "^", "6"}]}], ",", "\[IndentingNewLine]", 
      RowBox[{"kond", " ", "\[Rule]", " ", 
       RowBox[{"10", "^", "6"}]}], ",", "\[IndentingNewLine]", 
-     RowBox[{"koffft", " ", "\[Rule]", " ", "5.5531*^-7"}], ",", 
+     RowBox[{"ftoff", " ", "\[Rule]", " ", "5.5531*^-7"}], ",", 
      "\[IndentingNewLine]", 
-     RowBox[{"koffru", " ", "\[Rule]", " ", "8.1493*^-5"}], ",", 
+     RowBox[{"ruoff", " ", "\[Rule]", " ", "8.1493*^-5"}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{"koffu", " ", "\[Rule]", " ", 
       RowBox[{"ku", " ", "*", " ", "konu"}]}], ",", "\[IndentingNewLine]", 
@@ -631,7 +630,7 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{
     RowBox[{"{", "  ", 
-     RowBox[{"t", ",", " ", "u", ",", "  ", "kft", ",", " ", "ku", ",", " ", 
+     RowBox[{"t", ",", " ", "u", ",", "  ", "fteq", ",", " ", "ku", ",", " ", 
       RowBox[{"koffu", "/", "konu"}], ",", " ", "koffu", ",", " ", "konu"}], 
      " ", "}"}], " ", "//.", " ", 
     RowBox[{"state0", "[", "]"}]}], " ", "//.", " ", "constants"}], "//", " ",
@@ -703,7 +702,8 @@ Cell[BoxData[{
    3.635537128217101*^9, 3.6355371378181148`*^9}, {3.6355468346851406`*^9, 
    3.635546850267163*^9}, {3.659114056430811*^9, 3.659114065135726*^9}, {
    3.659114148114523*^9, 3.659114155326145*^9}, {3.6591145574053288`*^9, 
-   3.659114581275977*^9}, {3.659114620144754*^9, 3.6591146296399384`*^9}}],
+   3.659114581275977*^9}, {3.659114620144754*^9, 3.6591146296399384`*^9}, {
+   3.6591195199579124`*^9, 3.659119566259323*^9}}],
 
 Cell[BoxData[
  RowBox[{"stateVariables", " ", "=", " ", "\[IndentingNewLine]", 
@@ -751,10 +751,10 @@ Cell[BoxData[
       RowBox[{"u", " ", "+", " ", "ru"}]}], " ", 
      RowBox[{"(*", 
       RowBox[{"+", " ", "tu"}], "*)"}], ",", "\[IndentingNewLine]", 
-     RowBox[{"kft", " ", "\[Equal]", " ", 
+     RowBox[{"fteq", " ", "\[Equal]", " ", 
       RowBox[{"f", " ", 
        RowBox[{"t", " ", "/", " ", "ft"}]}]}], ",", "\[IndentingNewLine]", 
-     RowBox[{"kru", " ", "\[Equal]", " ", 
+     RowBox[{"rueq", " ", "\[Equal]", " ", 
       RowBox[{"r", " ", 
        RowBox[{"u", " ", "/", " ", "ru"}]}]}], ",", " ", 
      "\[IndentingNewLine]", 
@@ -784,7 +784,8 @@ Cell[BoxData[
    3.634488112580595*^9, 3.6344881129705954`*^9}, {3.65911405645881*^9, 
    3.659114065161725*^9}, {3.659114148152505*^9, 3.659114155351164*^9}, {
    3.6591142827532687`*^9, 3.6591142879521313`*^9}, {3.659114397530306*^9, 
-   3.659114401416642*^9}, {3.6591146201772957`*^9, 3.659114629668935*^9}}],
+   3.659114401416642*^9}, {3.6591146201772957`*^9, 3.659114629668935*^9}, {
+   3.6591195602024345`*^9, 3.6591195662703056`*^9}}],
 
 Cell["\<\
 A function that given the input state to the annealing step produces the \
@@ -1075,7 +1076,7 @@ Cell[BoxData[{
        TagBox[
         TagBox["\[Equilibrium]",
          DisplayForm],
-        DisplayForm], "koffft", "konft"], " ", "ft"}], ",", 
+        DisplayForm], "ftoff", "fton"], " ", "ft"}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"r", " ", "+", " ", "u"}], " ", 
@@ -1083,7 +1084,7 @@ Cell[BoxData[{
        TagBox[
         TagBox["\[Equilibrium]",
          DisplayForm],
-        DisplayForm], "koffru", "konru"], " ", "ru"}], ",", 
+        DisplayForm], "ruoff", "ruon"], " ", "ru"}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"t", " ", "+", " ", "u"}], " ", 
@@ -1117,7 +1118,8 @@ Cell[BoxData[{
    3.635356718752512*^9}, {3.635356781356422*^9, 3.635356853680149*^9}, {
    3.659114055761104*^9, 3.659114064789945*^9}, {3.659114147173725*^9, 
    3.6591141547360287`*^9}, 3.659114231369073*^9, 3.6591144124579163`*^9, {
-   3.659114620216564*^9, 3.6591146297064557`*^9}}],
+   3.659114620216564*^9, 3.6591146297064557`*^9}, {3.6591195199804153`*^9, 
+   3.6591195461055355`*^9}}],
 
 Cell["\<\
 We consider both kinetic annealing and Michaelis Mention reactions together.\
@@ -3919,15 +3921,15 @@ Cell[BoxData[
            "\[IndentingNewLine]", 
            RowBox[{"fStart", " ", "\[Rule]", " ", 
             RowBox[{"10", "^", "logP1"}]}], ",", 
-           RowBox[{"koffft", " ", "\[Rule]", " ", 
+           RowBox[{"ftoff", " ", "\[Rule]", " ", 
             RowBox[{"10", "^", "logkoffft"}]}], ",", 
-           RowBox[{"konft", " ", "\[Rule]", " ", 
+           RowBox[{"fton", " ", "\[Rule]", " ", 
             RowBox[{"10", "^", "logkonft"}]}], ",", "\[IndentingNewLine]", 
            RowBox[{"rStart", " ", "\[Rule]", " ", 
             RowBox[{"10", "^", "logP2"}]}], ",", " ", 
-           RowBox[{"koffru", " ", "\[Rule]", " ", 
+           RowBox[{"ruoff", " ", "\[Rule]", " ", 
             RowBox[{"10", "^", "logkoffru"}]}], ",", " ", 
-           RowBox[{"konru", " ", "\[Rule]", " ", 
+           RowBox[{"ruon", " ", "\[Rule]", " ", 
             RowBox[{"10", "^", "logkonru"}]}], ",", "\[IndentingNewLine]", 
            RowBox[{"koffu", " ", "\[Rule]", " ", 
             RowBox[{"10", "^", "logkoffu"}]}], ",", " ", 
@@ -4159,16 +4161,16 @@ Cell[BoxData[
               RowBox[{"columnSpacer", ","}], "*)"}], 
              RowBox[{"manipulateLogVar", "[", 
               RowBox[{
-              "\"\<koffft\>\"", ",", " ", "logkoffft", ",", " ", "koffft", 
-               ",", " ", 
+              "\"\<ftoff\>\"", ",", " ", "logkoffft", ",", " ", "ftoff", ",", 
+               " ", 
                RowBox[{"-", "10"}], ",", " ", "0", ",", " ", "koffFormat"}], 
               "]"}], ",", " ", "\[IndentingNewLine]", "columnSpacer", ",", 
              RowBox[{"manipulateLogVar", "[", 
               RowBox[{
-              "\"\<konft\>\"", ",", " ", "logkonft", ",", " ", "konft", ",", 
+              "\"\<fton\>\"", ",", " ", "logkonft", ",", " ", "fton", ",", 
                " ", "0", ",", " ", "20", ",", " ", "konFormat"}], "]"}], ",", 
              "\[IndentingNewLine]", "columnSpacer", ",", " ", 
-             "\"\<koffft/konft\>\"", ",", " ", 
+             "\"\<ftoff/fton\>\"", ",", " ", 
              RowBox[{"Dynamic", "[", 
               RowBox[{
                RowBox[{
@@ -4189,16 +4191,16 @@ Cell[BoxData[
               RowBox[{"columnSpacer", ","}], "*)"}], 
              RowBox[{"manipulateLogVar", "[", 
               RowBox[{
-              "\"\<koffru\>\"", ",", " ", "logkoffru", ",", " ", "koffru", 
-               ",", " ", 
+              "\"\<ruoff\>\"", ",", " ", "logkoffru", ",", " ", "ruoff", ",", 
+               " ", 
                RowBox[{"-", "10"}], ",", " ", "0", ",", " ", "koffFormat"}], 
               "]"}], ",", "\[IndentingNewLine]", "columnSpacer", ",", 
              RowBox[{"manipulateLogVar", "[", 
               RowBox[{
-              "\"\<konru\>\"", ",", " ", "logkonru", ",", " ", "konru", ",", 
+              "\"\<ruon\>\"", ",", " ", "logkonru", ",", " ", "ruon", ",", 
                " ", "0", ",", "20", ",", " ", "konFormat"}], "]"}], ",", 
              "\[IndentingNewLine]", "columnSpacer", ",", " ", 
-             "\"\<koffru/konru\>\"", ",", " ", 
+             "\"\<ruoff/ruon\>\"", ",", " ", 
              RowBox[{"Dynamic", "[", 
               RowBox[{
                RowBox[{
@@ -4482,16 +4484,16 @@ Cell[BoxData[
                     RowBox[{"initLog", "[", "koffd", "]"}]}], ";", 
                     "\[IndentingNewLine]", 
                     RowBox[{"logkoffft", " ", "=", " ", 
-                    RowBox[{"initLog", "[", "koffft", "]"}]}], ";", 
+                    RowBox[{"initLog", "[", "ftoff", "]"}]}], ";", 
                     "\[IndentingNewLine]", 
                     RowBox[{"logkoffru", " ", "=", " ", 
-                    RowBox[{"initLog", "[", "koffru", "]"}]}], ";", 
+                    RowBox[{"initLog", "[", "ruoff", "]"}]}], ";", 
                     "\[IndentingNewLine]", 
                     RowBox[{"logkonft", " ", "=", " ", 
-                    RowBox[{"initLog", "[", "konft", "]"}]}], ";", 
+                    RowBox[{"initLog", "[", "fton", "]"}]}], ";", 
                     "\[IndentingNewLine]", 
                     RowBox[{"logkonru", " ", "=", " ", 
-                    RowBox[{"initLog", "[", "konru", "]"}]}]}], ",", 
+                    RowBox[{"initLog", "[", "ruon", "]"}]}]}], ",", 
                    "\[IndentingNewLine]", 
                    RowBox[{"ImageSize", "\[Rule]", "80"}]}], "]"}]}], "}"}], 
                "}"}], "]"}], ",", "\[IndentingNewLine]", "SpanFromLeft"}], 
@@ -4776,10 +4778,10 @@ Cell[BoxData[
    3.635552166502096*^9}, {3.635785233655405*^9, 3.635785238976413*^9}, {
    3.6591140560537305`*^9, 3.6591140649967127`*^9}, {3.6591141475774374`*^9, 
    3.659114155301161*^9}, 3.659114444242899*^9, {3.659114620417859*^9, 
-   3.6591146296299353`*^9}}]
+   3.6591146296299353`*^9}, {3.65911952008743*^9, 3.6591195461735334`*^9}}]
 }, Open  ]]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -4793,7 +4795,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{1233, 1548},
-WindowMargins->{{488, Automatic}, {Automatic, 0}},
+WindowMargins->{{Automatic, 326}, {Automatic, 0}},
 CellContext->Notebook,
 InputAliases->{"intt" -> RowBox[{"\[Integral]", 
      RowBox[{"\[SelectionPlaceholder]", 
@@ -4877,77 +4879,77 @@ Cell[15268, 427, 528, 14, 39, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[15833, 446, 99, 1, 46, "Subsection"],
-Cell[15935, 449, 13593, 256, 1011, "Input"],
-Cell[29531, 707, 766, 13, 91, "Input"]
+Cell[15935, 449, 13634, 256, 1011, "Input"],
+Cell[29572, 707, 766, 13, 91, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30334, 725, 103, 1, 46, "Subsection"],
+Cell[30375, 725, 103, 1, 46, "Subsection"],
 Cell[CellGroupData[{
-Cell[30462, 730, 171, 2, 38, "Subsubsection"],
-Cell[30636, 734, 2681, 52, 211, "Input"],
-Cell[33320, 788, 248, 5, 29, "Text"],
-Cell[33571, 795, 8668, 180, 391, "Input"]
+Cell[30503, 730, 171, 2, 38, "Subsubsection"],
+Cell[30677, 734, 2737, 53, 211, "Input"],
+Cell[33417, 789, 248, 5, 29, "Text"],
+Cell[33668, 796, 8668, 180, 391, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[42276, 980, 117, 1, 38, "Subsubsection"],
-Cell[42396, 983, 551, 9, 48, "Text"],
-Cell[42950, 994, 2365, 58, 286, "Input"]
+Cell[42373, 981, 117, 1, 38, "Subsubsection"],
+Cell[42493, 984, 551, 9, 48, "Text"],
+Cell[43047, 995, 2365, 58, 286, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[45352, 1057, 167, 2, 38, "Subsubsection"],
-Cell[45522, 1061, 247, 3, 29, "Text"],
-Cell[45772, 1066, 2108, 53, 238, "Input"],
-Cell[47883, 1121, 196, 4, 29, "Text"],
-Cell[48082, 1127, 574, 13, 51, "Input"],
-Cell[48659, 1142, 309, 6, 29, "Text"],
-Cell[48971, 1150, 16594, 347, 1091, "Input"]
+Cell[45449, 1058, 167, 2, 38, "Subsubsection"],
+Cell[45619, 1062, 247, 3, 29, "Text"],
+Cell[45869, 1067, 2158, 54, 236, "Input"],
+Cell[48030, 1123, 196, 4, 29, "Text"],
+Cell[48229, 1129, 574, 13, 51, "Input"],
+Cell[48806, 1144, 309, 6, 29, "Text"],
+Cell[49118, 1152, 16594, 347, 1091, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[65614, 1503, 105, 1, 46, "Subsection"],
+Cell[65761, 1505, 105, 1, 43, "Subsection"],
 Cell[CellGroupData[{
-Cell[65744, 1508, 105, 1, 38, "Subsubsection"],
-Cell[65852, 1511, 674, 11, 48, "Text"],
-Cell[66529, 1524, 2996, 63, 131, "Input"],
-Cell[69528, 1589, 142, 1, 29, "Text"],
-Cell[69673, 1592, 3603, 72, 171, "Input"],
-Cell[73279, 1666, 466, 7, 48, "Text"],
-Cell[73748, 1675, 7456, 149, 471, "Input"]
+Cell[65891, 1510, 105, 1, 36, "Subsubsection"],
+Cell[65999, 1513, 674, 11, 48, "Text"],
+Cell[66676, 1526, 2996, 63, 131, "Input"],
+Cell[69675, 1591, 142, 1, 29, "Text"],
+Cell[69820, 1594, 3603, 72, 171, "Input"],
+Cell[73426, 1668, 466, 7, 48, "Text"],
+Cell[73895, 1677, 7456, 149, 471, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[81241, 1829, 196, 2, 38, "Subsubsection"],
-Cell[81440, 1833, 333, 6, 29, "Text"],
-Cell[81776, 1841, 366, 7, 29, "Text"],
-Cell[82145, 1850, 171, 3, 30, "Input"],
-Cell[82319, 1855, 10830, 211, 831, "Input"]
+Cell[81388, 1831, 196, 2, 36, "Subsubsection"],
+Cell[81587, 1835, 333, 6, 27, "Text"],
+Cell[81923, 1843, 366, 7, 29, "Text"],
+Cell[82292, 1852, 171, 3, 30, "Input"],
+Cell[82466, 1857, 10830, 211, 831, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[93198, 2072, 108, 1, 46, "Subsection"],
-Cell[93309, 2075, 277, 5, 29, "Text"],
-Cell[93589, 2082, 6530, 137, 391, "Input"]
+Cell[93345, 2074, 108, 1, 43, "Subsection"],
+Cell[93456, 2077, 277, 5, 29, "Text"],
+Cell[93736, 2084, 6530, 137, 391, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[100156, 2224, 242, 3, 46, "Subsection"],
-Cell[100401, 2229, 13053, 233, 1091, "Input"]
+Cell[100303, 2226, 242, 3, 46, "Subsection"],
+Cell[100548, 2231, 13053, 233, 1091, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[113491, 2467, 149, 2, 46, "Subsection"],
+Cell[113638, 2469, 149, 2, 43, "Subsection"],
 Cell[CellGroupData[{
-Cell[113665, 2473, 103, 1, 38, "Subsubsection"],
-Cell[113771, 2476, 458, 12, 30, "Input"],
-Cell[114232, 2490, 46099, 951, 3531, "Input"]
+Cell[113812, 2475, 103, 1, 38, "Subsubsection"],
+Cell[113918, 2478, 458, 12, 30, "Input"],
+Cell[114379, 2492, 46099, 951, 3531, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[160368, 3446, 100, 1, 38, "Subsubsection"],
-Cell[160471, 3449, 6989, 119, 291, "Input"],
-Cell[167463, 3570, 64865, 1208, 4251, "Input"]
+Cell[160515, 3448, 100, 1, 38, "Subsubsection"],
+Cell[160618, 3451, 6989, 119, 291, "Input"],
+Cell[167610, 3572, 64892, 1208, 4251, "Input"]
 }, Open  ]]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[232389, 4785, 150, 2, 54, "Section"],
-Cell[232542, 4789, 118, 2, 30, "Input"]
+Cell[232563, 4787, 150, 2, 67, "Section"],
+Cell[232716, 4791, 118, 2, 30, "Input"]
 }, Open  ]]
 }
 ]
