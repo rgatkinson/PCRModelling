@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    237951,       4942]
-NotebookOptionsPosition[    232183,       4789]
-NotebookOutlinePosition[    235183,       4856]
-CellTagsIndexPosition[    235140,       4853]
+NotebookDataLength[    238445,       4947]
+NotebookOptionsPosition[    232676,       4794]
+NotebookOutlinePosition[    235676,       4861]
+CellTagsIndexPosition[    235633,       4858]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -517,17 +517,17 @@ Cell[BoxData[{
      "\[IndentingNewLine]", 
      RowBox[{"km", "\[Rule]", " ", "1.5*^-9"}], ",", "\[IndentingNewLine]", 
      RowBox[{"kcat", "\[Rule]", " ", "0.17"}], ",", "\[IndentingNewLine]", 
-     RowBox[{"kcat1", " ", "\[Rule]", " ", "kcat"}], ",", " ", 
+     RowBox[{"kcat", " ", "\[Rule]", " ", "kcat"}], ",", " ", 
      "\[IndentingNewLine]", 
      RowBox[{"kon1", " ", "\[Rule]", " ", 
       RowBox[{"polymeraseEfficiency", " ", "*", " ", 
        RowBox[{"(", 
-        RowBox[{"kcat1", " ", "*", " ", "konScale"}], ")"}]}]}], ",", " ", 
+        RowBox[{"kcat", " ", "*", " ", "konScale"}], ")"}]}]}], ",", " ", 
      "\[IndentingNewLine]", 
      RowBox[{"koff1", " ", "\[Rule]", 
       RowBox[{"polymeraseEfficiency", " ", "*", " ", 
        RowBox[{"(", 
-        RowBox[{"kcat1", " ", "*", "koffScale"}], ")"}]}]}], ",", " ", 
+        RowBox[{"kcat", " ", "*", "koffScale"}], ")"}]}]}], ",", " ", 
      "\[IndentingNewLine]", 
      RowBox[{"polymeraseEfficiency", " ", "\[Rule]", " ", "1"}], ",", 
      "\[IndentingNewLine]", 
@@ -549,7 +549,7 @@ Cell[BoxData[{
      RowBox[{"(*", " ", 
       RowBox[{"picked", " ", "pretty", " ", "arbitrarily"}], " ", "*)"}], 
      "\[IndentingNewLine]", 
-     RowBox[{"kcat2", " ", "\[Rule]", " ", "kcat1"}], ",", " ", 
+     RowBox[{"kcau", " ", "\[Rule]", " ", "kcat"}], ",", " ", 
      RowBox[{"(*", " ", 
       RowBox[{
        RowBox[{
@@ -610,7 +610,7 @@ Cell[BoxData[{
    "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"state0", "[", 
-   RowBox[{"tStart_", ",", " ", "constants_"}], "]"}], ":=", " ", 
+   RowBox[{"tParam_", ",", " ", "constants_"}], "]"}], ":=", " ", 
   RowBox[{
    RowBox[{"makeState", " ", "@", 
     RowBox[{"(", 
@@ -619,10 +619,10 @@ Cell[BoxData[{
        RowBox[{
         RowBox[{"f", " ", "\[Rule]", " ", "fStart"}], ",", " ", 
         RowBox[{"r", " ", "\[Rule]", " ", "rStart"}], ",", " ", 
-        RowBox[{"t1", " ", "\[Rule]", " ", "tStart"}], ",", " ", 
-        RowBox[{"t2", " ", "\[Rule]", " ", "tStart"}], ",", " ", 
-        RowBox[{"t1Start", "\[Rule]", " ", "tStart"}], ",", " ", 
-        RowBox[{"t2Start", "\[Rule]", " ", "tStart"}], ",", " ", 
+        RowBox[{"t", " ", "\[Rule]", " ", "tParam"}], ",", " ", 
+        RowBox[{"u", " ", "\[Rule]", " ", "tParam"}], ",", " ", 
+        RowBox[{"tStart", "\[Rule]", " ", "tParam"}], ",", " ", 
+        RowBox[{"uStart", "\[Rule]", " ", "tParam"}], ",", " ", 
         RowBox[{"e", " ", "\[Rule]", " ", "eStart"}]}], " ", "}"}], " ", "//.",
        " ", "constants"}], ")"}]}], " ", "//", " ", 
    "N"}]}], "\[IndentingNewLine]", 
@@ -631,7 +631,7 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{
     RowBox[{"{", "  ", 
-     RowBox[{"t1", ",", " ", "t2", ",", "  ", "kft", ",", " ", "ku", ",", " ", 
+     RowBox[{"t", ",", " ", "u", ",", "  ", "kft", ",", " ", "ku", ",", " ", 
       RowBox[{"koffu", "/", "konu"}], ",", " ", "koffu", ",", " ", "konu"}], 
      " ", "}"}], " ", "//.", " ", 
     RowBox[{"state0", "[", "]"}]}], " ", "//.", " ", "constants"}], "//", " ",
@@ -702,21 +702,23 @@ Cell[BoxData[{
    3.6353585263173947`*^9}, {3.635358587126302*^9, 3.63535859745352*^9}, {
    3.635537128217101*^9, 3.6355371378181148`*^9}, {3.6355468346851406`*^9, 
    3.635546850267163*^9}, {3.659114056430811*^9, 3.659114065135726*^9}, {
-   3.659114148114523*^9, 3.659114155326145*^9}}],
+   3.659114148114523*^9, 3.659114155326145*^9}, {3.6591145574053288`*^9, 
+   3.659114581275977*^9}, {3.659114620144754*^9, 3.6591146296399384`*^9}}],
 
 Cell[BoxData[
  RowBox[{"stateVariables", " ", "=", " ", "\[IndentingNewLine]", 
   RowBox[{"{", "\[IndentingNewLine]", 
    RowBox[{
-   "f", ",", " ", "r", ",", " ", "ft", ",", " ", "ru", ",", " ", "t1", ",", 
-    " ", "t2", ",", " ", "fr", ",", " ", "tu", ",", " ", "e", ",", " ", "eu", 
+   "f", ",", " ", "r", ",", " ", "ft", ",", " ", "ru", ",", " ", "t", ",", 
+    " ", "u", ",", " ", "fr", ",", " ", "tu", ",", " ", "e", ",", " ", "eu", 
     ",", " ", "ed", ",", " ", "eft", ",", " ", "eru"}], "\[IndentingNewLine]",
     "}"}]}]], "Input",
  CellChangeTimes->{{3.635188245888831*^9, 3.635188285327087*^9}, {
    3.6355371548766394`*^9, 3.6355371552816396`*^9}, {3.635537186561184*^9, 
    3.6355371895411882`*^9}, {3.6591140564468093`*^9, 
    3.6591140651467237`*^9}, {3.659114148138506*^9, 3.6591141553331413`*^9}, 
-   3.6591142809436097`*^9, 3.6591143959015656`*^9}]
+   3.6591142809436097`*^9, 3.6591143959015656`*^9, {3.6591146201667585`*^9, 
+   3.6591146296539345`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -741,26 +743,26 @@ Cell[BoxData[
      RowBox[{"rT", " ", "\[Equal]", " ", 
       RowBox[{"r", " ", "+", " ", "ru", " ", "+", " ", "fr"}]}], ",", 
      "\[IndentingNewLine]", 
-     RowBox[{"t1T", " ", "\[Equal]", " ", 
-      RowBox[{"t1", " ", "+", " ", "ft"}]}], " ", 
+     RowBox[{"tT", " ", "\[Equal]", " ", 
+      RowBox[{"t", " ", "+", " ", "ft"}]}], " ", 
      RowBox[{"(*", 
       RowBox[{"+", " ", "tu"}], "*)"}], ",", "\[IndentingNewLine]", 
-     RowBox[{"t2T", " ", "\[Equal]", " ", 
-      RowBox[{"t2", " ", "+", " ", "ru"}]}], " ", 
+     RowBox[{"uT", " ", "\[Equal]", " ", 
+      RowBox[{"u", " ", "+", " ", "ru"}]}], " ", 
      RowBox[{"(*", 
       RowBox[{"+", " ", "tu"}], "*)"}], ",", "\[IndentingNewLine]", 
      RowBox[{"kft", " ", "\[Equal]", " ", 
       RowBox[{"f", " ", 
-       RowBox[{"t1", " ", "/", " ", "ft"}]}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"t", " ", "/", " ", "ft"}]}]}], ",", "\[IndentingNewLine]", 
      RowBox[{"kru", " ", "\[Equal]", " ", 
       RowBox[{"r", " ", 
-       RowBox[{"t2", " ", "/", " ", "ru"}]}]}], ",", " ", 
+       RowBox[{"u", " ", "/", " ", "ru"}]}]}], ",", " ", 
      "\[IndentingNewLine]", 
      RowBox[{"(*", 
       RowBox[{
        RowBox[{"ku", " ", "\[Equal]", " ", 
-        RowBox[{"t1", " ", 
-         RowBox[{"t2", " ", "/", " ", "tu"}]}]}], ","}], "*)"}], 
+        RowBox[{"t", " ", 
+         RowBox[{"u", " ", "/", " ", "tu"}]}]}], ","}], "*)"}], 
      "\[IndentingNewLine]", 
      RowBox[{"kd", " ", "\[Equal]", " ", 
       RowBox[{"f", " ", 
@@ -782,7 +784,7 @@ Cell[BoxData[
    3.634488112580595*^9, 3.6344881129705954`*^9}, {3.65911405645881*^9, 
    3.659114065161725*^9}, {3.659114148152505*^9, 3.659114155351164*^9}, {
    3.6591142827532687`*^9, 3.6591142879521313`*^9}, {3.659114397530306*^9, 
-   3.659114401416642*^9}}],
+   3.659114401416642*^9}, {3.6591146201772957`*^9, 3.659114629668935*^9}}],
 
 Cell["\<\
 A function that given the input state to the annealing step produces the \
@@ -832,21 +834,19 @@ Cell[BoxData[{
              RowBox[{"readState", "[", 
               RowBox[{"annealingInput", ",", " ", "fr"}], "]"}]}], ")"}]}], 
           ",", "\[IndentingNewLine]", 
-          RowBox[{"t1T", " ", "\[Rule]", " ", 
+          RowBox[{"tT", " ", "\[Rule]", " ", 
            RowBox[{"(", 
             RowBox[{
              RowBox[{"readState", "[", 
-              RowBox[{"annealingInput", ",", " ", "t1"}], "]"}], " ", "+", 
-             " ", 
+              RowBox[{"annealingInput", ",", " ", "t"}], "]"}], " ", "+", " ", 
              RowBox[{"readState", "[", 
               RowBox[{"annealingInput", ",", " ", "ft"}], "]"}]}], ")"}]}], 
           ",", "\[IndentingNewLine]", 
-          RowBox[{"t2T", " ", "\[Rule]", " ", 
+          RowBox[{"uT", " ", "\[Rule]", " ", 
            RowBox[{"(", 
             RowBox[{
              RowBox[{"readState", "[", 
-              RowBox[{"annealingInput", ",", " ", "t2"}], "]"}], " ", "+", 
-             " ", 
+              RowBox[{"annealingInput", ",", " ", "u"}], "]"}], " ", "+", " ", 
              RowBox[{"readState", "[", 
               RowBox[{"annealingInput", ",", " ", "ru"}], "]"}]}], ")"}]}]}], 
          "\[IndentingNewLine]", "}"}]}], " ", "\[IndentingNewLine]", " ", "//.",
@@ -862,9 +862,9 @@ Cell[BoxData[{
             RowBox[{"r", " ", "\[GreaterEqual]", "0"}]}], "}"}]}], ",", " ", 
          RowBox[{"{", 
           RowBox[{
-          "ft", ",", "ru", ",", "f", ",", "r", ",", " ", "t1", ",", " ", "t2",
-            ",", " ", "fr"}], "}"}]}], "]"}], " ", "//", " ", "Quiet"}]}], 
-     ";", "\[IndentingNewLine]", 
+          "ft", ",", "ru", ",", "f", ",", "r", ",", " ", "t", ",", " ", "u", 
+           ",", " ", "fr"}], "}"}]}], "]"}], " ", "//", " ", "Quiet"}]}], ";",
+      "\[IndentingNewLine]", 
      RowBox[{"result", " ", "=", " ", 
       RowBox[{"If", " ", "[", 
        RowBox[{
@@ -880,8 +880,8 @@ Cell[BoxData[{
             RowBox[{"ru", "\[Rule]", " ", "0"}], ",", " ", 
             RowBox[{"f", "\[Rule]", "0"}], ",", 
             RowBox[{"r", "\[Rule]", "0"}], ",", 
-            RowBox[{"t1", "\[Rule]", "0"}], ",", 
-            RowBox[{"t2", "\[Rule]", "0"}], ",", 
+            RowBox[{"t", "\[Rule]", "0"}], ",", 
+            RowBox[{"u", "\[Rule]", "0"}], ",", 
             RowBox[{"fr", "\[Rule]", "0"}]}], "}"}]}], "]"}]}], "]"}]}], ";", 
      "\[IndentingNewLine]", 
      RowBox[{"annEfficiency", " ", "=", " ", 
@@ -895,10 +895,10 @@ Cell[BoxData[{
         RowBox[{"(", 
          RowBox[{
           RowBox[{"readState", "[", 
-           RowBox[{"annealingInput", ",", "t1"}], "]"}], " ", "+", " ", 
+           RowBox[{"annealingInput", ",", "t"}], "]"}], " ", "+", " ", 
           RowBox[{"readState", "[", 
-           RowBox[{"annealingInput", ",", "t2"}], "]"}]}], ")"}]}], " ", "//",
-        " ", "Quiet"}]}], ";", " ", 
+           RowBox[{"annealingInput", ",", "u"}], "]"}]}], ")"}]}], " ", "//", 
+       " ", "Quiet"}]}], ";", " ", 
      RowBox[{"(*", " ", 
       RowBox[{"suppress", " ", "division", " ", "by", " ", "zero"}], "*)"}], 
      "\[IndentingNewLine]", 
@@ -929,10 +929,10 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{"f", "\[Rule]", "0"}], ",", " ", 
      RowBox[{"r", "\[Rule]", "0"}], ",", " ", 
-     RowBox[{"t1", " ", "\[Rule]", " ", 
+     RowBox[{"t", " ", "\[Rule]", " ", 
       RowBox[{"10", "^", 
        RowBox[{"-", "6"}]}]}], ",", " ", 
-     RowBox[{"t2", "\[Rule]", " ", 
+     RowBox[{"u", "\[Rule]", " ", 
       RowBox[{"10", "^", 
        RowBox[{"-", "6"}]}]}]}], "}"}], ",", " ", "constants"}], 
   "]"}]}], "Input",
@@ -973,7 +973,7 @@ Cell[BoxData[{
    3.6355466813579254`*^9}, {3.6355574836620526`*^9, 
    3.6355575112850914`*^9}, {3.659114056475316*^9, 3.659114064778965*^9}, {
    3.6591141481635237`*^9, 3.6591141553761854`*^9}, {3.6591142890972867`*^9, 
-   3.6591142923129454`*^9}}]
+   3.6591142923129454`*^9}, {3.6591146201887927`*^9, 3.659114629687935*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1006,7 +1006,7 @@ Cell[BoxData[{
         DisplayForm], "koff1", "kon1"], " ", "eft"}], ",", " ", 
      "\[IndentingNewLine]", 
      RowBox[{"eft", " ", 
-      OverscriptBox["\[RightArrow]", "kcat1"], " ", 
+      OverscriptBox["\[RightArrow]", "kcat"], " ", 
       RowBox[{"e", "+", "tu"}]}], ",", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"e", " ", "+", " ", "ru"}], " ", 
@@ -1017,7 +1017,7 @@ Cell[BoxData[{
         DisplayForm], "koff2", "kon2"], " ", "eru"}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{"eru", " ", 
-      OverscriptBox["\[RightArrow]", "kcat2"], 
+      OverscriptBox["\[RightArrow]", "kcau"], 
       RowBox[{"e", "+", "tu"}]}], ",", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"e", " ", "+", " ", "tu"}], " ", 
@@ -1050,7 +1050,7 @@ Cell[BoxData[{
    3.6350158639096603`*^9, 3.635015894073703*^9}, 3.635017749314889*^9, {
    3.6355372014022045`*^9, 3.635537218644229*^9}, {3.6591141483657465`*^9, 
    3.65911415472703*^9}, 3.6591142939524307`*^9, {3.659114407689497*^9, 
-   3.659114410505247*^9}}]
+   3.659114410505247*^9}, {3.6591146202095904`*^9, 3.6591146296974387`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1070,7 +1070,7 @@ Cell[BoxData[{
    RowBox[{"{", " ", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{
-      RowBox[{"f", " ", "+", " ", "t1"}], " ", 
+      RowBox[{"f", " ", "+", " ", "t"}], " ", 
       UnderoverscriptBox[
        TagBox[
         TagBox["\[Equilibrium]",
@@ -1078,7 +1078,7 @@ Cell[BoxData[{
         DisplayForm], "koffft", "konft"], " ", "ft"}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{
-      RowBox[{"r", " ", "+", " ", "t2"}], " ", 
+      RowBox[{"r", " ", "+", " ", "u"}], " ", 
       UnderoverscriptBox[
        TagBox[
         TagBox["\[Equilibrium]",
@@ -1086,7 +1086,7 @@ Cell[BoxData[{
         DisplayForm], "koffru", "konru"], " ", "ru"}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{
-      RowBox[{"t1", " ", "+", " ", "t2"}], " ", 
+      RowBox[{"t", " ", "+", " ", "u"}], " ", 
       UnderoverscriptBox[
        TagBox[
         TagBox["\[Equilibrium]",
@@ -1116,7 +1116,8 @@ Cell[BoxData[{
    3.635356624762347*^9, 3.6353566556036015`*^9, {3.6353566907504625`*^9, 
    3.635356718752512*^9}, {3.635356781356422*^9, 3.635356853680149*^9}, {
    3.659114055761104*^9, 3.659114064789945*^9}, {3.659114147173725*^9, 
-   3.6591141547360287`*^9}, 3.659114231369073*^9, 3.6591144124579163`*^9}],
+   3.6591141547360287`*^9}, 3.659114231369073*^9, 3.6591144124579163`*^9, {
+   3.659114620216564*^9, 3.6591146297064557`*^9}}],
 
 Cell["\<\
 We consider both kinetic annealing and Michaelis Mention reactions together.\
@@ -1221,20 +1222,20 @@ Cell[BoxData[{
           RowBox[{"annealingInput", ",", "r", ",", " ", "0"}], "]"}]}], ",", 
         "\[IndentingNewLine]", 
         RowBox[{
-         RowBox[{"t1", "[", "0", "]"}], " ", "\[Equal]", " ", 
+         RowBox[{"t", "[", "0", "]"}], " ", "\[Equal]", " ", 
          RowBox[{"readState", "[", 
-          RowBox[{"annealingInput", ",", "t1", ",", " ", "0"}], "]"}]}], ",", 
+          RowBox[{"annealingInput", ",", "t", ",", " ", "0"}], "]"}]}], ",", 
         "\[IndentingNewLine]", 
         RowBox[{
-         RowBox[{"t2", "[", "0", "]"}], " ", "\[Equal]", " ", 
+         RowBox[{"u", "[", "0", "]"}], " ", "\[Equal]", " ", 
          RowBox[{"readState", "[", 
-          RowBox[{"annealingInput", ",", "t2", ",", " ", "0"}], "]"}]}]}], 
+          RowBox[{"annealingInput", ",", "u", ",", " ", "0"}], "]"}]}]}], 
        "\[IndentingNewLine]", "}"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"vars", " ", "=", " ", 
       RowBox[{"{", 
        RowBox[{
        "ft", ",", " ", "ru", ",", " ", "tu", ",", " ", "fr", ",", " ", "f", 
-        ",", " ", "r", ",", " ", "t1", " ", ",", "t2"}], "}"}]}], ";", 
+        ",", " ", "r", ",", " ", "t", " ", ",", "u"}], "}"}]}], ";", 
      "\[IndentingNewLine]", 
      RowBox[{"If", "[", 
       RowBox[{"extend", ",", "\[IndentingNewLine]", 
@@ -1368,9 +1369,9 @@ Cell[BoxData[{
          RowBox[{"(", 
           RowBox[{
            RowBox[{"readState", "[", 
-            RowBox[{"annealingInput", ",", "t1"}], "]"}], " ", "+", " ", 
+            RowBox[{"annealingInput", ",", "t"}], "]"}], " ", "+", " ", 
            RowBox[{"readState", "[", 
-            RowBox[{"annealingInput", ",", "t2"}], "]"}]}], ")"}]}]}], ";"}], 
+            RowBox[{"annealingInput", ",", "u"}], "]"}]}], ")"}]}]}], ";"}], 
       "*)"}], "\[IndentingNewLine]", 
      RowBox[{"\[CapitalDelta]f", " ", "=", " ", 
       RowBox[{
@@ -1407,10 +1408,10 @@ Cell[BoxData[{
         RowBox[{"(", 
          RowBox[{
           RowBox[{"readState", "[", 
-           RowBox[{"annealingInput", ",", "t1"}], "]"}], " ", "+", " ", 
+           RowBox[{"annealingInput", ",", "t"}], "]"}], " ", "+", " ", 
           RowBox[{"readState", "[", 
-           RowBox[{"annealingInput", ",", "t2"}], "]"}]}], ")"}]}], " ", "//",
-        " ", "Quiet"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"annealingInput", ",", "u"}], "]"}]}], ")"}]}], " ", "//", 
+       " ", "Quiet"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"If", "[", 
       RowBox[{
        RowBox[{"annEfficiency", "===", "Indeterminate"}], ",", " ", 
@@ -1493,7 +1494,8 @@ Cell[BoxData[{
    3.635546636672862*^9, {3.6355575686181726`*^9, 3.635557604348223*^9}, {
    3.6591140557781115`*^9, 3.6591140648311367`*^9}, {3.659114147191226*^9, 
    3.65911415477907*^9}, {3.6591142336872826`*^9, 3.659114241145794*^9}, {
-   3.659114413499819*^9, 3.6591144160359755`*^9}}]
+   3.659114413499819*^9, 3.6591144160359755`*^9}, {3.6591146202355814`*^9, 
+   3.659114629728462*^9}}]
 }, Open  ]]
 }, Open  ]],
 
@@ -1612,7 +1614,7 @@ Cell[BoxData[{
       RowBox[{
        RowBox[{
         RowBox[{"sAnalysis", " ", "/.", " ", 
-         RowBox[{"sT", " ", "\[Rule]", " ", "sTT"}]}], " ", "/.", " ", 
+         RowBox[{"sT", " ", "\[Rule]", " ", "sTT"}]}], " ", "//.", " ", 
         "constants"}], " ", "/.", " ", 
        RowBox[{"e", " ", "\[Rule]", " ", 
         RowBox[{"readState", "[", 
@@ -1660,7 +1662,7 @@ Cell[BoxData[{
    3.6348465482592626`*^9, 3.634846548265263*^9}, {3.635173349967526*^9, 
    3.6351733530563316`*^9}, 3.6351734043024216`*^9, {3.6352156793349347`*^9, 
    3.635215702231244*^9}, {3.6352157340390635`*^9, 3.635215805450148*^9}, {
-   3.65911414722423*^9, 3.659114154793056*^9}}],
+   3.65911414722423*^9, 3.659114154793056*^9}, 3.6591146508872476`*^9}],
 
 Cell["\<\
 We compute the result of the extension step (which becomes, after an implicit \
@@ -2138,10 +2140,10 @@ Cell[BoxData[{
             RowBox[{"readState", "[", 
              RowBox[{"state", ",", "ed"}], "]"}]}]}], ",", 
           "\[IndentingNewLine]", 
-          RowBox[{"t1", " ", "\[Rule]", " ", 
+          RowBox[{"t", " ", "\[Rule]", " ", 
            RowBox[{
             RowBox[{"readState", "[", 
-             RowBox[{"state", ",", "t1"}], "]"}], " ", "+", " ", 
+             RowBox[{"state", ",", "t"}], "]"}], " ", "+", " ", 
             RowBox[{"readState", "[", 
              RowBox[{"state", ",", "tu"}], "]"}], " ", "+", " ", 
             RowBox[{"readState", "[", 
@@ -2151,10 +2153,10 @@ Cell[BoxData[{
             RowBox[{"readState", "[", 
              RowBox[{"state", ",", "eft"}], "]"}]}]}], ",", 
           "\[IndentingNewLine]", 
-          RowBox[{"t2", " ", "\[Rule]", " ", 
+          RowBox[{"u", " ", "\[Rule]", " ", 
            RowBox[{
             RowBox[{"readState", "[", 
-             RowBox[{"state", ",", "t2"}], "]"}], " ", "+", " ", 
+             RowBox[{"state", ",", "u"}], "]"}], " ", "+", " ", 
             RowBox[{"readState", "[", 
              RowBox[{"state", ",", "tu"}], "]"}], " ", "+", " ", 
             RowBox[{"readState", "[", 
@@ -2215,7 +2217,7 @@ Cell[BoxData[{
    3.6355374084634967`*^9}, {3.6591140558352013`*^9, 
    3.6591140648491364`*^9}, {3.659114147439398*^9, 3.659114155000098*^9}, {
    3.6591142493451824`*^9, 3.659114251328837*^9}, {3.6591144307718563`*^9, 
-   3.6591144330266438`*^9}}]
+   3.6591144330266438`*^9}, {3.6591146202565813`*^9, 3.659114629738463*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2282,14 +2284,14 @@ Cell[BoxData[{
             RowBox[{
              RowBox[{"{", "\[IndentingNewLine]", 
               RowBox[{
-               RowBox[{"t1Start", " ", "\[Rule]", " ", 
+               RowBox[{"tStart", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
-                 RowBox[{"denaturedCycleInput", ",", " ", "t1Start"}], 
-                 "]"}]}], ",", "\[IndentingNewLine]", 
-               RowBox[{"t1Start", " ", "\[Rule]", " ", 
+                 RowBox[{"denaturedCycleInput", ",", " ", "tStart"}], "]"}]}],
+                ",", "\[IndentingNewLine]", 
+               RowBox[{"tStart", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
-                 RowBox[{"denaturedCycleInput", ",", " ", "t2Start"}], 
-                 "]"}]}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                 RowBox[{"denaturedCycleInput", ",", " ", "uStart"}], "]"}]}],
+                ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
                RowBox[{"eTC", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
                  RowBox[{"denaturedCycleInput", ",", " ", "e"}], "]"}]}], ",",
@@ -2302,14 +2304,14 @@ Cell[BoxData[{
                 RowBox[{"readState", "[", 
                  RowBox[{"denaturedCycleInput", ",", " ", "r"}], "]"}]}], ",",
                 "\[IndentingNewLine]", 
-               RowBox[{"t1TC", " ", "\[Rule]", " ", 
+               RowBox[{"tTC", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
-                 RowBox[{"denaturedCycleInput", ",", " ", "t1"}], "]"}]}], 
-               ",", "\[IndentingNewLine]", 
-               RowBox[{"t2TC", " ", "\[Rule]", " ", 
+                 RowBox[{"denaturedCycleInput", ",", " ", "t"}], "]"}]}], ",",
+                "\[IndentingNewLine]", 
+               RowBox[{"uTC", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
-                 RowBox[{"denaturedCycleInput", ",", " ", "t2"}], "]"}]}], 
-               ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                 RowBox[{"denaturedCycleInput", ",", " ", "u"}], "]"}]}], ",",
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
                RowBox[{"eT", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
                  RowBox[{"denaturedExtensionOutput", ",", " ", "e"}], "]"}]}],
@@ -2322,14 +2324,14 @@ Cell[BoxData[{
                 RowBox[{"readState", "[", 
                  RowBox[{"denaturedExtensionOutput", ",", " ", "r"}], "]"}]}],
                 ",", "\[IndentingNewLine]", 
-               RowBox[{"t1T", " ", "\[Rule]", " ", 
+               RowBox[{"tT", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
-                 RowBox[{"denaturedExtensionOutput", ",", " ", "t1"}], 
-                 "]"}]}], ",", "\[IndentingNewLine]", 
-               RowBox[{"t2T", " ", "\[Rule]", " ", 
+                 RowBox[{"denaturedExtensionOutput", ",", " ", "t"}], "]"}]}],
+                ",", "\[IndentingNewLine]", 
+               RowBox[{"uT", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
-                 RowBox[{"denaturedExtensionOutput", ",", " ", "t2"}], 
-                 "]"}]}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                 RowBox[{"denaturedExtensionOutput", ",", " ", "u"}], "]"}]}],
+                ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
                RowBox[{"fA", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
                  RowBox[{"annealOutput", ",", " ", "f"}], "]"}]}], ",", 
@@ -2338,13 +2340,13 @@ Cell[BoxData[{
                 RowBox[{"readState", "[", 
                  RowBox[{"annealOutput", ",", " ", "r"}], "]"}]}], ",", 
                "\[IndentingNewLine]", 
-               RowBox[{"t1A", " ", "\[Rule]", " ", 
+               RowBox[{"tA", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
-                 RowBox[{"annealOutput", ",", " ", "t1"}], "]"}]}], ",", 
+                 RowBox[{"annealOutput", ",", " ", "t"}], "]"}]}], ",", 
                "\[IndentingNewLine]", 
-               RowBox[{"t2A", " ", "\[Rule]", " ", 
+               RowBox[{"uA", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
-                 RowBox[{"annealOutput", ",", " ", "t2"}], "]"}]}], ",", 
+                 RowBox[{"annealOutput", ",", " ", "u"}], "]"}]}], ",", 
                "\[IndentingNewLine]", 
                RowBox[{"ftA", " ", "\[Rule]", " ", 
                 RowBox[{"readState", "[", 
@@ -2388,16 +2390,16 @@ Cell[BoxData[{
   RowBox[{"customGraphVariables", " ", "=", " ", 
    RowBox[{"{", " ", "\[IndentingNewLine]", 
     RowBox[{
-    "eTC", ",", " ", "fTC", ",", " ", "rTC", ",", " ", "t1TC", ",", " ", 
-     "t2TC", ",", " ", "eT", ",", " ", "fT", ",", " ", "rT", ",", " ", "t1T", 
-     ",", " ", "t2T", ",", " ", "\[IndentingNewLine]", "f", ",", " ", "r", 
-     ",", " ", "ft", ",", " ", "ru", ",", " ", "t1", ",", " ", "t2", ",", " ",
-      "fr", ",", " ", "tu", ",", " ", "e", ",", " ", "eu", ",", " ", "ed", 
-     ",", " ", "eft", ",", " ", "eru", ",", " ", "\[IndentingNewLine]", "fA", 
-     ",", " ", "rA", ",", " ", "ftA", ",", " ", "ruA", ",", " ", "t1A", ",", 
-     " ", "t2A", ",", " ", "dA", ",", " ", "uA", ",", " ", "eA", ",", " ", 
-     "euA", ",", " ", "eftA", ",", " ", "eruA", ",", "\[IndentingNewLine]", 
-     "t1Start", ",", " ", "t2Start"}], "\[IndentingNewLine]", "}"}]}], 
+    "eTC", ",", " ", "fTC", ",", " ", "rTC", ",", " ", "tTC", ",", " ", "uTC",
+      ",", " ", "eT", ",", " ", "fT", ",", " ", "rT", ",", " ", "tT", ",", 
+     " ", "uT", ",", " ", "\[IndentingNewLine]", "f", ",", " ", "r", ",", " ",
+      "ft", ",", " ", "ru", ",", " ", "t", ",", " ", "u", ",", " ", "fr", ",",
+      " ", "tu", ",", " ", "e", ",", " ", "eu", ",", " ", "ed", ",", " ", 
+     "eft", ",", " ", "eru", ",", " ", "\[IndentingNewLine]", "fA", ",", " ", 
+     "rA", ",", " ", "ftA", ",", " ", "ruA", ",", " ", "tA", ",", " ", "uA", 
+     ",", " ", "dA", ",", " ", "uA", ",", " ", "eA", ",", " ", "euA", ",", 
+     " ", "eftA", ",", " ", "eruA", ",", "\[IndentingNewLine]", "tStart", ",",
+      " ", "uStart"}], "\[IndentingNewLine]", "}"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"run", "[", 
@@ -2457,7 +2459,8 @@ Cell[BoxData[{
    3.635537435733035*^9, 3.635537454125061*^9}, {3.63554693362728*^9, 
    3.635546988553357*^9}, {3.659114055865714*^9, 3.659114064889142*^9}, {
    3.659114147464907*^9, 3.6591141550250983`*^9}, {3.6591142567939844`*^9, 
-   3.659114265975732*^9}, {3.6591144347392817`*^9, 3.6591144357860165`*^9}}]
+   3.659114265975732*^9}, {3.6591144347392817`*^9, 3.6591144357860165`*^9}, {
+   3.659114620267581*^9, 3.659114629770444*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2660,7 +2663,7 @@ Cell[BoxData[
                     RowBox[{"readState", "[", 
                     RowBox[{"state", ",", " ", "#"}], "]"}]}], ")"}], " ", 
                   "&"}], " ", "/@", " ", "customGraphVariables"}], ")"}]}], 
-              " ", "/.", " ", "constants"}], "]"}]}], "]"}]}], ";", 
+              " ", "//.", " ", "constants"}], "]"}]}], "]"}]}], ";", 
          "\[IndentingNewLine]", 
          RowBox[{"plot", "[", 
           RowBox[{
@@ -2745,13 +2748,13 @@ Cell[BoxData[
                RowBox[{
                 RowBox[{
                  RowBox[{"readState", "[", 
-                  RowBox[{"#", ",", "t1T"}], "]"}], " ", "&"}], " ", "/@", 
-                " ", "run"}]}], "]"}], " ", "/@", " ", "runs"}], ",", " ", 
+                  RowBox[{"#", ",", "tT"}], "]"}], " ", "&"}], " ", "/@", " ",
+                 "run"}]}], "]"}], " ", "/@", " ", "runs"}], ",", " ", 
             "\[IndentingNewLine]", 
             RowBox[{"labels", "\[Rule]", " ", 
              RowBox[{"{", 
               RowBox[{
-              "\"\<cycle\>\"", ",", " ", "\"\<total [t1] after ext'n\>\""}], 
+              "\"\<cycle\>\"", ",", " ", "\"\<total [t] after ext'n\>\""}], 
               "}"}]}], ",", "\[IndentingNewLine]", 
             RowBox[{"PlotRange", "\[Rule]", 
              RowBox[{"{", 
@@ -2771,13 +2774,13 @@ Cell[BoxData[
                RowBox[{
                 RowBox[{
                  RowBox[{"readState", "[", 
-                  RowBox[{"#", ",", "t2T"}], "]"}], " ", "&"}], " ", "/@", 
-                " ", "run"}]}], "]"}], " ", "/@", " ", "runs"}], ",", " ", 
+                  RowBox[{"#", ",", "uT"}], "]"}], " ", "&"}], " ", "/@", " ",
+                 "run"}]}], "]"}], " ", "/@", " ", "runs"}], ",", " ", 
             "\[IndentingNewLine]", 
             RowBox[{"labels", "\[Rule]", " ", 
              RowBox[{"{", 
               RowBox[{
-              "\"\<cycle\>\"", ",", " ", "\"\<total [t2] after ext'n\>\""}], 
+              "\"\<cycle\>\"", ",", " ", "\"\<total [u] after ext'n\>\""}], 
               "}"}]}], ",", "\[IndentingNewLine]", 
             RowBox[{"PlotRange", "\[Rule]", 
              RowBox[{"{", 
@@ -2811,7 +2814,7 @@ Cell[BoxData[
                RowBox[{"{", 
                 RowBox[{
                 "\"\<cycle\>\"", ",", " ", 
-                 "\"\<total [t1-t2 duplex] after ext'n\>\""}], "}"}]}], ",", 
+                 "\"\<total [t-u duplex] after ext'n\>\""}], "}"}]}], ",", 
               "\[IndentingNewLine]", 
               RowBox[{"PlotRange", "\[Rule]", 
                RowBox[{"{", 
@@ -2893,7 +2896,7 @@ Cell[BoxData[
                RowBox[{"{", 
                 RowBox[{
                 "\"\<cycle\>\"", ",", " ", 
-                 "\"\<[t1-t2 duplex] after anneal\>\""}], "}"}]}], ",", 
+                 "\"\<[t-u duplex] after anneal\>\""}], "}"}]}], ",", 
               "\[IndentingNewLine]", 
               RowBox[{"PlotRange", "\[Rule]", 
                RowBox[{"{", 
@@ -3111,8 +3114,8 @@ Cell[BoxData[
                  RowBox[{"{", 
                   RowBox[{
                   "\"\<cycle\>\"", ",", " ", 
-                   "\"\<[t1-t2-poly' complex] after extension\>\""}], "}"}]}],
-                 ",", " ", "\[IndentingNewLine]", 
+                   "\"\<[t-u-poly' complex] after extension\>\""}], "}"}]}], 
+                ",", " ", "\[IndentingNewLine]", 
                 RowBox[{"PlotRange", " ", "\[Rule]", " ", 
                  RowBox[{"{", 
                   RowBox[{"floor", ",", "ceil"}], "}"}]}]}], 
@@ -3247,8 +3250,8 @@ Cell[BoxData[
                RowBox[{"{", 
                 RowBox[{
                 "\"\<cycle\>\"", ",", " ", 
-                 "\"\<[t1-t2 complex] aft ext'n / total [poly']\>\""}], 
-                "}"}]}], ",", "\[IndentingNewLine]", 
+                 "\"\<[t-u complex] aft ext'n / total [poly']\>\""}], "}"}]}],
+               ",", "\[IndentingNewLine]", 
               RowBox[{"plotFunc", " ", "\[Rule]", " ", "ListPlot"}], ",", 
               "\[IndentingNewLine]", 
               RowBox[{"AxesOrigin", "\[Rule]", 
@@ -3279,7 +3282,7 @@ Cell[BoxData[
                RowBox[{"{", 
                 RowBox[{
                 "\"\<cycle\>\"", ",", " ", 
-                 "\"\<[t1-t2-poly' plex] aft ext'n/total [poly']\>\""}], 
+                 "\"\<[t-u-poly' plex] aft ext'n/total [poly']\>\""}], 
                 "}"}]}], ",", "\[IndentingNewLine]", 
               RowBox[{"plotFunc", " ", "\[Rule]", " ", "ListPlot"}], ",", 
               "\[IndentingNewLine]", 
@@ -3435,7 +3438,8 @@ Cell[BoxData[
    3.635530697210448*^9}, {3.635530996923869*^9, 3.635531006554883*^9}, {
    3.635545500732263*^9, 3.6355455016422644`*^9}, {3.659114055950717*^9, 
    3.659114064928667*^9}, {3.6591141474994297`*^9, 3.659114155095126*^9}, {
-   3.659114438424957*^9, 3.6591144396804857`*^9}}]
+   3.659114438424957*^9, 3.6591144396804857`*^9}, {3.659114620328102*^9, 
+   3.659114657900607*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4204,8 +4208,8 @@ Cell[BoxData[
            "\[IndentingNewLine]", 
            RowBox[{"{", 
             RowBox[{
-            "\"\<t1-t2 duplex\>\"", ",", " ", "\"\<\>\"", ",", " ", 
-             "\"\<\>\"", ",", " ", "\[IndentingNewLine]", 
+            "\"\<t-u duplex\>\"", ",", " ", "\"\<\>\"", ",", " ", "\"\<\>\"", 
+             ",", " ", "\[IndentingNewLine]", 
              RowBox[{"manipulateLogVar", "[", 
               RowBox[{
               "\"\<koffu\>\"", ",", " ", "logkoffu", ",", " ", "koffu", ",", 
@@ -4391,7 +4395,7 @@ Cell[BoxData[
               "customGraphExpr1", ",", " ", "useCustomGraphs", ",", " ", 
                RowBox[{
                 RowBox[{"(", 
-                 RowBox[{"ft", "+", "eft"}], ")"}], " ", "/", " ", "t1T"}]}], 
+                 RowBox[{"ft", "+", "eft"}], ")"}], " ", "/", " ", "tT"}]}], 
               "]"}], ",", "\[IndentingNewLine]", "columnSpacer", ",", " ", 
              RowBox[{"Item", "[", 
               RowBox[{"\"\<2nd graph\>\"", ",", " ", 
@@ -4406,9 +4410,9 @@ Cell[BoxData[
               "customGraphExpr2", ",", " ", "useCustomGraphs", ",", " ", 
                RowBox[{
                 RowBox[{"(", 
-                 RowBox[{"tu", "+", "eu"}], ")"}], "/", "t1T"}]}], "]"}], ",",
-              " ", "\"\<\>\"", ",", " ", "\[IndentingNewLine]", 
-             "columnSpacer", ",", " ", 
+                 RowBox[{"tu", "+", "eu"}], ")"}], "/", "tT"}]}], "]"}], ",", 
+             " ", "\"\<\>\"", ",", " ", "\[IndentingNewLine]", "columnSpacer",
+              ",", " ", 
              RowBox[{"Item", "[", 
               RowBox[{"\"\<3rd graph\>\"", ",", " ", 
                RowBox[{"BaseStyle", "\[Rule]", 
@@ -4420,7 +4424,7 @@ Cell[BoxData[
              RowBox[{"makeCustomGraphInput", "[", 
               RowBox[{
               "customGraphExpr3", ",", " ", "useCustomGraphs", ",", " ", 
-               RowBox[{"t1", "/", "t1T"}]}], "]"}]}], "\[IndentingNewLine]", 
+               RowBox[{"t", "/", "tT"}]}], "]"}]}], "\[IndentingNewLine]", 
             "}"}], ",", "\[IndentingNewLine]", 
            RowBox[{"{", 
             RowBox[{"\"\<\>\"", ",", " ", "\[IndentingNewLine]", 
@@ -4771,7 +4775,8 @@ Cell[BoxData[
    3.6355375729057283`*^9, 3.635537640113823*^9}, {3.63555214814607*^9, 
    3.635552166502096*^9}, {3.635785233655405*^9, 3.635785238976413*^9}, {
    3.6591140560537305`*^9, 3.6591140649967127`*^9}, {3.6591141475774374`*^9, 
-   3.659114155301161*^9}, 3.659114444242899*^9}]
+   3.659114155301161*^9}, 3.659114444242899*^9, {3.659114620417859*^9, 
+   3.6591146296299353`*^9}}]
 }, Open  ]]
 }, Open  ]]
 }, Closed]],
@@ -4872,77 +4877,77 @@ Cell[15268, 427, 528, 14, 39, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[15833, 446, 99, 1, 46, "Subsection"],
-Cell[15935, 449, 13504, 255, 1011, "Input"],
-Cell[29442, 706, 714, 12, 91, "Input"]
+Cell[15935, 449, 13593, 256, 1011, "Input"],
+Cell[29531, 707, 766, 13, 91, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30193, 723, 103, 1, 46, "Subsection"],
+Cell[30334, 725, 103, 1, 46, "Subsection"],
 Cell[CellGroupData[{
-Cell[30321, 728, 171, 2, 38, "Subsubsection"],
-Cell[30495, 732, 2641, 52, 211, "Input"],
-Cell[33139, 786, 248, 5, 29, "Text"],
-Cell[33390, 793, 8660, 182, 391, "Input"]
+Cell[30462, 730, 171, 2, 38, "Subsubsection"],
+Cell[30636, 734, 2681, 52, 211, "Input"],
+Cell[33320, 788, 248, 5, 29, "Text"],
+Cell[33571, 795, 8668, 180, 391, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[42087, 980, 117, 1, 38, "Subsubsection"],
-Cell[42207, 983, 551, 9, 48, "Text"],
-Cell[42761, 994, 2317, 58, 286, "Input"]
+Cell[42276, 980, 117, 1, 38, "Subsubsection"],
+Cell[42396, 983, 551, 9, 48, "Text"],
+Cell[42950, 994, 2365, 58, 286, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[45115, 1057, 167, 2, 38, "Subsubsection"],
-Cell[45285, 1061, 247, 3, 29, "Text"],
-Cell[45535, 1066, 2060, 52, 238, "Input"],
-Cell[47598, 1120, 196, 4, 29, "Text"],
-Cell[47797, 1126, 574, 13, 51, "Input"],
-Cell[48374, 1141, 309, 6, 29, "Text"],
-Cell[48686, 1149, 16552, 346, 1091, "Input"]
+Cell[45352, 1057, 167, 2, 38, "Subsubsection"],
+Cell[45522, 1061, 247, 3, 29, "Text"],
+Cell[45772, 1066, 2108, 53, 238, "Input"],
+Cell[47883, 1121, 196, 4, 29, "Text"],
+Cell[48082, 1127, 574, 13, 51, "Input"],
+Cell[48659, 1142, 309, 6, 29, "Text"],
+Cell[48971, 1150, 16594, 347, 1091, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[65287, 1501, 105, 1, 46, "Subsection"],
+Cell[65614, 1503, 105, 1, 46, "Subsection"],
 Cell[CellGroupData[{
-Cell[65417, 1506, 105, 1, 38, "Subsubsection"],
-Cell[65525, 1509, 674, 11, 48, "Text"],
-Cell[66202, 1522, 2996, 63, 131, "Input"],
-Cell[69201, 1587, 142, 1, 29, "Text"],
-Cell[69346, 1590, 3578, 72, 171, "Input"],
-Cell[72927, 1664, 466, 7, 48, "Text"],
-Cell[73396, 1673, 7456, 149, 471, "Input"]
+Cell[65744, 1508, 105, 1, 38, "Subsubsection"],
+Cell[65852, 1511, 674, 11, 48, "Text"],
+Cell[66529, 1524, 2996, 63, 131, "Input"],
+Cell[69528, 1589, 142, 1, 29, "Text"],
+Cell[69673, 1592, 3603, 72, 171, "Input"],
+Cell[73279, 1666, 466, 7, 48, "Text"],
+Cell[73748, 1675, 7456, 149, 471, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[80889, 1827, 196, 2, 38, "Subsubsection"],
-Cell[81088, 1831, 333, 6, 29, "Text"],
-Cell[81424, 1839, 366, 7, 29, "Text"],
-Cell[81793, 1848, 171, 3, 30, "Input"],
-Cell[81967, 1853, 10830, 211, 831, "Input"]
+Cell[81241, 1829, 196, 2, 38, "Subsubsection"],
+Cell[81440, 1833, 333, 6, 29, "Text"],
+Cell[81776, 1841, 366, 7, 29, "Text"],
+Cell[82145, 1850, 171, 3, 30, "Input"],
+Cell[82319, 1855, 10830, 211, 831, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[92846, 2070, 108, 1, 46, "Subsection"],
-Cell[92957, 2073, 277, 5, 29, "Text"],
-Cell[93237, 2080, 6486, 137, 391, "Input"]
+Cell[93198, 2072, 108, 1, 46, "Subsection"],
+Cell[93309, 2075, 277, 5, 29, "Text"],
+Cell[93589, 2082, 6530, 137, 391, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[99760, 2222, 242, 3, 46, "Subsection"],
-Cell[100005, 2227, 13037, 232, 1091, "Input"]
+Cell[100156, 2224, 242, 3, 46, "Subsection"],
+Cell[100401, 2229, 13053, 233, 1091, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[113079, 2464, 149, 2, 46, "Subsection"],
+Cell[113491, 2467, 149, 2, 46, "Subsection"],
 Cell[CellGroupData[{
-Cell[113253, 2470, 103, 1, 38, "Subsubsection"],
-Cell[113359, 2473, 458, 12, 30, "Input"],
-Cell[113820, 2487, 46064, 950, 3531, "Input"]
+Cell[113665, 2473, 103, 1, 38, "Subsubsection"],
+Cell[113771, 2476, 458, 12, 30, "Input"],
+Cell[114232, 2490, 46099, 951, 3531, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[159921, 3442, 100, 1, 38, "Subsubsection"],
-Cell[160024, 3445, 6989, 119, 291, "Input"],
-Cell[167016, 3566, 64819, 1207, 4271, "Input"]
+Cell[160368, 3446, 100, 1, 38, "Subsubsection"],
+Cell[160471, 3449, 6989, 119, 291, "Input"],
+Cell[167463, 3570, 64865, 1208, 4251, "Input"]
 }, Open  ]]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[231896, 4780, 150, 2, 54, "Section"],
-Cell[232049, 4784, 118, 2, 30, "Input"]
+Cell[232389, 4785, 150, 2, 54, "Section"],
+Cell[232542, 4789, 118, 2, 30, "Input"]
 }, Open  ]]
 }
 ]
