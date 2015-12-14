@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     52981,       1315]
-NotebookOptionsPosition[     48869,       1213]
-NotebookOutlinePosition[     51869,       1280]
-CellTagsIndexPosition[     51826,       1277]
+NotebookDataLength[     53057,       1315]
+NotebookOptionsPosition[     48943,       1213]
+NotebookOutlinePosition[     51943,       1280]
+CellTagsIndexPosition[     51900,       1277]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -943,7 +943,7 @@ Cell[BoxData[
   Function[BoxForm`e$, 
    TableForm[BoxForm`e$]]]], "Input",
  CellChangeTimes->{{3.6581732630094376`*^9, 3.6581732837153454`*^9}}]
-}, Closed]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -988,10 +988,10 @@ Cell[BoxData[
                  RowBox[{
                   RowBox[{"pt", "[", 
                    RowBox[{
-                    RowBox[{"10", "^", "logkon1"}], ",", " ", 
-                    RowBox[{"10", "^", "logkon2"}], ",", " ", 
-                    RowBox[{"10", "^", "logkoff1"}], ",", " ", 
-                    RowBox[{"10", "^", "logkoff2"}], ",", " ", 
+                    RowBox[{"10", "^", "logkonpt"}], ",", " ", 
+                    RowBox[{"10", "^", "logkonpc"}], ",", " ", 
+                    RowBox[{"10", "^", "logkoffpt"}], ",", " ", 
+                    RowBox[{"10", "^", "logkoffpc"}], ",", " ", 
                     RowBox[{"10", "^", "logt0"}], ",", " ", 
                     RowBox[{"10", "^", "logc0"}], ",", " ", 
                     RowBox[{"10", "^", "logp0"}]}], "]"}], "[", "\[Tau]", 
@@ -1004,10 +1004,10 @@ Cell[BoxData[
                  RowBox[{
                   RowBox[{"pc", "[", 
                    RowBox[{
-                    RowBox[{"10", "^", "logkon1"}], ",", " ", 
-                    RowBox[{"10", "^", "logkon2"}], ",", " ", 
-                    RowBox[{"10", "^", "logkoff1"}], ",", " ", 
-                    RowBox[{"10", "^", "logkoff2"}], ",", " ", 
+                    RowBox[{"10", "^", "logkonpt"}], ",", " ", 
+                    RowBox[{"10", "^", "logkonpc"}], ",", " ", 
+                    RowBox[{"10", "^", "logkoffpt"}], ",", " ", 
+                    RowBox[{"10", "^", "logkoffpc"}], ",", " ", 
                     RowBox[{"10", "^", "logt0"}], ",", " ", 
                     RowBox[{"10", "^", "logc0"}], ",", " ", 
                     RowBox[{"10", "^", "logp0"}]}], "]"}], "[", "\[Tau]", 
@@ -1046,10 +1046,10 @@ Cell[BoxData[
                  RowBox[{
                   RowBox[{"pt", "[", 
                    RowBox[{
-                    RowBox[{"10", "^", "logkon1"}], ",", " ", 
-                    RowBox[{"10", "^", "logkon2"}], ",", " ", 
-                    RowBox[{"10", "^", "logkoff1"}], ",", " ", 
-                    RowBox[{"10", "^", "logkoff2"}], ",", " ", 
+                    RowBox[{"10", "^", "logkonpt"}], ",", " ", 
+                    RowBox[{"10", "^", "logkonpc"}], ",", " ", 
+                    RowBox[{"10", "^", "logkoffpt"}], ",", " ", 
+                    RowBox[{"10", "^", "logkoffpc"}], ",", " ", 
                     RowBox[{"10", "^", "logt0"}], ",", " ", 
                     RowBox[{"10", "^", "logc0"}], ",", " ", 
                     RowBox[{"10", "^", "logp0"}]}], "]"}], "[", "\[Tau]", 
@@ -1061,10 +1061,10 @@ Cell[BoxData[
                  RowBox[{
                   RowBox[{"pc", "[", 
                    RowBox[{
-                    RowBox[{"10", "^", "logkon1"}], ",", " ", 
-                    RowBox[{"10", "^", "logkon2"}], ",", " ", 
-                    RowBox[{"10", "^", "logkoff1"}], ",", " ", 
-                    RowBox[{"10", "^", "logkoff2"}], ",", " ", 
+                    RowBox[{"10", "^", "logkonpt"}], ",", " ", 
+                    RowBox[{"10", "^", "logkonpc"}], ",", " ", 
+                    RowBox[{"10", "^", "logkoffpt"}], ",", " ", 
+                    RowBox[{"10", "^", "logkoffpc"}], ",", " ", 
                     RowBox[{"10", "^", "logt0"}], ",", " ", 
                     RowBox[{"10", "^", "logc0"}], ",", " ", 
                     RowBox[{"10", "^", "logp0"}]}], "]"}], "[", "\[Tau]", 
@@ -1147,10 +1147,10 @@ Cell[BoxData[
          RowBox[{"{", 
           RowBox[{
            RowBox[{"{", 
-            RowBox[{"logkon1", ",", " ", "7", ",", " ", "\"\<konpt\>\""}], 
+            RowBox[{"logkonpt", ",", " ", "7", ",", " ", "\"\<konpt\>\""}], 
             "}"}], ",", " ", "0", ",", " ", "10"}], "}"}], "]"}], ",", " ", 
         RowBox[{"Dynamic", "[", 
-         RowBox[{"10", "^", "logkon1"}], "]"}]}], "}"}], ",", 
+         RowBox[{"10", "^", "logkonpt"}], "]"}]}], "}"}], ",", 
       "\[IndentingNewLine]", 
       RowBox[{"{", 
        RowBox[{
@@ -1158,10 +1158,10 @@ Cell[BoxData[
          RowBox[{"{", 
           RowBox[{
            RowBox[{"{", 
-            RowBox[{"logkoff1", ",", " ", "6", ",", " ", "\"\<koffpt\>\""}], 
+            RowBox[{"logkoffpt", ",", " ", "6", ",", " ", "\"\<koffpt\>\""}], 
             "}"}], ",", " ", "0", ",", " ", "12"}], "}"}], "]"}], ",", 
         RowBox[{"Dynamic", "[", 
-         RowBox[{"10", "^", "logkoff1"}], "]"}]}], "}"}], ",", 
+         RowBox[{"10", "^", "logkoffpt"}], "]"}]}], "}"}], ",", 
       "\[IndentingNewLine]", 
       RowBox[{"{", 
        RowBox[{
@@ -1169,10 +1169,10 @@ Cell[BoxData[
          RowBox[{"{", 
           RowBox[{
            RowBox[{"{", 
-            RowBox[{"logkon2", ",", " ", "7", ",", " ", "\"\<konpc\>\""}], 
+            RowBox[{"logkonpc", ",", " ", "7", ",", " ", "\"\<konpc\>\""}], 
             "}"}], ",", " ", "0", ",", " ", "10"}], "}"}], "]"}], ",", " ", 
         RowBox[{"Dynamic", "[", 
-         RowBox[{"10", "^", "logkon2"}], "]"}]}], "}"}], ",", 
+         RowBox[{"10", "^", "logkonpc"}], "]"}]}], "}"}], ",", 
       "\[IndentingNewLine]", 
       RowBox[{"{", 
        RowBox[{
@@ -1180,10 +1180,10 @@ Cell[BoxData[
          RowBox[{"{", 
           RowBox[{
            RowBox[{"{", 
-            RowBox[{"logkoff2", ",", " ", "6", ",", " ", "\"\<koffpc\>\""}], 
+            RowBox[{"logkoffpc", ",", " ", "6", ",", " ", "\"\<koffpc\>\""}], 
             "}"}], ",", " ", "0", ",", " ", "12"}], "}"}], "]"}], ",", " ", 
         RowBox[{"Dynamic", "[", 
-         RowBox[{"10", "^", "logkoff2"}], "]"}]}], "}"}]}], 
+         RowBox[{"10", "^", "logkoffpc"}], "]"}]}], "}"}]}], 
      "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}]}], 
   "\[IndentingNewLine]", "]"}]], "Input",
  CellChangeTimes->{{3.6580782337208977`*^9, 3.6580783583154325`*^9}, {
@@ -1208,7 +1208,7 @@ Cell[BoxData[
    3.6581733272059565`*^9}, {3.6581733888945656`*^9, 3.658173492392943*^9}, {
    3.658173578538686*^9, 3.6581736015982137`*^9}, {3.659116185584116*^9, 
    3.6591161897578917`*^9}, {3.659116446993737*^9, 3.6591164505617094`*^9}, 
-   3.6591179732963676`*^9}]
+   3.6591179732963676`*^9, {3.6591183001559505`*^9, 3.6591183256893063`*^9}}]
 }, Open  ]]
 },
 WindowSize->{1304, 1548},
@@ -1283,39 +1283,39 @@ Cell[CellGroupData[{
 Cell[580, 22, 157, 2, 67, "Section"],
 Cell[CellGroupData[{
 Cell[762, 28, 166, 2, 46, "Subsection"],
-Cell[931, 32, 2953, 75, 116, "Input"]
+Cell[931, 32, 2953, 75, 211, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
 Cell[3921, 112, 97, 1, 38, "Subsection"],
-Cell[4021, 115, 254, 5, 18, "Text"],
-Cell[4278, 122, 1814, 42, 143, "Input"],
-Cell[6095, 166, 6080, 173, 288, "Input"],
-Cell[12178, 341, 2385, 63, 93, "Input"],
-Cell[14566, 406, 699, 19, 25, "Input"],
-Cell[15268, 427, 528, 14, 25, "Input"]
+Cell[4021, 115, 254, 5, 29, "Text"],
+Cell[4278, 122, 1814, 42, 204, "Input"],
+Cell[6095, 166, 6080, 173, 374, "Input"],
+Cell[12178, 341, 2385, 63, 131, "Input"],
+Cell[14566, 406, 699, 19, 39, "Input"],
+Cell[15268, 427, 528, 14, 39, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
 Cell[15833, 446, 161, 2, 38, "Subsection"],
-Cell[15997, 450, 608, 11, 19, "Input"],
-Cell[16608, 463, 6265, 99, 79, "Input"]
+Cell[15997, 450, 608, 11, 30, "Input"],
+Cell[16608, 463, 6265, 99, 111, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
 Cell[22910, 567, 97, 1, 38, "Subsection"],
-Cell[23010, 570, 184, 4, 27, "Text"],
-Cell[23197, 576, 1926, 46, 101, "Input"],
-Cell[25126, 624, 272, 7, 28, "Input"],
-Cell[25401, 633, 2547, 73, 81, "Input"],
-Cell[27951, 708, 111, 1, 27, "Text"],
-Cell[28065, 711, 987, 20, 28, "Input"],
-Cell[29055, 733, 461, 8, 45, "Text"],
-Cell[29519, 743, 2205, 38, 105, "Input"],
-Cell[31727, 783, 2494, 71, 48, "Input"],
-Cell[34224, 856, 2949, 88, 152, "Input"]
-}, Closed]]
+Cell[23010, 570, 184, 4, 29, "Text"],
+Cell[23197, 576, 1926, 46, 107, "Input"],
+Cell[25126, 624, 272, 7, 30, "Input"],
+Cell[25401, 633, 2547, 73, 86, "Input"],
+Cell[27951, 708, 111, 1, 29, "Text"],
+Cell[28065, 711, 987, 20, 30, "Input"],
+Cell[29055, 733, 461, 8, 48, "Text"],
+Cell[29519, 743, 2205, 38, 111, "Input"],
+Cell[31727, 783, 2494, 71, 51, "Input"],
+Cell[34224, 856, 2949, 88, 161, "Input"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[37222, 950, 106, 1, 67, "Section"],
-Cell[37331, 953, 11522, 257, 651, "Input"]
+Cell[37331, 953, 11596, 257, 651, "Input"]
 }, Open  ]]
 }
 ]
