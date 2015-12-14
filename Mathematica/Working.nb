@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    226161,       4669]
-NotebookOptionsPosition[    220606,       4522]
-NotebookOutlinePosition[    223605,       4589]
-CellTagsIndexPosition[    223562,       4586]
+NotebookDataLength[    210262,       4337]
+NotebookOptionsPosition[    205040,       4199]
+NotebookOutlinePosition[    208039,       4266]
+CellTagsIndexPosition[    207996,       4263]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1268,329 +1268,6 @@ Cell["Extension Model", "Subsection",
 
 Cell[CellGroupData[{
 
-Cell["Gevertz et al.", "Subsubsection",
- CellChangeTimes->{{3.634846565477247*^9, 3.634846574669773*^9}}],
-
-Cell["\<\
-Here we implement the extension model as described in the paper by Gevertz et \
-al, in section \[OpenCurlyDoubleQuote]Step 3\[CloseCurlyDoubleQuote]. We \
-begin by analysing the differential equation 28 from the paper, solving it \
-symbolically, once, so we don\[CloseCurlyQuote]t have to recompute that each \
-and every cycle.\
-\>", "Text",
- CellChangeTimes->{{3.634488518357082*^9, 3.6344885655211487`*^9}, {
-  3.6345001475215034`*^9, 3.6345001557025146`*^9}, {3.634501540703477*^9, 
-  3.63450158546854*^9}, {3.6345016166505837`*^9, 3.634501617351585*^9}, {
-  3.6348465859414177`*^9, 3.6348465917887526`*^9}, {3.6348466343251853`*^9, 
-  3.6348466595406275`*^9}}],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"extensionAnalysis", "[", 
-   RowBox[{"sT_", ",", " ", "\[Tau]_"}], "]"}], " ", ":=", " ", 
-  RowBox[{"Module", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"diffeq", ",", " ", "s", ",", " ", "soln", ",", " ", "vmax"}], 
-     "}"}], ",", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"diffeq", " ", "=", " ", 
-      RowBox[{
-       RowBox[{"-", 
-        RowBox[{"D", "[", 
-         RowBox[{
-          RowBox[{"s", "[", "\[Tau]", "]"}], ",", "\[Tau]"}], "]"}]}], " ", 
-       "\[Equal]", " ", 
-       RowBox[{"vmax", " ", 
-        RowBox[{
-         RowBox[{"s", "[", "\[Tau]", "]"}], " ", "/", " ", 
-         RowBox[{"(", 
-          RowBox[{"km", " ", "+", " ", 
-           RowBox[{"s", "[", "\[Tau]", "]"}]}], ")"}]}]}]}]}], ";", " ", 
-     RowBox[{"(*", " ", 
-      RowBox[{"eqn", " ", "28"}], " ", "*)"}], "\[IndentingNewLine]", 
-     RowBox[{"soln", " ", "=", " ", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"DSolve", "[", 
-         RowBox[{
-          RowBox[{"{", 
-           RowBox[{"diffeq", ",", " ", 
-            RowBox[{
-             RowBox[{"s", "[", "0", "]"}], "\[Equal]", "sT"}]}], "}"}], ",", 
-          " ", 
-          RowBox[{"s", "[", "\[Tau]", "]"}], ",", " ", "\[Tau]"}], "]"}], "[", 
-        RowBox[{"[", "1", "]"}], "]"}], " ", "//", " ", "Quiet"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"s", "[", "\[Tau]", "]"}], " ", "/.", " ", 
-      RowBox[{"(", 
-       RowBox[{"soln", " ", "/.", " ", 
-        RowBox[{"vmax", " ", "\[Rule]", " ", 
-         RowBox[{"kcat", " ", "*", " ", "e"}]}]}], ")"}]}]}]}], 
-   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
- RowBox[{"sAnalysis", " ", "=", " ", 
-  RowBox[{"extensionAnalysis", "[", 
-   RowBox[{"sT", ",", " ", "\[Tau]ext"}], "]"}]}]}], "Input",
- CellChangeTimes->{{3.63449673751966*^9, 3.6344967877537303`*^9}, {
-   3.634496821756778*^9, 3.6344969190459146`*^9}, {3.6344969513499603`*^9, 
-   3.6344970664591217`*^9}, {3.6344971103951836`*^9, 3.634497171380269*^9}, {
-   3.6344972908024855`*^9, 3.634497407312649*^9}, {3.634497516164802*^9, 
-   3.6344977341981087`*^9}, {3.634497812907219*^9, 3.634497894035333*^9}, {
-   3.6344979248683767`*^9, 3.634497929438383*^9}, {3.6344981296826644`*^9, 
-   3.634498167105717*^9}, {3.6344982805078764`*^9, 3.634498337833957*^9}, {
-   3.634498381809019*^9, 3.634498409092057*^9}, {3.6344985158722076`*^9, 
-   3.6344985750772905`*^9}, {3.634498630143368*^9, 3.6344986364933767`*^9}, 
-   3.634498726176504*^9, {3.6344987652905593`*^9, 3.634498853139683*^9}, {
-   3.634498885883729*^9, 3.6344989586228313`*^9}, 3.634499138414084*^9, {
-   3.6344992689972677`*^9, 3.6344993615373974`*^9}, {3.634499394430444*^9, 
-   3.6344994431345124`*^9}, {3.634499481713567*^9, 3.634499631285777*^9}, {
-   3.6344996639788227`*^9, 3.63449969075086*^9}, {3.6344997428359337`*^9, 
-   3.634499987901278*^9}, {3.634500062858383*^9, 3.6345000665083885`*^9}, 
-   3.6345001391204915`*^9, {3.634656030021838*^9, 3.6346560336018434`*^9}}],
-
-Cell["With that in hand, the extension efficiency can be computed.", "Text",
- CellChangeTimes->{{3.634501623802594*^9, 3.634501636733612*^9}}],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"extensionEfficiencyGevertz", "[", 
-   RowBox[{"annealingOutput_", ",", " ", "constants_"}], "]"}], " ", ":=", 
-  " ", 
-  RowBox[{"Module", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{
-     "sTT", ",", " ", "s", ",", " ", "vmax", ",", " ", "eqn30", ",", " ", 
-      "result"}], "}"}], ",", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"sTT", " ", "=", " ", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"readState", "[", 
-         RowBox[{"annealingOutput", ",", "ft"}], "]"}], " ", "+", " ", 
-        RowBox[{"readState", "[", 
-         RowBox[{"annealingOutput", ",", "ru"}], "]"}]}], ")"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"s", " ", "=", " ", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"sAnalysis", " ", "/.", " ", 
-         RowBox[{"sT", " ", "\[Rule]", " ", "sTT"}]}], " ", "//.", " ", 
-        "constants"}], " ", "/.", " ", 
-       RowBox[{"e", " ", "\[Rule]", " ", 
-        RowBox[{"readState", "[", 
-         RowBox[{"annealingOutput", ",", "e"}], "]"}]}]}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"result", " ", "=", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"(", 
-         RowBox[{"sTT", " ", "-", "s"}], ")"}], " ", "/", " ", "sTT"}], " ", 
-       RowBox[{"(*", " ", 
-        RowBox[{"eqn", " ", "32"}], " ", "*)"}], " ", "//", " ", "Quiet"}]}], 
-     ";", "\[IndentingNewLine]", 
-     RowBox[{"If", "[", 
-      RowBox[{
-       RowBox[{"result", " ", "===", " ", "Indeterminate"}], ",", " ", 
-       RowBox[{"result", " ", "=", " ", "0"}]}], "]"}], ";", 
-     "\[IndentingNewLine]", "result"}]}], "\[IndentingNewLine]", 
-   "]"}]}], "\[IndentingNewLine]", 
- RowBox[{"extensionEfficiencyGevertz", "[", 
-  RowBox[{
-   RowBox[{"annealKinetic", "[", 
-    RowBox[{
-     RowBox[{"state0", "[", "]"}], ",", " ", "constants"}], "]"}], ",", " ", 
-   "constants"}], "]"}]}], "Input",
- CellChangeTimes->{{3.6344885504801273`*^9, 3.634488621318227*^9}, 
-   3.634488995388079*^9, {3.634489343631383*^9, 3.634489345172385*^9}, {
-   3.6344934285668344`*^9, 3.634493430036837*^9}, {3.63449383346187*^9, 
-   3.6344941157042675`*^9}, {3.634494165888338*^9, 3.634494173009348*^9}, {
-   3.6344942070823956`*^9, 3.634494269150483*^9}, {3.634494569309998*^9, 
-   3.6344945977840385`*^9}, {3.634494662230129*^9, 3.634494683532159*^9}, 
-   3.6344956981361427`*^9, {3.6344990014678917`*^9, 3.634499001857892*^9}, {
-   3.6345000573573756`*^9, 3.634500130520479*^9}, {3.63450164942663*^9, 
-   3.6345016541166363`*^9}, {3.6345733188316264`*^9, 3.634573319661628*^9}, {
-   3.6345753747940955`*^9, 3.634575375384096*^9}, 3.6345755707403708`*^9, {
-   3.6345764310375805`*^9, 3.6345764312875805`*^9}, {3.6345772823848457`*^9, 
-   3.6345773114568863`*^9}, 3.634655894160647*^9, {3.6346564501904306`*^9, 
-   3.6346564506104307`*^9}, 3.63465747804989*^9, {3.634662069704929*^9, 
-   3.6346620700325294`*^9}, 3.6346693427704086`*^9, {3.634672418987358*^9, 
-   3.6346724193163767`*^9}, {3.634674259358621*^9, 3.634674311382597*^9}, 
-   3.634674361806481*^9, {3.634674392086213*^9, 3.6346744162535954`*^9}, {
-   3.634674578388869*^9, 3.6346746603965592`*^9}, 3.6346747062551823`*^9, {
-   3.6346748317223587`*^9, 3.634674940618587*^9}, {3.6346947320385914`*^9, 
-   3.6346947599421873`*^9}, {3.634696824816292*^9, 3.6346968259273553`*^9}, {
-   3.6348465482592626`*^9, 3.634846548265263*^9}, {3.635173349967526*^9, 
-   3.6351733530563316`*^9}, 3.6351734043024216`*^9, {3.6352156793349347`*^9, 
-   3.635215702231244*^9}, {3.6352157340390635`*^9, 3.635215805450148*^9}, {
-   3.65911414722423*^9, 3.659114154793056*^9}, 3.6591146508872476`*^9}],
-
-Cell["\<\
-We compute the result of the extension step (which becomes, after an implicit \
-denaturing, the input to the next annealing step). Note that this can be \
-modified to support one of three different enzyme degredation models.\
-\>", "Text",
- CellChangeTimes->{{3.6344886500722675`*^9, 3.634488653522272*^9}, {
-  3.6344886863853188`*^9, 3.6344887198203654`*^9}, {3.6344889400120015`*^9, 
-  3.634488959464029*^9}, {3.634501681559675*^9, 3.634501703562706*^9}}],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"extensionStepGevertz", "[", 
-   RowBox[{"annealingOutputA_", ",", " ", "constants_", ",", " ", 
-    RowBox[{"options_:", " ", 
-     RowBox[{"{", "}"}]}]}], "]"}], " ", ":=", " ", 
-  RowBox[{"Module", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"annealingOutput", ",", " ", "extEfficiency"}], "}"}], ",", 
-    "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{
-      RowBox[{
-      "Free", " ", "up", " ", "any", " ", "eft", " ", "and", " ", "eru", " ", 
-       "complexes", " ", "to", " ", "fit", " ", "into", " ", "the", " ", 
-       "Gevertz", " ", 
-       RowBox[{"model", ".", " ", 
-        RowBox[{"Shouldn", "'"}]}], "t", " ", "actually", " ", "*", "be", "*",
-        " ", "any"}], ";", " ", 
-      RowBox[{
-       RowBox[{"we", "'"}], "re", " ", "just", " ", "being", " ", 
-       RowBox[{"complete", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"annealingOutput", " ", "=", " ", 
-      RowBox[{"preempt", "[", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{"{", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"ft", " ", "\[Rule]", " ", 
-           RowBox[{
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutputA", ",", " ", "ft"}], "]"}], " ", "+", 
-            " ", 
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutputA", ",", " ", "eft"}], "]"}]}]}], ",", 
-          "\[IndentingNewLine]", 
-          RowBox[{"ru", " ", "\[Rule]", " ", 
-           RowBox[{
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutputA", ",", " ", "ru"}], "]"}], " ", "+", 
-            " ", 
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutputA", ",", " ", "eru"}], "]"}]}]}], ",", 
-          "\[IndentingNewLine]", 
-          RowBox[{"e", " ", "\[Rule]", " ", 
-           RowBox[{
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutputA", ",", " ", "e"}], "]"}], " ", "+", 
-            " ", 
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutputA", ",", " ", "eft"}], "]"}], " ", "+", 
-            " ", 
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutputA", ",", " ", "eru"}], "]"}], " ", "+", 
-            " ", 
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutputA", ",", " ", "efr"}], "]"}]}]}], ",", 
-          "\[IndentingNewLine]", 
-          RowBox[{"eft", " ", "\[Rule]", " ", "0"}], ",", " ", 
-          RowBox[{"eru", " ", "\[Rule]", " ", "0"}], ",", " ", 
-          RowBox[{"efr", "\[Rule]", " ", "0"}]}], "\[IndentingNewLine]", 
-         "}"}], ",", " ", "annealingOutputA"}], "]"}]}], ";", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"(*", " ", 
-      RowBox[{"now", " ", 
-       RowBox[{"it", "'"}], "s", " ", 
-       RowBox[{"simple", ":", " ", 
-        RowBox[{
-        "ft", " ", "and", " ", "ru", " ", "extend", " ", "at", " ", "the", 
-         " ", "computed", " ", "efficiency"}]}]}], " ", "*)"}], 
-     "\[IndentingNewLine]", 
-     RowBox[{"extEfficiency", " ", "=", " ", 
-      RowBox[{"extensionEfficiencyGevertz", "[", 
-       RowBox[{"annealingOutput", ",", " ", "constants"}], "]"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"preempt", "[", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{"{", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"ft", " ", "\[Rule]", " ", 
-           RowBox[{
-            RowBox[{"(", 
-             RowBox[{"1", " ", "-", " ", "extEfficiency"}], ")"}], " ", 
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutput", ",", "ft"}], "]"}]}]}], ",", 
-          "\[IndentingNewLine]", 
-          RowBox[{"ru", " ", "\[Rule]", " ", 
-           RowBox[{
-            RowBox[{"(", 
-             RowBox[{"1", " ", "-", " ", "extEfficiency"}], ")"}], " ", 
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutput", ",", "ru"}], "]"}]}]}], ",", 
-          "\[IndentingNewLine]", 
-          RowBox[{"tu", " ", "\[Rule]", " ", 
-           RowBox[{
-            RowBox[{"readState", "[", 
-             RowBox[{"annealingOutput", ",", " ", "tu"}], "]"}], " ", "+", 
-            " ", 
-            RowBox[{"extEfficiency", " ", 
-             RowBox[{"readState", "[", 
-              RowBox[{"annealingOutput", ",", "ru"}], "]"}]}], " ", "+", "  ", 
-            RowBox[{"extEfficiency", " ", 
-             RowBox[{"readState", "[", 
-              RowBox[{"annealingOutput", ",", "ft"}], "]"}]}]}]}], ",", 
-          "\[IndentingNewLine]", 
-          RowBox[{"\[Epsilon]Ext", " ", "\[Rule]", " ", "extEfficiency"}]}], 
-         "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
-        "annealingOutput"}], "\[IndentingNewLine]", "]"}], "  ", "//", " ", 
-      "makeState"}]}]}], "\[IndentingNewLine]", 
-   "]"}]}], "\[IndentingNewLine]", 
- RowBox[{"extensionStepGevertz", "[", 
-  RowBox[{
-   RowBox[{"annealKinetic", "[", 
-    RowBox[{
-     RowBox[{"state0", "[", "]"}], ",", "constants"}], "]"}], ",", " ", 
-   "constants"}], "]"}]}], "Input",
- CellChangeTimes->{{3.634488963044034*^9, 3.6344889862170663`*^9}, {
-   3.6344890259441223`*^9, 3.6344892409394245`*^9}, {3.634489277163289*^9, 
-   3.634489315208343*^9}, {3.6344894392815175`*^9, 3.6344894402915187`*^9}, {
-   3.634490104457263*^9, 3.6344901165282803`*^9}, {3.63449068844862*^9, 
-   3.63449068848862*^9}, {3.634492945194155*^9, 3.6344929692561893`*^9}, {
-   3.6344930628653207`*^9, 3.6344931004983735`*^9}, {3.6344931439434347`*^9, 
-   3.634493182787489*^9}, {3.634493260059598*^9, 3.634493267849609*^9}, {
-   3.6344933978537917`*^9, 3.634493437887848*^9}, {3.6344957550722227`*^9, 
-   3.63449576718324*^9}, {3.634495896863423*^9, 3.634495904453433*^9}, {
-   3.6345003719508195`*^9, 3.634500382882835*^9}, {3.6345004174168835`*^9, 
-   3.6345005226080313`*^9}, {3.6345011088038673`*^9, 
-   3.6345011088938675`*^9}, {3.634501707893712*^9, 3.6345017336567483`*^9}, 
-   3.6345041132573414`*^9, {3.6345042540145397`*^9, 3.63450426862656*^9}, {
-   3.634508819783537*^9, 3.6345088235747538`*^9}, {3.6345089614286385`*^9, 
-   3.634508987869151*^9}, {3.6345090642695208`*^9, 3.6345090839336452`*^9}, {
-   3.634577407147021*^9, 3.6345774698231087`*^9}, 3.634667910821024*^9, 
-   3.6346723569818115`*^9, {3.634694505649643*^9, 3.6346945098258815`*^9}, {
-   3.634694771607855*^9, 3.6346947717918653`*^9}, {3.6348467681998425`*^9, 
-   3.634846768207843*^9}, {3.634861993762695*^9, 3.634862008835557*^9}, {
-   3.634862386600164*^9, 3.634862460296379*^9}, {3.6349212736989813`*^9, 
-   3.63492130151383*^9}, {3.6350224176552353`*^9, 3.6350224318512607`*^9}, {
-   3.6350959553925347`*^9, 3.6350959588167305`*^9}, {3.635132000243182*^9, 
-   3.635132012914907*^9}, {3.6351320536422367`*^9, 3.635132055658352*^9}, {
-   3.6351734282016635`*^9, 3.6351735705217133`*^9}, {3.6351736007077665`*^9, 
-   3.635173656977065*^9}, {3.6351884842144628`*^9, 3.635188494598057*^9}, {
-   3.6351954816226916`*^9, 3.6351955987983932`*^9}, {3.6351956598858876`*^9, 
-   3.635195879764464*^9}, {3.6351959184276752`*^9, 3.6351959276122007`*^9}, {
-   3.6351965020480566`*^9, 3.635196525920422*^9}, {3.635196573103121*^9, 
-   3.635196574863221*^9}, {3.635215639478655*^9, 3.6352156452469845`*^9}, {
-   3.635215825717307*^9, 3.6352158277574244`*^9}, {3.6355467490660205`*^9, 
-   3.6355467641680417`*^9}, {3.6591141472432575`*^9, 
-   3.6591141548300734`*^9}, {3.659114417313981*^9, 3.659114418458373*^9}, {
-   3.659120185654153*^9, 3.659120186733675*^9}, {3.65912192068793*^9, 
-   3.6591219236387186`*^9}}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
 Cell["Michaelis Menton extension model from first principles", "Subsubsection",
  CellChangeTimes->{{3.634864892115471*^9, 3.634864905364229*^9}, {
   3.635015784050548*^9, 3.6350157877205534`*^9}}],
@@ -2172,8 +1849,8 @@ Cell[BoxData[{
   RowBox[{"run", "[", 
    RowBox[{"3", ",", " ", 
     RowBox[{"state0", "[", "]"}], ",", " ", "annealKinetic", ",", " ", 
-    "extensionStepGevertz", ",", " ", "constants"}], "]"}], " ", "//", " ", 
-  "ColumnForm"}]}], "Input",
+    "extensionStepMichaelisMention", ",", " ", "constants"}], "]"}], " ", "//",
+   " ", "ColumnForm"}]}], "Input",
  CellChangeTimes->{{3.6344897427412467`*^9, 3.6344897939463186`*^9}, {
    3.634489832180372*^9, 3.6344899027894726`*^9}, {3.6344904229462466`*^9, 
    3.6344904440102763`*^9}, {3.634490694078628*^9, 3.634490694128628*^9}, 
@@ -2230,8 +1907,8 @@ Cell[BoxData[{
    3.659114620267581*^9, 3.659114629770444*^9}, {3.65912015488708*^9, 
    3.659120155854642*^9}, {3.6591201960792484`*^9, 3.659120196822395*^9}, {
    3.6591214509988117`*^9, 3.6591214920502577`*^9}, {3.6591219286272244`*^9, 
-   3.6591219297027473`*^9}}]
-}, Closed]],
+   3.6591219297027473`*^9}, 3.659122569118888*^9}]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -4628,48 +4305,39 @@ Cell[37952, 910, 16714, 349, 1071, "Input"]
 Cell[CellGroupData[{
 Cell[54715, 1265, 105, 1, 38, "Subsection"],
 Cell[CellGroupData[{
-Cell[54845, 1270, 105, 1, 38, "Subsubsection"],
-Cell[54953, 1273, 674, 11, 48, "Text"],
-Cell[55630, 1286, 2996, 63, 131, "Input"],
-Cell[58629, 1351, 142, 1, 29, "Text"],
-Cell[58774, 1354, 3603, 72, 171, "Input"],
-Cell[62380, 1428, 466, 7, 29, "Text"],
-Cell[62849, 1437, 7556, 151, 471, "Input"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[70442, 1593, 196, 2, 38, "Subsubsection"],
-Cell[70641, 1597, 333, 6, 29, "Text"],
-Cell[70977, 1605, 366, 7, 29, "Text"],
-Cell[71346, 1614, 171, 3, 30, "Input"],
-Cell[71520, 1619, 10940, 212, 831, "Input"]
+Cell[54845, 1270, 196, 2, 38, "Subsubsection"],
+Cell[55044, 1274, 333, 6, 29, "Text"],
+Cell[55380, 1282, 366, 7, 29, "Text"],
+Cell[55749, 1291, 171, 3, 30, "Input"],
+Cell[55923, 1296, 10940, 212, 831, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[82509, 1837, 108, 1, 46, "Subsection"],
-Cell[82620, 1840, 277, 5, 29, "Text"],
-Cell[82900, 1847, 6640, 139, 391, "Input"]
+Cell[66912, 1514, 108, 1, 46, "Subsection"],
+Cell[67023, 1517, 277, 5, 29, "Text"],
+Cell[67303, 1524, 6640, 139, 391, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[89577, 1991, 242, 3, 38, "Subsection"],
-Cell[89822, 1996, 13287, 236, 1091, "Input"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[103146, 2237, 149, 2, 38, "Subsection"],
-Cell[CellGroupData[{
-Cell[103320, 2243, 103, 1, 38, "Subsubsection"],
-Cell[103426, 2246, 458, 12, 30, "Input"],
-Cell[103887, 2260, 46205, 952, 3531, "Input"]
+Cell[73980, 1668, 242, 3, 38, "Subsection"],
+Cell[74225, 1673, 13318, 236, 1091, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[150129, 3217, 100, 1, 38, "Subsubsection"],
-Cell[150232, 3220, 6375, 105, 291, "Input"],
-Cell[156610, 3327, 63648, 1179, 4051, "Input"]
+Cell[87580, 1914, 149, 2, 46, "Subsection"],
+Cell[CellGroupData[{
+Cell[87754, 1920, 103, 1, 38, "Subsubsection"],
+Cell[87860, 1923, 458, 12, 30, "Input"],
+Cell[88321, 1937, 46205, 952, 3531, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[134563, 2894, 100, 1, 38, "Subsubsection"],
+Cell[134666, 2897, 6375, 105, 291, "Input"],
+Cell[141044, 3004, 63648, 1179, 4051, "Input"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[220319, 4513, 150, 2, 67, "Section"],
-Cell[220472, 4517, 118, 2, 30, "Input"]
+Cell[204753, 4190, 150, 2, 67, "Section"],
+Cell[204906, 4194, 118, 2, 30, "Input"]
 }, Open  ]]
 }
 ]
