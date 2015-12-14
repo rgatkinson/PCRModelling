@@ -4799,7 +4799,7 @@ Cell[BoxData[
    3.659120265771693*^9}}]
 }, Open  ]]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -4812,7 +4812,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.6350178140329804`*^9, 3.635017816822984*^9}}]
 }, Open  ]]
 },
-WindowSize->{1231, 1548},
+WindowSize->{1395, 1548},
 WindowMargins->{{Automatic, -7}, {Automatic, 0}},
 CellContext->Notebook,
 InputAliases->{"intt" -> RowBox[{"\[Integral]", 
@@ -4920,7 +4920,7 @@ Cell[46470, 1075, 2204, 54, 235, "Input"],
 Cell[48677, 1131, 196, 4, 29, "Text"],
 Cell[48876, 1137, 574, 13, 51, "Input"],
 Cell[49453, 1152, 309, 6, 29, "Text"],
-Cell[49765, 1160, 16714, 349, 1091, "Input"]
+Cell[49765, 1160, 16714, 349, 1071, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -4964,9 +4964,9 @@ Cell[161811, 3466, 6989, 119, 291, "Input"],
 Cell[168803, 3587, 65079, 1211, 4251, "Input"]
 }, Open  ]]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 Cell[CellGroupData[{
-Cell[233943, 4805, 150, 2, 67, "Section"],
+Cell[233943, 4805, 150, 2, 54, "Section"],
 Cell[234096, 4809, 118, 2, 30, "Input"]
 }, Open  ]]
 }
