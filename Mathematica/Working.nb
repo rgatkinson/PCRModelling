@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    240250,       4971]
-NotebookOptionsPosition[    234482,       4818]
-NotebookOutlinePosition[    237481,       4885]
-CellTagsIndexPosition[    237438,       4882]
+NotebookDataLength[    239383,       4952]
+NotebookOptionsPosition[    233615,       4799]
+NotebookOutlinePosition[    236614,       4866]
+CellTagsIndexPosition[    236571,       4863]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3489,8 +3489,6 @@ Cell[BoxData[
          RowBox[{"{", 
           RowBox[{
            RowBox[{"n", "\[Rule]", " ", "35"}], ",", " ", 
-           RowBox[{"annealStepName", " ", "\[Rule]", " ", "\"\<kinetic\>\""}],
-            ",", " ", 
            RowBox[{
            "extnStepName", " ", "\[Rule]", " ", "\"\<Michaelis-Menton\>\""}], 
            ",", " ", 
@@ -3510,13 +3508,8 @@ Cell[BoxData[
          RowBox[{"state0", "[", 
           RowBox[{"#", ",", " ", "modelConstants"}], "]"}], "&"}], " ", "/@", 
         " ", "targetConcentrations"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"annealStep", " ", "=", " ", 
-       RowBox[{"Switch", "[", 
-        RowBox[{
-         RowBox[{"annealStepName", " ", "//.", " ", "runOptions"}], ",", " ", 
-         "\"\<kinetic\>\"", ",", " ", "annealKinetic", ",", " ", 
-         "\"\<equilibrium\>\"", ",", " ", "annealEquilibrium"}], "]"}]}], ";",
-       "\[IndentingNewLine]", 
+      RowBox[{"annealStep", " ", "=", " ", "annealKinetic"}], ";", 
+      "\[IndentingNewLine]", 
       RowBox[{"extnStep", " ", "=", " ", 
        RowBox[{"Switch", "[", 
         RowBox[{
@@ -3587,7 +3580,8 @@ Cell[BoxData[
    3.6353658210641837`*^9, 3.635365873683076*^9}, {3.6353663649210424`*^9, 
    3.6353663705838523`*^9}, {3.6353745384049873`*^9, 
    3.6353745399049892`*^9}, {3.6353775199671783`*^9, 3.63537757055225*^9}, {
-   3.6353784234134493`*^9, 3.6353784377654696`*^9}, 3.6353786019997*^9}],
+   3.6353784234134493`*^9, 3.6353784377654696`*^9}, 3.6353786019997*^9, {
+   3.659121736570822*^9, 3.6591217414755015`*^9}, 3.659121823223837*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -3597,22 +3591,21 @@ Cell[BoxData[
     RowBox[{"{", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"annealExtensionName", " ", "=", " ", "\"\<separate\>\""}], ",",
-       "annealStepName", ",", "annealTime", ",", "columnSpacer", ",", 
-      "concFormat", ",", "concUnits", ",", "customGraphExpr1", ",", 
-      "customGraphExpr2", ",", "customGraphExpr3", ",", "eng", ",", 
-      "extensionTime", ",", "extnStepName", ",", "initLinear", ",", "initLog",
-       ",", "kdFormat", ",", "kdUnits", ",", "kM", ",", "koff3Var", ",", 
-      "koff4Var", ",", " ", "koffFormat", ",", "koffUnits", ",", "kon3Var", 
-      ",", " ", "kon4Var", ",", " ", "konFormat", ",", "konUnits", ",", "kS", 
-      ",", "linearControl", ",", "logControl", ",", "logEnzyme", ",", 
-      "logkcat", ",", "logkoffft", ",", "logkoffru", ",", "logkoffu", ",", 
-      " ", "logkoffd", ",", " ", "logkoffScale", ",", "logkonft", ",", 
-      "logkonru", ",", "logkonScale", ",", "logkonu", ",", " ", "logkond", 
-      ",", " ", "logP1", ",", "logP2", ",", "makeControlledSetterBar", ",", 
-      "makeCustomGraphInput", ",", "manipulateLinearVar", ",", 
-      "manipulateLinearVar2", ",", "manipulateLogVar", ",", 
-      "manipulateLogVar2", ",", "modelConstants", ",", "n", ",", "noUnits", 
-      ",", "polymeraseAnnealEfficiencyVar", ",", 
+       "annealTime", ",", "columnSpacer", ",", "concFormat", ",", "concUnits",
+       ",", "customGraphExpr1", ",", "customGraphExpr2", ",", 
+      "customGraphExpr3", ",", "eng", ",", "extensionTime", ",", 
+      "extnStepName", ",", "initLinear", ",", "initLog", ",", "kdFormat", ",",
+       "kdUnits", ",", "kM", ",", "koff3Var", ",", "koff4Var", ",", " ", 
+      "koffFormat", ",", "koffUnits", ",", "kon3Var", ",", " ", "kon4Var", 
+      ",", " ", "konFormat", ",", "konUnits", ",", "kS", ",", "linearControl",
+       ",", "logControl", ",", "logEnzyme", ",", "logkcat", ",", "logkoffft", 
+      ",", "logkoffru", ",", "logkoffu", ",", " ", "logkoffd", ",", " ", 
+      "logkoffScale", ",", "logkonft", ",", "logkonru", ",", "logkonScale", 
+      ",", "logkonu", ",", " ", "logkond", ",", " ", "logP1", ",", "logP2", 
+      ",", "makeControlledSetterBar", ",", "makeCustomGraphInput", ",", 
+      "manipulateLinearVar", ",", "manipulateLinearVar2", ",", 
+      "manipulateLogVar", ",", "manipulateLogVar2", ",", "modelConstants", 
+      ",", "n", ",", "noUnits", ",", "polymeraseAnnealEfficiencyVar", ",", 
       RowBox[{"prevModelConstants", "=", 
        RowBox[{"{", "}"}]}], ",", 
       RowBox[{"prevRunOptions", "=", 
@@ -3984,9 +3977,6 @@ Cell[BoxData[
             RowBox[{"Symbol", "[", "\"\<n\>\"", "]"}], " ", "\[Rule]", " ", 
             "n"}], ",", " ", "\[IndentingNewLine]", 
            RowBox[{
-            RowBox[{"Symbol", "[", "\"\<annealStepName\>\"", "]"}], " ", 
-            "\[Rule]", " ", "annealStepName"}], ",", "\[IndentingNewLine]", 
-           RowBox[{
             RowBox[{"Symbol", "[", "\"\<extnStepName\>\"", "]"}], " ", 
             "\[Rule]", " ", "extnStepName"}], ",", "\[IndentingNewLine]", 
            RowBox[{
@@ -4008,9 +3998,7 @@ Cell[BoxData[
             "\[Rule]", " ", "useLinearPlots"}], ",", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{"Symbol", "[", "\"\<showU\>\"", "]"}], " ", "\[Rule]", 
-            " ", 
-            RowBox[{"annealStepName", "\[Equal]", "\"\<kinetic\>\""}]}], ",", 
-           "\[IndentingNewLine]", 
+            " ", "True"}], ",", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{"Symbol", "[", "\"\<targetConcentrations\>\"", "]"}], " ",
              "\[Rule]", " ", "targetConcentrations"}], ",", 
@@ -4125,15 +4113,8 @@ Cell[BoxData[
             "}"}], ",", "\[IndentingNewLine]", 
            RowBox[{"{", "\[IndentingNewLine]", 
             RowBox[{
-            "\"\<anneal algorithm\>\"", ",", " ", "\[IndentingNewLine]", 
-             RowBox[{"makeControlledSetterBar", "[", 
-              RowBox[{"annealStepName", ",", " ", 
-               RowBox[{"{", 
-                RowBox[{"\"\<kinetic\>\"", ",", " ", "\"\<equilibrium\>\""}], 
-                "}"}], ",", " ", 
-               RowBox[{
-               "annealExtensionName", "\[Equal]", "\"\<separate\>\""}]}], 
-              "]"}], ",", "\[IndentingNewLine]", 
+            "\"\<<empty>\>\"", ",", " ", "\[IndentingNewLine]", 
+             "\"\<<empty>\>\"", ",", "\[IndentingNewLine]", 
              RowBox[{"(*", 
               RowBox[{"columnSpacer", ","}], "*)"}], " ", 
              RowBox[{"Item", "[", 
@@ -4368,9 +4349,8 @@ Cell[BoxData[
               "\"\<anneal time\>\"", ",", " ", "annealTime", ",", " ", 
                "\[Tau]ann", ",", " ", "0", ",", " ", "120", ",", " ", 
                "timeUnits", ",", " ", 
-               RowBox[{"Enabled", " ", "\[Rule]", " ", 
-                RowBox[{"annealStepName", "\[Equal]", "\"\<kinetic\>\""}]}]}],
-               "]"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"Enabled", " ", "\[Rule]", " ", "True"}]}], "]"}], ",",
+              "\[IndentingNewLine]", 
              RowBox[{"(*", 
               RowBox[{"columnSpacer", ","}], "*)"}], " ", 
              RowBox[{"manipulateLinearVar2", "[", 
@@ -4800,8 +4780,9 @@ Cell[BoxData[
    3.6591146296299353`*^9}, {3.65911952008743*^9, 3.6591195461735334`*^9}, {
    3.6591196783350286`*^9, 3.659119691848968*^9}, {3.6591200678199153`*^9, 
    3.6591200841051025`*^9}, 3.659120159854952*^9, {3.6591202447095237`*^9, 
-   3.659120265771693*^9}}]
-}, Open  ]]
+   3.659120265771693*^9}, {3.6591217563780746`*^9, 3.659121762876356*^9}, {
+   3.659121795226757*^9, 3.6591218257620125`*^9}}]
+}, Closed]]
 }, Open  ]]
 }, Open  ]],
 
@@ -4964,14 +4945,14 @@ Cell[115718, 2510, 46205, 952, 3531, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[161960, 3467, 100, 1, 38, "Subsubsection"],
-Cell[162063, 3470, 6989, 119, 291, "Input"],
-Cell[169055, 3591, 65079, 1211, 4151, "Input"]
-}, Open  ]]
+Cell[162063, 3470, 6712, 113, 291, "Input"],
+Cell[168778, 3585, 64489, 1198, 4131, "Input"]
+}, Closed]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[234195, 4809, 150, 2, 67, "Section"],
-Cell[234348, 4813, 118, 2, 30, "Input"]
+Cell[233328, 4790, 150, 2, 67, "Section"],
+Cell[233481, 4794, 118, 2, 30, "Input"]
 }, Open  ]]
 }
 ]
