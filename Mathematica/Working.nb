@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    252504,       5471]
-NotebookOptionsPosition[    246462,       5303]
-NotebookOutlinePosition[    249462,       5370]
-CellTagsIndexPosition[    249419,       5367]
+NotebookDataLength[    252835,       5476]
+NotebookOptionsPosition[    246716,       5305]
+NotebookOutlinePosition[    249716,       5372]
+CellTagsIndexPosition[    249673,       5369]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -2409,6 +2409,8 @@ Cell[BoxData[
   "ColumnForm"}]], "Input",
  CellChangeTimes->{{3.6355378756266546`*^9, 3.635537878837659*^9}}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{
@@ -2421,8 +2423,9 @@ Cell[BoxData[{
      RowBox[{"{", " ", 
       RowBox[{
       "\[Tau]Extension", ",", " ", "inits", ",", " ", "diffeqs", ",", " ", 
-       "eqns", ",", " ", "soln", ",", " ", "ftStart", ",", " ", "ruStart", 
-       ",", " ", "endOf", ",", "extEfficiency"}], " ", "}"}], ",", 
+       "vars", ",", " ", "eqns", ",", " ", "soln", ",", " ", "extensibles", 
+       ",", " ", "extensibleStart", ",", "  ", "extensibleEnd", ",", " ", 
+       "endOf", ",", "ends", ",", " ", "extEfficiency"}], " ", "}"}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"\[Tau]Extension", " ", "=", " ", 
@@ -2430,61 +2433,26 @@ Cell[BoxData[{
       "\[IndentingNewLine]", 
       RowBox[{"diffeqs", " ", "=", " ", "extensionMichaelisMentionDiffEqs"}], 
       ";", "\[IndentingNewLine]", 
-      RowBox[{"ftStart", " ", "=", " ", 
-       RowBox[{"readState", "[", 
-        RowBox[{"annealingOutput", ",", " ", "ft"}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"ruStart", " ", "=", " ", 
-       RowBox[{"readState", "[", 
-        RowBox[{"annealingOutput", ",", " ", "ru"}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
+      RowBox[{"vars", " ", "=", " ", 
+       RowBox[{"{", " ", 
+        RowBox[{
+        "fr", ",", " ", "\[IndentingNewLine]", "ft", ",", " ", "ru", ",", " ",
+          "tu", ",", "\[IndentingNewLine]", "fc", ",", " ", "rd", ",", " ", 
+         "cd", ",", "\[IndentingNewLine]", "e", ",", "  ", "efr", " ", ",", 
+         "\[IndentingNewLine]", "eft", ",", "eru", ",", " ", "etu", ",", " ", 
+         "\[IndentingNewLine]", "efc", ",", " ", "erd", ",", " ", "ecd"}], 
+        "}"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"inits", " ", "=", " ", 
-       RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
         RowBox[{
          RowBox[{
-          RowBox[{"ft", "[", "0", "]"}], " ", "\[Equal]", " ", "ftStart"}], 
-         ",", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"ru", "[", "0", "]"}], " ", "\[Equal]", " ", "ruStart"}], 
-         ",", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"e", "[", "0", "]"}], " ", "\[Equal]", " ", 
+          RowBox[{"#", "[", "0", "]"}], " ", "\[Equal]", " ", 
           RowBox[{"readState", "[", 
-           RowBox[{"annealingOutput", ",", "e"}], "]"}]}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"eft", "[", "0", "]"}], " ", "\[Equal]", " ", 
-          RowBox[{"readState", "[", 
-           RowBox[{"annealingOutput", ",", "eft"}], "]"}]}], ",", " ", 
-         "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"eru", "[", "0", "]"}], " ", "\[Equal]", " ", 
-          RowBox[{"readState", "[", 
-           RowBox[{"annealingOutput", ",", "eru"}], "]"}]}], ",", " ", 
-         "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"tu", "[", "0", "]"}], " ", "\[Equal]", " ", 
-          RowBox[{"readState", "[", 
-           RowBox[{"annealingOutput", ",", " ", "tu"}], "]"}]}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"fr", "[", "0", "]"}], " ", "\[Equal]", " ", 
-          RowBox[{"readState", "[", 
-           RowBox[{"annealingOutput", ",", " ", "fr"}], "]"}]}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"etu", "[", "0", "]"}], " ", "\[Equal]", " ", 
-          RowBox[{"readState", "[", 
-           RowBox[{"annealingOutput", ",", "etu"}], "]"}]}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"efr", "[", "0", "]"}], " ", "\[Equal]", " ", 
-          RowBox[{"readState", "[", 
-           RowBox[{"annealingOutput", ",", " ", "efr"}], "]"}]}]}], 
-        "\[IndentingNewLine]", "}"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"annealingOutput", ",", " ", "#"}], "]"}]}], "&"}], " ", "/@",
+         " ", "vars"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"eqns", " ", "=", " ", 
        RowBox[{"diffeqs", " ", "~", "Join", "~", " ", "inits"}]}], ";", 
-      "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"soln", " ", "=", " ", 
        RowBox[{
         RowBox[{"NDSolve", "[", 
@@ -2493,11 +2461,7 @@ Cell[BoxData[{
           RowBox[{
            RowBox[{
             RowBox[{"#", "[", "\[Tau]", "]"}], "&"}], " ", "/@", " ", 
-           RowBox[{"{", 
-            RowBox[{
-            "ft", ",", " ", "ru", ",", " ", "eft", ",", " ", "eru", ",", " ", 
-             "e", ",", " ", "tu", ",", " ", "fr", ",", " ", "etu", ",", " ", 
-             "efr"}], "}"}]}], ",", " ", 
+           "vars"}], ",", " ", 
           RowBox[{"{", 
            RowBox[{"\[Tau]", ",", " ", "0", ",", " ", "\[Tau]Extension"}], 
            "}"}], ",", " ", "\[IndentingNewLine]", 
@@ -2507,6 +2471,18 @@ Cell[BoxData[{
           "\[IndentingNewLine]", 
           RowBox[{"MaxStepFraction", "\[Rule]", ".001"}]}], "]"}], "[", 
         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"extensibles", " ", "=", " ", 
+       RowBox[{"{", " ", 
+        RowBox[{"ft", ",", " ", "ru", ",", " ", "fc", ",", " ", "rd"}], " ", 
+        "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"extensibleStart", " ", "=", " ", 
+       RowBox[{"Total", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"readState", "[", 
+           RowBox[{"annealingOutput", ",", "#"}], "]"}], "&"}], " ", "/@", 
+         " ", "extensibles"}], "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"endOf", "[", "sym_", "]"}], " ", ":=", " ", 
        RowBox[{
@@ -2514,6 +2490,13 @@ Cell[BoxData[{
          RowBox[{"sym", "[", "\[Tau]", "]"}], " ", "/.", " ", "soln"}], " ", "/.",
          " ", 
         RowBox[{"\[Tau]", " ", "\[Rule]", " ", "\[Tau]Extension"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"extensibleEnd", " ", "=", " ", 
+       RowBox[{"Total", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"endOf", "[", "#", "]"}], "&"}], " ", "/@", " ", 
+         "extensibles"}], "]"}]}], ";", "\[IndentingNewLine]", 
       "\[IndentingNewLine]", 
       RowBox[{"(*", " ", 
        RowBox[{
@@ -2525,49 +2508,28 @@ Cell[BoxData[{
        RowBox[{
         RowBox[{
          RowBox[{"(", 
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{"ftStart", " ", "+", " ", "ruStart"}], ")"}], " ", "-", 
-           " ", 
-           RowBox[{"(", 
-            RowBox[{
-             RowBox[{"endOf", "[", "ft", "]"}], " ", "+", " ", 
-             RowBox[{"endOf", "[", "ru", "]"}]}], ")"}]}], ")"}], " ", "/", 
-         " ", 
-         RowBox[{"(", 
-          RowBox[{"ftStart", " ", "+", " ", "ruStart"}], ")"}]}], " ", "//", 
-        " ", "Quiet"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"extensibleStart", " ", "-", " ", "extensibleEnd"}], ")"}], 
+         " ", "/", " ", "extensibleStart"}], " ", "//", " ", "Quiet"}]}], ";",
+       "\[IndentingNewLine]", 
       RowBox[{"If", "[", 
        RowBox[{
         RowBox[{"extEfficiency", "\[Equal]", "Indeterminate"}], ",", " ", 
         RowBox[{"extEfficiency", "=", "0"}]}], "]"}], ";", 
       "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"preempt", "[", "\[IndentingNewLine]", 
+      RowBox[{"ends", " ", "=", " ", 
+       RowBox[{
         RowBox[{
-         RowBox[{"{", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"ft", " ", "\[Rule]", " ", 
-            RowBox[{"endOf", "[", "ft", "]"}]}], ",", "\[IndentingNewLine]", 
-           RowBox[{"ru", " ", "\[Rule]", " ", 
-            RowBox[{"endOf", "[", "ru", "]"}]}], ",", "\[IndentingNewLine]", 
-           RowBox[{"e", " ", "\[Rule]", " ", 
-            RowBox[{"endOf", "[", "e", "]"}]}], ",", "\[IndentingNewLine]", 
-           RowBox[{"eft", "\[Rule]", " ", 
-            RowBox[{"endOf", "[", "eft", "]"}]}], ",", "\[IndentingNewLine]", 
-           RowBox[{"eru", " ", "\[Rule]", " ", 
-            RowBox[{"endOf", "[", "eru", "]"}]}], ",", "\[IndentingNewLine]", 
-           RowBox[{"tu", " ", "\[Rule]", " ", 
-            RowBox[{"endOf", "[", "tu", "]"}]}], ",", "\[IndentingNewLine]", 
-           RowBox[{"fr", "\[Rule]", " ", 
-            RowBox[{"endOf", "[", "fr", "]"}]}], ",", "\[IndentingNewLine]", 
-           RowBox[{"etu", " ", "\[Rule]", " ", 
-            RowBox[{"endOf", "[", "etu", "]"}]}], ",", "\[IndentingNewLine]", 
-           RowBox[{"efr", " ", "\[Rule]", " ", 
-            RowBox[{"endOf", "[", "efr", "]"}]}], ",", "\[IndentingNewLine]", 
-           RowBox[{"\[Epsilon]Ext", " ", "\[Rule]", " ", "extEfficiency"}]}], 
-          "\[IndentingNewLine]", "}"}], ",", "annealingOutput"}], "]"}], " ", 
-       "//", " ", "makeState"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+         RowBox[{"#", " ", "\[Rule]", " ", 
+          RowBox[{"endOf", "[", "#", "]"}]}], "&"}], "/@", " ", "vars"}]}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"preempt", "[", 
+        RowBox[{
+         RowBox[{"ends", " ", "~", "Join", "~", " ", "\[IndentingNewLine]", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{"\[Epsilon]Ext", " ", "\[Rule]", " ", "extEfficiency"}], 
+           "\[IndentingNewLine]", "}"}]}], ",", "annealingOutput"}], "]"}], 
+       " ", "//", " ", "makeState"}]}]}], "\[IndentingNewLine]", "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"extensionStepMichaelisMention", "[", 
@@ -2621,7 +2583,47 @@ Cell[BoxData[{
    3.6355379428357487`*^9}, {3.659114147392414*^9, 3.659114154978609*^9}, {
    3.659114244000536*^9, 3.6591142480253963`*^9}, {3.65911441975595*^9, 
    3.6591144273068957`*^9}, {3.659120146126663*^9, 3.659120149965703*^9}, {
-   3.6591201875914593`*^9, 3.6591201910790887`*^9}}]
+   3.6591201875914593`*^9, 3.6591201910790887`*^9}, {3.659292654922948*^9, 
+   3.6592927660323257`*^9}, {3.6592928077918625`*^9, 3.659292975759372*^9}, {
+   3.659293200839235*^9, 3.6592932685445137`*^9}, 3.659293822019029*^9, {
+   3.659293884739127*^9, 3.6592938867971835`*^9}, {3.659293998172407*^9, 
+   3.6592941624897256`*^9}, {3.659294195754012*^9, 3.6592942183645124`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"c", "\[Rule]", "1.3526444006832096`*^-11"}], ",", 
+   RowBox[{"cd", "\[Rule]", "1.592725163633441`*^-10"}], ",", 
+   RowBox[{"cStart", "\[Rule]", "1.`*^-10"}], ",", 
+   RowBox[{"d", "\[Rule]", "1.357448214483146`*^-11"}], ",", 
+   RowBox[{"dStart", "\[Rule]", "1.`*^-10"}], ",", 
+   RowBox[{"e", "\[Rule]", "2.399862653820729`*^-7"}], ",", 
+   RowBox[{"ecd", "\[Rule]", "0.`"}], ",", 
+   RowBox[{"efc", "\[Rule]", "6.7906265272613144`*^-12"}], ",", 
+   RowBox[{"efr", "\[Rule]", "0.`"}], ",", 
+   RowBox[{"eft", "\[Rule]", "7.857286392016853`*^-14"}], ",", 
+   RowBox[{"erd", "\[Rule]", "6.786852029190068`*^-12"}], ",", 
+   RowBox[{"eru", "\[Rule]", "7.85665037506739`*^-14"}], ",", 
+   RowBox[{"etu", "\[Rule]", "0.`"}], ",", 
+   RowBox[{"f", "\[Rule]", "9.99812612984509`*^-7"}], ",", 
+   RowBox[{"fc", "\[Rule]", "4.270652043232836`*^-18"}], ",", 
+   RowBox[{"fr", "\[Rule]", "9.996253094631306`*^-11"}], ",", 
+   RowBox[{"ft", "\[Rule]", "4.9414786764698543`*^-20"}], ",", 
+   RowBox[{"r", "\[Rule]", "9.99812661103597`*^-7"}], ",", 
+   RowBox[{"rd", "\[Rule]", "4.268278246376914`*^-18"}], ",", 
+   RowBox[{"ru", "\[Rule]", "4.9410786828795944`*^-20"}], ",", 
+   RowBox[{"t", "\[Rule]", "5.574805932060016`*^-19"}], ",", 
+   RowBox[{"tStart", "\[Rule]", "1.`*^-12"}], ",", 
+   RowBox[{"tu", "\[Rule]", "1.842777972552894`*^-12"}], ",", 
+   RowBox[{"u", "\[Rule]", "8.150352801114534`*^-17"}], ",", 
+   RowBox[{"uStart", "\[Rule]", "1.`*^-12"}], ",", 
+   RowBox[{"\[Epsilon]Ann", "\[Rule]", "0.8653507425800216`"}], ",", 
+   RowBox[{"\[Epsilon]Ext", "\[Rule]", "0.999999950585161`"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.659294048196667*^9, 3.65929411567012*^9, 3.65929416313246*^9, {
+   3.6592941967695937`*^9, 3.659294219736869*^9}}]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -5302,7 +5304,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{1168, 1548},
-WindowMargins->{{Automatic, 595}, {Automatic, 0}},
+WindowMargins->{{Automatic, 284}, {Automatic, 0}},
 CellContext->Notebook,
 InputAliases->{"intt" -> RowBox[{"\[Integral]", 
      RowBox[{"\[SelectionPlaceholder]", 
@@ -5443,35 +5445,38 @@ Cell[96743, 2385, 196, 2, 38, "Subsubsection"],
 Cell[96942, 2389, 333, 6, 29, "Text"],
 Cell[97278, 2397, 366, 7, 29, "Text"],
 Cell[97647, 2406, 171, 3, 30, "Input"],
-Cell[97821, 2411, 10940, 212, 831, "Input"]
+Cell[CellGroupData[{
+Cell[97843, 2413, 9354, 176, 691, "Input"],
+Cell[107200, 2591, 1803, 33, 148, "Output"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[108810, 2629, 108, 1, 46, "Subsection"],
-Cell[108921, 2632, 277, 5, 48, "Text"],
-Cell[109201, 2639, 6640, 139, 391, "Input"]
+Cell[109064, 2631, 108, 1, 46, "Subsection"],
+Cell[109175, 2634, 277, 5, 48, "Text"],
+Cell[109455, 2641, 6640, 139, 391, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[115878, 2783, 242, 3, 38, "Subsection"],
-Cell[116123, 2788, 13318, 236, 1091, "Input"]
+Cell[116132, 2785, 242, 3, 38, "Subsection"],
+Cell[116377, 2790, 13318, 236, 1091, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[129478, 3029, 149, 2, 38, "Subsection"],
+Cell[129732, 3031, 149, 2, 38, "Subsection"],
 Cell[CellGroupData[{
-Cell[129652, 3035, 103, 1, 38, "Subsubsection"],
-Cell[129758, 3038, 458, 12, 30, "Input"],
-Cell[130219, 3052, 46205, 952, 3531, "Input"]
+Cell[129906, 3037, 103, 1, 38, "Subsubsection"],
+Cell[130012, 3040, 458, 12, 30, "Input"],
+Cell[130473, 3054, 46205, 952, 3531, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[176461, 4009, 100, 1, 32, "Subsubsection"],
-Cell[176564, 4012, 6375, 105, 248, "Input"],
-Cell[182942, 4119, 63172, 1168, 3301, "Input"]
+Cell[176715, 4011, 100, 1, 32, "Subsubsection"],
+Cell[176818, 4014, 6375, 105, 248, "Input"],
+Cell[183196, 4121, 63172, 1168, 3301, "Input"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[246175, 5294, 150, 2, 67, "Section"],
-Cell[246328, 5298, 118, 2, 30, "Input"]
+Cell[246429, 5296, 150, 2, 67, "Section"],
+Cell[246582, 5300, 118, 2, 30, "Input"]
 }, Open  ]]
 }
 ]
