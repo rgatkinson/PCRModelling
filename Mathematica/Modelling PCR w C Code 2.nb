@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    313526,       6897]
-NotebookOptionsPosition[    305166,       6671]
-NotebookOutlinePosition[    308166,       6738]
-CellTagsIndexPosition[    308123,       6735]
+NotebookDataLength[    315943,       6971]
+NotebookOptionsPosition[    307379,       6739]
+NotebookOutlinePosition[    310379,       6806]
+CellTagsIndexPosition[    310336,       6803]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -140,6 +140,340 @@ Cell[BoxData[{
   3.634862924819948*^9}, {3.635103000661501*^9, 3.635103019809596*^9}, {
   3.635130676146448*^9, 3.635130796666342*^9}, {3.6351311334886065`*^9, 
   3.635131138407888*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Chemistry", "Subsection",
+ CellChangeTimes->{{3.634849268721864*^9, 3.634849271306012*^9}}],
+
+Cell["\<\
+The main point of this section is, given a system of chemical equations, to \
+be able to compute the set of differential rate equations that govern that \
+system.\
+\>", "Text",
+ CellChangeTimes->{{3.6348504642652454`*^9, 3.634850510185872*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Notation`AutoLoadNotationPalette", "=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Needs", "[", "\"\<Notation`\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Notation", "[", 
+  RowBox[{
+   TemplateBox[{RowBox[{"a_", " ", 
+       UnderoverscriptBox[
+        TagBox[
+         TagBox["\[Equilibrium]", DisplayForm], DisplayForm], "kr_", "kf_"], 
+       " ", "b_"}]},
+    "NotationTemplateTag"], " ", "\[DoubleLongLeftRightArrow]", " ", 
+   TemplateBox[{RowBox[{"TChemicalReaction", "[", 
+       RowBox[{
+         RowBox[{"TChemicalExpr", "[", "a_", "]"}], ",", 
+         RowBox[{"TChemicalExpr", "[", "b_", "]"}], ",", "kf_", ",", " ", 
+         "kr_"}], "]"}]},
+    "NotationTemplateTag"]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Notation", "[", 
+  RowBox[{
+   TemplateBox[{RowBox[{"a_", 
+       OverscriptBox["\[RightArrow]", "k_"], "b_"}]},
+    "NotationTemplateTag"], " ", "\[DoubleLongLeftRightArrow]", " ", 
+   TemplateBox[{RowBox[{"TChemicalReaction", "[", 
+       RowBox[{
+         RowBox[{"TChemicalExpr", "[", "a_", "]"}], ",", 
+         RowBox[{"TChemicalExpr", "[", "b_", "]"}], ",", "k_", ",", " ", 
+         "0"}], "]"}]},
+    "NotationTemplateTag"]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"AddInputAlias", "[", 
+  RowBox[{"\"\<rxn\>\"", "\[Rule]", 
+   TemplateBox[{OverscriptBox["\[RightArrow]", "\[Placeholder]"]},
+    "NotationTemplateTag"]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"AddInputAlias", "[", 
+  RowBox[{"\"\<erxn\>\"", "\[Rule]", 
+   TemplateBox[{RowBox[{
+       UnderoverscriptBox[
+        TagBox[
+         TagBox["\[Equilibrium]", DisplayForm], DisplayForm], 
+        "\[Placeholder]", "\[Placeholder]"], " "}]},
+    "NotationTemplateTag"]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6348492985245686`*^9, 3.6348492997236376`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"chemicalReactionQ", "[", "x_", "]"}], " ", ":=", " ", 
+   RowBox[{"MatchQ", "[", 
+    RowBox[{"x", ",", " ", 
+     RowBox[{"TChemicalReaction", "[", 
+      RowBox[{"_", ",", "_", ",", "_", ",", "_"}], "]"}]}], "]"}]}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"chemicalSystemPattern", " ", "=", " ", 
+    RowBox[{"{", " ", 
+     RowBox[{"Repeated", "[", 
+      RowBox[{"_", "?", "chemicalReactionQ"}], "]"}], " ", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"allSpecies", "[", 
+   RowBox[{"TChemicalExpr", "[", "e_", "]"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Variables", "[", "e", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"allSpecies", "[", 
+   RowBox[{"TChemicalReaction", "[", 
+    RowBox[{"r_", ",", "p_", ",", " ", "_", ",", " ", "_"}], "]"}], "]"}], 
+  " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"allSpecies", "[", "r", "]"}], " ", "\[Union]", " ", 
+   RowBox[{"allSpecies", "[", "p", "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"allSpecies", "[", 
+     RowBox[{"system", " ", ":", " ", "chemicalSystemPattern"}], "]"}], " ", ":=",
+     " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"allSpecies", "[", "#", "]"}], " ", "&"}], " ", "/@", " ", 
+       "system"}], " ", "//", " ", "Flatten"}], " ", "//", " ", "Union"}]}], 
+   ";"}], " ", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"allParameters", "[", 
+   RowBox[{"rxn", ":", "  ", 
+    RowBox[{"TChemicalReaction", "[", 
+     RowBox[{"r_", ",", "p_", ",", " ", "kf_", ",", " ", "kr_"}], "]"}]}], 
+   "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Variables", "[", "kf", "]"}], ",", " ", 
+      RowBox[{"Variables", "[", "kr", "]"}]}], "}"}], " ", "//", " ", 
+    "Flatten"}], " ", "//", " ", "Union"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"allParameters", "[", 
+     RowBox[{"system", " ", ":", " ", "chemicalSystemPattern"}], "]"}], " ", ":=",
+     " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"allParameters", "[", "#", "]"}], " ", "&"}], " ", "/@", " ", 
+       "system"}], " ", "//", " ", "Flatten"}], " ", "//", " ", "Union"}]}], 
+   ";"}], " ", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"stochiometry", "[", 
+   RowBox[{
+    RowBox[{"TChemicalExpr", "[", "expr_", "]"}], ",", " ", "species_"}], 
+   "]"}], " ", ":=", " ", 
+  RowBox[{"Coefficient", "[", 
+   RowBox[{"expr", ",", " ", "species"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"stochiometry", "[", 
+   RowBox[{"e", ":", " ", 
+    RowBox[{"TChemicalExpr", "[", "_", "]"}]}], "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Nu]", "#"], "\[Rule]", 
+     RowBox[{"stochiometry", "[", 
+      RowBox[{"e", ",", " ", "#"}], "]"}]}], "&"}], " ", "/@", " ", 
+   RowBox[{"allSpecies", "[", "e", "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"stochiometry", "[", 
+   RowBox[{"rxn", ":", "  ", 
+    RowBox[{"TChemicalReaction", "[", 
+     RowBox[{"r_", ",", "p_", ",", " ", "_", ",", " ", "_"}], "]"}]}], "]"}], 
+  " ", ":=", "  ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Nu]", "#"], "\[Rule]", 
+     RowBox[{
+      RowBox[{"stochiometry", "[", 
+       RowBox[{"p", ",", " ", "#"}], "]"}], "-", 
+      RowBox[{"stochiometry", "[", 
+       RowBox[{"r", ",", " ", "#"}], "]"}]}]}], " ", "&"}], " ", "/@", " ", 
+   RowBox[{"allSpecies", "[", "rxn", "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"stochiometry", "[", 
+    RowBox[{"system", " ", ":", " ", "chemicalSystemPattern"}], "]"}], " ", ":=",
+    " ", 
+   RowBox[{
+    RowBox[{"Function", "[", 
+     RowBox[{
+      RowBox[{"{", "species", "}"}], ",", " ", 
+      RowBox[{
+       SubscriptBox["\[Nu]", "species"], "\[Rule]", " ", 
+       RowBox[{"Total", "[", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             SubscriptBox["\[Nu]", "species"], " ", "/.", 
+             RowBox[{"stochiometry", "[", "#", "]"}]}], " ", "/.", " ", 
+            RowBox[{
+             SubscriptBox["\[Nu]", "species"], "\[Rule]", " ", "0"}]}], "&"}],
+           "/@", " ", "system"}], ")"}], "]"}]}]}], "]"}], "/@", " ", 
+    RowBox[{"allSpecies", "[", "system", "]"}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rate", "[", 
+   RowBox[{
+    RowBox[{"e", ":", " ", 
+     RowBox[{"TChemicalExpr", "[", "_", "]"}]}], ",", " ", "k_"}], "]"}], " ",
+   ":=", " ", 
+  RowBox[{"k", " ", "*", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"Times", " ", "@@", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["#", 
+          SubscriptBox["\[Nu]", "#"]], "&"}], "/@", " ", 
+        RowBox[{"allSpecies", "[", "e", "]"}]}], ")"}]}], " ", "/.", " ", 
+     RowBox[{"stochiometry", "[", "e", "]"}]}], 
+    ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rate", "[", 
+    RowBox[{"rxn", " ", ":", " ", 
+     RowBox[{"TChemicalReaction", "[", 
+      RowBox[{"r_", ",", "p_", ",", " ", "kf_", ",", " ", "kr_"}], "]"}]}], 
+    "]"}], " ", ":=", 
+   RowBox[{
+    RowBox[{"rate", "[", 
+     RowBox[{"r", ",", "kf"}], "]"}], " ", "-", " ", 
+    RowBox[{"rate", "[", 
+     RowBox[{"p", ",", "kr"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rate", "[", 
+   RowBox[{
+    RowBox[{"rxn", " ", ":", " ", 
+     RowBox[{"TChemicalReaction", "[", 
+      RowBox[{"_", ",", "_", ",", "_", ",", "_"}], "]"}]}], ",", " ", 
+    "species_"}], "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"rate", "[", "rxn", "]"}], " ", "*", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[Nu]", 
+       RowBox[{"species", " "}]], "/.", " ", 
+      RowBox[{"stochiometry", "[", "rxn", "]"}]}], " ", "/.", " ", 
+     RowBox[{
+      SubscriptBox["\[Nu]", 
+       RowBox[{"species", " "}]], "\[Rule]", " ", "0"}]}], 
+    ")"}]}]}]}], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"rateEqns", "[", 
+   RowBox[{
+    RowBox[{"rxn_", "?", "chemicalReactionQ"}], ",", " ", "t_"}], "]"}], " ", 
+  ":=", " ", 
+  RowBox[{"rates", "[", 
+   RowBox[{
+    RowBox[{"{", "rxn", "}"}], ",", " ", "t"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rateEqns", "[", 
+   RowBox[{
+    RowBox[{"system", " ", ":", " ", "chemicalSystemPattern"}], ",", " ", 
+    "t_", ",", " ", "optionsSeq___Rule"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{"options", ",", "  ", "systemSpecies", ",", " ", "exprs"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"options", " ", "=", " ", 
+      RowBox[{"preempt", "[", 
+       RowBox[{
+        RowBox[{"{", " ", "optionsSeq", " ", "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"WasteSpecies", " ", "\[Rule]", " ", 
+          RowBox[{"{", "}"}]}], "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"systemSpecies", " ", "=", " ", 
+      RowBox[{"allSpecies", "[", "system", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"systemSpecies", " ", "=", " ", 
+      RowBox[{"Intersection", "[", 
+       RowBox[{"systemSpecies", ",", " ", 
+        RowBox[{"Complement", "[", 
+         RowBox[{"systemSpecies", ",", " ", 
+          RowBox[{"(", 
+           RowBox[{"WasteSpecies", " ", "/.", " ", "options"}], ")"}]}], 
+         "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Function", "[", 
+       RowBox[{
+        RowBox[{"{", "species", "}"}], ",", " ", 
+        RowBox[{
+         RowBox[{"D", "[", 
+          RowBox[{
+           RowBox[{"species", "[", "t", "]"}], ",", "t"}], "]"}], " ", "==", 
+         " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Total", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"rate", "[", 
+               RowBox[{"#", ",", " ", "species"}], "]"}], "&"}], "/@", " ", 
+             "system"}], "]"}], " ", "/.", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#", " ", "\[Rule]", " ", 
+               RowBox[{"#", "[", "t", "]"}]}], "&"}], " ", "/@", " ", 
+             "systemSpecies"}], ")"}]}], ")"}]}]}], "]"}], "/@", 
+      "systemSpecies"}]}]}], " ", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6348494258278503`*^9, 3.634849432539234*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rateEqns", "[", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"S", "+", " ", "G"}], " ", 
+       OverscriptBox["\[RightArrow]", "k"], " ", 
+       RowBox[{"P", " ", "+", " ", "W1"}]}], ",", " ", 
+      RowBox[{
+       RowBox[{"P", " ", "+", " ", "R"}], " ", 
+       OverscriptBox["\[RightArrow]", "q"], " ", 
+       RowBox[{"F", " ", "+", " ", "W2"}]}]}], "}"}], ",", " ", "\[Tau]", ",",
+     " ", 
+    RowBox[{"WasteSpecies", "\[Rule]", " ", 
+     RowBox[{"{", 
+      RowBox[{"W1", ",", " ", "W2"}], "}"}]}]}], "]"}], " ", "//", " ", 
+  "TableForm"}]], "Input",
+ CellChangeTimes->{{3.6348495618736315`*^9, 3.634849562265654*^9}}],
+
+Cell[BoxData[
+ RowBox[{"stochiometry", "[", 
+  RowBox[{"{", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"S", "+", " ", "G"}], " ", 
+     OverscriptBox["\[RightArrow]", "k"], " ", 
+     RowBox[{"P", " ", "+", " ", "W1"}]}], ",", " ", 
+    RowBox[{
+     RowBox[{"P", " ", "+", " ", "R"}], " ", 
+     OverscriptBox["\[RightArrow]", "q"], " ", 
+     RowBox[{"F", " ", "+", " ", "W2"}]}], ",", " ", 
+    RowBox[{
+     RowBox[{"A", " ", "+", " ", "B"}], " ", 
+     OverscriptBox["\[RightArrow]", "d"], "C"}]}], "}"}], "]"}]], "Input"]
 }, Closed]]
 }, Open  ]],
 
@@ -1910,8 +2244,144 @@ Cell[BoxData[{
   3.661895005702481*^9, 3.661895007545393*^9}, {3.661895182091064*^9, 
   3.661895183949585*^9}, {3.661895763134291*^9, 3.6618957638519163`*^9}, {
   3.661895984286701*^9, 3.661895986597254*^9}, {3.6618960487197647`*^9, 
-  3.6618960497745113`*^9}, {3.6619614992831163`*^9, 3.661961507972214*^9}}]
-}, Closed]]
+  3.6618960497745113`*^9}, {3.6619614992831163`*^9, 3.661961507972214*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s look at some tests", "Text",
+ CellChangeTimes->{{3.662223648806017*^9, 3.662223651285655*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"chemicalSystem", " ", "=", " ", 
+   RowBox[{"{", " ", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"p1", " ", "+", " ", "t1"}], " ", 
+      UnderoverscriptBox[
+       TagBox[
+        TagBox["\[Equilibrium]",
+         DisplayForm],
+        DisplayForm], "koffh1", "konh1"], " ", "h1"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"p2", " ", "+", " ", "t2"}], " ", 
+      UnderoverscriptBox[
+       TagBox[
+        TagBox["\[Equilibrium]",
+         DisplayForm],
+        DisplayForm], "koffh2", "konh2"], " ", "h2"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"t1", " ", "+", " ", "t2"}], " ", 
+      UnderoverscriptBox[
+       TagBox[
+        TagBox["\[Equilibrium]",
+         DisplayForm],
+        DisplayForm], "koffu", "konu"], " ", "u"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"p1", " ", "+", "p2"}], " ", 
+      UnderoverscriptBox[
+       TagBox[
+        TagBox["\[Equilibrium]",
+         DisplayForm],
+        DisplayForm], "koffd", "kond"], " ", "d"}]}], "\[IndentingNewLine]", 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"odes", " ", "=", " ", 
+   RowBox[{"rateEqns", "[", 
+    RowBox[{"kineticAnnealingReactions", ",", "  ", "\[Tau]", ",", " ", 
+     RowBox[{"WasteSpecies", " ", "\[Rule]", " ", 
+      RowBox[{"{", "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"odes", " ", "//", " ", "ColumnForm"}]}], "Input",
+ CellChangeTimes->{{3.662223655579945*^9, 3.662223716213729*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"makeNumericalODE", "[", 
+   RowBox[{"odes", ",", " ", "euler"}], "]"}], " ", "//", " ", 
+  "ToCCodeString"}]], "Input",
+ CellChangeTimes->{{3.662223730230583*^9, 3.662223735301931*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Integration Into ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"]
+}], "Subsection",
+ CellChangeTimes->{{3.6622231042833576`*^9, 3.6622231111941338`*^9}, {
+  3.6622232684658613`*^9, 3.662223269742115*^9}, {3.662223300672682*^9, 
+  3.662223308032178*^9}}],
+
+Cell["\<\
+We define a helper function that executes a set of ODEs for a certain \
+duration of time starting from \
+\>", "Text",
+ CellChangeTimes->{{3.661957027989596*^9, 3.661957036628562*^9}, {
+   3.6619570677790384`*^9, 3.6619570824051275`*^9}, 3.662223100937006*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "ndRun", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ndRun", "[", 
+   RowBox[{
+   "diffeqs_", ",", " ", "inits_", ",", " ", "consts_", ",", " ", 
+    "duration_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "vars", ",", " ", "time", ",", " ", "solveFor", ",", " ", "interval", 
+      ",", " ", "eqns", ",", " ", "soln", ",", " ", "result"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"vars", " ", "=", " ", 
+      RowBox[{"odeVars", "[", "diffeqs", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"time", " ", "=", " ", 
+      RowBox[{"odeTime", "[", "diffeqs", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"interval", " ", "=", " ", 
+      RowBox[{"{", 
+       RowBox[{"time", ",", " ", "0", ",", " ", "duration"}], "}"}]}], ";", 
+     " ", "\[IndentingNewLine]", 
+     RowBox[{"solveFor", " ", "=", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", "time", "]"}], " ", "&"}], " ", "/@", " ", 
+       "vars"}]}], ";", " ", "\[IndentingNewLine]", 
+     RowBox[{"eqns", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"diffeqs", " ", "//.", " ", "consts"}], ")"}], " ", "~", 
+       "Join", "~", " ", "inits"}]}], ";", " ", "\[IndentingNewLine]", 
+     RowBox[{"soln", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"NDSolve", "[", 
+        RowBox[{
+        "eqns", ",", " ", "solveFor", ",", " ", "interval", ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"AccuracyGoal", "\[Rule]", "MachinePrecision"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"PrecisionGoal", "\[Rule]", "MachinePrecision"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"MaxStepFraction", "\[Rule]", ".001"}]}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", " ", "\[IndentingNewLine]", 
+     RowBox[{"result", " ", "=", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "\[Rule]", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"#", "[", "time", "]"}], " ", "/.", " ", "soln"}], 
+             ")"}], " ", "/.", " ", 
+            RowBox[{"time", "\[Rule]", "duration"}]}], ")"}]}], "&"}], "/@", 
+        " ", "vars"}], ")"}]}], ";", " ", "\[IndentingNewLine]", "result"}]}],
+    "]"}]}]}], "Input"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1919,340 +2389,6 @@ Cell[CellGroupData[{
 Cell["Code for the Model", "Section",
  CellChangeTimes->{{3.6348397084940505`*^9, 3.6348397089180746`*^9}, {
    3.63486890578404*^9, 3.6348689079761653`*^9}, 3.661961146729192*^9}],
-
-Cell[CellGroupData[{
-
-Cell["Chemistry", "Subsection",
- CellChangeTimes->{{3.634849268721864*^9, 3.634849271306012*^9}}],
-
-Cell["\<\
-The main point of this section is, given a system of chemical equations, to \
-be able to compute the set of differential rate equations that govern that \
-system.\
-\>", "Text",
- CellChangeTimes->{{3.6348504642652454`*^9, 3.634850510185872*^9}}],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"Notation`AutoLoadNotationPalette", "=", "False"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{"Needs", "[", "\"\<Notation`\>\"", "]"}], "\[IndentingNewLine]", 
- RowBox[{"Notation", "[", 
-  RowBox[{
-   TemplateBox[{RowBox[{"a_", " ", 
-       UnderoverscriptBox[
-        TagBox[
-         TagBox["\[Equilibrium]", DisplayForm], DisplayForm], "kr_", "kf_"], 
-       " ", "b_"}]},
-    "NotationTemplateTag"], " ", "\[DoubleLongLeftRightArrow]", " ", 
-   TemplateBox[{RowBox[{"TChemicalReaction", "[", 
-       RowBox[{
-         RowBox[{"TChemicalExpr", "[", "a_", "]"}], ",", 
-         RowBox[{"TChemicalExpr", "[", "b_", "]"}], ",", "kf_", ",", " ", 
-         "kr_"}], "]"}]},
-    "NotationTemplateTag"]}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"Notation", "[", 
-  RowBox[{
-   TemplateBox[{RowBox[{"a_", 
-       OverscriptBox["\[RightArrow]", "k_"], "b_"}]},
-    "NotationTemplateTag"], " ", "\[DoubleLongLeftRightArrow]", " ", 
-   TemplateBox[{RowBox[{"TChemicalReaction", "[", 
-       RowBox[{
-         RowBox[{"TChemicalExpr", "[", "a_", "]"}], ",", 
-         RowBox[{"TChemicalExpr", "[", "b_", "]"}], ",", "k_", ",", " ", 
-         "0"}], "]"}]},
-    "NotationTemplateTag"]}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"AddInputAlias", "[", 
-  RowBox[{"\"\<rxn\>\"", "\[Rule]", 
-   TemplateBox[{OverscriptBox["\[RightArrow]", "\[Placeholder]"]},
-    "NotationTemplateTag"]}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"AddInputAlias", "[", 
-  RowBox[{"\"\<erxn\>\"", "\[Rule]", 
-   TemplateBox[{RowBox[{
-       UnderoverscriptBox[
-        TagBox[
-         TagBox["\[Equilibrium]", DisplayForm], DisplayForm], 
-        "\[Placeholder]", "\[Placeholder]"], " "}]},
-    "NotationTemplateTag"]}], "]"}]}], "Input",
- CellChangeTimes->{{3.6348492985245686`*^9, 3.6348492997236376`*^9}}],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{"chemicalReactionQ", "[", "x_", "]"}], " ", ":=", " ", 
-   RowBox[{"MatchQ", "[", 
-    RowBox[{"x", ",", " ", 
-     RowBox[{"TChemicalReaction", "[", 
-      RowBox[{"_", ",", "_", ",", "_", ",", "_"}], "]"}]}], "]"}]}], 
-  " "}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"chemicalSystemPattern", " ", "=", " ", 
-    RowBox[{"{", " ", 
-     RowBox[{"Repeated", "[", 
-      RowBox[{"_", "?", "chemicalReactionQ"}], "]"}], " ", "}"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"allSpecies", "[", 
-   RowBox[{"TChemicalExpr", "[", "e_", "]"}], "]"}], " ", ":=", " ", 
-  RowBox[{"Variables", "[", "e", "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"allSpecies", "[", 
-   RowBox[{"TChemicalReaction", "[", 
-    RowBox[{"r_", ",", "p_", ",", " ", "_", ",", " ", "_"}], "]"}], "]"}], 
-  " ", ":=", " ", 
-  RowBox[{
-   RowBox[{"allSpecies", "[", "r", "]"}], " ", "\[Union]", " ", 
-   RowBox[{"allSpecies", "[", "p", "]"}]}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"allSpecies", "[", 
-     RowBox[{"system", " ", ":", " ", "chemicalSystemPattern"}], "]"}], " ", ":=",
-     " ", 
-    RowBox[{
-     RowBox[{
-      RowBox[{
-       RowBox[{
-        RowBox[{"allSpecies", "[", "#", "]"}], " ", "&"}], " ", "/@", " ", 
-       "system"}], " ", "//", " ", "Flatten"}], " ", "//", " ", "Union"}]}], 
-   ";"}], " ", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"allParameters", "[", 
-   RowBox[{"rxn", ":", "  ", 
-    RowBox[{"TChemicalReaction", "[", 
-     RowBox[{"r_", ",", "p_", ",", " ", "kf_", ",", " ", "kr_"}], "]"}]}], 
-   "]"}], " ", ":=", " ", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"Variables", "[", "kf", "]"}], ",", " ", 
-      RowBox[{"Variables", "[", "kr", "]"}]}], "}"}], " ", "//", " ", 
-    "Flatten"}], " ", "//", " ", "Union"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"allParameters", "[", 
-     RowBox[{"system", " ", ":", " ", "chemicalSystemPattern"}], "]"}], " ", ":=",
-     " ", 
-    RowBox[{
-     RowBox[{
-      RowBox[{
-       RowBox[{
-        RowBox[{"allParameters", "[", "#", "]"}], " ", "&"}], " ", "/@", " ", 
-       "system"}], " ", "//", " ", "Flatten"}], " ", "//", " ", "Union"}]}], 
-   ";"}], " ", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"stochiometry", "[", 
-   RowBox[{
-    RowBox[{"TChemicalExpr", "[", "expr_", "]"}], ",", " ", "species_"}], 
-   "]"}], " ", ":=", " ", 
-  RowBox[{"Coefficient", "[", 
-   RowBox[{"expr", ",", " ", "species"}], "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"stochiometry", "[", 
-   RowBox[{"e", ":", " ", 
-    RowBox[{"TChemicalExpr", "[", "_", "]"}]}], "]"}], " ", ":=", " ", 
-  RowBox[{
-   RowBox[{
-    RowBox[{
-     SubscriptBox["\[Nu]", "#"], "\[Rule]", 
-     RowBox[{"stochiometry", "[", 
-      RowBox[{"e", ",", " ", "#"}], "]"}]}], "&"}], " ", "/@", " ", 
-   RowBox[{"allSpecies", "[", "e", "]"}]}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"stochiometry", "[", 
-   RowBox[{"rxn", ":", "  ", 
-    RowBox[{"TChemicalReaction", "[", 
-     RowBox[{"r_", ",", "p_", ",", " ", "_", ",", " ", "_"}], "]"}]}], "]"}], 
-  " ", ":=", "  ", 
-  RowBox[{
-   RowBox[{
-    RowBox[{
-     SubscriptBox["\[Nu]", "#"], "\[Rule]", 
-     RowBox[{
-      RowBox[{"stochiometry", "[", 
-       RowBox[{"p", ",", " ", "#"}], "]"}], "-", 
-      RowBox[{"stochiometry", "[", 
-       RowBox[{"r", ",", " ", "#"}], "]"}]}]}], " ", "&"}], " ", "/@", " ", 
-   RowBox[{"allSpecies", "[", "rxn", "]"}]}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"stochiometry", "[", 
-    RowBox[{"system", " ", ":", " ", "chemicalSystemPattern"}], "]"}], " ", ":=",
-    " ", 
-   RowBox[{
-    RowBox[{"Function", "[", 
-     RowBox[{
-      RowBox[{"{", "species", "}"}], ",", " ", 
-      RowBox[{
-       SubscriptBox["\[Nu]", "species"], "\[Rule]", " ", 
-       RowBox[{"Total", "[", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{
-           RowBox[{
-            RowBox[{
-             SubscriptBox["\[Nu]", "species"], " ", "/.", 
-             RowBox[{"stochiometry", "[", "#", "]"}]}], " ", "/.", " ", 
-            RowBox[{
-             SubscriptBox["\[Nu]", "species"], "\[Rule]", " ", "0"}]}], "&"}],
-           "/@", " ", "system"}], ")"}], "]"}]}]}], "]"}], "/@", " ", 
-    RowBox[{"allSpecies", "[", "system", "]"}]}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"rate", "[", 
-   RowBox[{
-    RowBox[{"e", ":", " ", 
-     RowBox[{"TChemicalExpr", "[", "_", "]"}]}], ",", " ", "k_"}], "]"}], " ",
-   ":=", " ", 
-  RowBox[{"k", " ", "*", 
-   RowBox[{"(", 
-    RowBox[{
-     RowBox[{"Times", " ", "@@", " ", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{
-         SuperscriptBox["#", 
-          SubscriptBox["\[Nu]", "#"]], "&"}], "/@", " ", 
-        RowBox[{"allSpecies", "[", "e", "]"}]}], ")"}]}], " ", "/.", " ", 
-     RowBox[{"stochiometry", "[", "e", "]"}]}], 
-    ")"}]}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"rate", "[", 
-    RowBox[{"rxn", " ", ":", " ", 
-     RowBox[{"TChemicalReaction", "[", 
-      RowBox[{"r_", ",", "p_", ",", " ", "kf_", ",", " ", "kr_"}], "]"}]}], 
-    "]"}], " ", ":=", 
-   RowBox[{
-    RowBox[{"rate", "[", 
-     RowBox[{"r", ",", "kf"}], "]"}], " ", "-", " ", 
-    RowBox[{"rate", "[", 
-     RowBox[{"p", ",", "kr"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"rate", "[", 
-   RowBox[{
-    RowBox[{"rxn", " ", ":", " ", 
-     RowBox[{"TChemicalReaction", "[", 
-      RowBox[{"_", ",", "_", ",", "_", ",", "_"}], "]"}]}], ",", " ", 
-    "species_"}], "]"}], " ", ":=", " ", 
-  RowBox[{
-   RowBox[{"rate", "[", "rxn", "]"}], " ", "*", " ", 
-   RowBox[{"(", 
-    RowBox[{
-     RowBox[{
-      SubscriptBox["\[Nu]", 
-       RowBox[{"species", " "}]], "/.", " ", 
-      RowBox[{"stochiometry", "[", "rxn", "]"}]}], " ", "/.", " ", 
-     RowBox[{
-      SubscriptBox["\[Nu]", 
-       RowBox[{"species", " "}]], "\[Rule]", " ", "0"}]}], 
-    ")"}]}]}]}], "Input"],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"rateEqns", "[", 
-   RowBox[{
-    RowBox[{"rxn_", "?", "chemicalReactionQ"}], ",", " ", "t_"}], "]"}], " ", 
-  ":=", " ", 
-  RowBox[{"rates", "[", 
-   RowBox[{
-    RowBox[{"{", "rxn", "}"}], ",", " ", "t"}], 
-   "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"rateEqns", "[", 
-   RowBox[{
-    RowBox[{"system", " ", ":", " ", "chemicalSystemPattern"}], ",", " ", 
-    "t_", ",", " ", "optionsSeq___Rule"}], "]"}], " ", ":=", " ", 
-  RowBox[{"Module", "[", 
-   RowBox[{
-    RowBox[{"{", " ", 
-     RowBox[{"options", ",", "  ", "systemSpecies", ",", " ", "exprs"}], 
-     "}"}], ",", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"options", " ", "=", " ", 
-      RowBox[{"preempt", "[", 
-       RowBox[{
-        RowBox[{"{", " ", "optionsSeq", " ", "}"}], ",", " ", 
-        RowBox[{"{", 
-         RowBox[{"WasteSpecies", " ", "\[Rule]", " ", 
-          RowBox[{"{", "}"}]}], "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"systemSpecies", " ", "=", " ", 
-      RowBox[{"allSpecies", "[", "system", "]"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"systemSpecies", " ", "=", " ", 
-      RowBox[{"Intersection", "[", 
-       RowBox[{"systemSpecies", ",", " ", 
-        RowBox[{"Complement", "[", 
-         RowBox[{"systemSpecies", ",", " ", 
-          RowBox[{"(", 
-           RowBox[{"WasteSpecies", " ", "/.", " ", "options"}], ")"}]}], 
-         "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"Function", "[", 
-       RowBox[{
-        RowBox[{"{", "species", "}"}], ",", " ", 
-        RowBox[{
-         RowBox[{"D", "[", 
-          RowBox[{
-           RowBox[{"species", "[", "t", "]"}], ",", "t"}], "]"}], " ", "==", 
-         " ", 
-         RowBox[{"(", 
-          RowBox[{
-           RowBox[{"Total", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"rate", "[", 
-               RowBox[{"#", ",", " ", "species"}], "]"}], "&"}], "/@", " ", 
-             "system"}], "]"}], " ", "/.", " ", 
-           RowBox[{"(", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"#", " ", "\[Rule]", " ", 
-               RowBox[{"#", "[", "t", "]"}]}], "&"}], " ", "/@", " ", 
-             "systemSpecies"}], ")"}]}], ")"}]}]}], "]"}], "/@", 
-      "systemSpecies"}]}]}], " ", "]"}]}]}], "Input",
- CellChangeTimes->{{3.6348494258278503`*^9, 3.634849432539234*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"rateEqns", "[", 
-   RowBox[{
-    RowBox[{"{", " ", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"S", "+", " ", "G"}], " ", 
-       OverscriptBox["\[RightArrow]", "k"], " ", 
-       RowBox[{"P", " ", "+", " ", "W1"}]}], ",", " ", 
-      RowBox[{
-       RowBox[{"P", " ", "+", " ", "R"}], " ", 
-       OverscriptBox["\[RightArrow]", "q"], " ", 
-       RowBox[{"F", " ", "+", " ", "W2"}]}]}], "}"}], ",", " ", "\[Tau]", ",",
-     " ", 
-    RowBox[{"WasteSpecies", "\[Rule]", " ", 
-     RowBox[{"{", 
-      RowBox[{"W1", ",", " ", "W2"}], "}"}]}]}], "]"}], " ", "//", " ", 
-  "TableForm"}]], "Input",
- CellChangeTimes->{{3.6348495618736315`*^9, 3.634849562265654*^9}}],
-
-Cell[BoxData[
- RowBox[{"stochiometry", "[", 
-  RowBox[{"{", " ", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"S", "+", " ", "G"}], " ", 
-     OverscriptBox["\[RightArrow]", "k"], " ", 
-     RowBox[{"P", " ", "+", " ", "W1"}]}], ",", " ", 
-    RowBox[{
-     RowBox[{"P", " ", "+", " ", "R"}], " ", 
-     OverscriptBox["\[RightArrow]", "q"], " ", 
-     RowBox[{"F", " ", "+", " ", "W2"}]}], ",", " ", 
-    RowBox[{
-     RowBox[{"A", " ", "+", " ", "B"}], " ", 
-     OverscriptBox["\[RightArrow]", "d"], "C"}]}], "}"}], "]"}]], "Input"]
-}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -2947,74 +3083,6 @@ reduced efficiency. \
   3.635129163227914*^9, 3.635129189779433*^9}, {3.661957022589785*^9, 
   3.661957026099785*^9}}],
 
-Cell["\<\
-First, though, we define a helper function that executes a set of ODEs for a \
-certain duration of time starting from \
-\>", "Text",
- CellChangeTimes->{{3.661957027989596*^9, 3.661957036628562*^9}, {
-  3.6619570677790384`*^9, 3.6619570824051275`*^9}}],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"Clear", "[", "ndRun", "]"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ndRun", "[", 
-   RowBox[{
-   "diffeqs_", ",", " ", "inits_", ",", " ", "consts_", ",", " ", 
-    "duration_"}], "]"}], " ", ":=", " ", 
-  RowBox[{"Module", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{
-     "vars", ",", " ", "time", ",", " ", "solveFor", ",", " ", "interval", 
-      ",", " ", "eqns", ",", " ", "soln", ",", " ", "result"}], "}"}], ",", 
-    "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"vars", " ", "=", " ", 
-      RowBox[{"odeVars", "[", "diffeqs", "]"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"time", " ", "=", " ", 
-      RowBox[{"odeTime", "[", "diffeqs", "]"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"interval", " ", "=", " ", 
-      RowBox[{"{", 
-       RowBox[{"time", ",", " ", "0", ",", " ", "duration"}], "}"}]}], ";", 
-     " ", "\[IndentingNewLine]", 
-     RowBox[{"solveFor", " ", "=", " ", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"#", "[", "time", "]"}], " ", "&"}], " ", "/@", " ", 
-       "vars"}]}], ";", " ", "\[IndentingNewLine]", 
-     RowBox[{"eqns", " ", "=", " ", 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{"diffeqs", " ", "//.", " ", "consts"}], ")"}], " ", "~", 
-       "Join", "~", " ", "inits"}]}], ";", " ", "\[IndentingNewLine]", 
-     RowBox[{"soln", " ", "=", " ", 
-      RowBox[{
-       RowBox[{"NDSolve", "[", 
-        RowBox[{
-        "eqns", ",", " ", "solveFor", ",", " ", "interval", ",", " ", 
-         "\[IndentingNewLine]", 
-         RowBox[{"AccuracyGoal", "\[Rule]", "MachinePrecision"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"PrecisionGoal", "\[Rule]", "MachinePrecision"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"MaxStepFraction", "\[Rule]", ".001"}]}], "]"}], "[", 
-       RowBox[{"[", "1", "]"}], "]"}]}], ";", " ", "\[IndentingNewLine]", 
-     RowBox[{"result", " ", "=", " ", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"#", "\[Rule]", " ", 
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"(", 
-             RowBox[{
-              RowBox[{"#", "[", "time", "]"}], " ", "/.", " ", "soln"}], 
-             ")"}], " ", "/.", " ", 
-            RowBox[{"time", "\[Rule]", "duration"}]}], ")"}]}], "&"}], "/@", 
-        " ", "vars"}], ")"}]}], ";", " ", "\[IndentingNewLine]", "result"}]}],
-    "]"}]}]}], "Input"],
-
 Cell[BoxData[{
  RowBox[{
   RowBox[{"annealKinetic", "[", 
@@ -3377,7 +3445,7 @@ Cell[BoxData[{
    3.661960411339721*^9}, {3.6619604557739534`*^9, 3.661960455974522*^9}, {
    3.661960811767558*^9, 3.661960868042638*^9}}]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -6670,7 +6738,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{1204, 1548},
-WindowMargins->{{Automatic, 526}, {Automatic, 0}},
+WindowMargins->{{Automatic, 488}, {Automatic, 0}},
 CellContext->Notebook,
 InputAliases->{"intt" -> RowBox[{"\[Integral]", 
      RowBox[{"\[SelectionPlaceholder]", 
@@ -6741,163 +6809,169 @@ Cell[CellGroupData[{
 Cell[580, 22, 92, 1, 67, "Section"],
 Cell[CellGroupData[{
 Cell[697, 27, 97, 1, 46, "Subsection"],
-Cell[797, 30, 1670, 27, 76, "Text"]
+Cell[797, 30, 1670, 27, 72, "Text"]
 }, Closed]],
 Cell[CellGroupData[{
 Cell[2504, 62, 166, 2, 38, "Subsection"],
-Cell[2673, 66, 2953, 75, 130, "Input"]
+Cell[2673, 66, 2953, 75, 123, "Input"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5663, 146, 97, 1, 38, "Subsection"],
+Cell[5763, 149, 254, 5, 29, "Text"],
+Cell[6020, 156, 1814, 42, 204, "Input"],
+Cell[7837, 200, 6080, 173, 394, "Input"],
+Cell[13920, 375, 2385, 63, 131, "Input"],
+Cell[16308, 440, 699, 19, 39, "Input"],
+Cell[17010, 461, 528, 14, 39, "Input"]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5675, 147, 107, 1, 67, "Section"],
-Cell[5785, 150, 290, 7, 29, "Text"],
-Cell[6078, 159, 75, 1, 30, "Input"],
+Cell[17587, 481, 107, 1, 67, "Section"],
+Cell[17697, 484, 290, 7, 29, "Text"],
+Cell[17990, 493, 75, 1, 30, "Input"],
 Cell[CellGroupData[{
-Cell[6178, 164, 264, 7, 46, "Subsection"],
-Cell[6445, 173, 283, 5, 29, "Text"],
-Cell[6731, 180, 2997, 63, 311, "Input"],
-Cell[9731, 245, 1552, 35, 191, "Input"],
-Cell[11286, 282, 1157, 29, 131, "Input"],
-Cell[12446, 313, 18748, 482, 951, "Input"],
-Cell[31197, 797, 97, 1, 29, "Text"],
-Cell[31297, 800, 2243, 64, 171, "Input"]
+Cell[18090, 498, 264, 7, 46, "Subsection"],
+Cell[18357, 507, 283, 5, 27, "Text"],
+Cell[18643, 514, 2997, 63, 295, "Input"],
+Cell[21643, 579, 1552, 35, 181, "Input"],
+Cell[23198, 616, 1157, 29, 124, "Input"],
+Cell[24358, 647, 18748, 482, 903, "Input"],
+Cell[43109, 1131, 97, 1, 27, "Text"],
+Cell[43209, 1134, 2243, 64, 162, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[33577, 869, 122, 1, 38, "Subsection"],
-Cell[33702, 872, 145, 1, 29, "Text"],
-Cell[33850, 875, 3092, 85, 271, "Input"],
-Cell[36945, 962, 404, 7, 48, "Text"],
-Cell[37352, 971, 1498, 38, 111, "Input"],
-Cell[38853, 1011, 194, 4, 29, "Text"],
-Cell[39050, 1017, 1168, 29, 111, "Input"],
-Cell[40221, 1048, 510, 8, 67, "Text"],
-Cell[40734, 1058, 3584, 84, 291, "Input"],
-Cell[44321, 1144, 249, 4, 29, "Text"],
-Cell[44573, 1150, 1517, 42, 91, "Input"],
-Cell[46093, 1194, 350, 6, 48, "Text"],
-Cell[46446, 1202, 942, 26, 51, "Input"],
-Cell[47391, 1230, 255, 3, 29, "Text"],
-Cell[47649, 1235, 736, 13, 30, "Input"]
+Cell[45489, 1203, 122, 1, 38, "Subsection"],
+Cell[45614, 1206, 145, 1, 27, "Text"],
+Cell[45762, 1209, 3092, 85, 257, "Input"],
+Cell[48857, 1296, 404, 7, 45, "Text"],
+Cell[49264, 1305, 1498, 38, 105, "Input"],
+Cell[50765, 1345, 194, 4, 27, "Text"],
+Cell[50962, 1351, 1168, 29, 105, "Input"],
+Cell[52133, 1382, 510, 8, 63, "Text"],
+Cell[52646, 1392, 3584, 84, 276, "Input"],
+Cell[56233, 1478, 249, 4, 27, "Text"],
+Cell[56485, 1484, 1517, 42, 86, "Input"],
+Cell[58005, 1528, 350, 6, 45, "Text"],
+Cell[58358, 1536, 942, 26, 48, "Input"],
+Cell[59303, 1564, 255, 3, 27, "Text"],
+Cell[59561, 1569, 736, 13, 28, "Input"]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[48434, 1254, 126, 1, 67, "Section"],
+Cell[60346, 1588, 126, 1, 67, "Section"],
 Cell[CellGroupData[{
-Cell[48585, 1259, 150, 2, 46, "Subsection"],
-Cell[48738, 1263, 136, 1, 29, "Text"],
-Cell[48877, 1266, 737, 17, 71, "Input"],
-Cell[49617, 1285, 122, 1, 29, "Text"],
-Cell[49742, 1288, 2308, 56, 211, "Input"],
-Cell[52053, 1346, 160, 2, 29, "Text"],
-Cell[52216, 1350, 634, 17, 71, "Input"]
+Cell[60497, 1593, 150, 2, 46, "Subsection"],
+Cell[60650, 1597, 136, 1, 27, "Text"],
+Cell[60789, 1600, 737, 17, 67, "Input"],
+Cell[61529, 1619, 122, 1, 27, "Text"],
+Cell[61654, 1622, 2308, 56, 200, "Input"],
+Cell[63965, 1680, 160, 2, 27, "Text"],
+Cell[64128, 1684, 634, 17, 67, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[52887, 1372, 114, 1, 38, "Subsection"],
-Cell[53004, 1375, 368, 8, 29, "Text"],
-Cell[53375, 1385, 3995, 100, 191, "Input"],
-Cell[57373, 1487, 250, 5, 29, "Text"],
-Cell[57626, 1494, 3532, 94, 271, "Input"],
-Cell[61161, 1590, 234, 5, 29, "Text"],
-Cell[61398, 1597, 861, 22, 51, "Input"],
-Cell[62262, 1621, 194, 6, 29, "Text"],
-Cell[62459, 1629, 816, 23, 51, "Input"]
+Cell[64799, 1706, 114, 1, 38, "Subsection"],
+Cell[64916, 1709, 368, 8, 27, "Text"],
+Cell[65287, 1719, 3995, 100, 181, "Input"],
+Cell[69285, 1821, 250, 5, 27, "Text"],
+Cell[69538, 1828, 3532, 94, 257, "Input"],
+Cell[73073, 1924, 234, 5, 27, "Text"],
+Cell[73310, 1931, 861, 22, 48, "Input"],
+Cell[74174, 1955, 194, 6, 27, "Text"],
+Cell[74371, 1963, 816, 23, 48, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[63312, 1657, 118, 1, 38, "Subsection"],
-Cell[63433, 1660, 156, 3, 29, "Text"],
-Cell[63592, 1665, 1517, 35, 111, "Input"],
-Cell[65112, 1702, 244, 5, 29, "Text"],
-Cell[65359, 1709, 7555, 168, 651, "Input"],
-Cell[72917, 1879, 104, 1, 29, "Text"],
-Cell[73024, 1882, 1344, 30, 131, "Input"]
-}, Closed]]
+Cell[75224, 1991, 118, 1, 38, "Subsection"],
+Cell[75345, 1994, 156, 3, 29, "Text"],
+Cell[75504, 1999, 1517, 35, 111, "Input"],
+Cell[77024, 2036, 244, 5, 29, "Text"],
+Cell[77271, 2043, 7555, 168, 651, "Input"],
+Cell[84829, 2213, 104, 1, 29, "Text"],
+Cell[84936, 2216, 1344, 30, 131, "Input"],
+Cell[86283, 2248, 123, 1, 29, "Text"],
+Cell[86409, 2251, 1543, 44, 238, "Input"],
+Cell[87955, 2297, 220, 5, 30, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[74417, 1918, 180, 2, 67, "Section"],
+Cell[88212, 2307, 273, 7, 46, "Subsection"],
+Cell[88488, 2316, 269, 5, 29, "Text"],
+Cell[88760, 2323, 2412, 59, 271, "Input"]
+}, Open  ]]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[74622, 1924, 97, 1, 46, "Subsection"],
-Cell[74722, 1927, 254, 5, 8, "Text"],
-Cell[74979, 1934, 1814, 42, 85, "Input"],
-Cell[76796, 1978, 6080, 173, 160, "Input"],
-Cell[82879, 2153, 2385, 63, 53, "Input"],
-Cell[85267, 2218, 699, 19, 13, "Input"],
-Cell[85969, 2239, 528, 14, 13, "Input"]
+Cell[91221, 2388, 180, 2, 67, "Section"],
+Cell[CellGroupData[{
+Cell[91426, 2394, 99, 1, 46, "Subsection"],
+Cell[91528, 2397, 13414, 254, 1011, "Input"],
+Cell[104945, 2653, 558, 10, 57, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[86534, 2258, 99, 1, 38, "Subsection"],
-Cell[86636, 2261, 13414, 254, 703, "Input"],
-Cell[100053, 2517, 558, 10, 60, "Input"]
+Cell[105540, 2668, 103, 1, 38, "Subsection"],
+Cell[CellGroupData[{
+Cell[105668, 2673, 171, 2, 38, "Subsubsection"],
+Cell[105842, 2677, 2444, 49, 153, "Input"],
+Cell[108289, 2728, 248, 5, 18, "Text"],
+Cell[108540, 2735, 8524, 180, 285, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[100648, 2532, 103, 1, 38, "Subsection"],
-Cell[CellGroupData[{
-Cell[100776, 2537, 171, 2, 38, "Subsubsection"],
-Cell[100950, 2541, 2444, 49, 162, "Input"],
-Cell[103397, 2592, 248, 5, 19, "Text"],
-Cell[103648, 2599, 8524, 180, 301, "Input"]
+Cell[117101, 2920, 117, 1, 32, "Subsubsection"],
+Cell[117221, 2923, 498, 8, 45, "Text"],
+Cell[117722, 2933, 2188, 56, 271, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[112209, 2784, 117, 1, 32, "Subsubsection"],
-Cell[112329, 2787, 498, 8, 48, "Text"],
-Cell[112830, 2797, 2188, 56, 286, "Input"]
+Cell[119947, 2994, 167, 2, 32, "Subsubsection"],
+Cell[120117, 2998, 247, 3, 29, "Text"],
+Cell[120367, 3003, 1914, 50, 238, "Input"],
+Cell[122284, 3055, 196, 4, 29, "Text"],
+Cell[122483, 3061, 574, 13, 51, "Input"],
+Cell[123060, 3076, 359, 7, 29, "Text"],
+Cell[123422, 3085, 17207, 360, 1171, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[140678, 3451, 105, 1, 46, "Subsection"],
+Cell[CellGroupData[{
+Cell[140808, 3456, 105, 1, 36, "Subsubsection"],
+Cell[140916, 3459, 674, 11, 33, "Text"],
+Cell[141593, 3472, 2996, 63, 94, "Input"],
+Cell[144592, 3537, 142, 1, 18, "Text"],
+Cell[144737, 3540, 3529, 71, 123, "Input"],
+Cell[148269, 3613, 466, 7, 33, "Text"],
+Cell[148738, 3622, 7341, 147, 342, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[115055, 2858, 167, 2, 32, "Subsubsection"],
-Cell[115225, 2862, 247, 3, 29, "Text"],
-Cell[115475, 2867, 1914, 50, 238, "Input"],
-Cell[117392, 2919, 196, 4, 29, "Text"],
-Cell[117591, 2925, 574, 13, 51, "Input"],
-Cell[118168, 2940, 359, 7, 29, "Text"],
-Cell[118530, 2949, 261, 5, 29, "Text"],
-Cell[118794, 2956, 2412, 59, 271, "Input"],
-Cell[121209, 3017, 17207, 360, 1171, "Input"]
+Cell[156116, 3774, 196, 2, 30, "Subsubsection"],
+Cell[156315, 3778, 282, 5, 27, "Text"],
+Cell[156600, 3785, 366, 7, 27, "Text"],
+Cell[156969, 3794, 171, 3, 28, "Input"],
+Cell[157143, 3799, 11412, 223, 884, "Input"]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[138465, 3383, 105, 1, 38, "Subsection"],
-Cell[CellGroupData[{
-Cell[138595, 3388, 105, 1, 38, "Subsubsection"],
-Cell[138703, 3391, 674, 11, 35, "Text"],
-Cell[139380, 3404, 2996, 63, 99, "Input"],
-Cell[142379, 3469, 142, 1, 19, "Text"],
-Cell[142524, 3472, 3529, 71, 130, "Input"],
-Cell[146056, 3545, 466, 7, 35, "Text"],
-Cell[146525, 3554, 7341, 147, 361, "Input"]
+Cell[168604, 4028, 108, 1, 38, "Subsection"],
+Cell[168715, 4031, 277, 5, 27, "Text"],
+Cell[168995, 4038, 6267, 133, 371, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[153903, 3706, 196, 2, 32, "Subsubsection"],
-Cell[154102, 3710, 282, 5, 29, "Text"],
-Cell[154387, 3717, 366, 7, 29, "Text"],
-Cell[154756, 3726, 171, 3, 30, "Input"],
-Cell[154930, 3731, 11412, 223, 931, "Input"]
-}, Open  ]]
+Cell[175299, 4176, 242, 3, 38, "Subsection"],
+Cell[175544, 4181, 12859, 230, 984, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[166391, 3960, 108, 1, 38, "Subsection"],
-Cell[166502, 3963, 277, 5, 29, "Text"],
-Cell[166782, 3970, 6267, 133, 391, "Input"]
+Cell[188440, 4416, 149, 2, 38, "Subsection"],
+Cell[CellGroupData[{
+Cell[188614, 4422, 103, 1, 28, "Subsubsection"],
+Cell[188720, 4425, 458, 12, 16, "Input"],
+Cell[189181, 4439, 45918, 948, 2242, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[173086, 4108, 242, 3, 38, "Subsection"],
-Cell[173331, 4113, 12859, 230, 1036, "Input"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[186227, 4348, 149, 2, 38, "Subsection"],
-Cell[CellGroupData[{
-Cell[186401, 4354, 103, 1, 30, "Subsubsection"],
-Cell[186507, 4357, 458, 12, 17, "Input"],
-Cell[186968, 4371, 45918, 948, 2361, "Input"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[232923, 5324, 100, 1, 24, "Subsubsection"],
-Cell[233026, 5327, 6989, 119, 235, "Input"],
-Cell[240018, 5448, 64700, 1205, 3477, "Input"]
+Cell[235136, 5392, 100, 1, 22, "Subsubsection"],
+Cell[235239, 5395, 6989, 119, 223, "Input"],
+Cell[242231, 5516, 64700, 1205, 3303, "Input"]
 }, Closed]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[304779, 6660, 150, 2, 67, "Section"],
-Cell[304932, 6664, 218, 4, 30, "Input"]
+Cell[306992, 6728, 150, 2, 67, "Section"],
+Cell[307145, 6732, 218, 4, 30, "Input"]
 }, Open  ]]
 }
 ]
