@@ -61,7 +61,7 @@ ODESTATE runODECore(const ODESTATE& inits, const ODEPARAMETERS & params, double 
     ODESTATE* pStateCur  = &stateA;
     ODESTATE* pStateNext = &stateB;
 
-    if (false)
+    if (true)
         {
         for (int iStep = 0; iStep < nSteps; iStep++)
             {
