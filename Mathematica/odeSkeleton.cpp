@@ -40,11 +40,8 @@ EXTERN_C DLLEXPORT void WolframLibrary_uninitialize(WolframLibraryData libData)
 
 #include "odeStep.h"
 
-ODESTATE runODECore(const ODESTATE& inits, const ODEPARAMETERS & params, double tDuration)
+ODESTATE runODECore(const ODESTATE& inits, const ODEPARAMETERS & params, double tDuration, double dt)
     {
-    const int nSteps = 1000;
-    const double dt = tDuration / nSteps;
-
     double t = 0;
     ODESTATE stateA = inits;
     ODESTATE stateB;
@@ -53,7 +50,7 @@ ODESTATE runODECore(const ODESTATE& inits, const ODEPARAMETERS & params, double 
 
     if (true)
         {
-        for (int iStep = 0; iStep < nSteps; iStep++)
+        while (t <= tDuration)
             {
             // Run one step of the ODE
             odeStep(t, dt, params, *pStateCur, *pStateNext);
@@ -109,6 +106,7 @@ EXTERN_C DLLEXPORT int runODE(WolframLibraryData libData, mint argc, MArgument *
     MTensor tensorInits  = MArgument_getMTensor(argv[0]);
     MTensor tensorParams = MArgument_getMTensor(argv[1]);
     double  duration     = MArgument_getReal(argv[2]);
+    double  dt           = MArgument_getReal(argv[3]);
 
     mint rankState  = (mint)(sizeof(ODESTATE)      / sizeof(double));
     mint rankParams = (mint)(sizeof(ODEPARAMETERS) / sizeof(double));
@@ -121,7 +119,7 @@ EXTERN_C DLLEXPORT int runODE(WolframLibraryData libData, mint argc, MArgument *
     copyFromTensor(libData, (double*)&inits, rankState, tensorInits);
     copyFromTensor(libData, (double*)&parameters, rankParams, tensorParams);
     
-    ODESTATE result = runODECore(inits, parameters, duration);
+    ODESTATE result = runODECore(inits, parameters, duration, dt);
 
     MTensor tensorResult;
     libData->MTensor_new(MType_Real, 1, &rankState, &tensorResult);
