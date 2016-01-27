@@ -38,16 +38,6 @@ EXTERN_C DLLEXPORT void WolframLibrary_uninitialize(WolframLibraryData libData)
     return;
     }
 
-EXTERN_C DLLEXPORT int demo_I_I(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) 
-    {
-    mint I0;
-    mint I1;
-    I0 = MArgument_getInteger(Args[0]);
-    I1 = I0 + 2;
-    MArgument_setInteger(Res, I1);
-    return LIBRARY_NO_ERROR;
-    }
-
 #include "odeStep.h"
 
 ODESTATE runODECore(const ODESTATE& inits, const ODEPARAMETERS & params, double tDuration)
