@@ -9,6 +9,7 @@
 #include "WolframLibrary.h"
 #include "memory.h"
 #include "strsafe.h"
+#include "math.h"
 
 void Trace(LPSTR format, ...)
     {
