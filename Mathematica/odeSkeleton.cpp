@@ -59,6 +59,8 @@ ODESTATE runODECore(const ODESTATE& inits, const ODEPARAMETERS & params, double 
             // Advance time
             t += dt;
 
+            // Trace("d=%f h1=%f h2=%f", pStateCur->d, pStateCur->h1, pStateCur->h2);
+
             // Swap state locations for the next iteration
             ODESTATE* pT = pStateCur;
             pStateCur = pStateNext;
@@ -112,7 +114,7 @@ EXTERN_C DLLEXPORT int runODE(WolframLibraryData libData, mint argc, MArgument *
     mint rankState  = (mint)(sizeof(ODESTATE)      / sizeof(double));
     mint rankParams = (mint)(sizeof(ODEPARAMETERS) / sizeof(double));
 
-    Trace("state:%d params:%d", rankState, rankParams);
+    // Trace("state:%d params:%d", rankState, rankParams);
 
     ODESTATE inits;
     ODEPARAMETERS parameters;
