@@ -1,0 +1,3384 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    141910,       3375]
+NotebookOptionsPosition[    137342,       3226]
+NotebookOutlinePosition[    137744,       3243]
+CellTagsIndexPosition[    137701,       3240]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Exploring Barry\[CloseCurlyQuote]s Hairpin vs Primer Competitive \
+Modell", "Subsection",
+ CellChangeTimes->{{3.6635284797421055`*^9, 3.663528499820449*^9}, {
+  3.664644264014572*^9, 3.664644311373089*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["System Data", "Subsubsection",
+ CellChangeTimes->{{3.6635285064515457`*^9, 3.663528512861248*^9}, {
+  3.6635290694917393`*^9, 3.6635290809016066`*^9}}],
+
+Cell["\<\
+We define the core information, assigning each to a global variable\
+\>", "Text",
+ CellChangeTimes->{{3.6635286890843763`*^9, 3.6635287055098743`*^9}, {
+  3.663529528983404*^9, 3.6635295392210693`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"exprs", " ", "=", " ", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kh", " ", "\[Equal]", " ", 
+     RowBox[{"h", " ", "/", " ", "t"}]}], ",", 
+    RowBox[{"(*", " ", 
+     RowBox[{"unimolecular", " ", "hairpin", " ", "equilibrium"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"kp", " ", "\[Equal]", " ", 
+     RowBox[{"pt", " ", "/", " ", 
+      RowBox[{"(", 
+       RowBox[{"t", " ", "p"}], ")"}]}]}], " ", ",", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "bimolecular", " ", "primer", " ", "binding", " ", "to", " ", "target", 
+      " ", "equilibrium"}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"kh", " ", "\[Equal]", " ", 
+     RowBox[{"konH", " ", "/", " ", "koffH"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"kp", " ", "\[Equal]", " ", 
+     RowBox[{"konP", " ", "/", " ", "koffP"}]}]}], "\[IndentingNewLine]", 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.663528516889183*^9, 3.6635285187086024`*^9}, {
+  3.6635285891668863`*^9, 3.663528608405947*^9}, {3.6646437735504932`*^9, 
+  3.6646438634467516`*^9}, {3.6646459135397224`*^9, 3.6646459329974327`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"kh", "\[Equal]", 
+    FractionBox["h", "t"]}], ",", 
+   RowBox[{"kp", "\[Equal]", 
+    FractionBox["pt", 
+     RowBox[{"p", " ", "t"}]]}], ",", 
+   RowBox[{"kh", "\[Equal]", 
+    FractionBox["konH", "koffH"]}], ",", 
+   RowBox[{"kp", "\[Equal]", 
+    FractionBox["konP", "koffP"]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6646440254889235`*^9, 3.664645373005645*^9, 3.664645440867484*^9, 
+   3.664645523994729*^9, 3.6646456301790094`*^9, {3.664645770002817*^9, 
+   3.6646458251021214`*^9}, {3.6646459341187625`*^9, 
+   3.6646459402984056`*^9}, {3.6646459897155905`*^9, 3.6646460122666917`*^9}, 
+   3.6646460856757965`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"balances", " ", "=", " ", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p0", " ", "\[Equal]", " ", 
+     RowBox[{"p", " ", "+", " ", "pt"}]}], ",", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "primers", " ", "are", " ", "either", " ", "alone", " ", "or", " ", "in",
+       " ", "the", " ", "duplex"}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"t0", " ", "\[Equal]", " ", 
+     RowBox[{"t", " ", "+", " ", "pt", " ", "+", " ", "h"}]}]}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"target", " ", "is", " ", "either", " ", "alone"}], ",", " ", 
+     RowBox[{"in", " ", "the", " ", "duplex"}], ",", " ", 
+     RowBox[{"or", " ", "in", " ", "a", " ", "hairpin"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", "}"}]}]], "Input",
+ CellChangeTimes->{{3.663528625632476*^9, 3.6635286536538553`*^9}, 
+   3.664643870343412*^9, {3.664643972940308*^9, 3.664644023165056*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"p0", "\[Equal]", 
+    RowBox[{"p", "+", "pt"}]}], ",", 
+   RowBox[{"t0", "\[Equal]", 
+    RowBox[{"h", "+", "pt", "+", "t"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644027047696*^9, 3.664645373094139*^9, 3.6646454409621677`*^9, 
+   3.6646455241347356`*^9, 3.6646456303315363`*^9, {3.6646457702138667`*^9, 
+   3.664645825187738*^9}, {3.66464593572425*^9, 3.6646459403909073`*^9}, {
+   3.6646459898115873`*^9, 3.6646460123557396`*^9}, 3.664646085803829*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"equilibriumConstants", " ", "=", " ", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"konH", " ", "\[Rule]", " ", "konH"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"koffH", " ", "\[Rule]", "koffH"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"konP", " ", "\[Rule]", " ", "konP"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"koffP", " ", "\[Rule]", " ", "koffP"}]}], "\[IndentingNewLine]", 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.6635287094902787`*^9, 3.6635287651097565`*^9}, {
+  3.663531853089077*^9, 3.6635318540709257`*^9}, {3.663532803398095*^9, 
+  3.6635328267346687`*^9}, {3.663532863813639*^9, 3.6635328668627214`*^9}, {
+  3.6635330092086363`*^9, 3.6635330111514854`*^9}, {3.6635332475844936`*^9, 
+  3.663533251077776*^9}, {3.66353426615287*^9, 3.6635342680716095`*^9}, {
+  3.6646440351342955`*^9, 3.664644049757843*^9}, {3.664645363102585*^9, 
+  3.664645364047556*^9}, {3.6646454223809156`*^9, 3.66464542483599*^9}, {
+  3.6646457602761807`*^9, 3.6646458175649753`*^9}, {3.66464597198087*^9, 
+  3.664646009283312*^9}, {3.664646048333394*^9, 3.6646460561318593`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"konH", "\[Rule]", "konH"}], ",", 
+   RowBox[{"koffH", "\[Rule]", "koffH"}], ",", 
+   RowBox[{"konP", "\[Rule]", "konP"}], ",", 
+   RowBox[{"koffP", "\[Rule]", "koffP"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644060236622*^9, {3.6646453684998226`*^9, 3.664645373105666*^9}, 
+   3.664645440972664*^9, 3.6646455241457567`*^9, 3.664645630340537*^9, {
+   3.6646457702248974`*^9, 3.664645825199743*^9}, {3.6646459368895006`*^9, 
+   3.664645940401909*^9}, {3.6646459898225822`*^9, 3.664646012364727*^9}, 
+   3.664646085812832*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"initialConcentrations", " ", "=", " ", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p0", " ", "\[Rule]", " ", "p0"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"t0", " ", "\[Rule]", " ", "t0"}]}], "\[IndentingNewLine]", 
+   "}"}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIQvWybX8YC79eOptXfCkD0rkea9SA6z4yxAUSH2xws
+WgikQ2qdy0A0u6WoxCIgna/2AUyff/1cB0SLRO/RBdGLkg4agegbgodNQfSh
+I6K2ILqubo09iO5X3egFotveHPcH0c8ORYaD6PeX5kSA6O/TPsSC6ByWn3Eg
+Onf1gwwQbbNOOxNEFxXerwLRM04wVYPolACVmSD6zaduMH3jMIPEYpA+ZyUw
+ffn/oV8HfIHu9FL9DaItWtbNOwiks+pugmlO60XLQHS60HMwfaX0wQUQva6E
++yKIznu/8jqIrkrmvAGitbk83oPouS8TwfRvsY6vIFrg6AcwDQCUlbIQ
+  "]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"p0", "\[Rule]", "p0"}], ",", 
+   RowBox[{"t0", "\[Rule]", "t0"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644061614363*^9, {3.664645369622563*^9, 3.664645373113669*^9}, 
+   3.6646454409801674`*^9, 3.6646455241557627`*^9, 3.6646456303515215`*^9, {
+   3.664645770233902*^9, 3.66464582520874*^9}, {3.664645937984085*^9, 
+   3.664645940410903*^9}, {3.6646459898335834`*^9, 3.6646460123777184`*^9}, 
+   3.664646085825825*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Note that we defined the above using fractions, not floating point, which \
+are generally handy in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " so as to maintain exactness of symbolic results. In our usage here, \
+floating point would have been just fine, though.\n\nWe combine all our \
+parameter values into one handy variable."
+}], "Text",
+ CellChangeTimes->{{3.6635328977649117`*^9, 3.663532911446639*^9}, {
+   3.663537439481166*^9, 3.6635375096232376`*^9}, 3.6645762952972136`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"parameterValues", " ", "=", " ", 
+   RowBox[{
+   "equilibriumConstants", " ", "~", "Join", "~", " ", 
+    "initialConcentrations"}]}], ";"}]], "Input"],
+
+Cell["We similarly combine our equations.", "Text",
+ CellChangeTimes->{{3.6645725872693624`*^9, 3.6645726010479407`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"equations", " ", "=", " ", 
+  RowBox[{"exprs", "~", "Join", "~", "balances"}]}]], "Input",
+ CellChangeTimes->{{3.6645726031822643`*^9, 3.664572618829381*^9}, {
+   3.6645737700413766`*^9, 3.664573782523927*^9}, 3.6645739653983865`*^9, {
+   3.6645741244617996`*^9, 3.6645741247901955`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"kh", "\[Equal]", 
+    FractionBox["h", "t"]}], ",", 
+   RowBox[{"kp", "\[Equal]", 
+    FractionBox["pt", 
+     RowBox[{"p", " ", "t"}]]}], ",", 
+   RowBox[{"kh", "\[Equal]", 
+    FractionBox["konH", "koffH"]}], ",", 
+   RowBox[{"kp", "\[Equal]", 
+    FractionBox["konP", "koffP"]}], ",", 
+   RowBox[{"p0", "\[Equal]", 
+    RowBox[{"p", "+", "pt"}]}], ",", 
+   RowBox[{"t0", "\[Equal]", 
+    RowBox[{"h", "+", "pt", "+", "t"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644068398075*^9, 3.6646453731346765`*^9, 3.6646454409991674`*^9, 
+   3.664645524172799*^9, 3.664645630369527*^9, {3.6646457702509174`*^9, 
+   3.664645825225753*^9}, 3.6646459404279127`*^9, {3.6646459898515854`*^9, 
+   3.664646012396226*^9}, 3.6646460858438272`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Problem Statement", "Subsubsection",
+ CellChangeTimes->{{3.6635332956861534`*^9, 3.663533302919153*^9}}],
+
+Cell["\<\
+We want to solve for a certain set of expressions in terms of the variables \
+in our system.\
+\>", "Text",
+ CellChangeTimes->{{3.663529126885954*^9, 3.6635291681171513`*^9}, {
+  3.66352921605355*^9, 3.6635292409324865`*^9}, {3.6635294428780885`*^9, 
+  3.663529446549116*^9}, {3.663529481886017*^9, 3.6635294867892036`*^9}, {
+  3.6635336861669545`*^9, 3.663533698742139*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"solveFor", " ", "=", " ", 
+  RowBox[{"{", " ", 
+   RowBox[{
+    RowBox[{"pt", "/", "t0"}], ",", " ", 
+    RowBox[{"h", " ", "/", " ", "t0"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.663529451351914*^9, 3.663529466870253*^9}, {
+  3.6646440903025684`*^9, 3.6646440945312653`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["pt", "t0"], ",", 
+   FractionBox["h", "t0"]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644095821072*^9, 3.6646453731436577`*^9, 3.66464544100817*^9, 
+   3.6646455241852846`*^9, 3.6646456303805265`*^9, {3.6646457702609005`*^9, 
+   3.6646458252377396`*^9}, 3.6646459404419127`*^9, {3.6646459898630867`*^9, 
+   3.664646012405767*^9}, 3.6646460858558254`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Manipulating The System", "Subsubsection",
+ CellChangeTimes->{{3.663529114542268*^9, 3.663529121092885*^9}}],
+
+Cell["\<\
+We define a little utility to dig out symbols from an expression. There might \
+be a better way to do this, but this works!\
+\>", "Text",
+ CellChangeTimes->{{3.663529976342022*^9, 3.663530003492758*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"findSymbols", "[", "expr_", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "reaped", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"reaped", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Reap", "[", 
+        RowBox[{"Scan", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"MatchQ", "[", 
+              RowBox[{"#", ",", " ", "_Symbol"}], "]"}], ",", " ", 
+             RowBox[{"Sow", "[", "#", "]"}]}], "]"}], "&"}], ",", " ", "expr",
+           ",", " ", "Infinity"}], "]"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "reaped", "]"}], "\[Equal]", "0"}], ",", " ", 
+        "reaped", ",", " ", 
+        RowBox[{"reaped", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "]"}], " ", "//", " ", 
+      "Union"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.663529684104897*^9, 3.663529705943718*^9}, {
+  3.6635297434063025`*^9, 3.66352995347922*^9}, {3.663530029485747*^9, 
+  3.6635300349688683`*^9}, {3.6645730968898635`*^9, 3.664573097113471*^9}}],
+
+Cell["\<\
+We look at the symbols in our various constructs, just to get a sense of \
+things.\
+\>", "Text",
+ CellChangeTimes->{{3.6645731017119465`*^9, 3.6645731237560205`*^9}, {
+  3.66457322232963*^9, 3.664573225458147*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"findSymbols", "[", "equations", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"findSymbols", "[", "solveFor", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"findSymbols", "[", "parameterValues", "]"}]}], "Input",
+ CellChangeTimes->{
+  3.6645757706045933`*^9, {3.6645763472967443`*^9, 3.664576351361822*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "h", ",", "kh", ",", "koffH", ",", "koffP", ",", "konH", ",", "konP", ",", 
+   "kp", ",", "p", ",", "p0", ",", "pt", ",", "t", ",", "t0"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.6646441055773506`*^9, 3.6646453731606655`*^9, 3.6646454410251675`*^9, 
+   3.6646455242037706`*^9, 3.6646456304695644`*^9, {3.664645770279898*^9, 
+   3.6646458252547407`*^9}, 3.664645940458913*^9, {3.664645989881632*^9, 
+   3.6646460124247828`*^9}, 3.6646460858718243`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"h", ",", "pt", ",", "t0"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6646441055773506`*^9, 3.6646453731606655`*^9, 3.6646454410251675`*^9, 
+   3.6646455242037706`*^9, 3.6646456304695644`*^9, {3.664645770279898*^9, 
+   3.6646458252547407`*^9}, 3.664645940458913*^9, {3.664645989881632*^9, 
+   3.6646460124247828`*^9}, 3.6646460858748245`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "koffH", ",", "koffP", ",", "konH", ",", "konP", ",", "p0", ",", "t0"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.6646441055773506`*^9, 3.6646453731606655`*^9, 3.6646454410251675`*^9, 
+   3.6646455242037706`*^9, 3.6646456304695644`*^9, {3.664645770279898*^9, 
+   3.6646458252547407`*^9}, 3.664645940458913*^9, {3.664645989881632*^9, 
+   3.6646460124247828`*^9}, 3.6646460858778253`*^9}]
+}, Open  ]],
+
+Cell["\<\
+We assign names to various combinations of the sets of symbols.\
+\>", "Text",
+ CellChangeTimes->{{3.664575772652166*^9, 3.664575797111808*^9}, {
+  3.664576463040948*^9, 3.6645764666166787`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"parameters", " ", "=", " ", 
+  RowBox[{
+  "findSymbols", "[", "parameterValues", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"varsToSolveFor", " ", "=", " ", 
+  RowBox[{"Complement", "[", 
+   RowBox[{
+    RowBox[{"findSymbols", "[", "solveFor", "]"}], ",", " ", "parameters"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"varsAndParamsToSolveFor", " ", "=", " ", 
+  RowBox[{"Union", "[", 
+   RowBox[{"varsToSolveFor", " ", "~", "Join", "~", " ", "parameters"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"varsToEliminate", " ", "=", " ", 
+  RowBox[{"Complement", "[", 
+   RowBox[{
+    RowBox[{"findSymbols", "[", "equations", "]"}], ",", " ", 
+    "varsAndParamsToSolveFor"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6645736626804247`*^9, 3.664573686214031*^9}, {
+   3.6645738086652193`*^9, 3.664573885307147*^9}, {3.664574146679822*^9, 
+   3.664574253520837*^9}, {3.664574580951442*^9, 3.66457462338949*^9}, {
+   3.664574752690363*^9, 3.6645747730287333`*^9}, 3.6645757760464263`*^9, {
+   3.664575817219652*^9, 3.6645758193885527`*^9}, {3.6645763552805023`*^9, 
+   3.6645763809093795`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "koffH", ",", "koffP", ",", "konH", ",", "konP", ",", "p0", ",", "t0"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644107342105*^9, 3.6646453731746616`*^9, 3.664645441039168*^9, 
+   3.6646455242177896`*^9, 3.664645630484543*^9, {3.664645770294898*^9, 
+   3.6646458252704225`*^9}, 3.6646459404729133`*^9, {3.6646459898976283`*^9, 
+   3.664646012439751*^9}, 3.6646460858888316`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"h", ",", "pt"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644107342105*^9, 3.6646453731746616`*^9, 3.664645441039168*^9, 
+   3.6646455242177896`*^9, 3.664645630484543*^9, {3.664645770294898*^9, 
+   3.6646458252704225`*^9}, 3.6646459404729133`*^9, {3.6646459898976283`*^9, 
+   3.664646012439751*^9}, 3.6646460858918304`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "h", ",", "koffH", ",", "koffP", ",", "konH", ",", "konP", ",", "p0", ",", 
+   "pt", ",", "t0"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644107342105*^9, 3.6646453731746616`*^9, 3.664645441039168*^9, 
+   3.6646455242177896`*^9, 3.664645630484543*^9, {3.664645770294898*^9, 
+   3.6646458252704225`*^9}, 3.6646459404729133`*^9, {3.6646459898976283`*^9, 
+   3.664646012439751*^9}, 3.6646460858938293`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"kh", ",", "kp", ",", "p", ",", "t"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644107342105*^9, 3.6646453731746616`*^9, 3.664645441039168*^9, 
+   3.6646455242177896`*^9, 3.664645630484543*^9, {3.664645770294898*^9, 
+   3.6646458252704225`*^9}, 3.6646459404729133`*^9, {3.6646459898976283`*^9, 
+   3.664646012439751*^9}, 3.66464608589684*^9}]
+}, Open  ]],
+
+Cell["\<\
+Sometimes, it\[CloseCurlyQuote]s really helpful to Eliminate and Solve if you \
+tell them certain assumptions about unknowns. For us here, we know that the \
+parameters and variables are always non-negative. That may or may not \
+actually help us in this case, but it\[CloseCurlyQuote]s certainly not a \
+problem to provide that info.\
+\>", "Text",
+ CellChangeTimes->{{3.663531415044773*^9, 3.663531480677741*^9}, {
+  3.663533783880493*^9, 3.663533787687277*^9}, {3.663537607976185*^9, 
+  3.663537628591797*^9}, {3.6645758313662243`*^9, 3.6645758439745297`*^9}, {
+  3.6645763961036816`*^9, 3.6645764039771433`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"assumptions", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"#", " ", ">=", " ", "0"}], " ", "&"}], " ", "/@", " ", 
+   RowBox[{"findSymbols", "[", "equations", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.663531349615414*^9, 3.6635313749731836`*^9}, 
+   3.6635318971090865`*^9, {3.66457337112805*^9, 3.6645733743207555`*^9}, 
+   3.6645749736493835`*^9, {3.6645750076068325`*^9, 3.6645750128952246`*^9}, {
+   3.6645751545400987`*^9, 3.6645751804636035`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"h", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"kh", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"koffH", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"koffP", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"konH", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"konP", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"kp", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"p", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"p0", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"pt", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"t", "\[GreaterEqual]", "0"}], ",", 
+   RowBox[{"t0", "\[GreaterEqual]", "0"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6646441179162054`*^9, 3.664645373190656*^9, 3.664645441054184*^9, 
+   3.664645524233771*^9, 3.6646456305075626`*^9, {3.66464577031444*^9, 
+   3.664645825286441*^9}, 3.6646459404889326`*^9, {3.6646459899136305`*^9, 
+   3.664646012458749*^9}, 3.664646085905835*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We\[CloseCurlyQuote]re going to have ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " solve our system for the variables we need to solve for. We begin by being \
+clear what system we\[CloseCurlyQuote]re solving:"
+}], "Text",
+ CellChangeTimes->{{3.6635313282692957`*^9, 3.663531338502519*^9}, 
+   3.6635337932468567`*^9, {3.6635339641103287`*^9, 3.6635340014780874`*^9}, {
+   3.6645743055837183`*^9, 3.6645743274191923`*^9}, {3.664575855160985*^9, 
+   3.664575879332892*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"systemToSolve", " ", "=", " ", "equations"}]], "Input",
+ CellChangeTimes->{{3.663533945900622*^9, 3.663533954342085*^9}, {
+   3.663534093223796*^9, 3.6635340964982204`*^9}, 3.6635376319119835`*^9, {
+   3.6645734985947695`*^9, 3.6645734994826884`*^9}, {3.6645750897300577`*^9, 
+   3.6645751197983685`*^9}, {3.6645751889361877`*^9, 3.664575189696251*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"kh", "\[Equal]", 
+    FractionBox["h", "t"]}], ",", 
+   RowBox[{"kp", "\[Equal]", 
+    FractionBox["pt", 
+     RowBox[{"p", " ", "t"}]]}], ",", 
+   RowBox[{"kh", "\[Equal]", 
+    FractionBox["konH", "koffH"]}], ",", 
+   RowBox[{"kp", "\[Equal]", 
+    FractionBox["konP", "koffP"]}], ",", 
+   RowBox[{"p0", "\[Equal]", 
+    RowBox[{"p", "+", "pt"}]}], ",", 
+   RowBox[{"t0", "\[Equal]", 
+    RowBox[{"h", "+", "pt", "+", "t"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644119559675*^9, 3.664645373200677*^9, 3.6646454410631714`*^9, 
+   3.664645524244794*^9, 3.664645630519543*^9, {3.664645770325609*^9, 
+   3.6646458252954607`*^9}, 3.664645940498912*^9, {3.6646459899246235`*^9, 
+   3.6646460124687696`*^9}, 3.6646460859158487`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Note: we could now substitute in our known parameter values. This ",
+ StyleBox["ought ",
+  FontSlant->"Italic"],
+ "to be an optional step; ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " ought to just solve the full symbolic system were we to not do that. \
+However, if we don\[CloseCurlyQuote]t take that step here, we run into \
+numerical precision artifacts if we evaluate naively. By substituting in the \
+parameter values here, the system to be solved becomes simpler, and less \
+sensitive to numerical artifacts. That this step is (apparently) necessary \
+here is not at all obvious, but seems indeed to be needed. \n\nEither that, \
+or we need to not be naive and to do numerical evaluation afterward using ",
+ StyleBox["lots ",
+  FontSlant->"Italic"],
+ "of precision. You can try that either way here by commenting or \
+uncommenting this line."
+}], "Text",
+ CellChangeTimes->{{3.663534003765438*^9, 3.663534082269545*^9}, {
+  3.663534183712467*^9, 3.6635341980299916`*^9}, {3.6635342484646916`*^9, 
+  3.6635342553580093`*^9}, {3.6635343895816016`*^9, 3.663534412462571*^9}, {
+  3.6635355525277843`*^9, 3.6635356037504187`*^9}, {3.663535657229994*^9, 
+  3.6635357038891954`*^9}, {3.66353593346285*^9, 3.6635359604003563`*^9}, {
+  3.663536406918991*^9, 3.663536445271858*^9}, {3.6635376565107975`*^9, 
+  3.6635376962227077`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"systemToSolve", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"systemToSolve", " ", "/.", " ", "parameterValues"}], " ", "//", 
+    " ", "N"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.663534024909465*^9, 3.6635340352857533`*^9}, {
+   3.663534086847576*^9, 3.6635340898874807`*^9}, 3.6635353780666103`*^9, 
+   3.6635355483111925`*^9, {3.663535618622549*^9, 3.6635356192250795`*^9}, 
+   3.663535818117972*^9, {3.664575892527863*^9, 3.664575916798935*^9}}],
+
+Cell["\<\
+We eliminate the variables we don\[CloseCurlyQuote]t need. We call \
+FullSimplify in order to reduce the complexity of the elimination. It helps!\
+\>", "Text",
+ CellChangeTimes->{{3.66457433724395*^9, 3.6645743457250757`*^9}, {
+   3.6645748396215816`*^9, 3.664574883356249*^9}, 3.664575217980366*^9, {
+   3.6645753514168267`*^9, 3.664575393261837*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"eliminatedSystem", " ", "=", " ", 
+   RowBox[{"Assuming", "[", 
+    RowBox[{"assumptions", ",", " ", 
+     RowBox[{"Eliminate", "[", 
+      RowBox[{"systemToSolve", " ", ",", " ", "varsToEliminate"}], "]"}]}], 
+    "]"}]}], ";", " ", 
+  RowBox[{"Print", "[", 
+   RowBox[{"Length", "[", "eliminatedSystem", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eliminatedSystem", " ", "=", " ", 
+   RowBox[{"FullSimplify", "[", "eliminatedSystem", "]"}]}], ";", " ", 
+  RowBox[{"Print", "[", 
+   RowBox[{"Length", "[", "eliminatedSystem", "]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"eliminatedSystem", " ", "//", " ", 
+  "ColumnForm"}], "\[IndentingNewLine]", 
+ RowBox[{"findSymbols", "[", "eliminatedSystem", "]"}]}], "Input",
+ CellChangeTimes->{{3.6645743477566185`*^9, 3.664574430122099*^9}, {
+   3.664574653267911*^9, 3.664574662683518*^9}, {3.6645747908232217`*^9, 
+   3.664574831996812*^9}, {3.664574887579765*^9, 3.6645749018225627`*^9}, {
+   3.6645749808820825`*^9, 3.66457498751514*^9}, {3.664575055421135*^9, 
+   3.6645750850588503`*^9}, 3.6645751320006204`*^9, {3.6645752107656903`*^9, 
+   3.6645753275407057`*^9}, {3.6645756867440186`*^9, 3.6645757094529247`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["5"], "Print",
+ CellChangeTimes->{
+  3.6646441230829525`*^9, 3.664645373213669*^9, 3.664645441079683*^9, 
+   3.6646455242607746`*^9, 3.6646456306075726`*^9, {3.6646457703455925`*^9, 
+   3.664645825312442*^9}, 3.6646459405424733`*^9, {3.6646459899631605`*^9, 
+   3.664646012512781*^9}, 3.6646460859883413`*^9}],
+
+Cell[BoxData["5"], "Print",
+ CellChangeTimes->{
+  3.6646441230829525`*^9, 3.664645373213669*^9, 3.664645441079683*^9, 
+   3.6646455242607746`*^9, 3.6646456306075726`*^9, {3.6646457703455925`*^9, 
+   3.664645825312442*^9}, 3.6646459405424733`*^9, {3.6646459899631605`*^9, 
+   3.664646012512781*^9}, 3.664646085990843*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     RowBox[{
+      RowBox[{"konH", " ", "pt"}], "\[Equal]", 
+      FractionBox[
+       RowBox[{"h", " ", "koffH", " ", "konP", " ", 
+        RowBox[{"(", 
+         RowBox[{"p0", "-", "pt"}], ")"}]}], "koffP"]}]},
+    {
+     RowBox[{
+      FractionBox[
+       RowBox[{"h", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"koffP", " ", "konH"}], "+", 
+          RowBox[{"koffH", " ", 
+           RowBox[{"(", 
+            RowBox[{"koffP", "+", 
+             RowBox[{"konP", " ", "p0"}], "-", 
+             RowBox[{"konP", " ", "pt"}]}], ")"}]}]}], ")"}]}], "koffP"], 
+      "\[Equal]", 
+      RowBox[{"konH", " ", "t0"}]}]},
+    {
+     RowBox[{
+      RowBox[{
+       RowBox[{"koffP", " ", "pt"}], "+", 
+       RowBox[{"konP", " ", 
+        RowBox[{"(", 
+         RowBox[{"p0", "-", "pt"}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{"h", "+", "pt", "-", "t0"}], ")"}]}]}], "\[Equal]", "0"}]},
+    {
+     RowBox[{"koffH", "\[NotEqual]", "0"}]},
+    {
+     RowBox[{"koffP", "\[NotEqual]", "0"}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  ColumnForm[
+   And[SubKernels`Protected`konH SubKernels`Protected`pt == 
+    SubKernels`Protected`h SubKernels`Protected`koffH 
+     SubKernels`Protected`koffP^(-1) 
+     SubKernels`Protected`konP (SubKernels`Protected`p0 - 
+      SubKernels`Protected`pt), 
+    SubKernels`Protected`h 
+     SubKernels`Protected`koffP^(-1) (
+      SubKernels`Protected`koffP SubKernels`Protected`konH + 
+      SubKernels`Protected`koffH (SubKernels`Protected`koffP + 
+        SubKernels`Protected`konP SubKernels`Protected`p0 - 
+        SubKernels`Protected`konP SubKernels`Protected`pt)) == 
+    SubKernels`Protected`konH SubKernels`Protected`t0, 
+    SubKernels`Protected`koffP SubKernels`Protected`pt + 
+     SubKernels`Protected`konP (SubKernels`Protected`p0 - 
+       SubKernels`Protected`pt) (SubKernels`Protected`h + 
+       SubKernels`Protected`pt - SubKernels`Protected`t0) == 0, 
+    SubKernels`Protected`koffH != 0, SubKernels`Protected`koffP != 0]],
+  Editable->False]], "Output",
+ CellChangeTimes->{
+  3.664644123218467*^9, 3.6646453732216654`*^9, 3.664645441087776*^9, 
+   3.664645524265786*^9, 3.6646456306911964`*^9, {3.664645770479153*^9, 
+   3.6646458253214426`*^9}, 3.6646459405474615`*^9, {3.664645990406809*^9, 
+   3.664646012519763*^9}, 3.6646460859948444`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "h", ",", "koffH", ",", "koffP", ",", "konH", ",", "konP", ",", "p0", ",", 
+   "pt", ",", "t0"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644123218467*^9, 3.6646453732216654`*^9, 3.664645441087776*^9, 
+   3.664645524265786*^9, 3.6646456306911964`*^9, {3.664645770479153*^9, 
+   3.6646458253214426`*^9}, 3.6646459405474615`*^9, {3.664645990406809*^9, 
+   3.664646012519763*^9}, 3.6646460859968433`*^9}]
+}, Open  ]],
+
+Cell["Go ahead and solve.", "Text",
+ CellChangeTimes->{{3.6635341133900623`*^9, 3.663534129606324*^9}, 
+   3.6635377229502172`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"solutions", " ", "=", " ", 
+   RowBox[{"Assuming", "[", 
+    RowBox[{"assumptions", ",", " ", 
+     RowBox[{"Solve", "[", 
+      RowBox[{"eliminatedSystem", ",", " ", "varsToSolveFor"}], "]"}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", "solutions", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"solutions", " ", "//", " ", "ColumnForm"}]}], "Input",
+ CellChangeTimes->{{3.663530419630533*^9, 3.663530430558118*^9}, {
+   3.663530476687731*^9, 3.663530477868827*^9}, {3.6635305587332315`*^9, 
+   3.663530591021325*^9}, {3.6635308299583254`*^9, 3.6635308445711575`*^9}, {
+   3.663531007791276*^9, 3.6635310165503755`*^9}, 3.6635313237574263`*^9, {
+   3.6635313923415318`*^9, 3.6635313976995687`*^9}, {3.663531483740755*^9, 
+   3.6635315125425105`*^9}, {3.6635331210465536`*^9, 
+   3.6635331370934005`*^9}, {3.66353381078321*^9, 3.6635338164622602`*^9}, 
+   3.663533869208292*^9, {3.6635339149042125`*^9, 3.663533914951719*^9}, 
+   3.6635339603669157`*^9, 3.6635341270985403`*^9, {3.6645744374209766`*^9, 
+   3.6645744696146226`*^9}, {3.664574525201101*^9, 3.664574529833669*^9}, {
+   3.664575638027771*^9, 3.6645756394190664`*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{
+  3.6646441350253544`*^9, 3.6646453732596626`*^9, 3.664645441123784*^9, 
+   3.664645524348339*^9, 3.664645630778582*^9, {3.664645770515659*^9, 
+   3.6646458253534627`*^9}, 3.6646459405864735`*^9, {3.66464599043979*^9, 
+   3.664646012559764*^9}, 3.664646086064849*^9}],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"h", "\[Rule]", 
+        FractionBox[
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", "koffH"}], " ", "koffP", " ", "konH"}], "-", 
+          RowBox[{"koffP", " ", 
+           SuperscriptBox["konH", "2"]}], "-", 
+          RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "+", 
+          RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}], "-", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{"4", " ", "koffP", " ", 
+             SuperscriptBox["konH", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+             "t0"}], "+", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+               RowBox[{"koffP", " ", 
+                SuperscriptBox["konH", "2"]}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+              ")"}], "2"]}]]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]]}], ",", 
+       RowBox[{"pt", "\[Rule]", 
+        FractionBox[
+         RowBox[{
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["koffH", "2"], " ", "koffP", " ", "konH"}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+          FractionBox[
+           RowBox[{"koffH", " ", "koffP", " ", 
+            SuperscriptBox["konH", "2"]}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"koffP", " ", 
+            SuperscriptBox["konH", "3"]}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", 
+            "p0"}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+          FractionBox[
+           RowBox[{"koffH", " ", 
+            SuperscriptBox["konH", "2"], " ", "konP", " ", "p0"}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+          RowBox[{"konH", " ", "t0"}], "-", 
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", 
+            "t0"}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+          FractionBox[
+           RowBox[{"koffH", " ", 
+            SuperscriptBox["konH", "2"], " ", "konP", " ", "t0"}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+          FractionBox[
+           RowBox[{"koffH", " ", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"4", " ", "koffP", " ", 
+               SuperscriptBox["konH", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+               "t0"}], "+", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+                 RowBox[{"koffP", " ", 
+                  SuperscriptBox["konH", "2"]}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+                ")"}], "2"]}]]}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+          FractionBox[
+           RowBox[{"konH", " ", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"4", " ", "koffP", " ", 
+               SuperscriptBox["konH", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+               "t0"}], "+", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+                 RowBox[{"koffP", " ", 
+                  SuperscriptBox["konH", "2"]}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+                ")"}], "2"]}]]}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]]}], 
+         "konH"]}]}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"h", "\[Rule]", 
+        FractionBox[
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", "koffH"}], " ", "koffP", " ", "konH"}], "-", 
+          RowBox[{"koffP", " ", 
+           SuperscriptBox["konH", "2"]}], "-", 
+          RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "+", 
+          RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}], "+", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{"4", " ", "koffP", " ", 
+             SuperscriptBox["konH", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+             "t0"}], "+", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+               RowBox[{"koffP", " ", 
+                SuperscriptBox["konH", "2"]}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+              ")"}], "2"]}]]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]]}], ",", 
+       RowBox[{"pt", "\[Rule]", 
+        FractionBox[
+         RowBox[{
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["koffH", "2"], " ", "koffP", " ", "konH"}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+          FractionBox[
+           RowBox[{"koffH", " ", "koffP", " ", 
+            SuperscriptBox["konH", "2"]}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"koffP", " ", 
+            SuperscriptBox["konH", "3"]}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", 
+            "p0"}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+          FractionBox[
+           RowBox[{"koffH", " ", 
+            SuperscriptBox["konH", "2"], " ", "konP", " ", "p0"}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+          RowBox[{"konH", " ", "t0"}], "-", 
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", 
+            "t0"}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+          FractionBox[
+           RowBox[{"koffH", " ", 
+            SuperscriptBox["konH", "2"], " ", "konP", " ", "t0"}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+          FractionBox[
+           RowBox[{"koffH", " ", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"4", " ", "koffP", " ", 
+               SuperscriptBox["konH", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+               "t0"}], "+", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+                 RowBox[{"koffP", " ", 
+                  SuperscriptBox["konH", "2"]}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+                ")"}], "2"]}]]}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+          FractionBox[
+           RowBox[{"konH", " ", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"4", " ", "koffP", " ", 
+               SuperscriptBox["konH", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+               "t0"}], "+", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+                 RowBox[{"koffP", " ", 
+                  SuperscriptBox["konH", "2"]}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+                ")"}], "2"]}]]}], 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]]}], 
+         "konH"]}]}], "}"}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  ColumnForm[{{
+    SubKernels`Protected`h -> 
+     Rational[1, 2] (SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) (-SubKernels`Protected`koffH 
+        SubKernels`Protected`koffP SubKernels`Protected`konH - 
+       SubKernels`Protected`koffP SubKernels`Protected`konH^2 - 
+       SubKernels`Protected`koffH SubKernels`Protected`konH 
+       SubKernels`Protected`konP SubKernels`Protected`p0 + 
+       SubKernels`Protected`koffH SubKernels`Protected`konH 
+        SubKernels`Protected`konP SubKernels`Protected`t0 - (
+        4 SubKernels`Protected`koffP 
+         SubKernels`Protected`konH^2 (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP) 
+         SubKernels`Protected`t0 + (
+          SubKernels`Protected`koffH SubKernels`Protected`koffP 
+           SubKernels`Protected`konH + 
+          SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`p0 - 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+       Rational[1, 2]), SubKernels`Protected`pt -> 
+     SubKernels`Protected`konH^(-1) (
+       Rational[1, 2] SubKernels`Protected`koffH^2 SubKernels`Protected`koffP 
+        SubKernels`Protected`konH/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       SubKernels`Protected`koffH SubKernels`Protected`koffP 
+        SubKernels`Protected`konH^2/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       Rational[1, 2] SubKernels`Protected`koffP SubKernels`Protected`konH^3/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       Rational[1, 2] SubKernels`Protected`koffH^2 SubKernels`Protected`konH 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0 + 
+       Rational[1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH^2 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0 + 
+       SubKernels`Protected`konH SubKernels`Protected`t0 + 
+       Rational[-1, 2] SubKernels`Protected`koffH^2 SubKernels`Protected`konH 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`t0 + 
+       Rational[-1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH^2 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`t0 + 
+       Rational[1, 2] 
+        SubKernels`Protected`koffH (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) (
+          4 SubKernels`Protected`koffP 
+           SubKernels`Protected`konH^2 (
+            SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP) 
+           SubKernels`Protected`t0 + (
+            SubKernels`Protected`koffH SubKernels`Protected`koffP 
+             SubKernels`Protected`konH + 
+            SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP SubKernels`Protected`p0 - 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+         Rational[1, 2] + 
+       Rational[1, 2] 
+        SubKernels`Protected`konH (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) (
+          4 SubKernels`Protected`koffP 
+           SubKernels`Protected`konH^2 (
+            SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP) 
+           SubKernels`Protected`t0 + (
+            SubKernels`Protected`koffH SubKernels`Protected`koffP 
+             SubKernels`Protected`konH + 
+            SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP SubKernels`Protected`p0 - 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+         Rational[1, 2])}, {
+    SubKernels`Protected`h -> 
+     Rational[1, 2] (SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) (-SubKernels`Protected`koffH 
+        SubKernels`Protected`koffP SubKernels`Protected`konH - 
+       SubKernels`Protected`koffP SubKernels`Protected`konH^2 - 
+       SubKernels`Protected`koffH SubKernels`Protected`konH 
+       SubKernels`Protected`konP SubKernels`Protected`p0 + 
+       SubKernels`Protected`koffH SubKernels`Protected`konH 
+        SubKernels`Protected`konP 
+        SubKernels`Protected`t0 + (
+         4 SubKernels`Protected`koffP 
+          SubKernels`Protected`konH^2 (
+           SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP) 
+          SubKernels`Protected`t0 + (
+           SubKernels`Protected`koffH SubKernels`Protected`koffP 
+            SubKernels`Protected`konH + 
+           SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`p0 - 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+        Rational[1, 2]), SubKernels`Protected`pt -> 
+     SubKernels`Protected`konH^(-1) (
+       Rational[1, 2] SubKernels`Protected`koffH^2 SubKernels`Protected`koffP 
+        SubKernels`Protected`konH/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       SubKernels`Protected`koffH SubKernels`Protected`koffP 
+        SubKernels`Protected`konH^2/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       Rational[1, 2] SubKernels`Protected`koffP SubKernels`Protected`konH^3/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       Rational[1, 2] SubKernels`Protected`koffH^2 SubKernels`Protected`konH 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0 + 
+       Rational[1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH^2 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0 + 
+       SubKernels`Protected`konH SubKernels`Protected`t0 + 
+       Rational[-1, 2] SubKernels`Protected`koffH^2 SubKernels`Protected`konH 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`t0 + 
+       Rational[-1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH^2 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`t0 + 
+       Rational[-1, 2] 
+        SubKernels`Protected`koffH (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) (
+          4 SubKernels`Protected`koffP 
+           SubKernels`Protected`konH^2 (
+            SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP) 
+           SubKernels`Protected`t0 + (
+            SubKernels`Protected`koffH SubKernels`Protected`koffP 
+             SubKernels`Protected`konH + 
+            SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP SubKernels`Protected`p0 - 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+         Rational[1, 2] + 
+       Rational[-1, 2] 
+        SubKernels`Protected`konH (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) (
+          4 SubKernels`Protected`koffP 
+           SubKernels`Protected`konH^2 (
+            SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP) 
+           SubKernels`Protected`t0 + (
+            SubKernels`Protected`koffH SubKernels`Protected`koffP 
+             SubKernels`Protected`konH + 
+            SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP SubKernels`Protected`p0 - 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+         Rational[1, 2])}}],
+  Editable->False]], "Output",
+ CellChangeTimes->{
+  3.6646441350253544`*^9, 3.6646453732596626`*^9, 3.664645441123784*^9, 
+   3.664645524348339*^9, 3.664645630778582*^9, {3.664645770515659*^9, 
+   3.6646458253534627`*^9}, 3.6646459405864735`*^9, {3.66464599043979*^9, 
+   3.664646012559764*^9}, 3.6646460860848484`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exploring Solutions Symbolically", "Subsection",
+ CellChangeTimes->{{3.6646443887718697`*^9, 3.664644394260068*^9}}],
+
+Cell["\<\
+Generally speaking, solving the equations can lead to multiple solutions. \
+This often arises from the solver\[CloseCurlyQuote]s need to find the roots \
+of polynomials. It\[CloseCurlyQuote]s hard, generally, to discern which of \
+the solutions is the physically relevant one.\
+\>", "Text",
+ CellChangeTimes->{{3.6646444074136715`*^9, 3.6646444509809237`*^9}, {
+  3.664645200427586*^9, 3.664645219347481*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{"solveFor", "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"solveFor", " ", "/.", " ", "#"}], ")"}], "&"}], "/@", " ", 
+   "solutions"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"%", " ", "//", " ", "Expand"}], " ", "//", " ", 
+  "ColumnForm"}]}], "Input",
+ CellChangeTimes->{{3.6646449561534615`*^9, 3.6646449954775143`*^9}, {
+   3.6646450388278913`*^9, 3.664645065373001*^9}, 3.6646451019887857`*^9, {
+   3.6646451321657476`*^9, 3.664645147196041*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["pt", "t0"], ",", 
+   FractionBox["h", "t0"]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6646449670002346`*^9, 3.6646449957671084`*^9}, {
+   3.6646450417224903`*^9, 3.6646450657883635`*^9}, 3.664645102854619*^9, {
+   3.6646451344572773`*^9, 3.664645147608403*^9}, 3.664645373278662*^9, 
+   3.664645441146776*^9, 3.66464552437032*^9, 3.66464563079852*^9, {
+   3.664645770540185*^9, 3.66464582537595*^9}, 3.664645940610483*^9, {
+   3.6646459904937973`*^9, 3.664646012587777*^9}, 3.664646086094855*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"konH", " ", "t0"}]], 
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "koffP", " ", "konH"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        FractionBox[
+         RowBox[{"koffH", " ", "koffP", " ", 
+          SuperscriptBox["konH", "2"]}], 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+          RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+        FractionBox[
+         RowBox[{"koffP", " ", 
+          SuperscriptBox["konH", "3"]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", "p0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        FractionBox[
+         RowBox[{"koffH", " ", 
+          SuperscriptBox["konH", "2"], " ", "konP", " ", "p0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        RowBox[{"konH", " ", "t0"}], "-", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", "t0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+        FractionBox[
+         RowBox[{"koffH", " ", 
+          SuperscriptBox["konH", "2"], " ", "konP", " ", "t0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        FractionBox[
+         RowBox[{"koffH", " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{"4", " ", "koffP", " ", 
+             SuperscriptBox["konH", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+             "t0"}], "+", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+               RowBox[{"koffP", " ", 
+                SuperscriptBox["konH", "2"]}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+              ")"}], "2"]}]]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        FractionBox[
+         RowBox[{"konH", " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{"4", " ", "koffP", " ", 
+             SuperscriptBox["konH", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+             "t0"}], "+", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+               RowBox[{"koffP", " ", 
+                SuperscriptBox["konH", "2"]}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+              ")"}], "2"]}]]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]]}], 
+       ")"}]}], ",", 
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+          RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", "t0"}]], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "koffH"}], " ", "koffP", " ", "konH"}], "-", 
+        RowBox[{"koffP", " ", 
+         SuperscriptBox["konH", "2"]}], "-", 
+        RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "+", 
+        RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}], "-", 
+        SqrtBox[
+         RowBox[{
+          RowBox[{"4", " ", "koffP", " ", 
+           SuperscriptBox["konH", "2"], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+             RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+           "t0"}], "+", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+             RowBox[{"koffP", " ", 
+              SuperscriptBox["konH", "2"]}], "+", 
+             RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+             RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], ")"}], 
+           "2"]}]]}], ")"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"konH", " ", "t0"}]], 
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "koffP", " ", "konH"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        FractionBox[
+         RowBox[{"koffH", " ", "koffP", " ", 
+          SuperscriptBox["konH", "2"]}], 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+          RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+        FractionBox[
+         RowBox[{"koffP", " ", 
+          SuperscriptBox["konH", "3"]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", "p0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        FractionBox[
+         RowBox[{"koffH", " ", 
+          SuperscriptBox["konH", "2"], " ", "konP", " ", "p0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        RowBox[{"konH", " ", "t0"}], "-", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", "t0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+        FractionBox[
+         RowBox[{"koffH", " ", 
+          SuperscriptBox["konH", "2"], " ", "konP", " ", "t0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+        FractionBox[
+         RowBox[{"koffH", " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{"4", " ", "koffP", " ", 
+             SuperscriptBox["konH", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+             "t0"}], "+", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+               RowBox[{"koffP", " ", 
+                SuperscriptBox["konH", "2"]}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+              ")"}], "2"]}]]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+        FractionBox[
+         RowBox[{"konH", " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{"4", " ", "koffP", " ", 
+             SuperscriptBox["konH", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+             "t0"}], "+", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+               RowBox[{"koffP", " ", 
+                SuperscriptBox["konH", "2"]}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+              ")"}], "2"]}]]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]]}], 
+       ")"}]}], ",", 
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+          RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", "t0"}]], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "koffH"}], " ", "koffP", " ", "konH"}], "-", 
+        RowBox[{"koffP", " ", 
+         SuperscriptBox["konH", "2"]}], "-", 
+        RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "+", 
+        RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}], "+", 
+        SqrtBox[
+         RowBox[{
+          RowBox[{"4", " ", "koffP", " ", 
+           SuperscriptBox["konH", "2"], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+             RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+           "t0"}], "+", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+             RowBox[{"koffP", " ", 
+              SuperscriptBox["konH", "2"]}], "+", 
+             RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+             RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], ")"}], 
+           "2"]}]]}], ")"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6646449670002346`*^9, 3.6646449957671084`*^9}, {
+   3.6646450417224903`*^9, 3.6646450657883635`*^9}, 3.664645102854619*^9, {
+   3.6646451344572773`*^9, 3.664645147608403*^9}, 3.664645373278662*^9, 
+   3.664645441146776*^9, 3.66464552437032*^9, 3.66464563079852*^9, {
+   3.664645770540185*^9, 3.66464582537595*^9}, 3.664645940610483*^9, {
+   3.6646459904937973`*^9, 3.664646012587777*^9}, 3.6646460861398544`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "-", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "konP"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+        FractionBox[
+         RowBox[{"koffH", " ", "konH", " ", "konP"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "koffP"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         RowBox[{"koffH", " ", "koffP", " ", "konH"}], 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         RowBox[{"koffP", " ", 
+          SuperscriptBox["konH", "2"]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "konP", " ", "p0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         SqrtBox[
+          RowBox[{
+           RowBox[{"4", " ", "koffP", " ", 
+            SuperscriptBox["konH", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+            "t0"}], "+", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+              RowBox[{"koffP", " ", 
+               SuperscriptBox["konH", "2"]}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+              RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], ")"}],
+             "2"]}]], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         RowBox[{"koffH", " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{"4", " ", "koffP", " ", 
+             SuperscriptBox["konH", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+             "t0"}], "+", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+               RowBox[{"koffP", " ", 
+                SuperscriptBox["konH", "2"]}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+              ")"}], "2"]}]]}], 
+         RowBox[{"2", " ", "konH", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]]}], ",", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"koffH", " ", "konH", " ", "konP"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+        FractionBox[
+         RowBox[{"koffH", " ", "koffP", " ", "konH"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "-", 
+        FractionBox[
+         RowBox[{"koffP", " ", 
+          SuperscriptBox["konH", "2"]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "-", 
+        FractionBox[
+         RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "-", 
+        FractionBox[
+         SqrtBox[
+          RowBox[{
+           RowBox[{"4", " ", "koffP", " ", 
+            SuperscriptBox["konH", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+            "t0"}], "+", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+              RowBox[{"koffP", " ", 
+               SuperscriptBox["konH", "2"]}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+              RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], ")"}],
+             "2"]}]], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]]}]}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "-", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "konP"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+        FractionBox[
+         RowBox[{"koffH", " ", "konH", " ", "konP"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "+", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "koffP"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         RowBox[{"koffH", " ", "koffP", " ", "konH"}], 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         RowBox[{"koffP", " ", 
+          SuperscriptBox["konH", "2"]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["koffH", "2"], " ", "konP", " ", "p0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "-", 
+        FractionBox[
+         SqrtBox[
+          RowBox[{
+           RowBox[{"4", " ", "koffP", " ", 
+            SuperscriptBox["konH", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+            "t0"}], "+", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+              RowBox[{"koffP", " ", 
+               SuperscriptBox["konH", "2"]}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+              RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], ")"}],
+             "2"]}]], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "-", 
+        FractionBox[
+         RowBox[{"koffH", " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{"4", " ", "koffP", " ", 
+             SuperscriptBox["konH", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+             "t0"}], "+", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+               RowBox[{"koffP", " ", 
+                SuperscriptBox["konH", "2"]}], "+", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+               RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], 
+              ")"}], "2"]}]]}], 
+         RowBox[{"2", " ", "konH", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]]}], ",", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"koffH", " ", "konH", " ", "konP"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}]}]], "-", 
+        FractionBox[
+         RowBox[{"koffH", " ", "koffP", " ", "konH"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "-", 
+        FractionBox[
+         RowBox[{"koffP", " ", 
+          SuperscriptBox["konH", "2"]}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "-", 
+        FractionBox[
+         RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]], "+", 
+        FractionBox[
+         SqrtBox[
+          RowBox[{
+           RowBox[{"4", " ", "koffP", " ", 
+            SuperscriptBox["konH", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+            "t0"}], "+", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+              RowBox[{"koffP", " ", 
+               SuperscriptBox["konH", "2"]}], "+", 
+              RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+              RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}]}], ")"}],
+             "2"]}]], 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+          "t0"}]]}]}], "}"}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  ColumnForm[{{
+    1 + Rational[-1, 2] SubKernels`Protected`koffH^2 
+      SubKernels`Protected`konP/(
+      SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+      SubKernels`Protected`koffH SubKernels`Protected`konH 
+       SubKernels`Protected`konP) + 
+     Rational[-1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH 
+      SubKernels`Protected`konP/(
+      SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+      SubKernels`Protected`koffH SubKernels`Protected`konH 
+       SubKernels`Protected`konP) + 
+     Rational[1, 2] SubKernels`Protected`koffH^2 
+      SubKernels`Protected`koffP (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1)/SubKernels`Protected`t0 + 
+     SubKernels`Protected`koffH SubKernels`Protected`koffP 
+      SubKernels`Protected`konH (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1)/SubKernels`Protected`t0 + 
+     Rational[1, 2] SubKernels`Protected`koffP 
+      SubKernels`Protected`konH^2 (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1)/SubKernels`Protected`t0 + 
+     Rational[1, 2] SubKernels`Protected`koffH^2 
+      SubKernels`Protected`konP (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0/
+      SubKernels`Protected`t0 + 
+     Rational[1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH 
+      SubKernels`Protected`konP (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0/
+      SubKernels`Protected`t0 + 
+     Rational[1, 2] (SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) 
+      SubKernels`Protected`t0^(-1) (
+        4 SubKernels`Protected`koffP 
+         SubKernels`Protected`konH^2 (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP) 
+         SubKernels`Protected`t0 + (
+          SubKernels`Protected`koffH SubKernels`Protected`koffP 
+           SubKernels`Protected`konH + 
+          SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`p0 - 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+       Rational[1, 2] + 
+     Rational[1, 2] SubKernels`Protected`koffH 
+      SubKernels`Protected`konH^(-1) (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) 
+      SubKernels`Protected`t0^(-1) (
+        4 SubKernels`Protected`koffP 
+         SubKernels`Protected`konH^2 (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP) 
+         SubKernels`Protected`t0 + (
+          SubKernels`Protected`koffH SubKernels`Protected`koffP 
+           SubKernels`Protected`konH + 
+          SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`p0 - 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+       Rational[1, 2], 
+     Rational[1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH 
+      SubKernels`Protected`konP/(
+      SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+      SubKernels`Protected`koffH SubKernels`Protected`konH 
+       SubKernels`Protected`konP) + 
+     Rational[-1, 2] SubKernels`Protected`koffH SubKernels`Protected`koffP 
+      SubKernels`Protected`konH (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1)/SubKernels`Protected`t0 + 
+     Rational[-1, 2] SubKernels`Protected`koffP 
+      SubKernels`Protected`konH^2 (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1)/SubKernels`Protected`t0 + 
+     Rational[-1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH 
+      SubKernels`Protected`konP (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0/
+      SubKernels`Protected`t0 + 
+     Rational[-1, 2] (SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) 
+      SubKernels`Protected`t0^(-1) (
+        4 SubKernels`Protected`koffP 
+         SubKernels`Protected`konH^2 (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP) 
+         SubKernels`Protected`t0 + (
+          SubKernels`Protected`koffH SubKernels`Protected`koffP 
+           SubKernels`Protected`konH + 
+          SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`p0 - 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+       Rational[1, 2]}, {
+    1 + Rational[-1, 2] SubKernels`Protected`koffH^2 
+      SubKernels`Protected`konP/(
+      SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+      SubKernels`Protected`koffH SubKernels`Protected`konH 
+       SubKernels`Protected`konP) + 
+     Rational[-1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH 
+      SubKernels`Protected`konP/(
+      SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+      SubKernels`Protected`koffH SubKernels`Protected`konH 
+       SubKernels`Protected`konP) + 
+     Rational[1, 2] SubKernels`Protected`koffH^2 
+      SubKernels`Protected`koffP (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1)/SubKernels`Protected`t0 + 
+     SubKernels`Protected`koffH SubKernels`Protected`koffP 
+      SubKernels`Protected`konH (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1)/SubKernels`Protected`t0 + 
+     Rational[1, 2] SubKernels`Protected`koffP 
+      SubKernels`Protected`konH^2 (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1)/SubKernels`Protected`t0 + 
+     Rational[1, 2] SubKernels`Protected`koffH^2 
+      SubKernels`Protected`konP (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0/
+      SubKernels`Protected`t0 + 
+     Rational[1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH 
+      SubKernels`Protected`konP (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0/
+      SubKernels`Protected`t0 + 
+     Rational[-1, 2] (SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) 
+      SubKernels`Protected`t0^(-1) (
+        4 SubKernels`Protected`koffP 
+         SubKernels`Protected`konH^2 (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP) 
+         SubKernels`Protected`t0 + (
+          SubKernels`Protected`koffH SubKernels`Protected`koffP 
+           SubKernels`Protected`konH + 
+          SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`p0 - 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+       Rational[1, 2] + 
+     Rational[-1, 2] SubKernels`Protected`koffH 
+      SubKernels`Protected`konH^(-1) (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) 
+      SubKernels`Protected`t0^(-1) (
+        4 SubKernels`Protected`koffP 
+         SubKernels`Protected`konH^2 (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP) 
+         SubKernels`Protected`t0 + (
+          SubKernels`Protected`koffH SubKernels`Protected`koffP 
+           SubKernels`Protected`konH + 
+          SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`p0 - 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+       Rational[1, 2], 
+     Rational[1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH 
+      SubKernels`Protected`konP/(
+      SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+      SubKernels`Protected`koffH SubKernels`Protected`konH 
+       SubKernels`Protected`konP) + 
+     Rational[-1, 2] SubKernels`Protected`koffH SubKernels`Protected`koffP 
+      SubKernels`Protected`konH (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1)/SubKernels`Protected`t0 + 
+     Rational[-1, 2] SubKernels`Protected`koffP 
+      SubKernels`Protected`konH^2 (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1)/SubKernels`Protected`t0 + 
+     Rational[-1, 2] SubKernels`Protected`koffH SubKernels`Protected`konH 
+      SubKernels`Protected`konP (
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0/
+      SubKernels`Protected`t0 + 
+     Rational[1, 2] (SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) 
+      SubKernels`Protected`t0^(-1) (
+        4 SubKernels`Protected`koffP 
+         SubKernels`Protected`konH^2 (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP) 
+         SubKernels`Protected`t0 + (
+          SubKernels`Protected`koffH SubKernels`Protected`koffP 
+           SubKernels`Protected`konH + 
+          SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`p0 - 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+       Rational[1, 2]}}],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.6646449670002346`*^9, 3.6646449957671084`*^9}, {
+   3.6646450417224903`*^9, 3.6646450657883635`*^9}, 3.664645102854619*^9, {
+   3.6646451344572773`*^9, 3.664645147608403*^9}, 3.664645373278662*^9, 
+   3.664645441146776*^9, 3.66464552437032*^9, 3.66464563079852*^9, {
+   3.664645770540185*^9, 3.66464582537595*^9}, 3.664645940610483*^9, {
+   3.6646459904937973`*^9, 3.664646012587777*^9}, 3.664646086157854*^9}]
+}, Open  ]],
+
+Cell["\<\
+It turns out that only one of these solution is the relevant one. One can see \
+this if one goes back to the top and plugs in arbitrary but positive numeric \
+values for the constants, then re-runs the notebook\
+\>", "Text",
+ CellChangeTimes->{{3.664645452356473*^9, 3.664645506324595*^9}, {
+  3.6646460783475895`*^9, 3.6646460814508705`*^9}, {3.664646215564707*^9, 
+  3.664646216437524*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"symbolicSoln", "=", 
+   RowBox[{"solutions", "[", 
+    RowBox[{"[", "2", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"solveFor", " ", "/.", " ", "symbolicSoln"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"solveFor", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], " ", "\[Rule]", " ", 
+   RowBox[{"%", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], "  ", "//", " ", 
+  "FullSimplify"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"solveFor", "[", 
+    RowBox[{"[", "2", "]"}], "]"}], " ", "\[Rule]", " ", 
+   RowBox[{"%%", "[", 
+    RowBox[{"[", "2", "]"}], "]"}]}], " ", "//", " ", 
+  "FullSimplify"}]}], "Input",
+ CellChangeTimes->{{3.664645507627714*^9, 3.664645618132778*^9}, {
+  3.6646456793476925`*^9, 3.6646456864122562`*^9}, {3.6646458416537604`*^9, 
+  3.6646458586603603`*^9}, {3.6646460338312793`*^9, 3.66464603399687*^9}, {
+  3.6646460940045567`*^9, 3.664646143599962*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["pt", "t0"], "\[Rule]", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"koffP", " ", 
+     SuperscriptBox["konH", "2"]}], "-", 
+    SqrtBox[
+     RowBox[{
+      SuperscriptBox["konH", "2"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"koffP", " ", "konH"}], "+", 
+           RowBox[{"koffH", " ", 
+            RowBox[{"(", 
+             RowBox[{"koffP", "+", 
+              RowBox[{"konP", " ", 
+               RowBox[{"(", 
+                RowBox[{"p0", "-", "t0"}], ")"}]}]}], ")"}]}]}], ")"}], "2"], 
+        "+", 
+        RowBox[{"4", " ", "koffH", " ", "koffP", " ", 
+         RowBox[{"(", 
+          RowBox[{"koffH", "+", "konH"}], ")"}], " ", "konP", " ", "t0"}]}], 
+       ")"}]}]], "+", 
+    RowBox[{"koffH", " ", "konH", " ", 
+     RowBox[{"(", 
+      RowBox[{"koffP", "+", 
+       RowBox[{"konP", " ", 
+        RowBox[{"(", 
+         RowBox[{"p0", "+", "t0"}], ")"}]}]}], ")"}]}]}], 
+   RowBox[{
+   "2", " ", "koffH", " ", "konH", " ", "konP", " ", "t0"}]]}]], "Output",
+ CellChangeTimes->{{3.6646455215285015`*^9, 3.664645630826519*^9}, 
+   3.664645687120961*^9, {3.6646457705721827`*^9, 3.6646458594690456`*^9}, 
+   3.664645940644009*^9, {3.664645990572329*^9, 3.664646034726181*^9}, {
+   3.664646086173855*^9, 3.664646144198024*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["h", "t0"], "\[Rule]", 
+  FractionBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "koffP"}], " ", 
+     SuperscriptBox["konH", "2"]}], "-", 
+    RowBox[{"koffH", " ", "konH", " ", 
+     RowBox[{"(", 
+      RowBox[{"koffP", "+", 
+       RowBox[{"konP", " ", 
+        RowBox[{"(", 
+         RowBox[{"p0", "-", "t0"}], ")"}]}]}], ")"}]}], "+", 
+    SqrtBox[
+     RowBox[{
+      SuperscriptBox["konH", "2"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"koffP", " ", "konH"}], "+", 
+           RowBox[{"koffH", " ", 
+            RowBox[{"(", 
+             RowBox[{"koffP", "+", 
+              RowBox[{"konP", " ", 
+               RowBox[{"(", 
+                RowBox[{"p0", "-", "t0"}], ")"}]}]}], ")"}]}]}], ")"}], "2"], 
+        "+", 
+        RowBox[{"4", " ", "koffH", " ", "koffP", " ", 
+         RowBox[{"(", 
+          RowBox[{"koffH", "+", "konH"}], ")"}], " ", "konP", " ", "t0"}]}], 
+       ")"}]}]]}], 
+   RowBox[{"2", " ", "koffH", " ", 
+    RowBox[{"(", 
+     RowBox[{"koffH", "+", "konH"}], ")"}], " ", "konP", " ", 
+    "t0"}]]}]], "Output",
+ CellChangeTimes->{{3.6646455215285015`*^9, 3.664645630826519*^9}, 
+   3.664645687120961*^9, {3.6646457705721827`*^9, 3.6646458594690456`*^9}, 
+   3.664645940644009*^9, {3.664645990572329*^9, 3.664646034726181*^9}, {
+   3.664646086173855*^9, 3.664646144541031*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exploring Solutions Numerically", "Subsection",
+ CellChangeTimes->{{3.664644324398336*^9, 3.664644350084217*^9}}],
+
+Cell["\<\
+This section makes sense if in fact we have actual numeric values for our \
+parameters.\
+\>", "Text",
+ CellChangeTimes->{{3.6646443547886496`*^9, 3.664644377909773*^9}}],
+
+Cell["\<\
+We have several solutions to the system of equations, but don\
+\[CloseCurlyQuote]t, a priori, know which are physically relevant. So lets \
+explore them all. Helping us do that is a little utility, toNumeric, which \
+will do numeric subsitution with lots of digitis of precision, then truncate \
+those results to a normal precision size for easier human display, and \
+finally simplify complex numbers with imaginary parts which are numerically \
+zero.\
+\>", "Text",
+ CellChangeTimes->{{3.663531519926097*^9, 3.6635315761813307`*^9}, 
+   3.663534133158208*^9, {3.6635357667589746`*^9, 3.6635358018315573`*^9}, {
+   3.663537299766828*^9, 3.6635373138468647`*^9}, {3.6635373547516704`*^9, 
+   3.6635373898398495`*^9}, {3.6635377364864902`*^9, 3.663537736622569*^9}, {
+   3.664573570019965*^9, 3.6645735703398323`*^9}, {3.66457567158267*^9, 
+   3.6645756722474833`*^9}, {3.664576200755666*^9, 3.6645762212384434`*^9}, {
+   3.6645765407485614`*^9, 3.6645765482539983`*^9}, {3.6646441455102463`*^9, 
+   3.664644146365667*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"toNumeric", "[", "expr_", "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"N", "[", 
+    RowBox[{"N", "[", 
+     RowBox[{"expr", ",", " ", "100"}], "]"}], "]"}], " ", "/.", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"Complex", "[", 
+      RowBox[{"re_", ",", " ", "0."}], "]"}], " ", ":>", " ", "re"}], 
+    ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.663535400258607*^9, 3.663535438117829*^9}, {
+  3.663535500791917*^9, 3.6635355009174232`*^9}, {3.663535727201073*^9, 
+  3.6635357275519075`*^9}, {3.663535836173972*^9, 3.6635358365986166`*^9}, {
+  3.663535909711814*^9, 3.663535910383028*^9}, {3.663536034310239*^9, 
+  3.6635360526708107`*^9}, {3.663536194117693*^9, 3.663536217350937*^9}, {
+  3.6635362845524626`*^9, 3.663536296534165*^9}, {3.6635364661425962`*^9, 
+  3.6635364914023523`*^9}, {3.6645759811963353`*^9, 3.664576097299741*^9}, {
+  3.6645761593739157`*^9, 3.664576195330883*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"numericSolutions", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"solutions", " ", "/.", " ", "parameterValues"}], " ", "//", " ",
+      "toNumeric"}]}], ")"}], " ", "//", " ", "ColumnForm", " "}]], "Input",
+ CellChangeTimes->{{3.66353109302186*^9, 3.663531098773451*^9}, {
+   3.6635316490065966`*^9, 3.6635316621016254`*^9}, 3.6635319161659684`*^9, {
+   3.663531984558665*^9, 3.663531986590915*^9}, 3.6635323385532255`*^9, 
+   3.6635323825985365`*^9, 3.6635327471417255`*^9, {3.66353284576066*^9, 
+   3.663532846484874*^9}, {3.663535423490035*^9, 3.663535424479875*^9}, 
+   3.6635357330145473`*^9, {3.6635358849983816`*^9, 3.6635359140881147`*^9}, 
+   3.6635362889291973`*^9, 3.663536483854195*^9, {3.6635365388259907`*^9, 
+   3.66353654524677*^9}, {3.663536865095952*^9, 3.6635368725913625`*^9}, {
+   3.664575952959446*^9, 3.6645759597444105`*^9}, {3.6645761313997617`*^9, 
+   3.6645761403942504`*^9}, {3.6645762291520276`*^9, 3.6645762295200386`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"h", "\[Rule]", 
+        FractionBox[
+         RowBox[{"0.5`", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "1.`"}], " ", "koffH", " ", "koffP", " ", "konH"}], 
+            "-", 
+            RowBox[{"1.`", " ", "koffP", " ", 
+             SuperscriptBox["konH", "2"]}], "-", 
+            RowBox[{
+            "1.`", " ", "koffH", " ", "konH", " ", "konP", " ", "p0"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}], "-", 
+            RowBox[{"1.`", " ", 
+             SqrtBox[
+              RowBox[{
+               RowBox[{"4.`", " ", "koffP", " ", 
+                SuperscriptBox["konH", "2"], " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+                  RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+                "t0"}], "+", 
+               SuperscriptBox[
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+                  RowBox[{"koffP", " ", 
+                   SuperscriptBox["konH", "2"]}], "+", 
+                  RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+                  RowBox[{
+                  "1.`", " ", "koffH", " ", "konH", " ", "konP", " ", 
+                   "t0"}]}], ")"}], "2"]}]]}]}], ")"}]}], 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+          RowBox[{"koffH", " ", "konH", " ", "konP"}]}]]}], ",", 
+       RowBox[{"pt", "\[Rule]", 
+        FractionBox[
+         RowBox[{
+          FractionBox[
+           RowBox[{"0.5`", " ", 
+            SuperscriptBox["koffH", "2"], " ", "koffP", " ", "konH"}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"koffH", " ", "koffP", " ", 
+            SuperscriptBox["konH", "2"]}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"0.5`", " ", "koffP", " ", 
+            SuperscriptBox["konH", "3"]}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"0.5`", " ", 
+            SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", 
+            "p0"}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"0.5`", " ", "koffH", " ", 
+            SuperscriptBox["konH", "2"], " ", "konP", " ", "p0"}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          RowBox[{"konH", " ", "t0"}], "-", 
+          FractionBox[
+           RowBox[{"0.5`", " ", 
+            SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", 
+            "t0"}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "-", 
+          FractionBox[
+           RowBox[{"0.5`", " ", "koffH", " ", 
+            SuperscriptBox["konH", "2"], " ", "konP", " ", "t0"}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"0.5`", " ", "koffH", " ", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"4.`", " ", "koffP", " ", 
+               SuperscriptBox["konH", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+               "t0"}], "+", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+                 RowBox[{"koffP", " ", 
+                  SuperscriptBox["konH", "2"]}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+                 RowBox[{
+                 "1.`", " ", "koffH", " ", "konH", " ", "konP", " ", "t0"}]}],
+                 ")"}], "2"]}]]}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"0.5`", " ", "konH", " ", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"4.`", " ", "koffP", " ", 
+               SuperscriptBox["konH", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+               "t0"}], "+", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+                 RowBox[{"koffP", " ", 
+                  SuperscriptBox["konH", "2"]}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+                 RowBox[{
+                 "1.`", " ", "koffH", " ", "konH", " ", "konP", " ", "t0"}]}],
+                 ")"}], "2"]}]]}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]]}], "konH"]}]}], 
+      "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"h", "\[Rule]", 
+        FractionBox[
+         RowBox[{"0.5`", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "1.`"}], " ", "koffH", " ", "koffP", " ", "konH"}], 
+            "-", 
+            RowBox[{"1.`", " ", "koffP", " ", 
+             SuperscriptBox["konH", "2"]}], "-", 
+            RowBox[{
+            "1.`", " ", "koffH", " ", "konH", " ", "konP", " ", "p0"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP", " ", "t0"}], "+", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"4.`", " ", "koffP", " ", 
+               SuperscriptBox["konH", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+               "t0"}], "+", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+                 RowBox[{"koffP", " ", 
+                  SuperscriptBox["konH", "2"]}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+                 RowBox[{
+                 "1.`", " ", "koffH", " ", "konH", " ", "konP", " ", "t0"}]}],
+                 ")"}], "2"]}]]}], ")"}]}], 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+          RowBox[{"koffH", " ", "konH", " ", "konP"}]}]]}], ",", 
+       RowBox[{"pt", "\[Rule]", 
+        FractionBox[
+         RowBox[{
+          FractionBox[
+           RowBox[{"0.5`", " ", 
+            SuperscriptBox["koffH", "2"], " ", "koffP", " ", "konH"}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"koffH", " ", "koffP", " ", 
+            SuperscriptBox["konH", "2"]}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"0.5`", " ", "koffP", " ", 
+            SuperscriptBox["konH", "3"]}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"0.5`", " ", 
+            SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", 
+            "p0"}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          FractionBox[
+           RowBox[{"0.5`", " ", "koffH", " ", 
+            SuperscriptBox["konH", "2"], " ", "konP", " ", "p0"}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "+", 
+          RowBox[{"konH", " ", "t0"}], "-", 
+          FractionBox[
+           RowBox[{"0.5`", " ", 
+            SuperscriptBox["koffH", "2"], " ", "konH", " ", "konP", " ", 
+            "t0"}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "-", 
+          FractionBox[
+           RowBox[{"0.5`", " ", "koffH", " ", 
+            SuperscriptBox["konH", "2"], " ", "konP", " ", "t0"}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "-", 
+          FractionBox[
+           RowBox[{"0.5`", " ", "koffH", " ", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"4.`", " ", "koffP", " ", 
+               SuperscriptBox["konH", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+               "t0"}], "+", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+                 RowBox[{"koffP", " ", 
+                  SuperscriptBox["konH", "2"]}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+                 RowBox[{
+                 "1.`", " ", "koffH", " ", "konH", " ", "konP", " ", "t0"}]}],
+                 ")"}], "2"]}]]}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]], "-", 
+          FractionBox[
+           RowBox[{"0.5`", " ", "konH", " ", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"4.`", " ", "koffP", " ", 
+               SuperscriptBox["konH", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP"}]}], ")"}], " ", 
+               "t0"}], "+", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"koffH", " ", "koffP", " ", "konH"}], "+", 
+                 RowBox[{"koffP", " ", 
+                  SuperscriptBox["konH", "2"]}], "+", 
+                 RowBox[{"koffH", " ", "konH", " ", "konP", " ", "p0"}], "-", 
+                 RowBox[{
+                 "1.`", " ", "koffH", " ", "konH", " ", "konP", " ", "t0"}]}],
+                 ")"}], "2"]}]]}], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["koffH", "2"], " ", "konP"}], "+", 
+            RowBox[{"koffH", " ", "konH", " ", "konP"}]}]]}], "konH"]}]}], 
+      "}"}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  ColumnForm[{{
+    SubKernels`Protected`h -> 
+     0.5 (SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) (-SubKernels`Protected`koffH 
+        SubKernels`Protected`koffP SubKernels`Protected`konH - 1. 
+       SubKernels`Protected`koffP SubKernels`Protected`konH^2 - 1. 
+       SubKernels`Protected`koffH SubKernels`Protected`konH 
+       SubKernels`Protected`konP SubKernels`Protected`p0 + 
+       SubKernels`Protected`koffH SubKernels`Protected`konH 
+        SubKernels`Protected`konP SubKernels`Protected`t0 - 
+       1. (4. SubKernels`Protected`koffP 
+          SubKernels`Protected`konH^2 (
+           SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP) 
+          SubKernels`Protected`t0 + (
+           SubKernels`Protected`koffH SubKernels`Protected`koffP 
+            SubKernels`Protected`konH + 
+           SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`p0 - 1. 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+        Rational[1, 2]), SubKernels`Protected`pt -> 
+     SubKernels`Protected`konH^(-1) (
+       0.5 SubKernels`Protected`koffH^2 SubKernels`Protected`koffP 
+        SubKernels`Protected`konH/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       SubKernels`Protected`koffH SubKernels`Protected`koffP 
+        SubKernels`Protected`konH^2/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       0.5 SubKernels`Protected`koffP SubKernels`Protected`konH^3/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       0.5 SubKernels`Protected`koffH^2 SubKernels`Protected`konH 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0 + 
+       0.5 SubKernels`Protected`koffH SubKernels`Protected`konH^2 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0 + 
+       SubKernels`Protected`konH SubKernels`Protected`t0 - 0.5 
+       SubKernels`Protected`koffH^2 SubKernels`Protected`konH 
+       SubKernels`Protected`konP (
+         SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+         SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP)^(-1) SubKernels`Protected`t0 - 0.5 
+       SubKernels`Protected`koffH SubKernels`Protected`konH^2 
+       SubKernels`Protected`konP (
+         SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+         SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP)^(-1) SubKernels`Protected`t0 + 
+       0.5 SubKernels`Protected`koffH (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) (
+          4. SubKernels`Protected`koffP 
+           SubKernels`Protected`konH^2 (
+            SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP) 
+           SubKernels`Protected`t0 + (
+            SubKernels`Protected`koffH SubKernels`Protected`koffP 
+             SubKernels`Protected`konH + 
+            SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP SubKernels`Protected`p0 - 1. 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+         Rational[1, 2] + 
+       0.5 SubKernels`Protected`konH (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) (
+          4. SubKernels`Protected`koffP 
+           SubKernels`Protected`konH^2 (
+            SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP) 
+           SubKernels`Protected`t0 + (
+            SubKernels`Protected`koffH SubKernels`Protected`koffP 
+             SubKernels`Protected`konH + 
+            SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+             SubKernels`Protected`konP SubKernels`Protected`p0 - 1. 
+            SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+         Rational[1, 2])}, {
+    SubKernels`Protected`h -> 
+     0.5 (SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP)^(-1) (-SubKernels`Protected`koffH 
+        SubKernels`Protected`koffP SubKernels`Protected`konH - 1. 
+       SubKernels`Protected`koffP SubKernels`Protected`konH^2 - 1. 
+       SubKernels`Protected`koffH SubKernels`Protected`konH 
+       SubKernels`Protected`konP SubKernels`Protected`p0 + 
+       SubKernels`Protected`koffH SubKernels`Protected`konH 
+        SubKernels`Protected`konP 
+        SubKernels`Protected`t0 + (
+         4. SubKernels`Protected`koffP 
+          SubKernels`Protected`konH^2 (
+           SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP) 
+          SubKernels`Protected`t0 + (
+           SubKernels`Protected`koffH SubKernels`Protected`koffP 
+            SubKernels`Protected`konH + 
+           SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`p0 - 1. 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+        Rational[1, 2]), SubKernels`Protected`pt -> 
+     SubKernels`Protected`konH^(-1) (
+       0.5 SubKernels`Protected`koffH^2 SubKernels`Protected`koffP 
+        SubKernels`Protected`konH/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       SubKernels`Protected`koffH SubKernels`Protected`koffP 
+        SubKernels`Protected`konH^2/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       0.5 SubKernels`Protected`koffP SubKernels`Protected`konH^3/(
+        SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+        SubKernels`Protected`koffH SubKernels`Protected`konH 
+         SubKernels`Protected`konP) + 
+       0.5 SubKernels`Protected`koffH^2 SubKernels`Protected`konH 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0 + 
+       0.5 SubKernels`Protected`koffH SubKernels`Protected`konH^2 
+        SubKernels`Protected`konP (
+          SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+          SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP)^(-1) SubKernels`Protected`p0 + 
+       SubKernels`Protected`konH SubKernels`Protected`t0 - 0.5 
+       SubKernels`Protected`koffH^2 SubKernels`Protected`konH 
+       SubKernels`Protected`konP (
+         SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+         SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP)^(-1) SubKernels`Protected`t0 - 0.5 
+       SubKernels`Protected`koffH SubKernels`Protected`konH^2 
+       SubKernels`Protected`konP (
+         SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+         SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP)^(-1) SubKernels`Protected`t0 - 0.5 
+       SubKernels`Protected`koffH (
+         SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+         SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP)^(-1) (
+         4. SubKernels`Protected`koffP 
+          SubKernels`Protected`konH^2 (
+           SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP) 
+          SubKernels`Protected`t0 + (
+           SubKernels`Protected`koffH SubKernels`Protected`koffP 
+            SubKernels`Protected`konH + 
+           SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`p0 - 1. 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+        Rational[1, 2] - 0.5 
+       SubKernels`Protected`konH (
+         SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+         SubKernels`Protected`koffH SubKernels`Protected`konH 
+          SubKernels`Protected`konP)^(-1) (
+         4. SubKernels`Protected`koffP 
+          SubKernels`Protected`konH^2 (
+           SubKernels`Protected`koffH^2 SubKernels`Protected`konP + 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP) 
+          SubKernels`Protected`t0 + (
+           SubKernels`Protected`koffH SubKernels`Protected`koffP 
+            SubKernels`Protected`konH + 
+           SubKernels`Protected`koffP SubKernels`Protected`konH^2 + 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+            SubKernels`Protected`konP SubKernels`Protected`p0 - 1. 
+           SubKernels`Protected`koffH SubKernels`Protected`konH 
+           SubKernels`Protected`konP SubKernels`Protected`t0)^2)^
+        Rational[1, 2])}}],
+  Editable->False]], "Output",
+ CellChangeTimes->{
+  3.6646441851476736`*^9, 3.664645373311162*^9, 3.664645441184305*^9, 
+   3.664645524429529*^9, 3.664645630926526*^9, {3.6646457706081944`*^9, 
+   3.664645825445471*^9}, 3.6646459406830244`*^9, {3.6646459906543922`*^9, 
+   3.6646460127437906`*^9}, 3.6646460862588634`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Well, that\[CloseCurlyQuote]s pretty clear: only one of these solutions will \
+lead to non-complex, non-negative results. We define a little utility that \
+will automatically find that one solution for us, as the order in which Solve \
+returns its results isn\[CloseCurlyQuote]t deterministic. You could, of \
+course, just pick that one out by eye, and change the line below that defined \
+\[OpenCurlyQuote]soln\[CloseCurlyQuote] accordingly, but this is more fun :-).\
+\>", "Text",
+ CellChangeTimes->{{3.6635316704207726`*^9, 3.663531689287594*^9}, {
+  3.6635318101484766`*^9, 3.663531826198902*^9}, {3.6635335763655105`*^9, 
+  3.6635335823588476`*^9}, {3.663533833766612*^9, 3.6635338366628375`*^9}, {
+  3.6635363136715364`*^9, 3.6635363271601934`*^9}, {3.663537204366888*^9, 
+  3.663537291048746*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "physicallyRelevant", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"physicallyRelevant", "[", 
+   RowBox[{"sym_Symbol", " ", "\[Rule]", " ", 
+    RowBox[{"num_", "?", "NumberQ"}]}], "]"}], " ", ":=", " ", 
+  RowBox[{"physicallyRelevant", "[", "num", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"physicallyRelevant", "[", "num_Complex", "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Im", "[", "num", "]"}], " ", "\[Equal]", " ", "0"}], " ", "&&", 
+   " ", 
+   RowBox[{"physicallyRelevant", "[", 
+    RowBox[{"Re", "[", "num", "]"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"physicallyRelevant", "[", 
+   RowBox[{"num_", "?", "NumberQ"}], "]"}], " ", ":=", " ", 
+  RowBox[{"num", " ", "\[GreaterEqual]", " ", "0"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"physicallyRelevant", "[", "list_List", "]"}], " ", ":=", " ", 
+  RowBox[{"And", "@@", 
+   RowBox[{"(", 
+    RowBox[{"physicallyRelevant", " ", "/@", " ", "list"}], 
+    ")"}]}]}]}], "Input",
+ CellChangeTimes->{{3.663536564236436*^9, 3.6635367508871*^9}, {
+  3.663536793771596*^9, 3.663536804519771*^9}, {3.6635368406849604`*^9, 
+  3.6635369433513713`*^9}, {3.663536974879459*^9, 3.663536975831274*^9}, {
+  3.6645762485233707`*^9, 3.6645762513786564`*^9}, {3.6645772624689503`*^9, 
+  3.6645772793189263`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"viableSolutions", " ", "=", " ", 
+  RowBox[{"Pick", "[", 
+   RowBox[{
+    RowBox[{"Range", "[", 
+     RowBox[{"1", ",", 
+      RowBox[{"Length", "[", "solutions", "]"}]}], "]"}], ",", " ", 
+    RowBox[{"physicallyRelevant", " ", "/@", " ", "numericSolutions"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"soln", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"solutions", "[", 
+    RowBox[{"[", "viableSolutions", "]"}], "]"}], "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.663531691126227*^9, 3.6635316994630136`*^9}, {
+  3.6635343553975506`*^9, 3.663534357470089*^9}, {3.663535427479308*^9, 
+  3.6635354285180798`*^9}, {3.6635360046681476`*^9, 3.663536031871335*^9}, {
+  3.6635362313841343`*^9, 3.6635362469340243`*^9}, {3.6635369713909464`*^9, 
+  3.6635370801688366`*^9}, {3.663537138753016*^9, 3.6635371777441807`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{
+  3.664644203052887*^9, 3.664645373328164*^9, 3.664645441209284*^9, 
+   3.6646455244525332`*^9, 3.664645631034549*^9, {3.6646457706272154`*^9, 
+   3.664645825471958*^9}, 3.6646459407100067`*^9, {3.6646459906838865`*^9, 
+   3.664646012763788*^9}, 3.6646460862863674`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] \
+of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"}\\\"}]\\)\[NoBreak] does not \
+exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.664646086349874*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", "}"}], "\[LeftDoubleBracket]", "1", 
+  "\[RightDoubleBracket]"}]], "Output",
+ CellChangeTimes->{
+  3.664644203052887*^9, 3.664645373328164*^9, 3.664645441209284*^9, 
+   3.6646455244525332`*^9, 3.664645631034549*^9, {3.6646457706272154`*^9, 
+   3.664645825471958*^9}, 3.6646459407100067`*^9, {3.6646459906838865`*^9, 
+   3.664646012763788*^9}, 3.6646460863528743`*^9}]
+}, Open  ]],
+
+Cell["\<\
+We substitute that in to what we want to solve for to yield a symbolic result.\
+\>", "Text",
+ CellChangeTimes->{{3.6635317552696705`*^9, 3.6635318416300764`*^9}, {
+   3.66353202466238*^9, 3.663532025478629*^9}, 3.663534224637639*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"solveFor", " ", "/.", " ", "soln"}]], "Input",
+ CellChangeTimes->{{3.6635317133281093`*^9, 3.663531718141451*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ReplaceAll", "::", "reps"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \\\"1\\\
+\", \\\"\[RightDoubleBracket]\\\"}], \\\"}\\\"}]\\)\[NoBreak] is neither a \
+list of replacement rules nor a valid dispatch table, and so cannot be used \
+for replacing. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/ReplaceAll/reps\\\", ButtonNote -> \
+\\\"ReplaceAll::reps\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6646460864148865`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    FractionBox["pt", "t0"], ",", 
+    FractionBox["h", "t0"]}], "}"}], "/.", "\[VeryThinSpace]", 
+  RowBox[{
+   RowBox[{"{", "}"}], "\[LeftDoubleBracket]", "1", 
+   "\[RightDoubleBracket]"}]}]], "Output",
+ CellChangeTimes->{
+  3.664645373342162*^9, 3.664645441292314*^9, 3.6646455246046085`*^9, 
+   3.664645631170596*^9, {3.664645770645213*^9, 3.66464582555122*^9}, 
+   3.6646459407940373`*^9, {3.664645990794895*^9, 3.6646460128023744`*^9}, 
+   3.664646086419886*^9}]
+}, Open  ]],
+
+Cell["\<\
+Substituting in the specific parameter values we\[CloseCurlyQuote]re given \
+yields the answer we seek. We show the result both with and without labels.\
+\>", "Text",
+ CellChangeTimes->{{3.663532036868771*^9, 3.6635320998703227`*^9}, {
+  3.663532168861432*^9, 3.663532189166879*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"solveFor", " ", "/.", " ", "soln"}], " ", "/.", " ", 
+   "parameterValues"}], " ", "//", " ", "toNumeric"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"#", " ", "\[Rule]", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"#", " ", "/.", " ", "soln"}], " ", "/.", " ", 
+       "parameterValues"}], ")"}]}], " ", "&"}], " ", "/@", " ", "solveFor"}],
+   " ", "//", " ", "toNumeric"}]}], "Input",
+ CellChangeTimes->{{3.663532101077803*^9, 3.6635321626052094`*^9}, {
+  3.663533058151387*^9, 3.6635330692627926`*^9}, {3.663535430672002*^9, 
+  3.663535434663967*^9}, {3.663536290974802*^9, 3.663536292078184*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ReplaceAll", "::", "reps"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \\\"1\\\
+\", \\\"\[RightDoubleBracket]\\\"}], \\\"}\\\"}]\\)\[NoBreak] is neither a \
+list of replacement rules nor a valid dispatch table, and so cannot be used \
+for replacing. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/ReplaceAll/reps\\\", ButtonNote -> \
+\\\"ReplaceAll::reps\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6646460864838934`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    FractionBox["pt", "t0"], ",", 
+    FractionBox["h", "t0"]}], "}"}], "/.", "\[VeryThinSpace]", 
+  RowBox[{
+   RowBox[{"{", "}"}], "\[LeftDoubleBracket]", "1", 
+   "\[RightDoubleBracket]"}]}]], "Output",
+ CellChangeTimes->{
+  3.6646453733541813`*^9, 3.664645441324315*^9, 3.664645524682619*^9, 
+   3.6646456312656045`*^9, {3.6646457706582146`*^9, 3.6646458255857153`*^9}, 
+   3.664645940830062*^9, {3.664645990833895*^9, 3.6646460128293743`*^9}, 
+   3.6646460864873915`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ReplaceAll", "::", "reps"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \\\"1\\\
+\", \\\"\[RightDoubleBracket]\\\"}], \\\"}\\\"}]\\)\[NoBreak] is neither a \
+list of replacement rules nor a valid dispatch table, and so cannot be used \
+for replacing. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/ReplaceAll/reps\\\", ButtonNote -> \
+\\\"ReplaceAll::reps\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.664646086490391*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ReplaceAll", "::", "reps"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", \\\"}\\\"}], \\\"\[LeftDoubleBracket]\\\", \\\"1\\\
+\", \\\"\[RightDoubleBracket]\\\"}], \\\"}\\\"}]\\)\[NoBreak] is neither a \
+list of replacement rules nor a valid dispatch table, and so cannot be used \
+for replacing. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/ReplaceAll/reps\\\", ButtonNote -> \
+\\\"ReplaceAll::reps\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.664646086493391*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    FractionBox["pt", "t0"], "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox["pt", "t0"], "/.", "\[VeryThinSpace]", 
+      RowBox[{
+       RowBox[{"{", "}"}], "\[LeftDoubleBracket]", "1", 
+       "\[RightDoubleBracket]"}]}], ")"}]}], ",", 
+   RowBox[{
+    FractionBox["h", "t0"], "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox["h", "t0"], "/.", "\[VeryThinSpace]", 
+      RowBox[{
+       RowBox[{"{", "}"}], "\[LeftDoubleBracket]", "1", 
+       "\[RightDoubleBracket]"}]}], ")"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6646453733541813`*^9, 3.664645441324315*^9, 3.664645524682619*^9, 
+   3.6646456312656045`*^9, {3.6646457706582146`*^9, 3.6646458255857153`*^9}, 
+   3.664645940830062*^9, {3.664645990833895*^9, 3.6646460128293743`*^9}, 
+   3.6646460864958987`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1223, 1541},
+WindowMargins->{{Automatic, 389}, {Automatic, 0}},
+CellContext->Notebook,
+Magnification:>1.05 Inherited,
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (December 10, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 212, 3, 51, "Subsection"],
+Cell[CellGroupData[{
+Cell[817, 29, 157, 2, 41, "Subsubsection"],
+Cell[977, 33, 212, 4, 31, "Text"],
+Cell[CellGroupData[{
+Cell[1214, 41, 1136, 24, 132, "Input"],
+Cell[2353, 67, 679, 17, 50, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3069, 89, 928, 19, 92, "Input"],
+Cell[4000, 110, 517, 11, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4554, 126, 1118, 17, 132, "Input"],
+Cell[5675, 145, 584, 12, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6296, 162, 690, 14, 92, "Input"],
+Cell[6989, 178, 479, 10, 32, "Output"]
+}, Open  ]],
+Cell[7483, 191, 514, 10, 92, "Text"],
+Cell[8000, 203, 186, 5, 31, "Input"],
+Cell[8189, 210, 121, 1, 31, "Text"],
+Cell[CellGroupData[{
+Cell[8335, 215, 312, 5, 31, "Input"],
+Cell[8650, 222, 793, 20, 50, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9492, 248, 110, 1, 41, "Subsubsection"],
+Cell[9605, 251, 384, 7, 31, "Text"],
+Cell[CellGroupData[{
+Cell[10014, 262, 305, 7, 31, "Input"],
+Cell[10322, 271, 416, 9, 47, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10787, 286, 114, 1, 41, "Subsubsection"],
+Cell[10904, 289, 213, 4, 31, "Text"],
+Cell[11120, 295, 1246, 31, 72, "Input"],
+Cell[12369, 328, 224, 5, 31, "Text"],
+Cell[CellGroupData[{
+Cell[12618, 337, 320, 5, 72, "Input"],
+Cell[12941, 344, 499, 10, 32, "Output"],
+Cell[13443, 356, 382, 7, 32, "Output"],
+Cell[13828, 365, 432, 9, 32, "Output"]
+}, Open  ]],
+Cell[14275, 377, 204, 4, 31, "Text"],
+Cell[CellGroupData[{
+Cell[14504, 385, 1123, 23, 92, "Input"],
+Cell[15630, 410, 428, 9, 32, "Output"],
+Cell[16061, 421, 367, 7, 32, "Output"],
+Cell[16431, 430, 450, 9, 32, "Output"],
+Cell[16884, 441, 385, 7, 32, "Output"]
+}, Open  ]],
+Cell[17284, 451, 625, 10, 52, "Text"],
+Cell[CellGroupData[{
+Cell[17934, 465, 485, 9, 31, "Input"],
+Cell[18422, 476, 936, 19, 32, "Output"]
+}, Open  ]],
+Cell[19373, 498, 499, 10, 31, "Text"],
+Cell[CellGroupData[{
+Cell[19897, 512, 377, 5, 31, "Input"],
+Cell[20277, 519, 791, 20, 50, "Output"]
+}, Open  ]],
+Cell[21083, 542, 1360, 25, 152, "Text"],
+Cell[22446, 569, 490, 9, 31, "Input"],
+Cell[22939, 580, 362, 6, 31, "Text"],
+Cell[CellGroupData[{
+Cell[23326, 590, 1236, 25, 92, "Input"],
+Cell[CellGroupData[{
+Cell[24587, 619, 322, 5, 24, "Print"],
+Cell[24912, 626, 320, 5, 24, "Print"]
+}, Open  ]],
+Cell[25247, 634, 2509, 64, 116, "Output"],
+Cell[27759, 700, 448, 9, 32, "Output"]
+}, Open  ]],
+Cell[28222, 712, 131, 2, 31, "Text"],
+Cell[CellGroupData[{
+Cell[28378, 718, 1188, 20, 72, "Input"],
+Cell[29569, 740, 316, 5, 32, "Output"],
+Cell[29888, 747, 24397, 528, 148, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54346, 1282, 122, 1, 51, "Subsection"],
+Cell[54471, 1285, 419, 7, 52, "Text"],
+Cell[CellGroupData[{
+Cell[54915, 1296, 520, 12, 72, "Input"],
+Cell[55438, 1310, 553, 10, 47, "Output"],
+Cell[55994, 1322, 12664, 326, 667, "Output"],
+Cell[68661, 1650, 26994, 618, 122, "Output"]
+}, Open  ]],
+Cell[95670, 2271, 402, 7, 52, "Text"],
+Cell[CellGroupData[{
+Cell[96097, 2282, 972, 25, 92, "Input"],
+Cell[97072, 2309, 1361, 38, 55, "Output"],
+Cell[98436, 2349, 1437, 41, 57, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[99922, 2396, 119, 1, 51, "Subsection"],
+Cell[100044, 2399, 179, 4, 31, "Text"],
+Cell[100226, 2405, 1031, 16, 72, "Text"],
+Cell[101260, 2423, 932, 19, 31, "Input"],
+Cell[CellGroupData[{
+Cell[102217, 2446, 1002, 16, 31, "Input"],
+Cell[103222, 2464, 23662, 503, 132, "Output"]
+}, Open  ]],
+Cell[126899, 2970, 814, 12, 72, "Text"],
+Cell[127716, 2984, 1351, 29, 112, "Input"],
+Cell[CellGroupData[{
+Cell[129092, 3017, 875, 18, 52, "Input"],
+Cell[129970, 3037, 336, 6, 32, "Output"],
+Cell[130309, 3045, 519, 11, 23, "Message"],
+Cell[130831, 3058, 406, 8, 32, "Output"]
+}, Open  ]],
+Cell[131252, 3069, 243, 4, 31, "Text"],
+Cell[CellGroupData[{
+Cell[131520, 3077, 138, 2, 31, "Input"],
+Cell[131661, 3081, 679, 13, 23, "Message"],
+Cell[132343, 3096, 521, 13, 47, "Output"]
+}, Open  ]],
+Cell[132879, 3112, 293, 5, 31, "Text"],
+Cell[CellGroupData[{
+Cell[133197, 3121, 687, 16, 52, "Input"],
+Cell[133887, 3139, 679, 13, 23, "Message"],
+Cell[134569, 3154, 528, 13, 47, "Output"],
+Cell[135100, 3169, 677, 13, 23, "Message"],
+Cell[135780, 3184, 677, 13, 23, "Message"],
+Cell[136460, 3199, 854, 23, 51, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
