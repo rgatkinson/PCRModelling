@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     27443,        643]
-NotebookOptionsPosition[     25433,        580]
-NotebookOutlinePosition[     25834,        597]
-CellTagsIndexPosition[     25791,        594]
+NotebookDataLength[     27886,        651]
+NotebookOptionsPosition[     25874,        588]
+NotebookOutlinePosition[     26276,        605]
+CellTagsIndexPosition[     26233,        602]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -85,7 +85,7 @@ Cell[BoxData[
    3.6645906045479193`*^9, 3.664590803372672*^9}],
 
 Cell[BoxData[
- RowBox[{"equilibriumConstants", " ", "=", " ", 
+ RowBox[{"constants", " ", "=", " ", 
   RowBox[{"{", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"R", "\[Rule]", " ", "1.987"}], ",", " ", 
@@ -95,24 +95,32 @@ Cell[BoxData[
        "right", " ", "units"}], " ", "*)"}], "\[IndentingNewLine]", 
     RowBox[{"T", " ", "\[Rule]", " ", 
      RowBox[{"37", " ", "+", " ", "273.15"}]}], ",", "\[IndentingNewLine]", 
-    RowBox[{"\[CapitalDelta]h1", " ", "\[Rule]", " ", "x1"}], ",", " ", 
+    RowBox[{"\[CapitalDelta]h1", " ", "\[Rule]", " ", "\[CapitalDelta]h1"}], 
+    " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"to", " ", 
+      RowBox[{"do", ":", " ", 
+       RowBox[{
+       "replace", " ", "this", " ", "and", " ", "following", " ", "with", " ",
+         "real", " ", "numeric", " ", "data"}]}]}], " ", "*)"}], ",", " ", 
     "\[IndentingNewLine]", 
-    RowBox[{"\[CapitalDelta]s1", " ", "\[Rule]", " ", "x2"}], ",", 
-    "\[IndentingNewLine]", 
-    RowBox[{"\[CapitalDelta]h2", " ", "\[Rule]", " ", "x3"}], ",", 
-    "\[IndentingNewLine]", 
-    RowBox[{"\[CapitalDelta]s2", " ", "\[Rule]", " ", "x4"}], ",", 
-    "\[IndentingNewLine]", 
-    RowBox[{"\[CapitalDelta]h3", " ", "\[Rule]", " ", "x5"}], ",", 
-    "\[IndentingNewLine]", 
-    RowBox[{"\[CapitalDelta]s3", " ", "\[Rule]", " ", "x6"}]}], 
-   "\[IndentingNewLine]", "}"}]}]], "Input",
+    RowBox[{"\[CapitalDelta]s1", " ", "\[Rule]", " ", "\[CapitalDelta]s1"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"\[CapitalDelta]h2", " ", "\[Rule]", " ", "\[CapitalDelta]h2"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"\[CapitalDelta]s2", " ", "\[Rule]", " ", "\[CapitalDelta]s2"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"\[CapitalDelta]h3", " ", "\[Rule]", " ", "\[CapitalDelta]h3"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"\[CapitalDelta]s3", " ", "\[Rule]", " ", "\[CapitalDelta]s3"}]}],
+    "\[IndentingNewLine]", "}"}]}]], "Input",
  CellChangeTimes->{{3.6635287094902787`*^9, 3.6635287651097565`*^9}, {
    3.663531853089077*^9, 3.6635318540709257`*^9}, {3.663532803398095*^9, 
    3.6635328267346687`*^9}, {3.663532863813639*^9, 3.6635328668627214`*^9}, {
    3.6635330092086363`*^9, 3.6635330111514854`*^9}, {3.6635332475844936`*^9, 
    3.663533251077776*^9}, {3.66353426615287*^9, 3.6635342680716095`*^9}, 
-   3.6645907019698195`*^9}],
+   3.6645907019698195`*^9, {3.664641352260507*^9, 3.6646413968740387`*^9}, {
+   3.6646414608982763`*^9, 3.664641480675044*^9}}],
 
 Cell[BoxData[
  RowBox[{"initialConcentrations", " ", "=", " ", 
@@ -148,9 +156,9 @@ parameter values into one handy variable."
 Cell[BoxData[
  RowBox[{"parameterValues", " ", "=", " ", 
   RowBox[{
-  "equilibriumConstants", " ", "~", "Join", "~", " ", 
+  "constants", " ", "~", "Join", "~", " ", 
    "initialConcentrations"}]}]], "Input",
- CellChangeTimes->{3.6645906425415964`*^9}],
+ CellChangeTimes->{3.6645906425415964`*^9, 3.664641484931654*^9}],
 
 Cell["We similarly combine our equations.", "Text",
  CellChangeTimes->{{3.6645725872693624`*^9, 3.6645726010479407`*^9}}],
@@ -578,8 +586,8 @@ Cell[BoxData[{
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1150, 1541},
-WindowMargins->{{Automatic, 14}, {Automatic, 0}},
+WindowSize->{1150, 1548},
+WindowMargins->{{Automatic, 272}, {Automatic, 0}},
 CellContext->Notebook,
 Magnification:>1.05 Inherited,
 FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (December 10, 2015)",
@@ -603,46 +611,46 @@ Cell[741, 27, 157, 2, 41, "Subsubsection"],
 Cell[901, 31, 212, 4, 31, "Text"],
 Cell[1116, 37, 1506, 34, 172, "Input"],
 Cell[2625, 73, 531, 11, 92, "Input"],
-Cell[3159, 86, 1468, 28, 212, "Input"],
-Cell[4630, 116, 1014, 17, 92, "Input"],
-Cell[5647, 135, 514, 10, 92, "Text"],
-Cell[6164, 147, 209, 5, 31, "Input"],
-Cell[6376, 154, 121, 1, 31, "Text"],
-Cell[6500, 157, 312, 5, 31, "Input"]
+Cell[3159, 86, 1898, 36, 212, "Input"],
+Cell[5060, 124, 1014, 17, 92, "Input"],
+Cell[6077, 143, 514, 10, 92, "Text"],
+Cell[6594, 155, 220, 5, 31, "Input"],
+Cell[6817, 162, 121, 1, 31, "Text"],
+Cell[6941, 165, 312, 5, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6849, 167, 110, 1, 41, "Subsubsection"],
-Cell[6962, 170, 384, 7, 31, "Text"],
-Cell[7349, 179, 303, 7, 31, "Input"]
+Cell[7290, 175, 110, 1, 41, "Subsubsection"],
+Cell[7403, 178, 384, 7, 31, "Text"],
+Cell[7790, 187, 303, 7, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7689, 191, 114, 1, 41, "Subsubsection"],
-Cell[7806, 194, 213, 4, 31, "Text"],
-Cell[8022, 200, 1246, 31, 72, "Input"],
-Cell[9271, 233, 224, 5, 31, "Text"],
-Cell[9498, 240, 320, 5, 72, "Input"],
-Cell[9821, 247, 204, 4, 31, "Text"],
-Cell[10028, 253, 1123, 23, 92, "Input"],
-Cell[11154, 278, 625, 10, 52, "Text"],
-Cell[11782, 290, 485, 9, 31, "Input"],
-Cell[12270, 301, 499, 10, 31, "Text"],
-Cell[12772, 313, 377, 5, 31, "Input"],
-Cell[13152, 320, 1360, 25, 152, "Text"],
-Cell[14515, 347, 490, 9, 31, "Input"],
-Cell[15008, 358, 362, 6, 31, "Text"],
-Cell[15373, 366, 1236, 25, 92, "Input"],
-Cell[16612, 393, 131, 2, 31, "Text"],
-Cell[16746, 397, 1188, 20, 72, "Input"],
-Cell[17937, 419, 1106, 18, 112, "Text"],
-Cell[19046, 439, 932, 19, 31, "Input"],
-Cell[19981, 460, 1002, 16, 31, "Input"],
-Cell[20986, 478, 814, 12, 72, "Text"],
-Cell[21803, 492, 1351, 29, 112, "Input"],
-Cell[23157, 523, 875, 18, 52, "Input"],
-Cell[24035, 543, 243, 4, 31, "Text"],
-Cell[24281, 549, 138, 2, 31, "Input"],
-Cell[24422, 553, 293, 5, 31, "Text"],
-Cell[24718, 560, 687, 16, 52, "Input"]
+Cell[8130, 199, 114, 1, 41, "Subsubsection"],
+Cell[8247, 202, 213, 4, 31, "Text"],
+Cell[8463, 208, 1246, 31, 72, "Input"],
+Cell[9712, 241, 224, 5, 31, "Text"],
+Cell[9939, 248, 320, 5, 72, "Input"],
+Cell[10262, 255, 204, 4, 31, "Text"],
+Cell[10469, 261, 1123, 23, 92, "Input"],
+Cell[11595, 286, 625, 10, 52, "Text"],
+Cell[12223, 298, 485, 9, 31, "Input"],
+Cell[12711, 309, 499, 10, 31, "Text"],
+Cell[13213, 321, 377, 5, 31, "Input"],
+Cell[13593, 328, 1360, 25, 152, "Text"],
+Cell[14956, 355, 490, 9, 31, "Input"],
+Cell[15449, 366, 362, 6, 31, "Text"],
+Cell[15814, 374, 1236, 25, 92, "Input"],
+Cell[17053, 401, 131, 2, 31, "Text"],
+Cell[17187, 405, 1188, 20, 72, "Input"],
+Cell[18378, 427, 1106, 18, 112, "Text"],
+Cell[19487, 447, 932, 19, 31, "Input"],
+Cell[20422, 468, 1002, 16, 31, "Input"],
+Cell[21427, 486, 814, 12, 72, "Text"],
+Cell[22244, 500, 1351, 29, 112, "Input"],
+Cell[23598, 531, 875, 18, 52, "Input"],
+Cell[24476, 551, 243, 4, 31, "Text"],
+Cell[24722, 557, 138, 2, 31, "Input"],
+Cell[24863, 561, 293, 5, 31, "Text"],
+Cell[25159, 568, 687, 16, 52, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
