@@ -1,0 +1,640 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     25975,        631]
+NotebookOptionsPosition[     23852,        565]
+NotebookOutlinePosition[     24254,        582]
+CellTagsIndexPosition[     24211,        579]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Option #2 - Retain Temperature Dependence", "Subsection",
+ CellChangeTimes->{{3.6635284797421055`*^9, 3.663528499820449*^9}, {
+  3.663538733239464*^9, 3.6635387457188325`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["System Data", "Subsubsection",
+ CellChangeTimes->{{3.6635285064515457`*^9, 3.663528512861248*^9}, {
+  3.6635290694917393`*^9, 3.6635290809016066`*^9}}],
+
+Cell["\<\
+We define the core information, assigning each to a global variable\
+\>", "Text",
+ CellChangeTimes->{{3.6635286890843763`*^9, 3.6635287055098743`*^9}, {
+  3.663529528983404*^9, 3.6635295392210693`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"exprs", " ", "=", " ", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"k1", " ", "\[Equal]", " ", 
+     RowBox[{"p", " ", 
+      RowBox[{"t", " ", "/", " ", "pt"}]}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"k2", " ", "\[Equal]", " ", 
+     RowBox[{"h", " ", "/", " ", "p"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"k3", " ", "\[Equal]", " ", 
+     RowBox[{"d", " ", "/", " ", 
+      RowBox[{"(", 
+       RowBox[{"p", " ", "p"}], ")"}]}]}]}], "\[IndentingNewLine]", 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.663528516889183*^9, 3.6635285187086024`*^9}, {
+  3.6635285891668863`*^9, 3.663528608405947*^9}, {3.6635382694283805`*^9, 
+  3.6635383074722185`*^9}, {3.663538494018484*^9, 3.6635384996243277`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"balances", " ", "=", " ", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[CapitalDelta]h1", " ", "-", " ", 
+      RowBox[{"T", " ", "\[CapitalDelta]s1"}]}], " ", "\[Equal]", " ", 
+     RowBox[{
+      RowBox[{"-", " ", "R"}], " ", "T", " ", 
+      RowBox[{"Log", "[", "k1", "]"}]}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"\[CapitalDelta]h2", " ", "-", " ", 
+      RowBox[{"T", " ", "\[CapitalDelta]s2"}]}], " ", "\[Equal]", " ", 
+     RowBox[{
+      RowBox[{"-", " ", "R"}], " ", "T", " ", 
+      RowBox[{"Log", "[", "k2", "]"}]}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"\[CapitalDelta]h3", " ", "-", " ", 
+      RowBox[{"T", " ", "\[CapitalDelta]s3"}]}], " ", "\[Equal]", " ", 
+     RowBox[{
+      RowBox[{"-", " ", "R"}], " ", "T", " ", 
+      RowBox[{"Log", "[", "k3", "]"}]}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"p0", " ", "\[Equal]", " ", 
+     RowBox[{"p", " ", "+", " ", "pt", " ", "+", " ", "h", " ", "+", " ", 
+      RowBox[{"2", " ", "d"}]}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"t0", " ", "\[Equal]", " ", 
+     RowBox[{"t", " ", "+", " ", "pt"}]}]}], "\[IndentingNewLine]", 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.663528625632476*^9, 3.6635286536538553`*^9}, {
+  3.6635384958493395`*^9, 3.66353849715893*^9}}],
+
+Cell["\<\
+NOTE: for the rest of this notebook to evaluate correctly, numerical values \
+for x1, x2, ...x6 MUST be provided.\
+\>", "Text",
+ CellChangeTimes->{{3.663538749246464*^9, 3.6635387920723495`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"equilibriumConstants", " ", "=", " ", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"R", "\[Rule]", " ", "1.987"}], ",", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "may", " ", "perhaps", " ", "not", " ", "be", " ", "in", " ", "the", " ",
+       "right", " ", "units"}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"T", " ", "\[Rule]", " ", 
+     RowBox[{"37", " ", "+", " ", "273.15"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"\[CapitalDelta]h1", " ", "\[Rule]", " ", "x1"}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"\[CapitalDelta]s1", " ", "\[Rule]", " ", "x2"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"\[CapitalDelta]h2", " ", "\[Rule]", " ", "x3"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"\[CapitalDelta]s2", " ", "\[Rule]", " ", "x4"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"\[CapitalDelta]h3", " ", "\[Rule]", " ", "x5"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"\[CapitalDelta]s3", " ", "\[Rule]", " ", "x6"}]}], 
+   "\[IndentingNewLine]", "}"}]}]], "Input",
+ CellChangeTimes->{{3.6635287094902787`*^9, 3.6635287651097565`*^9}, {
+   3.663531853089077*^9, 3.6635318540709257`*^9}, {3.663532803398095*^9, 
+   3.6635328267346687`*^9}, {3.663532863813639*^9, 3.6635328668627214`*^9}, {
+   3.6635330092086363`*^9, 3.6635330111514854`*^9}, {3.6635332475844936`*^9, 
+   3.663533251077776*^9}, {3.66353426615287*^9, 3.6635342680716095`*^9}, {
+   3.663538322647439*^9, 3.663538409063959*^9}, {3.663538586632721*^9, 
+   3.663538596945195*^9}, {3.6635387655887947`*^9, 3.6635387759610987`*^9}, 
+   3.66353884765753*^9}],
+
+Cell[BoxData[
+ RowBox[{"initialConcentrations", " ", "=", " ", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p0", " ", "\[Rule]", " ", "200*^-9"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"t0", " ", "\[Rule]", "1*^-15"}]}], "\[IndentingNewLine]", 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.663528770459796*^9, 3.66352883970254*^9}, {
+  3.6635289533089266`*^9, 3.6635289600378942`*^9}, {3.6635309020386157`*^9, 
+  3.663530930109049*^9}, {3.6635322246632113`*^9, 3.6635322315046916`*^9}, {
+  3.663532391247535*^9, 3.663532397886118*^9}, {3.66353243804329*^9, 
+  3.663532462095928*^9}, {3.6635325206802683`*^9, 3.663532541390441*^9}, {
+  3.663532629535835*^9, 3.6635326702476225`*^9}, {3.6635327308050413`*^9, 
+  3.6635327409007487`*^9}, {3.6635327835184283`*^9, 3.66353279178179*^9}, {
+  3.663532871020926*^9, 3.663532873365019*^9}, {3.6635330149825983`*^9, 
+  3.6635330160869865`*^9}, {3.6635332571348133`*^9, 3.6635332603734035`*^9}, {
+  3.6635342720239067`*^9, 3.6635342730707307`*^9}}],
+
+Cell[TextData[{
+ "Note that we defined the above using fractions, not floating point, which \
+are generally handy in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " so as to maintain exactness of symbolic results. In our usage here, \
+floating point would have been just fine, though.\n\nWe combine all our \
+parameter values into one handy variable"
+}], "Text",
+ CellChangeTimes->{{3.6635328977649117`*^9, 3.663532911446639*^9}, {
+  3.663537439481166*^9, 3.6635375096232376`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"parameterValues", " ", "=", " ", 
+   RowBox[{
+   "equilibriumConstants", " ", "~", "Join", "~", " ", 
+    "initialConcentrations"}]}], ";"}]], "Input"],
+
+Cell["\<\
+Sometimes, it\[CloseCurlyQuote]s really helpful to Solve if you tell it \
+certain assumptions about unknowns. For us here, we know that the parameters \
+are always positive. That may or may not actually help us in this case, but \
+it\[CloseCurlyQuote]s certainly not a problem to provide that info.\
+\>", "Text",
+ CellChangeTimes->{{3.663531415044773*^9, 3.663531480677741*^9}, {
+  3.663533783880493*^9, 3.663533787687277*^9}, {3.663537607976185*^9, 
+  3.663537628591797*^9}}],
+
+Cell[BoxData[
+ RowBox[{"assumptions", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"#", " ", ">", " ", "0"}], " ", "&"}], " ", "/@", " ", 
+   "parameters"}]}]], "Input",
+ CellChangeTimes->{{3.663531349615414*^9, 3.6635313749731836`*^9}, 
+   3.6635318971090865`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Problem Statement", "Subsubsection",
+ CellChangeTimes->{{3.6635332956861534`*^9, 3.663533302919153*^9}}],
+
+Cell["\<\
+We want to solve for a certain set of expressions in terms of the variables \
+in our system.\
+\>", "Text",
+ CellChangeTimes->{{3.663529126885954*^9, 3.6635291681171513`*^9}, {
+  3.66352921605355*^9, 3.6635292409324865`*^9}, {3.6635294428780885`*^9, 
+  3.663529446549116*^9}, {3.663529481886017*^9, 3.6635294867892036`*^9}, {
+  3.6635336861669545`*^9, 3.663533698742139*^9}}],
+
+Cell[BoxData[
+ RowBox[{"solveFor", " ", "=", " ", 
+  RowBox[{"{", " ", 
+   RowBox[{
+    RowBox[{"pt", "/", "t0"}], ",", " ", 
+    RowBox[{"d", " ", "/", " ", "p0"}], ",", " ", 
+    RowBox[{"h", " ", "/", " ", "p0"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.663529451351914*^9, 3.663529466870253*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Manipulating The System", "Subsubsection",
+ CellChangeTimes->{{3.663529114542268*^9, 3.663529121092885*^9}}],
+
+Cell["\<\
+We define a little utility to dig out symbols from an expression. There might \
+be a better way to do this, but this works!\
+\>", "Text",
+ CellChangeTimes->{{3.663529976342022*^9, 3.663530003492758*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"findSymbols", "[", "expr_", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "reaped", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"reaped", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Reap", "[", 
+        RowBox[{"Scan", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"MatchQ", "[", 
+              RowBox[{"#", ",", " ", "_Symbol"}], "]"}], ",", " ", 
+             RowBox[{"Sow", "[", "#", "]"}]}], "]"}], "&"}], ",", " ", "expr",
+           ",", " ", "Infinity"}], "]"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "reaped", "]"}], "\[Equal]", "0"}], ",", " ", 
+        "reaped", ",", " ", 
+        RowBox[{"reaped", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "]"}], " ", "//", " ", 
+      "Union"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"findSymbols", "[", "solveFor", "]"}]}], "Input",
+ CellChangeTimes->{{3.663529684104897*^9, 3.663529705943718*^9}, {
+  3.6635297434063025`*^9, 3.66352995347922*^9}, {3.663530029485747*^9, 
+  3.6635300349688683`*^9}}],
+
+Cell["\<\
+We use that to figure out which of our symbols in our expressions are in fact \
+parameters.\
+\>", "Text",
+ CellChangeTimes->{{3.663531201213583*^9, 3.663531214397462*^9}, {
+  3.6635337070622196`*^9, 3.6635337256616974`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"parameters", " ", "=", " ", 
+  RowBox[{"findSymbols", "[", "parameterValues", "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.663531219950428*^9, {3.6635316010291557`*^9, 3.6635316356820145`*^9}, {
+   3.6635318587264347`*^9, 3.6635319087101707`*^9}, 3.6635328795621014`*^9, 
+   3.663532917317783*^9}],
+
+Cell[TextData[{
+ "Given that, we can find out which of the variables in our expressions and \
+balances we ",
+ StyleBox["don\[CloseCurlyQuote]t ",
+  FontSlant->"Italic"],
+ "care about."
+}], "Text",
+ CellChangeTimes->{{3.663530129828765*^9, 3.6635302061421165`*^9}, {
+  3.6635337354542*^9, 3.6635337400388803`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"eliminate", " ", "=", " ", 
+  RowBox[{"Complement", "[", 
+   RowBox[{
+    RowBox[{"findSymbols", "[", 
+     RowBox[{"exprs", " ", "~", "Join", "~", " ", "balances"}], "]"}], ",", 
+    " ", 
+    RowBox[{"findSymbols", "[", "solveFor", "]"}], ",", " ", "parameters"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6635300532898393`*^9, 3.6635301029182944`*^9}, {
+   3.663531186023137*^9, 3.6635311906702976`*^9}, {3.6635312242209234`*^9, 
+   3.663531239839181*^9}, 3.6635318837094417`*^9}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s re-arrange balances to get substitutions for those \
+by solving for the variables that we want to eliminate. (Remember that \
+Solve[] always returns a ",
+ StyleBox["list",
+  FontSlant->"Italic"],
+ " of solutions. Here, we know there\[CloseCurlyQuote]s going to only be one \
+solution, so we dig that out, with the [[1]])."
+}], "Text",
+ CellChangeTimes->{{3.6635302178361225`*^9, 3.6635302467888217`*^9}, {
+   3.663530280878435*^9, 3.663530329662797*^9}, 3.663533759470324*^9, {
+   3.663537553390567*^9, 3.6635375621501956`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"balanceElimination", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"Assuming", "[", 
+    RowBox[{"assumptions", ",", " ", 
+     RowBox[{"Solve", "[", 
+      RowBox[{"balances", ",", " ", "eliminate"}], "]"}]}], "]"}], " ", "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.663530248773521*^9, 3.6635302673808994`*^9}, {
+  3.663530332255541*^9, 3.663530339564871*^9}, {3.6635312456874084`*^9, 
+  3.66353124809448*^9}, {3.663538550936615*^9, 3.6635385609595137`*^9}}],
+
+Cell["Substitute those back into the original expressions", "Text",
+ CellChangeTimes->{{3.6635303452866225`*^9, 3.663530360830635*^9}}],
+
+Cell[BoxData[
+ RowBox[{"substitutedExprs", " ", "=", "  ", 
+  RowBox[{"exprs", " ", "/.", " ", "balanceElimination"}]}]], "Input",
+ CellChangeTimes->{{3.6635303630660925`*^9, 3.663530400132298*^9}}],
+
+Cell["\<\
+Figure out which of the system variables are not constants. These are the \
+variables we want to solve for.\
+\>", "Text",
+ CellChangeTimes->{{3.66353041166051*^9, 3.6635304180845346`*^9}, {
+  3.6635312983174276`*^9, 3.6635313093804073`*^9}, {3.663537586143656*^9, 
+  3.663537600472215*^9}}],
+
+Cell[BoxData[
+ RowBox[{"variablesToSolveFor", " ", "=", " ", 
+  RowBox[{"Complement", "[", 
+   RowBox[{
+    RowBox[{"findSymbols", "[", "solveFor", "]"}], ",", " ", "parameters"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6635305672468967`*^9, 3.6635306049336867`*^9}, 
+   3.6635307188939953`*^9, {3.663530770758663*^9, 3.663530794318142*^9}, {
+   3.663530964492587*^9, 3.663530995960707*^9}, {3.6635310571486053`*^9, 
+   3.663531073231022*^9}, 3.6635311940092907`*^9, {3.663531313645402*^9, 
+   3.663531317743143*^9}, 3.6635318921650095`*^9, {3.663533802136368*^9, 
+   3.6635338062953353`*^9}}],
+
+Cell[TextData[{
+ "Have ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " solve our subtituted system for the variables we need to solve for."
+}], "Text",
+ CellChangeTimes->{{3.6635313282692957`*^9, 3.663531338502519*^9}, 
+   3.6635337932468567`*^9, {3.6635339641103287`*^9, 3.6635340014780874`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"systemToSolve", " ", "=", " ", "substitutedExprs", " "}]], "Input",
+ CellChangeTimes->{{3.663533945900622*^9, 3.663533954342085*^9}, {
+   3.663534093223796*^9, 3.6635340964982204`*^9}, 3.6635376319119835`*^9}],
+
+Cell[TextData[{
+ "Note: we could now substitute in our known parameter values. This ",
+ StyleBox["ought ",
+  FontSlant->"Italic"],
+ "to be an optional step; ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " ought to just solve the full symbolic system were we to not do that. \
+However, if we don\[CloseCurlyQuote]t take that step here, we run into \
+numerical precision artifacts if we evaluate naively. By substituting in the \
+parameter values here, the system to be solved becomes simpler, and less \
+sensitive to numerical artifacts. That this step is (apparently) necessary \
+here is not at all obvious, but seems indeed to be needed. \n\nEither that, \
+or we need to not be naive and to do numerical evaluation afterward using ",
+ StyleBox["lots ",
+  FontSlant->"Italic"],
+ "of precision. You can try that either way here by commenting or \
+uncommenting this line."
+}], "Text",
+ CellChangeTimes->{{3.663534003765438*^9, 3.663534082269545*^9}, {
+  3.663534183712467*^9, 3.6635341980299916`*^9}, {3.6635342484646916`*^9, 
+  3.6635342553580093`*^9}, {3.6635343895816016`*^9, 3.663534412462571*^9}, {
+  3.6635355525277843`*^9, 3.6635356037504187`*^9}, {3.663535657229994*^9, 
+  3.6635357038891954`*^9}, {3.66353593346285*^9, 3.6635359604003563`*^9}, {
+  3.663536406918991*^9, 3.663536445271858*^9}, {3.6635376565107975`*^9, 
+  3.6635376962227077`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"systemToSolve", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"systemToSolve", " ", "/.", " ", "parameterValues"}], " ", "//", 
+    " ", "N"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.663534024909465*^9, 3.6635340352857533`*^9}, {
+   3.663534086847576*^9, 3.6635340898874807`*^9}, 3.6635353780666103`*^9, 
+   3.6635355483111925`*^9, {3.663535618622549*^9, 3.6635356192250795`*^9}, 
+   3.663535818117972*^9}],
+
+Cell["Go ahead and solve.", "Text",
+ CellChangeTimes->{{3.6635341133900623`*^9, 3.663534129606324*^9}, 
+   3.6635377229502172`*^9}],
+
+Cell[BoxData[{
+ RowBox[{"solutions", " ", "=", " ", 
+  RowBox[{"Assuming", "[", 
+   RowBox[{"assumptions", ",", " ", 
+    RowBox[{"Solve", "[", 
+     RowBox[{"systemToSolve", ",", " ", "variablesToSolveFor"}], "]"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", "solutions", "]"}]}], "Input",
+ CellChangeTimes->{{3.663530419630533*^9, 3.663530430558118*^9}, {
+   3.663530476687731*^9, 3.663530477868827*^9}, {3.6635305587332315`*^9, 
+   3.663530591021325*^9}, {3.6635308299583254`*^9, 3.6635308445711575`*^9}, {
+   3.663531007791276*^9, 3.6635310165503755`*^9}, 3.6635313237574263`*^9, {
+   3.6635313923415318`*^9, 3.6635313976995687`*^9}, {3.663531483740755*^9, 
+   3.6635315125425105`*^9}, {3.6635331210465536`*^9, 
+   3.6635331370934005`*^9}, {3.66353381078321*^9, 3.6635338164622602`*^9}, 
+   3.663533869208292*^9, {3.6635339149042125`*^9, 3.663533914951719*^9}, 
+   3.6635339603669157`*^9, 3.6635341270985403`*^9}],
+
+Cell["\<\
+That\[CloseCurlyQuote]s a chunk of output (if we don\[CloseCurlyQuote]t \
+substitute in the parameter values ahead of time). 
+
+We have several solutions to the system of equations, but don\
+\[CloseCurlyQuote]t, a priori, know which are physically relevant. So lets \
+explore them all. Helping us do that is a little utility, toNumeric, which \
+will do numeric subsitution with lots of digitis of precision, then truncate \
+those results to a normal precision size for easier human display.\
+\>", "Text",
+ CellChangeTimes->{{3.663531519926097*^9, 3.6635315761813307`*^9}, 
+   3.663534133158208*^9, {3.6635357667589746`*^9, 3.6635358018315573`*^9}, {
+   3.663537299766828*^9, 3.6635373138468647`*^9}, {3.6635373547516704`*^9, 
+   3.6635373898398495`*^9}, {3.6635377364864902`*^9, 3.663537736622569*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"toNumeric", "[", "expr_", "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"N", "[", 
+    RowBox[{"expr", ",", " ", "100"}], "]"}], " ", "//", " ", "N", 
+   " "}]}]], "Input",
+ CellChangeTimes->{{3.663535400258607*^9, 3.663535438117829*^9}, {
+  3.663535500791917*^9, 3.6635355009174232`*^9}, {3.663535727201073*^9, 
+  3.6635357275519075`*^9}, {3.663535836173972*^9, 3.6635358365986166`*^9}, {
+  3.663535909711814*^9, 3.663535910383028*^9}, {3.663536034310239*^9, 
+  3.6635360526708107`*^9}, {3.663536194117693*^9, 3.663536217350937*^9}, {
+  3.6635362845524626`*^9, 3.663536296534165*^9}, {3.6635364661425962`*^9, 
+  3.6635364914023523`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"numericSolutions", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"solutions", " ", "/.", " ", "parameterValues"}], " ", "//", " ",
+      "toNumeric"}]}], ")"}], " ", "//", " ", "ColumnForm"}]], "Input",
+ CellChangeTimes->{{3.66353109302186*^9, 3.663531098773451*^9}, {
+   3.6635316490065966`*^9, 3.6635316621016254`*^9}, 3.6635319161659684`*^9, {
+   3.663531984558665*^9, 3.663531986590915*^9}, 3.6635323385532255`*^9, 
+   3.6635323825985365`*^9, 3.6635327471417255`*^9, {3.66353284576066*^9, 
+   3.663532846484874*^9}, {3.663535423490035*^9, 3.663535424479875*^9}, 
+   3.6635357330145473`*^9, {3.6635358849983816`*^9, 3.6635359140881147`*^9}, 
+   3.6635362889291973`*^9, 3.663536483854195*^9, {3.6635365388259907`*^9, 
+   3.66353654524677*^9}, {3.663536865095952*^9, 3.6635368725913625`*^9}}],
+
+Cell["\<\
+Well, that\[CloseCurlyQuote]s pretty clear: only one of these solutions will \
+lead to non-complex, non-negative results. We define a little utility that \
+will automatically find that one solution for us, as the order in which Solve \
+returns its results isn\[CloseCurlyQuote]t deterministic. You could, of \
+course, just pick that one out by eye, and change the line below that defined \
+\[OpenCurlyQuote]soln\[CloseCurlyQuote] accordingly, but this is more fun :-).\
+\>", "Text",
+ CellChangeTimes->{{3.6635316704207726`*^9, 3.663531689287594*^9}, {
+  3.6635318101484766`*^9, 3.663531826198902*^9}, {3.6635335763655105`*^9, 
+  3.6635335823588476`*^9}, {3.663533833766612*^9, 3.6635338366628375`*^9}, {
+  3.6635363136715364`*^9, 3.6635363271601934`*^9}, {3.663537204366888*^9, 
+  3.663537291048746*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "physicallyRelevant", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"physicallyRelevant", "[", 
+   RowBox[{"sym_Symbol", " ", "\[Rule]", " ", 
+    RowBox[{"num_", "?", "NumberQ"}]}], "]"}], " ", ":=", " ", 
+  RowBox[{"physicallyRelevant", "[", "num", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"physicallyRelevant", "[", "num_Complex", "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Re", "[", "num", "]"}], " ", "\[GreaterEqual]", "0"}], " ", "&&",
+    " ", 
+   RowBox[{
+    RowBox[{"Im", "[", "num", "]"}], " ", "\[GreaterEqual]", " ", 
+    "0"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"physicallyRelevant", "[", 
+   RowBox[{"num_", "?", "NumberQ"}], "]"}], " ", ":=", " ", 
+  RowBox[{"num", " ", "\[GreaterEqual]", " ", "0"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"physicallyRelevant", "[", "list_List", "]"}], " ", ":=", " ", 
+  RowBox[{"And", "@@", 
+   RowBox[{"(", 
+    RowBox[{"physicallyRelevant", " ", "/@", " ", "list"}], 
+    ")"}]}]}]}], "Input",
+ CellChangeTimes->{{3.663536564236436*^9, 3.6635367508871*^9}, {
+  3.663536793771596*^9, 3.663536804519771*^9}, {3.6635368406849604`*^9, 
+  3.6635369433513713`*^9}, {3.663536974879459*^9, 3.663536975831274*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"viableSolutions", " ", "=", " ", 
+  RowBox[{"Pick", "[", 
+   RowBox[{
+    RowBox[{"Range", "[", 
+     RowBox[{"1", ",", 
+      RowBox[{"Length", "[", "solutions", "]"}]}], "]"}], ",", " ", 
+    RowBox[{"physicallyRelevant", " ", "/@", " ", "numericSolutions"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"soln", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"solutions", "[", 
+    RowBox[{"[", "viableSolutions", "]"}], "]"}], "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.663531691126227*^9, 3.6635316994630136`*^9}, {
+  3.6635343553975506`*^9, 3.663534357470089*^9}, {3.663535427479308*^9, 
+  3.6635354285180798`*^9}, {3.6635360046681476`*^9, 3.663536031871335*^9}, {
+  3.6635362313841343`*^9, 3.6635362469340243`*^9}, {3.6635369713909464`*^9, 
+  3.6635370801688366`*^9}, {3.663537138753016*^9, 3.6635371777441807`*^9}}],
+
+Cell["\<\
+We substitute that in to what we want to solve for to yield a symbolic result.\
+\>", "Text",
+ CellChangeTimes->{{3.6635317552696705`*^9, 3.6635318416300764`*^9}, {
+   3.66353202466238*^9, 3.663532025478629*^9}, 3.663534224637639*^9}],
+
+Cell[BoxData[
+ RowBox[{"solveFor", " ", "/.", " ", "soln"}]], "Input",
+ CellChangeTimes->{{3.6635317133281093`*^9, 3.663531718141451*^9}}],
+
+Cell["\<\
+Substituting in the specific parameter values we\[CloseCurlyQuote]re given \
+yields the answer we seek. We show the result both with and without labels.\
+\>", "Text",
+ CellChangeTimes->{{3.663532036868771*^9, 3.6635320998703227`*^9}, {
+  3.663532168861432*^9, 3.663532189166879*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"solveFor", " ", "/.", " ", "soln"}], " ", "/.", " ", 
+   "parameterValues"}], " ", "//", " ", "toNumeric"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"#", " ", "\[Rule]", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"#", " ", "/.", " ", "soln"}], " ", "/.", " ", 
+       "parameterValues"}], ")"}]}], " ", "&"}], " ", "/@", " ", "solveFor"}],
+   " ", "//", " ", "toNumeric"}]}], "Input",
+ CellChangeTimes->{{3.663532101077803*^9, 3.6635321626052094`*^9}, {
+  3.663533058151387*^9, 3.6635330692627926`*^9}, {3.663535430672002*^9, 
+  3.663535434663967*^9}, {3.663536290974802*^9, 3.663536292078184*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1062, 1541},
+WindowMargins->{{Automatic, 382}, {Automatic, 0}},
+CellContext->Notebook,
+Magnification:>1.05 Inherited,
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (December 10, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 182, 2, 51, "Subsection"],
+Cell[CellGroupData[{
+Cell[787, 28, 157, 2, 41, "Subsubsection"],
+Cell[947, 32, 212, 4, 31, "Text"],
+Cell[1162, 38, 756, 16, 112, "Input"],
+Cell[1921, 56, 1335, 29, 152, "Input"],
+Cell[3259, 87, 205, 4, 31, "Text"],
+Cell[3467, 93, 1615, 30, 212, "Input"],
+Cell[5085, 125, 1014, 17, 92, "Input"],
+Cell[6102, 144, 488, 10, 92, "Text"],
+Cell[6593, 156, 186, 5, 31, "Input"],
+Cell[6782, 163, 486, 8, 52, "Text"],
+Cell[7271, 173, 271, 7, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7579, 185, 110, 1, 41, "Subsubsection"],
+Cell[7692, 188, 384, 7, 31, "Text"],
+Cell[8079, 197, 303, 7, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8419, 209, 114, 1, 41, "Subsubsection"],
+Cell[8536, 212, 213, 4, 31, "Text"],
+Cell[8752, 218, 1272, 32, 92, "Input"],
+Cell[10027, 252, 234, 5, 31, "Text"],
+Cell[10264, 259, 319, 6, 31, "Input"],
+Cell[10586, 267, 313, 8, 31, "Text"],
+Cell[10902, 277, 511, 11, 31, "Input"],
+Cell[11416, 290, 569, 11, 52, "Text"],
+Cell[11988, 303, 506, 10, 31, "Input"],
+Cell[12497, 315, 135, 1, 31, "Text"],
+Cell[12635, 318, 198, 3, 31, "Input"],
+Cell[12836, 323, 300, 6, 31, "Text"],
+Cell[13139, 331, 599, 11, 31, "Input"],
+Cell[13741, 344, 304, 7, 31, "Text"],
+Cell[14048, 353, 233, 3, 31, "Input"],
+Cell[14284, 358, 1360, 25, 152, "Text"],
+Cell[15647, 385, 444, 9, 31, "Input"],
+Cell[16094, 396, 131, 2, 31, "Text"],
+Cell[16228, 400, 937, 16, 52, "Input"],
+Cell[17168, 418, 811, 13, 112, "Text"],
+Cell[17982, 433, 673, 13, 31, "Input"],
+Cell[18658, 448, 841, 14, 31, "Input"],
+Cell[19502, 464, 814, 12, 72, "Text"],
+Cell[20319, 478, 1254, 28, 112, "Input"],
+Cell[21576, 508, 875, 18, 52, "Input"],
+Cell[22454, 528, 243, 4, 31, "Text"],
+Cell[22700, 534, 138, 2, 31, "Input"],
+Cell[22841, 538, 293, 5, 31, "Text"],
+Cell[23137, 545, 687, 16, 52, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
