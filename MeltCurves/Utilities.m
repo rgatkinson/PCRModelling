@@ -16,7 +16,6 @@ BeginPackage["Utilities`"]
 
 (* Clear existing definitions so that this package can easily be reloaded*)
 Clear["Utilities`*"]
-Clear["Utilities`Private`*"]
 
 (* Exported symbols added here with SymbolName::usage *)
 generateColors::usage="generates a discrete set of colors"
@@ -44,6 +43,7 @@ toSymbol::usage="to come"
 toList::usage="to come"
 
 Begin["`Private`"]
+Clear["Utilities`Private`*"]
 
 (*--------------------------------------------------------------------------------------------------------------------*)
 (* Utilities *)

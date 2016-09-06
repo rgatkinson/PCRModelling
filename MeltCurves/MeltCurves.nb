@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      4394,        133]
-NotebookOptionsPosition[      3794,        108]
-NotebookOutlinePosition[      4162,        124]
-CellTagsIndexPosition[      4119,        121]
+NotebookDataLength[      7397,        194]
+NotebookOptionsPosition[      6756,        168]
+NotebookOutlinePosition[      7122,        184]
+CellTagsIndexPosition[      7079,        181]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -32,6 +32,7 @@ Cell[BoxData[{
  RowBox[{"SetDirectory", "[", 
   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{"Get", "[", "\"\<Utilities.m\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Get", "[", "\"\<LoadingData.m\>\"", "]"}], "\[IndentingNewLine]", 
  RowBox[{"Get", "[", "\"\<MeltCurves.m\>\"", "]"}]}], "Input",
  CellChangeTimes->{{3.682007692113997*^9, 3.682007711548562*^9}, {
   3.6820081973217993`*^9, 3.6820082034034004`*^9}, {3.6820083766571474`*^9, 
@@ -40,7 +41,8 @@ Cell[BoxData[{
   3.682009690852056*^9}, {3.6820105635532055`*^9, 3.6820105665769167`*^9}, {
   3.6820106782996683`*^9, 3.6820106951731787`*^9}, {3.68201129032038*^9, 
   3.682011356463462*^9}, {3.682011394970936*^9, 3.682011418511239*^9}, {
-  3.68201146389473*^9, 3.682011467952009*^9}}]
+  3.68201146389473*^9, 3.682011467952009*^9}, {3.6820956344320383`*^9, 
+  3.682095642282407*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -103,11 +105,69 @@ Cell[BoxData[{
 
 Cell[BoxData[
  RowBox[{"nonNeg", "[", 
-  RowBox[{"a", ",", "b", ",", "c"}], "]"}]], "Input"]
+  RowBox[{"a", ",", "b", ",", "c"}], "]"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{"Get", "[", "\"\<LoadingData`\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "dir", " ", "=", " ", 
+   "\"\<C:\\\\Users\\\\bob\\\\Dropbox\\\\Grad School\\\\Lutz \
+Lab\\\\FlatmerAnalysis\\\\\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"e16082201", " ", "=", " ", 
+   RowBox[{"loadMelt", "[", 
+    RowBox[{
+     RowBox[{"dir", " ", "<>", " ", "\"\<E16082201.xlsx\>\""}], ",", " ", 
+     "6"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"e16082201", "[", "\"\<headerNames\>\"", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"datasetFromLoadedMelt", "[", 
+  RowBox[{"e16082201", ",", " ", "\[IndentingNewLine]", 
+   RowBox[{"Function", "[", 
+    RowBox[{
+     RowBox[{"{", "assoc", "}"}], ",", " ", 
+     RowBox[{"hybridize", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"assoc", "[", "\"\<R16082205\>\"", "]"}], " ", "//", " ", 
+        "Round"}], ",", " ", 
+       RowBox[{
+        RowBox[{"assoc", "[", "\"\<R16061005\>\"", "]"}], " ", "//", " ", 
+        "Round"}], ",", " ", 
+       RowBox[{"assoc", "[", "\"\<Well Conc (ng/uL)\>\"", "]"}]}], "]"}]}], 
+    "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Function", "[", 
+    RowBox[{
+     RowBox[{"{", "header", "}"}], ",", " ", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"\"\<concentration\>\"", " ", "\[Rule]", " ", 
+       RowBox[{"header", "[", "\"\<Well Conc (ng/uL)\>\"", "]"}]}], 
+      "\[IndentingNewLine]", "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.682095658183647*^9, 3.682095819638897*^9}, {
+   3.682096416256338*^9, 3.682096459848335*^9}, 3.6820964933687067`*^9, {
+   3.68209654902535*^9, 3.6820965523333626`*^9}, {3.682096587254856*^9, 
+   3.6820965886960297`*^9}, {3.6820967545063486`*^9, 
+   3.6820967613517294`*^9}, {3.6821088266321564`*^9, 3.682108864852504*^9}, 
+   3.6821089851807165`*^9, 3.682109059625556*^9, {3.6821091393968306`*^9, 
+   3.682109143524829*^9}, {3.6821092548400373`*^9, 3.682109255266339*^9}, {
+   3.6821096948655386`*^9, 3.6821096974402905`*^9}, 3.682109749107283*^9, 
+   3.6821099307770395`*^9, {3.682125208400589*^9, 3.6821252173616033`*^9}, {
+   3.682125271611561*^9, 3.6821253347075357`*^9}, {3.682125365222889*^9, 
+   3.6821253883698964`*^9}, {3.6821255770116634`*^9, 
+   3.6821255846307893`*^9}, {3.682125872043313*^9, 3.6821258749717054`*^9}, {
+   3.6821266390197954`*^9, 3.6821266403347144`*^9}, 3.682126753000043*^9, {
+   3.6821270379424124`*^9, 3.6821270509047146`*^9}, {3.682127388117833*^9, 
+   3.6821273948751593`*^9}, {3.6821274623803587`*^9, 
+   3.6821274755654545`*^9}, {3.6821276472346897`*^9, 
+   3.6821276479363413`*^9}, {3.682127694233692*^9, 3.6821277248397803`*^9}, 
+   3.682127862030964*^9, {3.6821279411529665`*^9, 3.68212801137739*^9}}]
 }, Open  ]]
 },
-WindowSize->{775, 1096},
-WindowMargins->{{750, Automatic}, {222, Automatic}},
+WindowSize->{989, 1548},
+WindowMargins->{{433, Automatic}, {Automatic, 0}},
 CellContext->Notebook,
 FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
 StyleDefinitions->"Default.nb"
@@ -125,15 +185,16 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 108, 1, 67, "Subchapter"],
-Cell[691, 25, 986, 17, 88, "Input"]
+Cell[691, 25, 1114, 19, 107, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1714, 47, 101, 1, 67, "Subchapter"],
-Cell[1818, 50, 125, 2, 30, "Input"],
-Cell[1946, 54, 331, 6, 50, "Input"],
-Cell[2280, 62, 208, 4, 30, "Input"],
-Cell[2491, 68, 1192, 33, 69, "Input"],
-Cell[3686, 103, 92, 2, 30, "Input"]
+Cell[1842, 49, 101, 1, 67, "Subchapter"],
+Cell[1946, 52, 125, 2, 30, "Input"],
+Cell[2074, 56, 331, 6, 50, "Input"],
+Cell[2408, 64, 208, 4, 30, "Input"],
+Cell[2619, 70, 1192, 33, 69, "Input"],
+Cell[3814, 105, 92, 2, 30, "Input"],
+Cell[3909, 109, 2831, 56, 240, "Input"]
 }, Open  ]]
 }
 ]
