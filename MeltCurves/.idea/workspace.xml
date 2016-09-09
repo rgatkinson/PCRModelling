@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eb3dcdc6-e635-4225-b000-4d46f7837c4a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Mathematica/Explaining Internal Controls - hairpin v primer.nb" afterPath="$PROJECT_DIR$/../Mathematica/Explaining Internal Controls - hairpin v primer.nb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FractionBound.m" afterPath="$PROJECT_DIR$/FractionBound.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MeltCurves.nb" afterPath="$PROJECT_DIR$/MeltCurves.nb" />
     </list>
     <ignored path="MeltCurves.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +36,8 @@
       <file leaf-file-name="FractionBound.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FractionBound.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="88" column="30" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="30" />
+            <state relative-caret-position="153">
+              <caret line="69" column="62" selection-start-line="69" selection-start-column="62" selection-end-line="69" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -59,8 +56,8 @@
       <file leaf-file-name="MeltCurves.nb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MeltCurves.nb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65943">
-              <caret line="3879" column="2" selection-start-line="3879" selection-start-column="2" selection-end-line="3879" selection-end-column="2" />
+            <state relative-caret-position="3723">
+              <caret line="219" column="2" selection-start-line="219" selection-start-column="2" selection-end-line="219" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -689,8 +686,8 @@
     <entry file="file://$PROJECT_DIR$/PlottingData.m" />
     <entry file="file://$PROJECT_DIR$/MeltCurves.nb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65943">
-          <caret line="3879" column="2" selection-start-line="3879" selection-start-column="2" selection-end-line="3879" selection-end-column="2" />
+        <state relative-caret-position="3723">
+          <caret line="219" column="2" selection-start-line="219" selection-start-column="2" selection-end-line="219" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -713,8 +710,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FractionBound.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="88" column="30" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="30" />
+        <state relative-caret-position="153">
+          <caret line="69" column="62" selection-start-line="69" selection-start-column="62" selection-end-line="69" selection-end-column="62" />
           <folding />
         </state>
       </provider>

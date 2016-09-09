@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9975,        243]
-NotebookOptionsPosition[      9168,        210]
-NotebookOutlinePosition[      9534,        226]
-CellTagsIndexPosition[      9491,        223]
+NotebookDataLength[     10250,        251]
+NotebookOptionsPosition[      9443,        218]
+NotebookOutlinePosition[      9809,        234]
+CellTagsIndexPosition[      9766,        231]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -176,7 +176,14 @@ Cell["Fraction Bound", "Subsubsection",
 Cell[BoxData[{
  RowBox[{"<<", " ", 
   "FractionBound.m"}], "\[IndentingNewLine]", "numericalUsualParameters", "\
-\[IndentingNewLine]", "unitlessParameters", "\[IndentingNewLine]", 
+\[IndentingNewLine]", 
+ RowBox[{"unitlessParameters", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"fractionBound", " ", "uses", " ", "usual", " ", "units"}], ",", 
+    " ", 
+    RowBox[{"not", " ", "SI", " ", "units"}]}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{"fb", " ", "=", " ", 
   RowBox[{
    RowBox[{"fractionBound", "[", 
@@ -204,7 +211,8 @@ Cell[BoxData[{
    3.682437004217513*^9, 3.682437004611327*^9}, 3.6824373092595897`*^9, {
    3.6824376372200713`*^9, 3.6824376390134993`*^9}, {3.6824447900558996`*^9, 
    3.6824448230418034`*^9}, {3.682444962444563*^9, 3.6824450279718423`*^9}, {
-   3.6824452100846453`*^9, 3.6824452240910606`*^9}}]
+   3.6824452100846453`*^9, 3.6824452240910606`*^9}, {3.6824454917157054`*^9, 
+   3.682445506733301*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -242,7 +250,7 @@ Cell[6618, 148, 873, 19, 88, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[7528, 172, 107, 1, 39, "Subsubsection"],
-Cell[7638, 175, 1502, 31, 164, "Input"]
+Cell[7638, 175, 1777, 39, 183, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
