@@ -12,7 +12,8 @@
 (* :Keywords: *)
 (* :Discussion: *)
 
-BeginPackage["LoadingData`", {"Utilities`"}]
+BeginPackage["LoadingData`"]
+<<"Utilities.m"
 Clear @ Evaluate[Context[] <> "*"]
 
 loadMeltCurves::usage="to come"

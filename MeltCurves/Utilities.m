@@ -17,7 +17,6 @@ BeginPackage["Utilities`"]
 (* Clear existing definitions so that this package can easily be reloaded*)
 Clear["Utilities`*"]
 
-(* Exported symbols added here with SymbolName::usage *)
 generateColors::usage="generates a discrete set of colors"
 pairTemps::usage="usage to come"
 selectIndices::usage="usage to come"
@@ -40,6 +39,7 @@ mustNeg::usage="to come"
 mustPos::usgage="to come"
 symbolRules::usage="to come"
 toSymbol::usage="to come"
+symbolName::usage="to come"
 toList::usage="to come"
 
 Begin["`Private`"]
@@ -140,6 +140,9 @@ symbolRules[rules_Sequence] := symbolRules /@ rules
 
 toSymbol[sym_Symbol] := sym
 toSymbol[string_String] := Symbol[string]
+
+symbolName[sym_Symbol] := SymbolName[sym]
+symbolName[string_String] := string
 
 toList[list_List] := list
 toList[seq_Sequence] := { seq }

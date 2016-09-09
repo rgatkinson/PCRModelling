@@ -13,10 +13,15 @@
 (* :Discussion: *)
 
 BeginPackage["FractionBound`"]
+<<"Utilities.m"
 Clear @ Evaluate[Context[] <> "*"]
+
+unitlessParameters::usage="to come"
 
 Begin["`Private`"]
 Clear @ Evaluate[Context[] <> "*"]
+publishSymbol[name_] := Symbol["FractionBound`" <> symbolName[name]]
+publishSymbol /@ { Atot, Btot, t, tau, deltaG, deltaH, deltaS, R, deltas, deltah }
 
 (* Equilibrium Constant from Energy ----------------------------------------------------------------------------------*)
 (*
@@ -70,7 +75,7 @@ We try some plausible parameters (see http://biotools.nubic.northwestern.edu/Oli
 unitizeUsingUsualUnits = { Btot -> Atot,
     Atot   -> Quantity[atot, "Molar"],
     t      -> Quantity[tau, "Celsius"],
-    deltaH -> Quantity[ deltah, "kcal / mol"],
+    deltaH -> Quantity[deltah, "kcal / mol"],
     deltaS -> Quantity[deltas, "cal / (mol Kelvin)"],
     R      -> Quantity[1, "gas constant"]
 }
@@ -78,15 +83,15 @@ unitizeUsingUsualUnits = { Btot -> Atot,
 convertUsualToSIUnits = UnitConvert[#, system] & /@ unitizeUsingUsualUnits
 
 numericalUsualParameters = {
-    atot -> 10^-5 (*molar*),
-    deltah ->  778.5(*kcal/mol*),
-    deltas -> 2045.5(*cal / (mol K)*)
+    atot   -> 10^-5  (*molar*),
+    deltah ->  778.5 (*kcal/mol*),
+    deltas -> 2045.5 (*cal / (mol K)*)
 }
 parameters = convertUsualToSIUnits /. numericalUsualParameters
 
 (* Fraction Bound ----------------------------------------------------------------------------------------------------*)
 
-(* We rewrite AB as a fraction rho of the common total amount of reagents, and solve for rho.*)
+(* We rewrite AB as a fraction rho of the common total amount of reagents, and solve for rho. *)
 kEqn2 = kEqn1 /. { AB -> rho Atot }
 
 (* We choose the appropriate root *)
@@ -95,5 +100,67 @@ rhoRule = Solve[kEqn2, rho][[1, 1]]
 (* We substitute in what we know about K. *)
 rhoRule1 = rhoRule /. kRule0
 
+(*
+Interesting! There remains a dependence on Atot as well as temperature and energy.
+
+We substitute in our common parameters. rhoRule1 is the abstract fraction bound relation, which
+assumes that all the unknowns are in appropriate units.
+
+However, we don't usually like to work in those units. unitizeUsingUsualUnits is a set of rules adds
+units in our usual units. convertUsualToSIUnits then converts those to SI. parameters then
+plugs in some specific useful values.
+
+*)
+
+unitlessParameters = convertUsualToSIUnits /. numericalUsualParameters // removeUnits
+
 End[] (* `Private` *)
+
 EndPackage[]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
