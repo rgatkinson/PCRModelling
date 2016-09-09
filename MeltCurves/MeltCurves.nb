@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8668,        209]
-NotebookOptionsPosition[      7943,        179]
-NotebookOutlinePosition[      8309,        195]
-CellTagsIndexPosition[      8266,        192]
+NotebookDataLength[      9975,        243]
+NotebookOptionsPosition[      9168,        210]
+NotebookOutlinePosition[      9534,        226]
+CellTagsIndexPosition[      9491,        223]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,9 +31,9 @@ Cell[BoxData[{
    "]"}]}], "\[IndentingNewLine]", 
  RowBox[{"SetDirectory", "[", 
   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"Get", "[", "\"\<Utilities.m\>\"", "]"}], "\[IndentingNewLine]", 
- RowBox[{"Get", "[", "\"\<MeltCurves.m\>\"", "]"}], "\[IndentingNewLine]", 
- RowBox[{"Get", "[", "\"\<FractionBound.m\>\"", "]"}]}], "Input",
+ RowBox[{"<<", " ", "Utilities.m"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", " ", "MeltCurves.m"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", " ", "FractionBound.m"}]}], "Input",
  CellChangeTimes->{{3.682007692113997*^9, 3.682007711548562*^9}, {
   3.6820081973217993`*^9, 3.6820082034034004`*^9}, {3.6820083766571474`*^9, 
   3.682008386771617*^9}, {3.682008541804214*^9, 3.6820085420734797`*^9}, {
@@ -44,7 +44,7 @@ Cell[BoxData[{
   3.68201146389473*^9, 3.682011467952009*^9}, {3.6820956344320383`*^9, 
   3.682095642282407*^9}, {3.682176388843027*^9, 3.682176391450117*^9}, {
   3.682177841450246*^9, 3.6821778598874474`*^9}, {3.682185977783676*^9, 
-  3.6821859851857376`*^9}}]
+  3.6821859851857376`*^9}, {3.682445055013088*^9, 3.682445067155123*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -59,7 +59,7 @@ Cell["Loading the Data", "Subsubsection",
  CellChangeTimes->{{3.6821775012358704`*^9, 3.6821775104609923`*^9}}],
 
 Cell[BoxData[{
- RowBox[{"Get", "[", "\"\<MeltCurves`\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", " ", "MeltCurves.m"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
   "dir", " ", "=", " ", 
@@ -129,7 +129,7 @@ Lab\\\\FlatmerAnalysis\\\\\>\""}], ";"}], "\[IndentingNewLine]",
    3.682176987602216*^9, 3.6821769877044945`*^9}, {3.6821772563281307`*^9, 
    3.682177262685313*^9}, {3.682177307595294*^9, 3.682177344783001*^9}, {
    3.6821779345637474`*^9, 3.682177936454405*^9}, {3.6821856324442415`*^9, 
-   3.6821856426283484`*^9}}],
+   3.6821856426283484`*^9}, 3.682445050985401*^9}],
 
 Cell[BoxData[{
  RowBox[{"Get", "[", "\"\<MeltCurves`\>\"", "]"}], "\[IndentingNewLine]", 
@@ -147,7 +147,7 @@ Cell["Extracting  Replicates", "Subsubsection",
  CellChangeTimes->{{3.682177525824167*^9, 3.682177564717579*^9}}],
 
 Cell[BoxData[{
- RowBox[{"Get", "[", "\"\<MeltCurves`\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", " ", "MeltCurves.m"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"replicates", " ", "=", " ", 
    RowBox[{"groupMeltCurvesByReplicates", "[", "data", "]"}]}], 
@@ -164,16 +164,47 @@ Cell[BoxData[{
  CellChangeTimes->{
   3.6821784750036373`*^9, 3.6821786808087435`*^9, {3.682185373884186*^9, 
    3.6821854212155004`*^9}, 3.6821854954808903`*^9, {3.6821856494177084`*^9, 
-   3.6821856782046843`*^9}, {3.6821857405254602`*^9, 3.682185753703209*^9}}],
+   3.6821856782046843`*^9}, {3.6821857405254602`*^9, 3.682185753703209*^9}, {
+   3.682445034749363*^9, 3.6824450388991385`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Fraction Bound", "Subsubsection",
+ CellChangeTimes->{{3.682444986386588*^9, 3.6824449878038774`*^9}}],
 
 Cell[BoxData[{
- RowBox[{"Get", "[", "\"\<FractionBound`\>\"", 
-  "]"}], "\[IndentingNewLine]", "unitlessParameters"}], "Input",
+ RowBox[{"<<", " ", 
+  "FractionBound.m"}], "\[IndentingNewLine]", "numericalUsualParameters", "\
+\[IndentingNewLine]", "unitlessParameters", "\[IndentingNewLine]", 
+ RowBox[{"fb", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"fractionBound", "[", 
+    RowBox[{"\[Tau]", ",", "\[IndentingNewLine]", 
+     RowBox[{"deltah", "/.", "numericalUsualParameters"}], " ", 
+     RowBox[{"(*", 
+      RowBox[{"kcal", "/", "mol"}], "*)"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"deltas", "/.", "numericalUsualParameters"}], " ", 
+     RowBox[{"(*", 
+      RowBox[{"cal", "/", 
+       RowBox[{"(", 
+        RowBox[{"mol", " ", "K"}], ")"}]}], "*)"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"atot", "/.", "numericalUsualParameters"}]}], " ", 
+    RowBox[{"(*", "molar", "*)"}], "]"}], "//", 
+   "FullSimplify"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{"fb", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"\[Tau]", ",", " ", "97", ",", " ", "115"}], "}"}]}], 
+  "]"}]}], "Input",
  CellChangeTimes->{{3.682434713170356*^9, 3.6824347180610976`*^9}, {
    3.682434869480875*^9, 3.682434873801403*^9}, {3.682435563915042*^9, 
    3.682435564444663*^9}, {3.6824362927128716`*^9, 3.6824362929360914`*^9}, {
    3.682437004217513*^9, 3.682437004611327*^9}, 3.6824373092595897`*^9, {
-   3.6824376372200713`*^9, 3.6824376390134993`*^9}}]
+   3.6824376372200713`*^9, 3.6824376390134993`*^9}, {3.6824447900558996`*^9, 
+   3.6824448230418034`*^9}, {3.682444962444563*^9, 3.6824450279718423`*^9}, {
+   3.6824452100846453`*^9, 3.6824452240910606`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -196,19 +227,22 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 108, 1, 67, "Subchapter"],
-Cell[691, 25, 1264, 21, 107, "Input"]
+Cell[691, 25, 1268, 21, 107, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1992, 51, 149, 2, 67, "Subchapter"],
+Cell[1996, 51, 149, 2, 67, "Subchapter"],
 Cell[CellGroupData[{
-Cell[2166, 57, 111, 1, 39, "Subsubsection"],
-Cell[2280, 60, 3681, 71, 259, "Input"],
-Cell[5964, 133, 488, 7, 50, "Input"]
+Cell[2170, 57, 111, 1, 39, "Subsubsection"],
+Cell[2284, 60, 3690, 71, 259, "Input"],
+Cell[5977, 133, 488, 7, 50, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6489, 145, 113, 1, 39, "Subsubsection"],
-Cell[6605, 148, 834, 18, 88, "Input"],
-Cell[7442, 168, 473, 7, 50, "Input"]
+Cell[6502, 145, 113, 1, 39, "Subsubsection"],
+Cell[6618, 148, 873, 19, 88, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7528, 172, 107, 1, 39, "Subsubsection"],
+Cell[7638, 175, 1502, 31, 164, "Input"]
 }, Open  ]]
 }, Open  ]]
 }

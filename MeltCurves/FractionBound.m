@@ -21,7 +21,7 @@ unitlessParameters::usage="to come"
 Begin["`Private`"]
 Clear @ Evaluate[Context[] <> "*"]
 publishSymbol[name_] := Symbol["FractionBound`" <> symbolName[name]]
-publishSymbol /@ { Atot, Btot, t, tau, deltaG, deltaH, deltaS, R, deltas, deltah }
+publishSymbol /@ { Atot, Btot, t, tau, deltaG, deltaH, deltaS, R, atot, btot, deltas, deltah }
 
 (* Equilibrium Constant from Energy ----------------------------------------------------------------------------------*)
 (*
@@ -82,10 +82,11 @@ unitizeUsingUsualUnits = { Btot -> Atot,
 
 convertUsualToSIUnits = UnitConvert[#, system] & /@ unitizeUsingUsualUnits
 
+publishSymbol[numericalUsualParameters]
 numericalUsualParameters = {
-    atot   -> 10^-5  (*molar*),
     deltah ->  778.5 (*kcal/mol*),
-    deltas -> 2045.5 (*cal / (mol K)*)
+    deltas -> 2045.5 (*cal / (mol K)*),
+    atot   -> 10^-5  (*molar*)
 }
 parameters = convertUsualToSIUnits /. numericalUsualParameters
 
@@ -110,9 +111,17 @@ However, we don't usually like to work in those units. unitizeUsingUsualUnits is
 units in our usual units. convertUsualToSIUnits then converts those to SI. parameters then
 plugs in some specific useful values.
 
+We capture this in a functional dependence: fractionBound.
 *)
 
 unitlessParameters = convertUsualToSIUnits /. numericalUsualParameters // removeUnits
+
+rhoRule3 = rhoRule1 /. {R -> (R /. unitlessParameters), t -> (t /. unitlessParameters)}
+rhoRule3 = rhoRule3/. convertUsualToSIUnits
+rhoRule3 = rhoRule3 // removeUnits
+
+publishSymbol[fractionBound]
+fractionBound[tautau_, deltahh_, deltass_, atottot_] := (rho /. rhoRule3) //. {tau -> tautau, deltah -> deltahh, deltas -> deltass, atot -> atottot}
 
 End[] (* `Private` *)
 

@@ -5,9 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Mathematica/Explaining Internal Controls - hairpin v primer.nb" afterPath="$PROJECT_DIR$/../Mathematica/Explaining Internal Controls - hairpin v primer.nb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FractionBound.m" afterPath="$PROJECT_DIR$/FractionBound.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MeltCurves.m" afterPath="$PROJECT_DIR$/MeltCurves.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MeltCurves.nb" afterPath="$PROJECT_DIR$/MeltCurves.nb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Utilities.m" afterPath="$PROJECT_DIR$/Utilities.m" />
     </list>
     <ignored path="MeltCurves.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,21 +36,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FractionBound.m" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FractionBound.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FractionBound.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="15" />
+            <state relative-caret-position="476">
+              <caret line="88" column="30" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Utilities.m" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Utilities.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Utilities.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="442">
+              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -61,8 +59,8 @@
       <file leaf-file-name="MeltCurves.nb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MeltCurves.nb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-36">
-              <caret line="3515" column="2" selection-start-line="3515" selection-start-column="2" selection-end-line="3515" selection-end-column="2" />
+            <state relative-caret-position="65943">
+              <caret line="3879" column="2" selection-start-line="3879" selection-start-column="2" selection-end-line="3879" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -94,8 +92,8 @@
         <option value="$PROJECT_DIR$/LoadingData.m" />
         <option value="$PROJECT_DIR$/PlottingData.m" />
         <option value="$PROJECT_DIR$/Utilities.m" />
-        <option value="$PROJECT_DIR$/FractionBound.m" />
         <option value="$PROJECT_DIR$/MeltCurves.m" />
+        <option value="$PROJECT_DIR$/FractionBound.m" />
       </list>
     </option>
   </component>
@@ -206,6 +204,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -226,9 +227,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -561,6 +559,38 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/MeltCurves.m">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FractionBound.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utilities.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MeltCurves.nb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3196">
+          <caret line="188" column="2" selection-start-line="188" selection-start-column="2" selection-end-line="188" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MeltCurves.m">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="34" />
           <folding />
@@ -659,16 +689,8 @@
     <entry file="file://$PROJECT_DIR$/PlottingData.m" />
     <entry file="file://$PROJECT_DIR$/MeltCurves.nb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="3515" column="2" selection-start-line="3515" selection-start-column="2" selection-end-line="3515" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FractionBound.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="15" />
+        <state relative-caret-position="65943">
+          <caret line="3879" column="2" selection-start-line="3879" selection-start-column="2" selection-end-line="3879" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -683,8 +705,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Utilities.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="442">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FractionBound.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="88" column="30" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="30" />
           <folding />
         </state>
       </provider>
