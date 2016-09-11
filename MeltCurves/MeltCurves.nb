@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10250,        251]
-NotebookOptionsPosition[      9443,        218]
-NotebookOutlinePosition[      9809,        234]
-CellTagsIndexPosition[      9766,        231]
+NotebookDataLength[     11077,        274]
+NotebookOptionsPosition[     10153,        237]
+NotebookOutlinePosition[     10519,        253]
+CellTagsIndexPosition[     10476,        250]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,7 +33,8 @@ Cell[BoxData[{
   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{"<<", " ", "Utilities.m"}], "\[IndentingNewLine]", 
  RowBox[{"<<", " ", "MeltCurves.m"}], "\[IndentingNewLine]", 
- RowBox[{"<<", " ", "FractionBound.m"}]}], "Input",
+ RowBox[{"<<", " ", "FractionBound.m"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", " ", "EvaGreen.m"}]}], "Input",
  CellChangeTimes->{{3.682007692113997*^9, 3.682007711548562*^9}, {
   3.6820081973217993`*^9, 3.6820082034034004`*^9}, {3.6820083766571474`*^9, 
   3.682008386771617*^9}, {3.682008541804214*^9, 3.6820085420734797`*^9}, {
@@ -44,7 +45,8 @@ Cell[BoxData[{
   3.68201146389473*^9, 3.682011467952009*^9}, {3.6820956344320383`*^9, 
   3.682095642282407*^9}, {3.682176388843027*^9, 3.682176391450117*^9}, {
   3.682177841450246*^9, 3.6821778598874474`*^9}, {3.682185977783676*^9, 
-  3.6821859851857376`*^9}, {3.682445055013088*^9, 3.682445067155123*^9}}]
+  3.6821859851857376`*^9}, {3.682445055013088*^9, 3.682445067155123*^9}, {
+  3.6826230881000338`*^9, 3.682623091160336*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -213,11 +215,28 @@ Cell[BoxData[{
    3.6824448230418034`*^9}, {3.682444962444563*^9, 3.6824450279718423`*^9}, {
    3.6824452100846453`*^9, 3.6824452240910606`*^9}, {3.6824454917157054`*^9, 
    3.682445506733301*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["EvaGreen", "Subsubsection",
+ CellChangeTimes->{{3.6826230995994854`*^9, 3.682623101188362*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"<<", "EvaGreen.m"}], "\[IndentingNewLine]", 
+ RowBox[{"evaSignal", "[", 
+  RowBox[{"50", ",", " ", 
+   RowBox[{"hybridize", "[", 
+    RowBox[{"90", ",", " ", "15"}], "]"}], ",", " ", "200*^-9"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.68262310361071*^9, 3.6826231059861913`*^9}, {
+  3.682623987442711*^9, 3.6826239913757796`*^9}, {3.682624050434622*^9, 
+  3.6826240576079063`*^9}, {3.6826249818035293`*^9, 3.682624992696286*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{787, 1541},
-WindowMargins->{{670, Automatic}, {Automatic, 0}},
+WindowSize->{719, 1548},
+WindowMargins->{{440, Automatic}, {Automatic, 0}},
 CellContext->Notebook,
 FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
 StyleDefinitions->"Default.nb"
@@ -235,22 +254,26 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 108, 1, 67, "Subchapter"],
-Cell[691, 25, 1268, 21, 107, "Input"]
+Cell[691, 25, 1379, 23, 126, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1996, 51, 149, 2, 67, "Subchapter"],
+Cell[2107, 53, 149, 2, 67, "Subchapter"],
 Cell[CellGroupData[{
-Cell[2170, 57, 111, 1, 39, "Subsubsection"],
-Cell[2284, 60, 3690, 71, 259, "Input"],
-Cell[5977, 133, 488, 7, 50, "Input"]
+Cell[2281, 59, 111, 1, 39, "Subsubsection"],
+Cell[2395, 62, 3690, 71, 259, "Input"],
+Cell[6088, 135, 488, 7, 50, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6502, 145, 113, 1, 39, "Subsubsection"],
-Cell[6618, 148, 873, 19, 88, "Input"]
+Cell[6613, 147, 113, 1, 39, "Subsubsection"],
+Cell[6729, 150, 873, 19, 88, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7528, 172, 107, 1, 39, "Subsubsection"],
-Cell[7638, 175, 1777, 39, 183, "Input"]
+Cell[7639, 174, 107, 1, 39, "Subsubsection"],
+Cell[7749, 177, 1777, 39, 183, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9563, 221, 101, 1, 39, "Subsubsection"],
+Cell[9667, 224, 458, 9, 50, "Input"]
 }, Open  ]]
 }, Open  ]]
 }

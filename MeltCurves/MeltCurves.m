@@ -25,6 +25,7 @@ groupMeltCurvesByReplicates::usage="to come"
 
 Begin["`Private`"]
 Clear @ Evaluate[Context[] <> "*"]
+publishSymbol[name_] := Symbol["LoadingData`" <> symbolName[name]]
 
 (* Loads the indicated spreadsheet containing melt curve data from the CFX *)
 (* Returns loaded data as an association *)

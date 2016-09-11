@@ -44,6 +44,7 @@ toList::usage="to come"
 
 Begin["`Private`"]
 Clear["Utilities`Private`*"]
+publishSymbol[name_] := Symbol["Utilities`" <> symbolName[name]]
 
 (*--------------------------------------------------------------------------------------------------------------------*)
 (* Utilities *)
