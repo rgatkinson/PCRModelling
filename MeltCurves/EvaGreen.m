@@ -20,9 +20,14 @@ Clear @ Evaluate[Context[] <> "*"]
 Begin["`Private`"]
 Clear @ Evaluate[Context[] <> "*"]
 publishSymbol[name_] := Symbol["EvaGreen`" <> symbolName[name]]
-publishSymbol /@ { evaSignal, FractionBound, SecondaryStructure, LinearParams, ConstParams,
-    secondaryStructure, evaDS, evaSS, thermoParameters, hybridize,
-    alpha, beta, sigma }
+publishSymbol /@
+    {
+    evaSignal, FractionBound, SecondaryStructure, LinearParams, ConstParams,
+    secondaryStructure, evaDS, evaSS, thermoParameters,
+    hybridize, alpha, beta, gamma, sigma,
+    linearFolding, zeroFolding,
+    evaFitError
+    }
 
 Options[evaSignal] = {
     FractionBound -> fractionBound,
@@ -111,6 +116,44 @@ evaSS[tau_, 0]  := 0
 evaSS[tau_, n_] := evaDS[tau, n] / sigma[tau]
 evaDS[tau_, n_] := n * alpha[tau]
 evaBackground[tau_] := beta[tau]
+
+(* A simplifying assumption we'll make (for the moment at least) is that the amount of secondary structure in a
+   single strand of our flatmer is proportional only to (temperature and) the length thereof. We also define, for
+   comparison, a version that models things as flat. *)
+
+zeroFolding[tau_, n_] := 0
+linearFolding[tau_, n_] := gamma[tau] * n (* clearly, gamma[tau] is in [0,1] *)
+
+(* We define functions that give the fit error, both across all temperatures, or only at a given temperature *)
+
+(* computes the error of the assoc at one temperature *)
+evaFitError[tau_, assoc_Association, opts:OptionsPattern[]] := Module[
+    {modelled, ts, value},
+    modelled = evaSignal[tau, assoc["header"], assoc["concentration"], opts];
+    ts = assoc["ts"];
+    value = ts[tau];
+    (modelled - value)^2
+]
+
+(* computes the error of the assoc at all the temperatures it has *)
+evaFitError[assoc_Association, opts:OptionsPattern[]] := Module[
+    {tau, modelled, ts, temps},
+    ts = assoc["ts"];
+    temps = ts["Times"];
+    Total[ evaFitError[#, assoc, opts]&/@ temps]
+]
+
+(* computes the error at one temperture over all the data in the data set *)
+evaFitError[tau_, ds_Dataset, opts:OptionsPattern[]] := Module[
+    {},
+    Total[evaFitError[tau, #, opts]&/@Normal[ds]]
+]
+
+(* computes the error over all the temperatures and all the data in the data set *)
+evaFitError[ds_Dataset, opts:OptionsPattern[]] := Module[
+    {},
+    Total[evaFitError[#, opts]& /@ Normal[ds]]
+]
 
 End[] (* `Private` *)
 EndPackage[]

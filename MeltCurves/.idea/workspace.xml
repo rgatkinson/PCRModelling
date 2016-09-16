@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb3dcdc6-e635-4225-b000-4d46f7837c4a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EvaGreen.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MeltCurves.m" afterPath="$PROJECT_DIR$/MeltCurves.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MeltCurves.nb" afterPath="$PROJECT_DIR$/MeltCurves.nb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Utilities.m" afterPath="$PROJECT_DIR$/Utilities.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EvaGreen.m" afterPath="$PROJECT_DIR$/EvaGreen.m" />
     </list>
     <ignored path="MeltCurves.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,7 +33,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FractionBound.m" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FractionBound.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FractionBound.m">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
@@ -47,13 +43,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EvaGreen.m" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EvaGreen.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EvaGreen.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="63" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="63" />
+            <state relative-caret-position="535">
+              <caret line="133" column="12" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
               <folding>
-                <element signature="e#903#908#0" expanded="true" />
+                <element signature="e#971#976#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,8 +92,8 @@
         <option value="$PROJECT_DIR$/PlottingData.m" />
         <option value="$PROJECT_DIR$/FractionBound.m" />
         <option value="$PROJECT_DIR$/MeltCurves.m" />
-        <option value="$PROJECT_DIR$/EvaGreen.m" />
         <option value="$PROJECT_DIR$/Utilities.m" />
+        <option value="$PROJECT_DIR$/EvaGreen.m" />
       </list>
     </option>
   </component>
@@ -778,21 +774,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EvaGreen.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="63" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="63" />
-          <folding>
-            <element signature="e#903#908#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FractionBound.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EvaGreen.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="133" column="12" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
+          <folding>
+            <element signature="e#971#976#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
