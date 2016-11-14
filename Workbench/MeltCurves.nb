@@ -1,1 +1,290 @@
-Notebook[{}]
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11448,        282]
+NotebookOptionsPosition[     10518,        245]
+NotebookOutlinePosition[     10889,        261]
+CellTagsIndexPosition[     10846,        258]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Loading The Code", "Subchapter",
+ CellChangeTimes->{{3.6820103454737644`*^9, 3.6820103509060802`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", " ", "@", " ", 
+  RowBox[{"Evaluate", "[", 
+   RowBox[{
+    RowBox[{"Context", "[", "]"}], "<>", "\"\<*\>\""}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{
+   RowBox[{"NotebookDirectory", "[", "]"}], " ", "<>", " ", 
+   "\"\<MeltCurves\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", " ", "Utilities.m"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", " ", "MeltCurves.m"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", " ", "FractionBound.m"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", " ", "EvaGreen.m"}]}], "Input",
+ CellChangeTimes->{{3.682007692113997*^9, 3.682007711548562*^9}, {
+  3.6820081973217993`*^9, 3.6820082034034004`*^9}, {3.6820083766571474`*^9, 
+  3.682008386771617*^9}, {3.682008541804214*^9, 3.6820085420734797`*^9}, {
+  3.6820096208874164`*^9, 3.682009630035282*^9}, {3.68200966268334*^9, 
+  3.682009690852056*^9}, {3.6820105635532055`*^9, 3.6820105665769167`*^9}, {
+  3.6820106782996683`*^9, 3.6820106951731787`*^9}, {3.68201129032038*^9, 
+  3.682011356463462*^9}, {3.682011394970936*^9, 3.682011418511239*^9}, {
+  3.68201146389473*^9, 3.682011467952009*^9}, {3.6820956344320383`*^9, 
+  3.682095642282407*^9}, {3.682176388843027*^9, 3.682176391450117*^9}, {
+  3.682177841450246*^9, 3.6821778598874474`*^9}, {3.682185977783676*^9, 
+  3.6821859851857376`*^9}, {3.682445055013088*^9, 3.682445067155123*^9}, {
+  3.6826230881000338`*^9, 3.682623091160336*^9}, {3.6881496490821676`*^9, 
+  3.68814965921528*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["E16082201", "Subchapter",
+ CellChangeTimes->{{3.68201033808136*^9, 3.6820103420891495`*^9}, {
+  3.682177483793411*^9, 3.6821774875696993`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Loading the Data", "Subsubsection",
+ CellChangeTimes->{{3.6821775012358704`*^9, 3.6821775104609923`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"<<", " ", "MeltCurves.m"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "dir", " ", "=", " ", 
+   "\"\<C:\\\\Users\\\\bob\\\\Dropbox\\\\Grad School\\\\Lutz \
+Lab\\\\FlatmerAnalysis\\\\\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"e16082201", " ", "=", " ", 
+   RowBox[{"loadMeltCurves", "[", 
+    RowBox[{
+     RowBox[{"dir", " ", "<>", " ", "\"\<E16082201.xlsx\>\""}], ",", " ", 
+     "6"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"e16082201", "[", "\"\<headerNames\>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"datasetFromMeltCurves", "[", 
+    RowBox[{"e16082201", ",", " ", "\[IndentingNewLine]", 
+     RowBox[{"Function", "[", 
+      RowBox[{
+       RowBox[{"{", "assoc", "}"}], ",", " ", 
+       RowBox[{"hybridize", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"assoc", "[", "\"\<R16082205\>\"", "]"}], " ", "//", " ", 
+          "Round"}], ",", " ", 
+         RowBox[{
+          RowBox[{"assoc", "[", "\"\<R16061005\>\"", "]"}], " ", "//", " ", 
+          "Round"}], ",", " ", 
+         RowBox[{"assoc", "[", "\"\<Well Conc (ng/uL)\>\"", "]"}]}], "]"}]}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Function", "[", 
+      RowBox[{
+       RowBox[{"{", "header", "}"}], ",", " ", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"\"\<concentration\>\"", " ", "\[Rule]", " ", 
+          RowBox[{"header", "[", "\"\<Well Conc (ng/uL)\>\"", "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"\"\<R16082205\>\"", " ", "\[Rule]", " ", 
+          RowBox[{"header", "[", "\"\<R16082205\>\"", "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"\"\<R16061005\>\"", " ", "\[Rule]", " ", 
+          RowBox[{"header", "[", "\"\<R16061005\>\"", "]"}]}]}], 
+        "\[IndentingNewLine]", "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.682095658183647*^9, 3.682095819638897*^9}, {
+   3.682096416256338*^9, 3.682096459848335*^9}, 3.6820964933687067`*^9, {
+   3.68209654902535*^9, 3.6820965523333626`*^9}, {3.682096587254856*^9, 
+   3.6820965886960297`*^9}, {3.6820967545063486`*^9, 
+   3.6820967613517294`*^9}, {3.6821088266321564`*^9, 3.682108864852504*^9}, 
+   3.6821089851807165`*^9, 3.682109059625556*^9, {3.6821091393968306`*^9, 
+   3.682109143524829*^9}, {3.6821092548400373`*^9, 3.682109255266339*^9}, {
+   3.6821096948655386`*^9, 3.6821096974402905`*^9}, 3.682109749107283*^9, 
+   3.6821099307770395`*^9, {3.682125208400589*^9, 3.6821252173616033`*^9}, {
+   3.682125271611561*^9, 3.6821253347075357`*^9}, {3.682125365222889*^9, 
+   3.6821253883698964`*^9}, {3.6821255770116634`*^9, 
+   3.6821255846307893`*^9}, {3.682125872043313*^9, 3.6821258749717054`*^9}, {
+   3.6821266390197954`*^9, 3.6821266403347144`*^9}, 3.682126753000043*^9, {
+   3.6821270379424124`*^9, 3.6821270509047146`*^9}, {3.682127388117833*^9, 
+   3.6821273948751593`*^9}, {3.6821274623803587`*^9, 
+   3.6821274755654545`*^9}, {3.6821276472346897`*^9, 
+   3.6821276479363413`*^9}, {3.682127694233692*^9, 3.6821277248397803`*^9}, 
+   3.682127862030964*^9, {3.6821279411529665`*^9, 3.68212801137739*^9}, {
+   3.6821761562007732`*^9, 3.682176169756549*^9}, {3.68217620835439*^9, 
+   3.6821762147718277`*^9}, {3.6821765893793435`*^9, 
+   3.6821766088744154`*^9}, {3.6821767429038167`*^9, 3.68217677329943*^9}, {
+   3.682176987602216*^9, 3.6821769877044945`*^9}, {3.6821772563281307`*^9, 
+   3.682177262685313*^9}, {3.682177307595294*^9, 3.682177344783001*^9}, {
+   3.6821779345637474`*^9, 3.682177936454405*^9}, {3.6821856324442415`*^9, 
+   3.6821856426283484`*^9}, 3.682445050985401*^9}],
+
+Cell[BoxData[{
+ RowBox[{"Get", "[", "\"\<MeltCurves`\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"plotMeltCurves", "[", "data", "]"}]}], "Input",
+ CellChangeTimes->{{3.68217640057642*^9, 3.682176409285571*^9}, {
+   3.682176684876021*^9, 3.682176690591538*^9}, 3.6821767483185496`*^9, {
+   3.6821767791172457`*^9, 3.682176779370927*^9}, {3.6821769597794437`*^9, 
+   3.682176988984973*^9}, 3.6821770204494157`*^9, {3.682177257976591*^9, 
+   3.6821772582483177`*^9}, 3.682177940246708*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Extracting  Replicates", "Subsubsection",
+ CellChangeTimes->{{3.682177525824167*^9, 3.682177564717579*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"<<", " ", "MeltCurves.m"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"replicates", " ", "=", " ", 
+   RowBox[{"groupMeltCurvesByReplicates", "[", "data", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"blanks", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"hybridize", "[", 
+     RowBox[{"0", ",", "0", ",", "0."}], "]"}], " ", "/.", " ", 
+    "replicates"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"plotMeltCurves", "[", 
+  RowBox[{"blanks", ",", " ", 
+   RowBox[{"ImageSize", " ", "\[Rule]", " ", "Medium"}]}], "]"}]}], "Input",
+ CellChangeTimes->{
+  3.6821784750036373`*^9, 3.6821786808087435`*^9, {3.682185373884186*^9, 
+   3.6821854212155004`*^9}, 3.6821854954808903`*^9, {3.6821856494177084`*^9, 
+   3.6821856782046843`*^9}, {3.6821857405254602`*^9, 3.682185753703209*^9}, {
+   3.682445034749363*^9, 3.6824450388991385`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Fraction Bound", "Subsubsection",
+ CellChangeTimes->{{3.682444986386588*^9, 3.6824449878038774`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"<<", " ", 
+  "FractionBound.m"}], "\[IndentingNewLine]", "numericalUsualParameters", "\
+\[IndentingNewLine]", 
+ RowBox[{"unitlessParameters", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"fractionBound", " ", "uses", " ", "usual", " ", "units"}], ",", 
+    " ", 
+    RowBox[{"not", " ", "SI", " ", "units"}]}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fb", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"fractionBound", "[", 
+     RowBox[{"\[Tau]", ",", "\[IndentingNewLine]", 
+      RowBox[{"deltah", "/.", "numericalUsualParameters"}], " ", 
+      RowBox[{"(*", 
+       RowBox[{"kcal", "/", "mol"}], "*)"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"deltas", "/.", "numericalUsualParameters"}], " ", 
+      RowBox[{"(*", 
+       RowBox[{"cal", "/", 
+        RowBox[{"(", 
+         RowBox[{"mol", " ", "K"}], ")"}]}], "*)"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"atot", "/.", "numericalUsualParameters"}]}], " ", 
+     RowBox[{"(*", "molar", "*)"}], "]"}], "//", "FullSimplify"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{"fb", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"\[Tau]", ",", " ", "97", ",", " ", "115"}], "}"}], ",", " ", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<\[Degree]C\>\"", ",", " ", "\"\<fraction bound\>\""}], 
+     "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.682434713170356*^9, 3.6824347180610976`*^9}, {
+   3.682434869480875*^9, 3.682434873801403*^9}, {3.682435563915042*^9, 
+   3.682435564444663*^9}, {3.6824362927128716`*^9, 3.6824362929360914`*^9}, {
+   3.682437004217513*^9, 3.682437004611327*^9}, 3.6824373092595897`*^9, {
+   3.6824376372200713`*^9, 3.6824376390134993`*^9}, {3.6824447900558996`*^9, 
+   3.6824448230418034`*^9}, {3.682444962444563*^9, 3.6824450279718423`*^9}, {
+   3.6824452100846453`*^9, 3.6824452240910606`*^9}, {3.6824454917157054`*^9, 
+   3.682445506733301*^9}, 3.6826253336484146`*^9, {3.6826253647976522`*^9, 
+   3.6826253840732155`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["EvaGreen", "Subsubsection",
+ CellChangeTimes->{{3.6826230995994854`*^9, 3.682623101188362*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"<<", "EvaGreen.m"}], "\[IndentingNewLine]", 
+ RowBox[{"evaSignal", "[", 
+  RowBox[{"50", ",", " ", 
+   RowBox[{"hybridize", "[", 
+    RowBox[{"90", ",", " ", "15"}], "]"}], ",", " ", "200*^-9"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.68262310361071*^9, 3.6826231059861913`*^9}, {
+  3.682623987442711*^9, 3.6826239913757796`*^9}, {3.682624050434622*^9, 
+  3.6826240576079063`*^9}, {3.6826249818035293`*^9, 3.682624992696286*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{719, 1548},
+WindowMargins->{{440, Automatic}, {Automatic, 0}},
+CellContext->Notebook,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 108, 1, 67, "Subchapter"],
+Cell[691, 25, 1485, 26, 126, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2213, 56, 149, 2, 67, "Subchapter"],
+Cell[CellGroupData[{
+Cell[2387, 62, 111, 1, 39, "Subsubsection"],
+Cell[2501, 65, 3690, 71, 259, "Input"],
+Cell[6194, 138, 488, 7, 50, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6719, 150, 113, 1, 39, "Subsubsection"],
+Cell[6835, 153, 873, 19, 88, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7745, 177, 107, 1, 39, "Subsubsection"],
+Cell[7855, 180, 2036, 44, 183, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9928, 229, 101, 1, 39, "Subsubsection"],
+Cell[10032, 232, 458, 9, 50, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
